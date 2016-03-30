@@ -85,8 +85,14 @@ $(document).ready(function() {
 	
 	<!--CONTENT-->
     <div class="content">
-	<!--USERNAME--><input name="username" type="text" class="input username" value="Username" onfocus="this.value=''" /><!--END USERNAME-->
-    <!--PASSWORD--><input name="password" type="password" class="input password" value="Password" onfocus="this.value=''" /><!--END PASSWORD-->
+	<!--USERNAME--><input name="{{ form.usuario.name}}" id="{{ form.usuario.if_for_label}}" type="text" class="input username" value="Username" onfocus="this.value=''" /><!--END USERNAME-->
+        {% if form.usuario.errors %}
+                <div class="alert alert-danger">{{ form.usuario.errors }}</div>
+                {% endif %}
+    <!--PASSWORD--><input name="{{ form.clave.name}}" id="{{ form.clave.if_for_label}}" type="password" class="input password" value="Password" onfocus="this.value=''" /><!--END PASSWORD-->
+    {% if form.clave.errors %}
+                <div class="alert alert-danger">{{ form.clave.errors }}</div>
+                {% endif %}
     </div>
     <!--END CONTENT-->
     

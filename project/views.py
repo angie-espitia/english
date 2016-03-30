@@ -1,6 +1,13 @@
+# -*- encoding: utf-8 -*-
+from django.contrib.auth.decorators import login_required
+from django.contrib import auth
+from django.core.exceptions import NON_FIELD_ERRORS
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.contrib.auth.models import User
+
+from project.forms import LoginForm
 
 
 def index(request):
@@ -29,7 +36,7 @@ def login_estudiante(request):
 
             if not acceso is None:
                 auth.login(request, acceso)
-                return HttpResponseRedirect('/home')
+                return HttpResponseRedirect('/inicio_estudiante')
             else:
                 formulario._errors = { NON_FIELD_ERRORS:  'Usuario o Password Invalido'}
 
@@ -39,7 +46,7 @@ def login_estudiante(request):
 def login_profesor(request):
     return render_to_response('../templates/login-profe.html')
 
-@login_required(login_url="/login")
+@login_required(login_url="/login_estudiante")
 def inicio_estudiante(request):
     return render_to_response('../templates/inicio-estudiante.html')
 
@@ -51,3 +58,17 @@ def modulo1_unidad1(request):
 
 def unidad1_tm1(request):
     return render_to_response('../templates/modulo1-unidad1 -tm1.html')
+
+def Registro(request):
+
+    if request.method == 'POST':
+        usuario = Usuario()
+        usuario.nombre = request.POST('nombre')
+        usuario.apellido = request.POST('apellido')
+        usuario.username = request.POST('email')
+        usuario.clave = request.POST('password')
+        usuario.sexo = request.POST('sexo')
+        usuario.cedula = request.POST('cedula')
+
+    Usuario_is_active = True
+    Usuario.save()
