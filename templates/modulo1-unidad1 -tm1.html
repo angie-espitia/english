@@ -1,0 +1,101 @@
+{% extends 'plantilla2.html' %}
+{% block title %} Tema 1 {% endblock %}
+
+{%  block content %}
+
+    <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Modulo 1</li>
+        <li><a href="modulo1-unidad1.html">Unidad 1</a></li>
+        <li class="active">Personal Pronouns</li>
+        
+        <div class="col-sm-3 col-md-3 pull-right">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>        
+        
+</ol>
+
+        {% include 'plantilla3.html' %}
+              
+  <div class="col-sm-9 col-md-9">
+      <div id="bgf">
+      <h2>Personal Pronouns </h2>
+              <h3>Los pronombres personales</h3> 
+      </div>
+      <br />
+      <p>Dentro de los pronombres personales, el inglés distingue entre pronombres en función de sujeto y pronombres personales en función de objeto.</p>
+     
+      <br />
+      <div class="col-md-6">
+      <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Pronombres en Función de Sujetos</th>
+        <th>Ejemplo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td><b>I</b> <p>yo</p></td>
+        <td><b>I am ill.</b> <p>Yo estoy enfermo.</p></td>
+      </tr>
+      <tr>
+        <td><b>You</b> <p>tú, usted</p></td>
+        <td><b>You are tall.</b> <p>Tú eres alto. / Usted es alto.</p></td>
+      </tr>
+        <tr>
+        <td><b>He</b> <p>él</p></td>
+        <td><b>He is handsome.</b> <p>Él es guapo.</p></td>
+      </tr>
+    </tbody>
+  </table>
+      </div>
+
+<div class="col-md-11">      
+      <p>Nota: En inglés no existe la forma “usted” o “ustedes” formal. Por lo tanto los nativos de la lengua ni siquiera lo tienen conceptualizado como una forma aquí llamada “formal”. Se tiene que entender por tanto, que la forma masculina, femenina y neutra son lo mismo, lo único que las diferencia es el género. 
+
+Además, ten en cuenta que en inglés sólo existe una forma para “tu” y “vosotros”, “you”, excepto en la forma reflexiva que distingue entre el singular (yourself) y plural (yourselves).</p>
+      </div>
+              
+    <div class="col-md-12">
+      <h2>Neuter Form </h2>
+      <h3>(Forma neutra)</h3> 
+  <hr>
+      
+        <p>Los pronombres en inglés distinguen entre masculino (he), femenino (she) y neutro (it).</p>
+
+<p>El pronombre personal “it” se utiliza cuando nos referimos a cosas, a animales que no sabemos su sexo o al tiempo (calendario y meteorológico). La forma plural de “it” es “they”.</p>
+
+        <p>Ejemplos:</p>
+
+ 	<li>Where is it [the book]? (¿Dónde está [el libro]?)</li>
+ 	<li>What time is it? (¿Qué hora es?)</li>
+ 	<li>It is raining. (Está lloviendo.)</li>
+     
+      <br />
+
+<div class="col-md-11">      
+      <p>Nota: “It” es una partícula muy importante en inglés de la que los hablantes de lengua española se suelen olvidar.</p>
+      </div>
+    </div>
+              
+</div><!--div-->              
+</div>
+          </div>
+</div>
+      </div><!--/row-->
+    </div> <!-- /container -->    
+    
+    
+	
+		</div><!-- container -->
+	</div><!--rwrap-->
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'plantilla1.html' %}
+{% block title %} Inicio {% endblock %}
+
+{%  block content %}
+    
+    <div id="headerwrap">
+		<div class="container">
+			<div class="row centered">
+				<div class="col-lg-8 col-lg-offset-2">
+				<h1>Tu lugar para aprender <b>ingles</b></h1>
+				<h2>De forma sencilla</h2>
+				</div>
+			</div><!-- row -->
+		</div><!-- container -->
+	</div><!-- headerwrap -->
+     
+     <!-- FEATURE SECTION -->    
+<div id="lg">
+	<div class="container wb">
+		<div class="row centered">
+			<div class="col-lg-8">
+				<h4>El Curso</h4>
+				<p>By being true to the brand we represent, we elevate the audiences’ relationship to it. Like becomes love becomes a passion. Passion becomes advocacy. And we see the brand blossom from within, creating a whole story the audience embraces. That’s when the brand can truly flex its muscles.</p>
+                
+                <button type="button" class="btn btn-primary btn-lg"><a href="{% url 'curso' %}">Ver Contenidos</a></button>
+                  
+			</div>
+			<div class="col-lg-4">
+				<img class="img-responsive" src="/static/img/Cursos-de-inglés.png" alt="">
+			</div>
+		</div><!-- row -->
+	</div><!-- container -->
+ </div>    
+
+     <div id="wh">
+		<div class="container wb">
+			<div class="row centered">
+				<h4>¿ Qué tipo de Usuario eres ?</h4>
+                <hr />
+                <br />
+				<div class="col-lg-6">
+					<a href="{% url 'login-estudiante' %}"><img src="/static/img/icon-estudiante.png" alt=""></a>
+                    <br /><br />
+                    <p>Estudiante</p>
+				</div>
+				<div class="col-lg-6">
+					<a href="{% url 'login-profesor' %}"><img src="/static/img/icon-docente.png" alt=""></a>
+                    <br /><br />
+                    <p>Docente</p>
+				</div>
+                
+			</div><!-- row -->
+		</div><!-- container -->
+    </div>
+    
+     <!-- PORTFOLIO SECTION -->
+	<div id="dg">
+		<div class="container">
+			<div class="row centered">
+				<h4>DONDE ESTAMOS.</h4>
+				<br>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31828.409870712367!2d-74.81110623345106!3d4.306943156655903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f28ec54308e5f%3A0xad9e09275aa20260!2sGirardot%2C+Cundinamarca!5e0!3m2!1ses-419!2sco!4v1457666339953" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+				</div>
+			</div><!-- row -->
+		</div><!-- container -->
+	</div><!-- DG -->
+    
+    <div class="container w">
+		<div class="row centered">
+			<br><br>
+			<div class="col-lg-4">
+				<i class="fa fa-heart"></i>
+				<h4>DESIGN</h4>
+				<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even believable.</p>
+			</div><!-- col-lg-4 -->
+
+			<div class="col-lg-4">
+				<i class="fa fa-laptop"></i>
+				<h4>DONDE ESTAMOS.</h4>
+				
+			</div><!-- col-lg-4 -->
+
+			<div class="col-lg-4">
+				<i class="fa fa-trophy"></i>
+				<h4>DO</h4>
+				<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even believable.</p>
+			</div><!-- col-lg-4 -->
+		</div><!-- row -->
+		<br>
+		<br>
+	</div><!-- container -->
+
+{% endblock %}
