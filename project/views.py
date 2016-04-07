@@ -11,7 +11,7 @@ from project.forms import LoginForm
 
 
 def index(request):
-    return render_to_response('../templates/index.html')
+    return render_to_response('index.html')
 
 def curso(request):
     return render_to_response('../templates/curso.html')
@@ -36,7 +36,7 @@ def login_estudiante(request):
 
             if not acceso is None:
                 auth.login(request, acceso)
-                return HttpResponseRedirect('/inicio_estudiante')
+                return HttpResponseRedirect('/inicio')
             else:
                 formulario._errors = { NON_FIELD_ERRORS:  'Usuario o Password Invalido'}
 
@@ -46,16 +46,24 @@ def login_estudiante(request):
 def login_profesor(request):
     return render_to_response('../templates/login-profe.html')
 
-@login_required(login_url="/login_estudiante")
+@login_required(login_url="/login-estudiante")
 def inicio_estudiante(request):
-    return render_to_response('../templates/inicio-estudiante.html')
+    return render_to_response('inicio-estudiante.html')
 
+@login_required(login_url="/login-estudiante")
+def logout(request):
+    auth.logout(request)
+    return HttpResponseRedirect("/")
+
+@login_required(login_url="/login-estudiante")
 def modulo1(request):
     return render_to_response('../templates/modulo1.html')
 
+@login_required(login_url="/login-estudiante")
 def modulo1_unidad1(request):
     return render_to_response('../templates/modulo1-unidad1.html')
 
+@login_required(login_url="/login-estudiante")
 def unidad1_tm1(request):
     return render_to_response('../templates/modulo1-unidad1 -tm1.html')
 
