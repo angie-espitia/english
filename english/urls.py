@@ -2,7 +2,6 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from project.views import *
 
-
 urlpatterns = [
     url(r'^$', index, name='index' ), #/
     url(r'^curso$', curso, name='curso' ), #/curso
@@ -14,6 +13,7 @@ urlpatterns = [
     url(r'^unidad1$', modulo1_unidad1, name='modulo1-unidad1' ), #/unidad1
     url(r'^tema1$', unidad1_tm1, name='modulo1-unidad1-tm1' ), #/tema1
     url(r'^inicio-profesor$', inicio_profesor, name='inicio-profesor' ),#/Inicio-profesor
+    url(r'^primer-modulo$', primer_modulo, name='primer-modulo'),  # /primer-modulo-panel
     url(r'^registro-estudiante$', registro_estudiante, name='registro-estudiante' ), #/registro-estudiante
     url(r'^tinymce/', include('tinymce.urls')),
 

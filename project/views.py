@@ -93,10 +93,14 @@ def unidad1_tm1(request):
 
 @login_required(login_url="/login-profesor")
 def inicio_profesor(request):
-    return render_to_response('inicio-profe.html')
+    return render_to_response('../templates/inicio-profe.html')
+
+@login_required(login_url="/login-profesor")
+def primer_modulo(request):
+    return render_to_response('../templates/primer-modulo.html')
 
 from django.contrib.auth.hashers import make_password
-from .models import Usuario
+from .models import Estudiante
 from validator import Validator
 @login_required(login_url="/login-profesor")
 def registro_estudiante(request):
@@ -108,7 +112,7 @@ def registro_estudiante(request):
         validator.required = ['nombre', 'apellidos', 'email']
 
         if validator.is_valid():
-            usuario = Usuario()
+            usuario = Estudiante()
             #p = Persona.objects.get(documento = '123123123321')
             usuario.first_name = request.POST['nombre']
             usuario.last_name = request.POST['apellidos']
@@ -118,6 +122,6 @@ def registro_estudiante(request):
             usuario.is_active = True
             usuario.save()
         else:
-            return render_to_response('registro-estudiante.html', {'error': validator.getMessage() } , context_instance = RequestContext(request))
+            return render_to_response('../templates/registro-estudiante.html', {'error': validator.getMessage() } , context_instance = RequestContext(request))
         # Agregar el usuario a la base de datos
-    return render_to_response('registro-estudiante.html', context_instance = RequestContext(request))
+    return render_to_response('../templates/registro-estudiante.html', context_instance = RequestContext(request))
