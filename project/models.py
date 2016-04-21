@@ -12,7 +12,7 @@ class Estudiante(models.Model):
     clave = models.CharField(max_length = 100)
     direccion = models.CharField(max_length = 100)
     sexo = models.CharField(max_length = 100)
-    fecha_nacimiento = models.CharField(max_length = 100)
+    fecha_nacimiento = models.CharField(max_length = 100, db_column= 'Fecha Nacimiento')
     cedula = models.CharField(max_length = 100)
     Foto = models.CharField(max_length = 100)
 
@@ -61,7 +61,7 @@ class Curso(models.Model):
 class Modulo(models.Model):
     nombre = models.CharField(max_length= 120)
     fecha = models.FloatField()
-    Curso = models.ForeignKey(Curso)
+    Curso = models.ForeignKey(Curso, db_column='curso_id')
 
     class Meta:
         db_table = 'modulo'

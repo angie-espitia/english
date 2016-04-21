@@ -13,5 +13,4 @@ class ProfeAdmin(admin.ModelAdmin):
 
 @admin.register(Curso)
 class CursoAdmin(admin.ModelAdmin):
-    #list_display = ('nombre')
-    pass
+    list_display = ('nombre', 'fecha_inicio', 'fecha_fin')
