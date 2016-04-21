@@ -6,16 +6,15 @@ from tinymce.models import HTMLField
 class Estudiante(models.Model):
     nombre = models.CharField(max_length= 120)
     apellido = models.CharField(max_length = 100)
-    email = models.CharField(max_length = 100)
+    email = models.EmailField()
     username = models.CharField(max_length=100)
     tel = models.CharField(max_length = 100)
     clave = models.CharField(max_length = 100)
     direccion = models.CharField(max_length = 100)
     sexo = models.CharField(max_length = 100)
-    fecha_nacimiento = models.CharField(max_length = 100, db_column= 'Fecha Nacimiento')
+    fecha_nacimiento = models.DateField(db_column= 'Fecha Nacimiento')
     cedula = models.CharField(max_length = 100)
-    Foto = models.CharField(max_length = 100)
-
+    Foto = models.ImageField(upload_to='/tmp')
 
     class Meta:
         db_table = 'estudiante'

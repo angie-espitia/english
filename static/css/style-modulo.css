@@ -323,17 +323,17 @@ hr {
 
 @media (min-width: 1200px) {
     .container {
-        width: 1200px;
+        width: 100%;
     }
 }
 @media (min-width: 992px) {
     .container {
-        width: 1070px;
+        width: 100%;
     }
 }
 @media (min-width: 768px) {
     .container {
-        width: 840px;
+        width: 100%;
     }
 }
 
