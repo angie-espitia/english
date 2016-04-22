@@ -1,24 +1,22 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 
+list_sexo = ( ('M', 'Masculino') , ('F', 'Femenino'))
 class Estudiante(models.Model):
-    nombre = models.CharField(max_length= 120)
-    apellido = models.CharField(max_length = 100)
-    email = models.EmailField()
-    username = models.CharField(max_length=100)
+    id = models.OneToOneField(User, primary_key=True)
     tel = models.CharField(max_length = 100)
-    clave = models.CharField(max_length = 100)
     direccion = models.CharField(max_length = 100)
-    sexo = models.CharField(max_length = 100)
+    sexo = models.CharField( max_length=1, choices = list_sexo)
     fecha_nacimiento = models.DateField(db_column= 'Fecha Nacimiento')
     cedula = models.CharField(max_length = 100)
     Foto = models.ImageField(upload_to='/tmp')
 
-    class Meta:
-        db_table = 'estudiante'
-        managed  = False
+    #class Meta:
+    #    db_table = 'estudiante'
+    #    managed  = False
 
 class Profesor(models.Model):
     nombre = models.CharField(max_length= 120)

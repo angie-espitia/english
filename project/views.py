@@ -98,7 +98,6 @@ def primer_modulo(request):
     return render_to_response('../templates/primer-modulo.html')
 
 from django.contrib.auth.hashers import make_password
-from .models import Estudiante
 @login_required(login_url="/login-profesor")
 def registro_estudiante(request):
     """view del profile
@@ -109,13 +108,13 @@ def registro_estudiante(request):
         validators.required = ['nombre', 'apellidos', 'email', 'cedula', 'username', 'password1']
 
         if validators.is_valid():
-            usuario = Estudiante()
-            usuario.nombre = request.POST['nombre']
-            usuario.apellido = request.POST['apellidos']
+            usuario = User()
+            usuario.frist_name = request.POST['nombre']
+            usuario.last_name = request.POST['apellidos']
             usuario.email = request.POST['email']
             usuario.cedula = request.POST['cedula']
             usuario.username = request.POST['username']
-            usuario.clave = make_password(request.POST['password1'])
+            usuario.password = make_password(request.POST['password1'])
             usuario.is_active = True
             usuario.save()
             return render_to_response('../templates/registro-estudiante.html', {'success': True}, context_instance=RequestContext(request))
@@ -134,7 +133,7 @@ def search(request):
                 Q( cedula__icontains = filter) |
                 Q( email__icontains = filter)
                 )
-        estudiante = Estudiante.objects.filter(qset).distinct()
+        estudiante = User.objects.filter(qset)
     else:
         estudiante = []
 
