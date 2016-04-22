@@ -110,7 +110,7 @@ def registro_estudiante(request):
 
         if validators.is_valid():
             usuario = User()
-            usuario.frist_name = request.POST['nombre']
+            usuario.first_name = request.POST['nombre']
             usuario.last_name = request.POST['apellidos']
             usuario.email = request.POST['email']
             usuario.cedula = request.POST['cedula']

@@ -8,7 +8,7 @@ class CursoChildAdmin(admin.TabularInline):
 class ProfeAdmin(admin.ModelAdmin):
     list_display = ('nombre','apellido')
     inlines = [CursoChildAdmin]
-    search_fields = ('nombre', 'curso__nombre')
+    search_fields = ('nombre', 'curso_nombre')
 
 @admin.register(Curso)
 class CursoAdmin(admin.ModelAdmin):

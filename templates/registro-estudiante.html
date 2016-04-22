@@ -33,11 +33,11 @@
             </form>
         </div>
 
-        <div class="row placeholders">
+        <div class="col-sm-7 col-md-7 row placeholders">
             <div class="placeholder">
            {% for estudiant in estudiante %}
-                <h4 >{{ estudiant.nombre }}</h4>
-                <h4>{{ estudiant.apellido }}</h4>
+                <h4 >{{ estudiant.first_name }}</h4>
+                <h4>{{ estudiant.last_name }}</h4>
             {% endfor %}
             </div>
             </div>
@@ -133,7 +133,7 @@
 
             <div class="col-md-12"></div>
 
-            <div>
+            <div class="col-md-12">
               <p><button type="submit" class="btn btn-primary btn-lg pull-right">Registrar Estudiante</button> </p>
             </div>
 
