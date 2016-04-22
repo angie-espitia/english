@@ -43,7 +43,6 @@ class Validator(object):
 
 class FormRegistroValidator(Validator):
 
-
     def is_valid(self):
         if not super(FormRegistroValidator, self).is_valid():
             return False
@@ -52,7 +51,7 @@ class FormRegistroValidator(Validator):
             self._message = 'Las contraseñas no  coinciden'
             return False
 
-        if Estudiante.objects.filter(email = self._post('email')).exists():
+        if Estudiante.objects.filter(email = self._post['email']).exists():
             self._message = 'El correo electrónico ya se encuentra registrado'
             return False
         return True

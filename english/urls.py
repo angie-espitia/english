@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^login-estudiante$', login_estudiante, name='login-estudiante' ), #/login-estudiante
     url('^logout$', logout, name = 'logout' ), #/login
     url(r'^login-profesor$', login_profesor, name='login-profesor' ), #/login-profesor
+    url('^search$', search, name='search'),
 
     url(r'^inicio-estudiante$', inicio_estudiante, name='inicio-estudiante' ),#/Inicio-estudiante
     url(r'^modulo1$', modulo1, name='modulo1' ), #/modulo1

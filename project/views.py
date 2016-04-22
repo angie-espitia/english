@@ -123,3 +123,21 @@ def registro_estudiante(request):
             return render_to_response('../templates/registro-estudiante.html', {'error': validators.getMessage() } , context_instance = RequestContext(request))
         # Agregar el usuario a la base de datos
     return render_to_response('../templates/registro-estudiante.html', context_instance = RequestContext(request))
+
+from django.db.models import Q
+def search(request):
+
+    estudiante = None
+    filter = request.GET.get('q', '')
+    if filter:
+        qset = ( Q( username__icontains = filter) |
+                Q( cedula__icontains = filter) |
+                Q( email__icontains = filter)
+                )
+        estudiante = Estudiante.objects.filter(qset).distinct()
+    else:
+        estudiante = []
+
+    return render_to_response('registro-estudiante.html',
+                             {'Estudiante': estudiante, 'filtro': filter  },
+                              context_instance = RequestContext(request))
