@@ -6,6 +6,7 @@ from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.contrib.auth.models import User, Group
 from .validator import FormRegistroValidator, FormLoginValidator
+from english.settings import STATIC_ROLS
 
 
 def index(request):
@@ -42,7 +43,12 @@ def login_profesor(request):
             usuario = request.POST['usuario']
             clave = request.POST['clave']
             auth.login(request, validator.acceso)  # Crear una sesion
-            return HttpResponseRedirect('/inicio-profesor')
+            if ( request.user.groups.filter( id != STATIC_ROLS['Estudiantes']).exists() ):
+                return HttpResponseRedirect('/inicio-profesor')
+            else:
+                return render_to_response('../templates/login-profe.html', {'error': validator.getMessage()},
+                                  context_instance=RequestContext(request))
+
 
         else:
             return render_to_response('../templates/login-profe.html', {'error': validator.getMessage()} , context_instance = RequestContext(request))

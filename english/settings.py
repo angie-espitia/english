@@ -118,3 +118,5 @@ STATIC_URL = '/static/'
 
 #Directorio donde se almacenaran archivos css
 STATICFILES_DIRS = [ BASE_DIR + '/static' ]
+
+STATIC_ROLS = {'ADMON': 1, 'TEACHER': 2, 'USER': 3}
