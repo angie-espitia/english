@@ -8,6 +8,7 @@ class Estudiante(models.Model):
     nombre = models.CharField(max_length= 120)
     apellido = models.CharField(max_length = 100)
     email = models.CharField(max_length = 100)
+    username = models.CharField(max_length=100)
     tel = models.CharField(max_length = 100)
     clave = models.CharField(max_length = 100)
     direccion = models.CharField(max_length = 100)
@@ -15,6 +16,7 @@ class Estudiante(models.Model):
     fecha_nacimiento = models.CharField(max_length = 100, db_column= 'Fecha Nacimiento')
     cedula = models.CharField(max_length = 100)
     Foto = models.CharField(max_length = 100)
+
 
     class Meta:
         db_table = 'estudiante'

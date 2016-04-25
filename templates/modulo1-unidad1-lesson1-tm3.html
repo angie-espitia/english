@@ -1,0 +1,90 @@
+{% extends 'plantilla2.html' %}
+{% block title %} Tema 3 {% endblock %}
+
+{%  block content %}
+
+    <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Modulo 1</li>
+        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 1</a></li>
+        <li class="active">Lesson 1</li>
+        
+        <div class="col-sm-3 col-md-3 pull-right">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>        
+        
+</ol>
+
+        {% include 'plantilla3.html' %}
+              
+  <div class="col-sm-9 col-md-9">
+      <h2>LISTEN</h2>
+      <h3></h3>
+        <hr>
+      <p>Listen and choose the correct response, A, B, or C.</p>
+
+      <br />
+      <div class="col-sm-4 col-md-4">
+          <b>1.</b>
+            <p>A. Hello, Jack.</p>
+            <p>B. Goodbye, Jack.</p>
+            <p>C. I’m fine, thank you.</p>
+          </div>
+
+      <div class="col-sm-4 col-md-4">
+          <b>2.</b>
+            <p>A. Hi, Tom. Nice to meet you.</p>
+            <p>B. See you later.</p>
+            <p>C. What’s your name?</p>
+          </div>
+
+      <div class="col-sm-4 col-md-4">
+          <b>3.</b>
+            <p>A. Pleased to meet you, too.</p>
+            <p>B. I’m fine, thanks.</p>
+            <p>C. Get well soon.</p>
+          </div>
+    <div class="col-sm-12 col-md-12">
+      <br /></div>
+
+      <div class="col-sm-4 col-md-4">
+          <b>4.</b>
+            <p>A. I’m OK and you?</p>
+            <p>B. Pleased to meet you.</p>
+            <p>C. My name’s Marta.</p>
+          </div>
+
+      <div class="col-sm-4 col-md-4">
+          <b>5.</b>
+            <p>A. Hi!</p>
+            <p>B. See you!</p>
+            <p>C. Sorry to hear that!</p>
+          </div>
+
+      <div class="col-sm-4 col-md-4">
+          <b>6.</b>
+            <p>A. How are you?</p>
+            <p>B. Sorry to hear that.</p>
+            <p>C. How’s it going?</p>
+          </div>
+
+      <div class="col-sm-12 col-md-12">
+      <br /></div>
+
+      <p>Now listen and check your answers</p>
+
+      <div class="col-sm-12 col-md-12">
+      <br />
+      <div class="centered"><img src="../static/img/modulo1/unity1/listen-1.PNG" class="img-responsive" alt=""/></div></div>
+
+    </div><!--div-->
+</div>
+
+{% endblock %}

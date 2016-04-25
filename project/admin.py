@@ -10,7 +10,6 @@ class ProfeAdmin(admin.ModelAdmin):
     inlines = [CursoChildAdmin]
     search_fields = ('nombre', 'curso__nombre')
 
-
 @admin.register(Curso)
 class CursoAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'fecha_inicio', 'fecha_fin')

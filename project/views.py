@@ -1,13 +1,11 @@
 # -*- encoding: utf-8 -*-
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
-from django.core.exceptions import NON_FIELD_ERRORS
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.contrib.auth.models import User
-
-from project.forms import LoginForm
+from .validator import FormRegistroValidator, FormLoginValidator
 
 
 def index(request):
@@ -17,58 +15,39 @@ def curso(request):
     return render_to_response('../templates/curso.html')
 
 def login_estudiante(request):
-    """view del login
-    """
-    #Verificamos que los datos lleguen por el methodo POST
-    formulario = LoginForm()
+
     if request.method == 'POST':
-        #Cargamos el formulario (ver forms.py con los datos del POST)
-        formulario = LoginForm(data = request.POST)
-        #Verificamos que los datos esten correctos segun su estructura
-        if formulario.is_valid():
-            # Capturamos las variables que llegan por POST
-            usuario = request.POST.get('usuario')
-            clave = request.POST.get('clave')
 
-            #validamos los datos de usuario y contraseña, el metodo authenticate verifica el password cifrado
-            acceso = auth.authenticate(username = usuario, password = clave )
-            #Si el usuario existe abrimos una sesion de usuario
+        validators = FormLoginValidator(request.POST)
 
-            if not acceso is None:
-                auth.login(request, acceso)
-                return HttpResponseRedirect('/inicio-estudiante')
-            else:
-                formulario._errors = { NON_FIELD_ERRORS:  'Usuario o Password Invalido'}
+        if validators.is_valid():
 
+            usuario = request.POST['usuario']
+            clave = request.POST['clave']
+            auth.login(request, validators.acceso)  # Crear una sesion
+            return HttpResponseRedirect('/inicio-estudiante')
 
-    return render_to_response('../templates/login-estudiante.html', {"form": formulario} , context_instance = RequestContext(request))
+        else:
+            return render_to_response('../templates/login-estudiante.html', {'error': validators.getMessage()} , context_instance = RequestContext(request))
+
+    return render_to_response('../templates/login-estudiante.html', context_instance=RequestContext(request))
 
 def login_profesor(request):
-    """view del login
-    """
-    #Verificamos que los datos lleguen por el methodo POST
-    formulario = LoginForm()
+
     if request.method == 'POST':
-        #Cargamos el formulario (ver forms.py con los datos del POST)
-        formulario = LoginForm(data = request.POST)
-        #Verificamos que los datos esten correctos segun su estructura
-        if formulario.is_valid():
-            # Capturamos las variables que llegan por POST
-            usuario = request.POST.get('usuario')
-            clave = request.POST.get('clave')
+        validator = FormLoginValidator(request.POST)
 
-            #validamos los datos de usuario y contraseña, el metodo authenticate verifica el password cifrado
-            acceso = auth.authenticate(username = usuario, password = clave )
-            #Si el usuario existe abrimos una sesion de usuario
+        if validator.is_valid():
 
-            if not acceso is None:
-                auth.login(request, acceso)
-                return HttpResponseRedirect('/inicio-profesor')
-            else:
-                formulario._errors = { NON_FIELD_ERRORS:  'Usuario o Password Invalido'}
+            usuario = request.POST['usuario']
+            clave = request.POST['clave']
+            auth.login(request, validator.acceso)  # Crear una sesion
+            return HttpResponseRedirect('/inicio-profesor')
 
+        else:
+            return render_to_response('../templates/login-profe.html', {'error': validator.getMessage()} , context_instance = RequestContext(request))
 
-    return render_to_response('../templates/login-profe.html', {"form": formulario} , context_instance = RequestContext(request))
+    return render_to_response('../templates/login-profe.html', context_instance=RequestContext(request))
 
 @login_required(login_url="/login-estudiante")
 def inicio_estudiante(request):
@@ -78,6 +57,8 @@ def inicio_estudiante(request):
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect("/")
+
+
 
 @login_required(login_url="/login-estudiante")
 def modulo1(request):
@@ -91,6 +72,20 @@ def modulo1_unidad1(request):
 def unidad1_tm1(request):
     return render_to_response('../templates/modulo1-unidad1 -tm1.html')
 
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson1_tm2(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson1-tm2.html')
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson1_tm3(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson1-tm3.html')
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson1_tm4(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson1-tm4.html')
+
+
+
 @login_required(login_url="/login-profesor")
 def inicio_profesor(request):
     return render_to_response('../templates/inicio-profe.html')
@@ -101,26 +96,27 @@ def primer_modulo(request):
 
 from django.contrib.auth.hashers import make_password
 from .models import Estudiante
-from validator import Validator
 @login_required(login_url="/login-profesor")
 def registro_estudiante(request):
     """view del profile
     """
     error = False
     if request.method == 'POST':
-        validator = Validator(request.POST)
-        validator.required = ['nombre', 'apellidos', 'email']
+        validators = FormRegistroValidator(request.POST)
+        validators.required = ['nombre', 'apellidos', 'documento', 'username', 'email', 'password1']
 
-        if validator.is_valid():
+        if validators.is_valid():
             usuario = Estudiante()
-            #p = Persona.objects.get(documento = '123123123321')
-            usuario.first_name = request.POST['nombre']
-            usuario.last_name = request.POST['apellidos']
-            usuario.username = request.POST['email']
-            usuario.password = make_password(request.POST['password1'])
+            usuario.nombre = request.POST['nombre']
+            usuario.apellido = request.POST['apellidos']
+            usuario.cedula = request.POST['documento']
+            usuario.username = request.POST['username']
+            usuario.email = request.POST['email']
+            usuario.clave = make_password(request.POST['password1'])
             #TODO: ENviar correo electronico para confirmar cuenta
             usuario.is_active = True
             usuario.save()
+            return render_to_response('../templates/registro-estudiante.html', {'success': True}, context_instance=RequestContext(request))
         else:
             return render_to_response('../templates/registro-estudiante.html', {'error': validator.getMessage() } , context_instance = RequestContext(request))
         # Agregar el usuario a la base de datos

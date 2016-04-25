@@ -1,0 +1,49 @@
+{% extends 'plantilla2.html' %}
+{% block title %} Tema 4 - Speak {% endblock %}
+
+{%  block content %}
+
+    <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Modulo 1</li>
+        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 1</a></li>
+        <li class="active">Lesson 1</li>
+        
+        <div class="col-sm-3 col-md-3 pull-right">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>        
+        
+</ol>
+
+        {% include 'plantilla3.html' %}
+              
+  <div class="col-sm-9 col-md-9">
+      <h2>SPEAK</h2>
+      <h3></h3>
+        <hr>
+      <p>Look at the pictures. Use the phrases to practise three short conversations to meet
+          people, introduce yourself, and say goodbye.</p>
+
+      <br />
+
+      <div class="centered"><img src="../static/img/modulo1/unity1/speak-1.PNG" class="img-responsive" alt=""/></div>
+
+         <br />
+
+    <h2>WRITE</h2>
+      <h3></h3>
+        <hr>
+      <p>In your notebook, write a short dialogue
+            using expressions from the lesson.</p>
+
+    </div><!--div-->
+</div>
+
+{% endblock %}
