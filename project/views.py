@@ -36,7 +36,7 @@ def login_estudiante(request):
 
             if not acceso is None:
                 auth.login(request, acceso)
-                return HttpResponseRedirect('/inicio')
+                return HttpResponseRedirect('/inicio-estudiante')
             else:
                 formulario._errors = { NON_FIELD_ERRORS:  'Usuario o Password Invalido'}
 
