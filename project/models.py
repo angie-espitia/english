@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 from django.db import models
 from tinymce.models import HTMLField
-from django.contrib.auth.models import User
 
 class Estudiante(models.Model):
     nombre = models.CharField(max_length= 120)
@@ -69,7 +68,7 @@ class Modulo(models.Model):
         db_table = 'modulo'
         managed  = False
 
-class Estado(User):
+class Estado(models.Model):
     descripcion = models.CharField(max_length= 120)
 
     class Meta:

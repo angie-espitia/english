@@ -55,7 +55,6 @@ class FormRegistroValidator(Validator):
         if Estudiante.objects.filter(email = self._post('email')).exists():
             self._message = 'El correo electrónico ya se encuentra registrado'
             return False
-        #Por ultimo retornamos que en caso de que todo marche bien es correcto el formulario
         return True
 
 class FormLoginValidator(Validator):

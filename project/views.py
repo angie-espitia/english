@@ -84,6 +84,9 @@ def unidad1_lesson1_tm3(request):
 def unidad1_lesson1_tm4(request):
     return render_to_response('../templates/modulo1-unidad1-lesson1-tm4.html')
 
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson2_tm1(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson2-tm1.html')
 
 
 @login_required(login_url="/login-profesor")
@@ -103,21 +106,20 @@ def registro_estudiante(request):
     error = False
     if request.method == 'POST':
         validators = FormRegistroValidator(request.POST)
-        validators.required = ['nombre', 'apellidos', 'documento', 'username', 'email', 'password1']
+        validators.required = ['nombre', 'apellidos', 'email', 'documento', 'username', 'password1']
 
         if validators.is_valid():
             usuario = Estudiante()
             usuario.nombre = request.POST['nombre']
             usuario.apellido = request.POST['apellidos']
+            usuario.email = request.POST['email']
             usuario.cedula = request.POST['documento']
             usuario.username = request.POST['username']
-            usuario.email = request.POST['email']
             usuario.clave = make_password(request.POST['password1'])
-            #TODO: ENviar correo electronico para confirmar cuenta
             usuario.is_active = True
             usuario.save()
             return render_to_response('../templates/registro-estudiante.html', {'success': True}, context_instance=RequestContext(request))
         else:
-            return render_to_response('../templates/registro-estudiante.html', {'error': validator.getMessage() } , context_instance = RequestContext(request))
+            return render_to_response('../templates/registro-estudiante.html', {'error': validators.getMessage() } , context_instance = RequestContext(request))
         # Agregar el usuario a la base de datos
     return render_to_response('../templates/registro-estudiante.html', context_instance = RequestContext(request))
