@@ -106,14 +106,14 @@ def registro_estudiante(request):
     error = False
     if request.method == 'POST':
         validators = FormRegistroValidator(request.POST)
-        validators.required = ['nombre', 'apellidos', 'email', 'documento', 'username', 'password1']
+        validators.required = ['nombre', 'apellidos', 'email', 'cedula', 'username', 'password1']
 
         if validators.is_valid():
             usuario = Estudiante()
             usuario.nombre = request.POST['nombre']
             usuario.apellido = request.POST['apellidos']
             usuario.email = request.POST['email']
-            usuario.cedula = request.POST['documento']
+            usuario.cedula = request.POST['cedula']
             usuario.username = request.POST['username']
             usuario.clave = make_password(request.POST['password1'])
             usuario.is_active = True
