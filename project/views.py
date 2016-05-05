@@ -4,7 +4,7 @@ from django.contrib import auth
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from .validator import FormRegistroValidator, FormLoginValidator
 
 
@@ -98,6 +98,7 @@ def primer_modulo(request):
     return render_to_response('../templates/primer-modulo.html')
 
 from django.contrib.auth.hashers import make_password
+from .models import Estudiante
 @login_required(login_url="/login-profesor")
 def registro_estudiante(request):
     """view del profile
@@ -116,7 +117,16 @@ def registro_estudiante(request):
             usuario.username = request.POST['username']
             usuario.password = make_password(request.POST['password1'])
             usuario.is_active = True
+            perfil = Group.objects.get(name="Estudiante")  # carga un perfil de tipo usuario
             usuario.save()
+            usuario.groups.add(perfil)
+            usuario.save()
+
+            myusuario = Estudiante()
+            myusuario.id = usuario
+            myusuario.sexo = request.POST['sexo']
+            myusuario.save()
+
             return render_to_response('../templates/registro-estudiante.html', {'success': True}, context_instance=RequestContext(request))
         else:
             return render_to_response('../templates/registro-estudiante.html', {'error': validators.getMessage() } , context_instance = RequestContext(request))
