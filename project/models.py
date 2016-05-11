@@ -7,11 +7,11 @@ from tinymce.models import HTMLField
 list_sexo = ( ('M', 'Masculino') , ('F', 'Femenino'))
 class Estudiante(models.Model):
     id = models.OneToOneField(User, primary_key=True, db_column='id')
-    tel = models.CharField(max_length = 100)
+    tel = models.IntegerField(max_length = 100)
     direccion = models.CharField(max_length = 100)
     sexo = models.CharField( max_length=1, choices = list_sexo)
     fecha_nacimiento = models.DateField (db_column= 'Fecha Nacimiento')
-    cedula = models.CharField(max_length = 100)
+    documento = models.IntegerField()
     Foto = models.ImageField(upload_to='/tmp')
 
     class Meta:

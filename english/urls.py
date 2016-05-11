@@ -8,7 +8,6 @@ urlpatterns = [
     url(r'^login-estudiante$', login_estudiante, name='login-estudiante' ), #/login-estudiante
     url('^logout$', logout, name = 'logout' ), #/login
     url(r'^login-profesor$', login_profesor, name='login-profesor' ), #/login-profesor
-    url('^buscar_estudiante$', buscar_estudiante, name='buscar_estudiante'),
 
     url(r'^inicio-estudiante$', inicio_estudiante, name='inicio-estudiante' ),#/Inicio-estudiante
     url(r'^modulo1$', modulo1, name='modulo1' ), #/modulo1
@@ -22,8 +21,10 @@ urlpatterns = [
 
     url(r'^inicio-profesor$', inicio_profesor, name='inicio-profesor' ),#/Inicio-profesor
     url(r'^primer-modulo$', primer_modulo, name='primer-modulo'),  # /primer-modulo-panel
+    url(r'^primer-modulo-estudiantes$', primer_modulo_estudiantes, name='primer-modulo-estudiantes'),  # /primer-modulo-estudiantes-panel
     url(r'^registro-estudiante$', registro_estudiante, name='registro-estudiante' ), #/registro-estudiante
-    url(r'^tinymce/', include('tinymce.urls')),
+    url('^buscar_estudiante$', buscar_estudiante, name='buscar_estudiante'),
 
+    url(r'^tinymce/', include('tinymce.urls')),
     url(r'^admin/', admin.site.urls),
 ]

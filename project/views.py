@@ -104,6 +104,11 @@ def inicio_profesor(request):
 def primer_modulo(request):
     return render_to_response('../templates/primer-modulo.html')
 
+@login_required(login_url="/login-profesor")
+@user_passes_test(restringir_estudiante, login_url='/login-profesor')
+def primer_modulo_estudiantes(request):
+    return render_to_response('../templates/primer-modulo-estudiantes.html')
+
 from django.contrib.auth.hashers import make_password
 from .models import Estudiante
 @login_required(login_url="/login-profesor")
@@ -114,14 +119,13 @@ def registro_estudiante(request):
     error = False
     if request.method == 'POST':
         validators = FormRegistroValidator(request.POST)
-        validators.required = ['nombre', 'apellidos', 'email', 'cedula', 'username', 'password1']
+        validators.required = ['nombre', 'apellidos', 'email', 'documento', 'sexo', 'username', 'password1']
 
         if validators.is_valid():
             usuario = User()
             usuario.first_name = request.POST['nombre']
             usuario.last_name = request.POST['apellidos']
             usuario.email = request.POST['email']
-            usuario.cedula = request.POST['cedula']
             usuario.username = request.POST['username']
             usuario.password = make_password(request.POST['password1'])
             usuario.is_active = True
@@ -132,6 +136,7 @@ def registro_estudiante(request):
 
             myusuario = Estudiante()
             myusuario.id = usuario
+            myusuario.documento = request.POST['documento']
             myusuario.sexo = request.POST['sexo']
             myusuario.save()
 
@@ -147,9 +152,9 @@ def buscar_estudiante(request):
     estudiante = None
     buscar = None
     if 'buscar' in request.GET.keys():
-        buscar = request.GET['buscar']
-        qset = (Q(username__icontains=buscar) )
-        estudiante = User.objects.filter(qset)
+        buscar = request.GET['identificacion']
+        qset = (Q(documento__icontains=buscar) )
+        estudiante = Estudiante.objects.filter(qset).first()
 
-    return render_to_response('registro-estudiante.html', {'cursos': estudiante, 'filtro': buscar},
+    return render_to_response('registro-estudiante.html', {'estudiante': estudiante, 'filtro': buscar},
                               context_instance=RequestContext(request))

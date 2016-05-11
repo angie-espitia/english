@@ -23,36 +23,20 @@
 
             <div class="col-sm-12 col-md-12">
              <div class="col-sm-3 col-md-3 pull-left">
-            <form class="navbar-form" role="buscar_estudiante" method="get" >
-                {% csrf_token %}
-                <label for="q">Buscar Estudiante: </label>
+            <form class="navbar-form" action="{% url 'buscar_estudiante' %}" method="get" >
+                <label>Buscar Estudiante: </label>
                 <br />
                 <div class="input-group">
-                    <input type="text" class="form-control" name="q" value="{{ buscar }}" id="busqVar">
+
+                    <input type="text" class="form-control" name="identificacion" value="{{ filtro }}">
                     <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit" id="buscar"><i class="glyphicon glyphicon-search"></i></button>
+                        <button class="btn btn-default" name="buscar" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                     </div>
+
                 </div>
             </form>
         </div>
 
-        <div class="col-sm-7 col-md-7 row placeholders">
-
-            {% if buscar %}
-                <h2>Results for "{{ buscar|escape }}":</h2>
-
-                {% if estudiante %}
-
-                  {% for user in estudiante %}
-                    <h3>{{ user.first_name }} {{ user.last_name }}</h3>
-                  {% endfor %}
-
-                {% else %}
-                  <p>No books found</p>
-                {% endif %}
-              {% endif %}
-
-            </div>
        </div>
 
                 <div class="row">
@@ -63,7 +47,7 @@
     <div class="alert alert-danger"> {{ error }} </div>
 
     {% endif %}
-    <form method="post" action="">
+    <form method="post" action="{% url 'registro-estudiante' %}">
       {% csrf_token %}
       <div class="container-fluid">
         <div class="row">
@@ -77,13 +61,13 @@
                 <label for="exampleInputnomre"><h4>Nombres:</h4></label>
               </div>
               <div class ="col-md-5">
-                <input type= "text" name="nombre" class="form-control" id="exampleInputnombre" placeholder="nombre">
+                <input type= "text" name="nombre" class="form-control" value= "{{ estudiante.id.first_name }}" id="exampleInputnombre" placeholder="nombre">
               </div>
               <div class ="col-md-1">
                 <label for="exampleInputnomre"><h4>Apellidos:</h4></label>
               </div>
               <div class ="col-md-5">
-                 <input type = "text" name="apellidos" class="form-control" id="exampleInputapellidos" placeholder="apellidos">
+                 <input type = "text" name="apellidos" class="form-control" value="{{ estudiante.id.last_name }}" placeholder="apellidos">
               </div>
             </div>
 
@@ -94,13 +78,13 @@
                 <label for="exampleInputnomre"><h4>Correo:</h4></label>
               </div>
               <div class ="col-md-5">
-                <input type = "text" name="email" class="form-control" id="exampleInputemail" placeholder="Correo">
+                <input type = "text" name="email" class="form-control" value="{{ estudiante.id.email }}" placeholder="Correo">
               </div>
               <div class ="col-md-3">
                 <label for="exampleInputnomre"><h4>Documento Identidad:</h4></label>
               </div>
               <div class ="col-md-3">
-                  <input type = "text" name="cedula" class="form-control" id="exampleInputdocumento" placeholder="Documento">
+                  <input type = "text" name="documento" class="form-control" value="{{ estudiante.documento }}" placeholder="Documento">
               </div>
             </div>
 
@@ -111,17 +95,17 @@
                 <label for="exampleInputnomre"><h4>Username:</h4></label>
               </div>
               <div class ="col-md-4">
-                <input type = "text" name="username" class="form-control" id="exampleInputdocumento" placeholder="Username">
+                <input type = "text" name="username" class="form-control" value="{{ estudiante.id.username }}" placeholder="Username">
               </div>
               <div class ="col-md-1">
                 <label for="exampleInputnomre"><h4>Sexo:</h4></label>
               </div>
               <div class ="col-md-5">
                   <label class="checkbox-inline">
-                      <input type="checkbox" id="checkboxEnLinea1" name='sexo' value="M"> Masculino
+                      <input type="checkbox" name='sexo' value="M"> Masculino
                   </label>
                   <label class="checkbox-inline">
-                      <input type="checkbox" id="checkboxEnLinea2" name='sexo' value="F"> Femenino
+                      <input type="checkbox" name='sexo' value="F"> Femenino
                   </label>
               </div>
             </div>
@@ -145,8 +129,12 @@
 
             <div class="col-md-12"></div>
 
-            <div class="col-md-12">
-              <p><button type="submit" class="btn btn-primary btn-lg pull-right">Registrar Estudiante</button> </p>
+             <div class="col-md-9" style="text-align:right">
+                <a href="{% url 'registro-estudiante' %}">Recargar la página</a>
+            </div>
+
+            <div class="col-md-3">
+                <p><button type="submit" class="btn btn-primary btn-lg pull-right">Registrar Estudiante</button> </p>
             </div>
 
           </div>
