@@ -30,6 +30,10 @@
 
                 <div class="row">
 
+                    {% for estudiante in estudiantes %}
+                        <h4>{{ estudiante.id.first_name }} {{ estudiante.id.last_name }} - {{ estudiante.documento }} - {{ estudiante.id.email }}</h4>
+                    {% endfor %}
+
 
                 </div>
 

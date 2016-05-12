@@ -107,11 +107,9 @@ def primer_modulo(request):
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def primer_modulo_estudiantes(request):
-    if request.user.groups.filter(id=1).exists():
-        return render_to_response('../templates/primer-modulo-estudiantes.html',
+    estudiantes = Estudiante.objects.filter()
+    return render_to_response('../templates/primer-modulo-estudiantes.html', {'estudiante': estudiantes},
                                   context_instance=RequestContext(request))
-    else:
-        return HttpResponseRedirect('/')
 
 from django.contrib.auth.hashers import make_password
 from .models import Estudiante
