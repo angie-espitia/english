@@ -24,86 +24,88 @@
 
                 <div class="row">
 
+                <form class="navbar-form" action="{% url 'perfil-profesor' %}" method="post" >   </form>
+
                 <div class="container initial">
 
-    {% if error %}
-    <div class="alert alert-danger"> {{ error }} </div>
+        {% if error %}
+        <div class="alert alert-danger"> {{ error }} </div>
 
-    {% endif %}
-    <form method="post" action="{% url 'perfil-profesor' %}">
-      {% csrf_token %}
-      <div class="container-fluid">
-        <div class="row">
+        {% endif %}
+        <form method="post" action="{% url 'modificar-perfil' %}">
+          {% csrf_token %}
+          <div class="container-fluid">
+            <div class="row">
 
-          <div class="col-md-12"></div>
+              <div class="col-md-12"></div>
 
-          <div class="col-md-12">
+              <div class="col-md-12">
 
-            <div class="col-ms-12 form-group">
-              <div class ="col-md-1">
-                <label for="exampleInputnomre"><h4>Nombres:</h4></label>
-              </div>
-              <div class ="col-md-5">
-                <h4>{{ usuario.first_name }}</h4>
-              </div>
-              <div class ="col-md-1">
-                <label for="exampleInputnomre"><h4>Apellidos:</h4></label>
-              </div>
-              <div class ="col-md-5">
-                 <h4>{{ usuario.last_name }}</h4>
-              </div>
-            </div>
+                <div class="col-ms-12 form-group">
+                  <div class ="col-md-1">
+                    <label for="exampleInputnomre"><h4>Nombres:</h4></label>
+                  </div>
+                  <div class ="col-md-5">
+                    <h4>{{ usuario.first_name }}</h4>
+                  </div>
+                  <div class ="col-md-1">
+                    <label for="exampleInputnomre"><h4>Apellidos:</h4></label>
+                  </div>
+                  <div class ="col-md-5">
+                     <h4>{{ usuario.last_name }}</h4>
+                  </div>
+                </div>
 
-            <div class="col-md-12"></div>
+                <div class="col-md-12"></div>
 
-            <div class="col-ms-12 form-group">
-              <div class ="col-md-1">
-                <label for="exampleInputnomre"><h4>Correo:</h4></label>
-              </div>
-              <div class ="col-md-5">
-                <input type = "text" name="email" class="form-control" value="{{ usuario.email }}" placeholder="Correo">
-              </div>
-              <div class ="col-md-3">
-                <label for="exampleInputnomre"><h4>Documento Identidad:</h4></label>
-              </div>
-              <div class ="col-md-3">
-                  <input type = "text" name="documento" class="form-control" value="{{ usuario.documento }}" placeholder="Documento">
-              </div>
-            </div>
+                <div class="col-ms-12 form-group">
+                  <div class ="col-md-1">
+                    <label for="exampleInputnomre"><h4>Correo:</h4></label>
+                  </div>
+                  <div class ="col-md-5">
+                    <input type = "text" name="email" class="form-control" value="{{ usuario.email }}" placeholder="Correo">
+                  </div>
+                  <div class ="col-md-3">
+                    <label for="exampleInputnomre"><h4>Documento Identidad:</h4></label>
+                  </div>
+                  <div class ="col-md-3">
+                      <input type = "text" name="documento" class="form-control" value="{{ usuario.documento }}" placeholder="Documento">
+                  </div>
+                </div>
 
-            <div class="col-md-12"></div>
+                <div class="col-md-12"></div>
 
-            <div class="col-ms-12 form-group">
-              <div class ="col-md-2">
-                <label for="exampleInputnomre"><h4>Username:</h4></label>
-              </div>
-              <div class ="col-md-4">
-                <h4>{{ usuario.username }}</h4>
-              </div>
-            </div>
+                <div class="col-ms-12 form-group">
+                  <div class ="col-md-2">
+                    <label for="exampleInputnomre"><h4>Username:</h4></label>
+                  </div>
+                  <div class ="col-md-4">
+                    <h4>{{ usuario.username }}</h4>
+                  </div>
+                </div>
 
-            <div class="col-md-12"></div>
+                <div class="col-md-12"></div>
 
-            <div class="col-ms-12 form-group">
-              <div class ="col-md-2">
-                <label for="exampleInputnomre"><h4>Contraseña:</h4></label>
-              </div>
-              <div class ="col-md-4">
-                <input type="password"  name = "password1" class="form-control" id="exampleInputPassword1" placeholder="Password">
-              </div>
-              <div class ="col-md-3">
-                <label for="exampleInputnomre"><h4>Confirmar Contraseña:</h4></label>
-              </div>
-              <div class ="col-md-3">
-                <input type="password" name='password2' class="form-control" id="exampleInputPassword2" placeholder="Password">
-              </div>
-            </div>
+                <div class="col-ms-12 form-group">
+                  <div class ="col-md-2">
+                    <label for="exampleInputnomre"><h4>Contraseña:</h4></label>
+                  </div>
+                  <div class ="col-md-4">
+                    <input type="password"  name = "password1" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  </div>
+                  <div class ="col-md-3">
+                    <label for="exampleInputnomre"><h4>Confirmar Contraseña:</h4></label>
+                  </div>
+                  <div class ="col-md-3">
+                    <input type="password" name='password2' class="form-control" id="exampleInputPassword2" placeholder="Password">
+                  </div>
+                </div>
 
-            <div class="col-md-12"></div>
+                <div class="col-md-12"></div>
 
-            <div class="col-md-12">
-                <p><button type="submit" class="btn btn-primary btn-lg pull-right">Actualizar Datos</button> </p>
-            </div>
+                <div class="col-md-12">
+                    <p><button type="submit" class="btn btn-primary btn-lg pull-right">Actualizar Datos</button> </p>
+                </div>
 
           </div>
         </div>

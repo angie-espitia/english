@@ -6,7 +6,7 @@ from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.contrib.auth.models import User, Group
 from .validator import FormRegistroValidator, FormLoginValidator
-from english.settings import STATIC_ROLS
+from english.settings import STATIC_ROLS, EMAIL_HOST_USER
 
 
 def index(request):
@@ -124,8 +124,7 @@ from django.db import transaction
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 @transaction.atomic
 def registro_estudiante(request):
-    """view del profile
-    """
+
     error = False
     if request.method == 'POST':
         validators = FormRegistroValidator(request.POST)
@@ -174,4 +173,30 @@ def buscar_estudiante(request):
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def perfil_profesor(request):
     usuario = User.objects.get(id=request.user.id)
-    return render_to_response('../templates/perfil-profe.html', { 'usuario': usuario })
+    return render_to_response('../templates/perfil-profe.html', { 'usuario': usuario }, context_instance = RequestContext(request))
+
+@transaction.atomic
+def modificar_perfil(request):
+
+    error = False
+    if request.method == 'POST':
+        validators = FormRegistroValidator(request.POST)
+        validators.required = ['email', 'documento', 'password1']
+
+        if validators.is_valid():
+            usuario = User()
+            usuario.email = request.POST['email']
+            usuario.password = make_password(request.POST['password1'])
+            usuario.save()
+
+            myusuario = Estudiante()
+            myusuario.id = usuario
+            myusuario.documento = request.POST['documento']
+            myusuario.save()
+            import pdb; pdb.set_trace()
+
+            return render_to_response('../templates/perfil-profe.html', {'success': True}, context_instance=RequestContext(request))
+        else:
+            return render_to_response('../templates/perfil-profe.html', {'error': validators.getMessage() } , context_instance = RequestContext(request))
+        # Agregar el usuario a la base de datos
+    return render_to_response('../templates/perfil-profe.html', context_instance = RequestContext(request))
