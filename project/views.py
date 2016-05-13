@@ -200,3 +200,12 @@ def modificar_perfil(request):
             return render_to_response('../templates/perfil-profe.html', {'error': validators.getMessage() } , context_instance = RequestContext(request))
         # Agregar el usuario a la base de datos
     return render_to_response('../templates/perfil-profe.html', context_instance = RequestContext(request))
+
+import xhtml2pdf.pisa as pisa
+from StringIO import StringIO
+from django.template.loader import render_to_string
+def reporte(request):
+    result = StringIO() #creamos una instancia del un objeto StringIO para
+    html = render_to_string("reporte_estudiantes.html", {"user": 'Docente'}) #obtenemos la plantilla
+    pdf = pisa.pisaDocument( html , result) # convertimos en pdf la template
+    return HttpResponse(result.getvalue(), content_type='application/pdf')
