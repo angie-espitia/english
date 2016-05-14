@@ -23,23 +23,35 @@
 
             <div class="col-sm-12 col-md-12">
              <div class="col-sm-3 col-md-3 pull-left">
-            <form class="navbar-form" role="search" method="get">
+            <form class="navbar-form" role="buscar_estudiante" method="get" >
+                {% csrf_token %}
+                <label for="q">Buscar Estudiante: </label>
+                <br />
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="q">
+                    <input type="text" class="form-control" name="q" value="{{ buscar }}" id="busqVar">
                     <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        <button class="btn btn-default" type="submit" id="buscar"><i class="glyphicon glyphicon-search"></i></button>
                     </div>
                 </div>
             </form>
         </div>
 
         <div class="col-sm-7 col-md-7 row placeholders">
-            <div class="placeholder">
-           {% for estudiant in estudiante %}
-                <h4 >{{ estudiant.first_name }}</h4>
-                <h4>{{ estudiant.last_name }}</h4>
-            {% endfor %}
-            </div>
+
+            {% if buscar %}
+                <h2>Results for "{{ buscar|escape }}":</h2>
+
+                {% if estudiante %}
+
+                  {% for user in estudiante %}
+                    <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+                  {% endfor %}
+
+                {% else %}
+                  <p>No books found</p>
+                {% endif %}
+              {% endif %}
+
             </div>
        </div>
 
@@ -155,4 +167,8 @@
         </div>
         <!-- /#page-wrapper -->
 
+{% endblock %}
+
+{% block scripts %}
+    <script src="/static/javascript/js_var.js"></script>
 {% endblock %}

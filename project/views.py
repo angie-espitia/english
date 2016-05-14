@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import auth
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.contrib.auth.models import User, Group
@@ -43,17 +43,16 @@ def login_profesor(request):
             usuario = request.POST['usuario']
             clave = request.POST['clave']
             auth.login(request, validator.acceso)  # Crear una sesion
-            if ( request.user.groups.filter( id != STATIC_ROLS['Estudiantes']).exists() ):
-                return HttpResponseRedirect('/inicio-profesor')
-            else:
-                return render_to_response('../templates/login-profe.html', {'error': validator.getMessage()},
-                                  context_instance=RequestContext(request))
-
-
+            return HttpResponseRedirect('/inicio-profesor')
         else:
             return render_to_response('../templates/login-profe.html', {'error': validator.getMessage()} , context_instance = RequestContext(request))
 
     return render_to_response('../templates/login-profe.html', context_instance=RequestContext(request))
+
+def restringir_estudiante(User):
+     if User.groups.filter(id = STATIC_ROLS['Estudiantes']).exists():
+         return False
+     return True
 
 @login_required(login_url="/login-estudiante")
 def inicio_estudiante(request):
@@ -96,16 +95,19 @@ def unidad1_lesson2_tm1(request):
 
 
 @login_required(login_url="/login-profesor")
+@user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def inicio_profesor(request):
     return render_to_response('../templates/inicio-profe.html')
 
 @login_required(login_url="/login-profesor")
+@user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def primer_modulo(request):
     return render_to_response('../templates/primer-modulo.html')
 
 from django.contrib.auth.hashers import make_password
 from .models import Estudiante
 @login_required(login_url="/login-profesor")
+@user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def registro_estudiante(request):
     """view del profile
     """
@@ -123,7 +125,7 @@ def registro_estudiante(request):
             usuario.username = request.POST['username']
             usuario.password = make_password(request.POST['password1'])
             usuario.is_active = True
-            perfil = Group.objects.get(name="Estudiante")  # carga un perfil de tipo usuario
+            perfil = Group.objects.get(name="Estudiantes")  # carga un perfil de tipo usuario
             usuario.save()
             usuario.groups.add(perfil)
             usuario.save()
@@ -140,19 +142,14 @@ def registro_estudiante(request):
     return render_to_response('../templates/registro-estudiante.html', context_instance = RequestContext(request))
 
 from django.db.models import Q
-def search(request):
+def buscar_estudiante(request):
 
     estudiante = None
-    filter = request.GET.get('q', '')
-    if filter:
-        qset = ( Q( username__icontains = filter) |
-                Q( cedula__icontains = filter) |
-                Q( email__icontains = filter)
-                )
+    buscar = None
+    if 'buscar' in request.GET.keys():
+        buscar = request.GET['buscar']
+        qset = (Q(username__icontains=buscar) )
         estudiante = User.objects.filter(qset)
-    else:
-        estudiante = []
 
-    return render_to_response('registro-estudiante.html',
-                             {'Estudiante': estudiante, 'filtro': filter  },
-                              context_instance = RequestContext(request))
+    return render_to_response('registro-estudiante.html', {'cursos': estudiante, 'filtro': buscar},
+                              context_instance=RequestContext(request))
