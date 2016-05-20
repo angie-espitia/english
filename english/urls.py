@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'^tema5$', unidad1_lesson2_tm1, name='modulo1-unidad1-lesson2-tm1'),  # /lesson1-tema4
 
     url(r'^inicio-profesor$', inicio_profesor, name='inicio-profesor' ),#/Inicio-profesor
+    url(r'^perfil-profesor$', perfil_profesor, name='perfil-profesor'),  # /perfil-profesor
     url(r'^primer-modulo$', primer_modulo, name='primer-modulo'),  # /primer-modulo-panel
     url(r'^primer-modulo-estudiantes$', primer_modulo_estudiantes, name='primer-modulo-estudiantes'),  # /primer-modulo-estudiantes-panel
     url(r'^registro-estudiante$', registro_estudiante, name='registro-estudiante' ), #/registro-estudiante

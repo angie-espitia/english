@@ -107,12 +107,18 @@ def primer_modulo(request):
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def primer_modulo_estudiantes(request):
-    return render_to_response('../templates/primer-modulo-estudiantes.html')
+    if request.user.groups.filter(id=1).exists():
+        return render_to_response('../templates/primer-modulo-estudiantes.html',
+                                  context_instance=RequestContext(request))
+    else:
+        return HttpResponseRedirect('/')
 
 from django.contrib.auth.hashers import make_password
 from .models import Estudiante
+from django.db import transaction
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
+@transaction.atomic
 def registro_estudiante(request):
     """view del profile
     """
@@ -139,6 +145,7 @@ def registro_estudiante(request):
             myusuario.documento = request.POST['documento']
             myusuario.sexo = request.POST['sexo']
             myusuario.save()
+            import pdb; pdb.set_trace()
 
             return render_to_response('../templates/registro-estudiante.html', {'success': True}, context_instance=RequestContext(request))
         else:
@@ -158,3 +165,8 @@ def buscar_estudiante(request):
 
     return render_to_response('registro-estudiante.html', {'estudiante': estudiante, 'filtro': buscar},
                               context_instance=RequestContext(request))
+
+@login_required(login_url="/login-profesor")
+@user_passes_test(restringir_estudiante, login_url='/login-profesor')
+def perfil_profesor(request):
+    return render_to_response('../templates/perfil-profe.html')

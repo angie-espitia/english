@@ -7,7 +7,7 @@ from tinymce.models import HTMLField
 list_sexo = ( ('M', 'Masculino') , ('F', 'Femenino'))
 class Estudiante(models.Model):
     id = models.OneToOneField(User, primary_key=True, db_column='id')
-    tel = models.IntegerField(max_length = 100)
+    tel = models.IntegerField()
     direccion = models.CharField(max_length = 100)
     sexo = models.CharField( max_length=1, choices = list_sexo)
     fecha_nacimiento = models.DateField (db_column= 'Fecha Nacimiento')
