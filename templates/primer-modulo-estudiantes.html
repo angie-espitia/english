@@ -30,10 +30,31 @@
 
                 <div class="row">
 
+                <div class="col-sm-7 col-md-7">
+                <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Lista de estudiantes</th>
+                    <th></th><th></th>
+                  </tr>
+                </thead>
                     {% for estudiante in estudiantes %}
-                        <h4>{{ estudiante.id.first_name }} {{ estudiante.id.last_name }} - {{ estudiante.documento }} - {{ estudiante.id.email }}</h4>
+                        <tbody>
+                          <tr>
+                              <td>
+                                <h4>{{ estudiante.id.first_name }} {{ estudiante.id.last_name }}</h4>
+                              </td>
+                              <td>
+                                <h4>{{ estudiante.documento }}</h4>
+                              </td>
+                              <td>
+                                <h4>{{ estudiante.id.email }}</h4>
+                              </td>
+                          </tr>
+                         </tbody>
                     {% endfor %}
-
+                 </table>
+                </div>
 
                 </div>
 

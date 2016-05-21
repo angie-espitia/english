@@ -102,14 +102,20 @@ def inicio_profesor(request):
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def primer_modulo(request):
-    return render_to_response('../templates/primer-modulo.html')
+    estudiantes = Estudiante.objects.filter()
+    return render_to_response('../templates/primer-modulo.html', {'estudiantes': estudiantes})
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def primer_modulo_estudiantes(request):
     estudiantes = Estudiante.objects.filter()
-    return render_to_response('../templates/primer-modulo-estudiantes.html', {'estudiante': estudiantes},
+    return render_to_response('../templates/primer-modulo-estudiantes.html', {'estudiantes': estudiantes},
                                   context_instance=RequestContext(request))
+
+@login_required(login_url="/login-profesor")
+@user_passes_test(restringir_estudiante, login_url='/login-profesor')
+def primer_modulo_notas(request):
+    return render_to_response('../templates/primer-modulo-notas.html')
 
 from django.contrib.auth.hashers import make_password
 from .models import Estudiante
@@ -167,4 +173,5 @@ def buscar_estudiante(request):
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def perfil_profesor(request):
-    return render_to_response('../templates/perfil-profe.html')
+    usuario = User.objects.get(id=request.user.id)
+    return render_to_response('../templates/perfil-profe.html', { 'usuario': usuario })

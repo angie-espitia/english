@@ -30,7 +30,7 @@
     <div class="alert alert-danger"> {{ error }} </div>
 
     {% endif %}
-    <form method="post" action="{% url 'registro-estudiante' %}">
+    <form method="post" action="{% url 'perfil-profesor' %}">
       {% csrf_token %}
       <div class="container-fluid">
         <div class="row">
@@ -44,13 +44,13 @@
                 <label for="exampleInputnomre"><h4>Nombres:</h4></label>
               </div>
               <div class ="col-md-5">
-                <input type= "text" name="nombre" class="form-control" value= "{{ estudiante.id.first_name }}" id="exampleInputnombre" placeholder="nombre">
+                <h4>{{ usuario.first_name }}</h4>
               </div>
               <div class ="col-md-1">
                 <label for="exampleInputnomre"><h4>Apellidos:</h4></label>
               </div>
               <div class ="col-md-5">
-                 <input type = "text" name="apellidos" class="form-control" value="{{ estudiante.id.last_name }}" placeholder="apellidos">
+                 <h4>{{ usuario.last_name }}</h4>
               </div>
             </div>
 
@@ -61,13 +61,13 @@
                 <label for="exampleInputnomre"><h4>Correo:</h4></label>
               </div>
               <div class ="col-md-5">
-                <input type = "text" name="email" class="form-control" value="{{ estudiante.id.email }}" placeholder="Correo">
+                <input type = "text" name="email" class="form-control" value="{{ usuario.email }}" placeholder="Correo">
               </div>
               <div class ="col-md-3">
                 <label for="exampleInputnomre"><h4>Documento Identidad:</h4></label>
               </div>
               <div class ="col-md-3">
-                  <input type = "text" name="documento" class="form-control" value="{{ estudiante.documento }}" placeholder="Documento">
+                  <input type = "text" name="documento" class="form-control" value="{{ usuario.documento }}" placeholder="Documento">
               </div>
             </div>
 
@@ -78,18 +78,7 @@
                 <label for="exampleInputnomre"><h4>Username:</h4></label>
               </div>
               <div class ="col-md-4">
-                <input type = "text" name="username" class="form-control" value="{{ estudiante.id.username }}" placeholder="Username">
-              </div>
-              <div class ="col-md-1">
-                <label for="exampleInputnomre"><h4>Sexo:</h4></label>
-              </div>
-              <div class ="col-md-5">
-                  <label class="checkbox-inline">
-                      <input type="checkbox" name='sexo' value="M"> Masculino
-                  </label>
-                  <label class="checkbox-inline">
-                      <input type="checkbox" name='sexo' value="F"> Femenino
-                  </label>
+                <h4>{{ usuario.username }}</h4>
               </div>
             </div>
 

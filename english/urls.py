@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^perfil-profesor$', perfil_profesor, name='perfil-profesor'),  # /perfil-profesor
     url(r'^primer-modulo$', primer_modulo, name='primer-modulo'),  # /primer-modulo-panel
     url(r'^primer-modulo-estudiantes$', primer_modulo_estudiantes, name='primer-modulo-estudiantes'),  # /primer-modulo-estudiantes-panel
+    url(r'^primer-modulo-notas$', primer_modulo_notas, name='primer-modulo-notas'),  # /primer-modulo-notas-panel
     url(r'^registro-estudiante$', registro_estudiante, name='registro-estudiante' ), #/registro-estudiante
     url('^buscar_estudiante$', buscar_estudiante, name='buscar_estudiante'),
 

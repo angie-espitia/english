@@ -1,0 +1,65 @@
+{% extends 'plantilla-prof.html' %}
+{% block title %} Primer Módulo Notas {% endblock %}
+
+{%  block content %}
+
+<div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Primer Modulo <small> Registro de Notas</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-fw fa-table"> </i> Módulos
+                            </li>
+                            <li>
+                                Primer Módulo
+                            </li>
+                            <li class="active">
+                                Registro Notas
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                <textarea id="t-input" style="width:400px; height:200px"></textarea>
+                        <script type="text/javascript">
+                          new tinymce.editor.edit('editor',{
+                            id:'t-input',
+	                        width:584,
+                            height:175,
+                            cssclass:'te',
+                            controlclass:'tecontrol',
+                            rowclass:'teheader',
+                            dividerclass:'tedivider',
+                            controls:['bold','italic','underline','strikethrough','|','subscript','superscript','|',
+                            'orderedlist','unorderedlist','|','outdent','indent','|','leftalign',
+                            'centeralign','rightalign','blockjustify','|','unformat','|','undo','redo','n',
+                            'font','size','style','|','image','hr','link','unlink','|','cut','copy','paste','print'],
+                            footer:true,
+                            fonts:['Verdana','Arial','Georgia','Trebuchet MS'],
+                            xhtml:true,
+                            cssfile:'sb-admin.css',
+                            bodyid:'editor',
+                            footerclass:'tefooter',
+                            toggle:{text:'show source',activetext:'show wysiwyg',cssclass:'toggle'},
+                            resize:{cssclass:'resize'}});
+                          </script>
+
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+{% endblock %}
