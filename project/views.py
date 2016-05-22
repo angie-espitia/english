@@ -7,6 +7,7 @@ from django.template import RequestContext
 from django.contrib.auth.models import User, Group
 from .validator import FormRegistroValidator, FormLoginValidator
 from english.settings import STATIC_ROLS, EMAIL_HOST_USER
+from .models import Estudiante, Profesor
 
 
 def index(request):
@@ -23,8 +24,6 @@ def login_estudiante(request):
 
         if validators.is_valid():
 
-            usuario = request.POST['usuario']
-            clave = request.POST['clave']
             auth.login(request, validators.acceso)  # Crear una sesion
             return HttpResponseRedirect('/inicio-estudiante')
 
@@ -52,7 +51,10 @@ def login_profesor(request):
 def restringir_estudiante(User):
      if User.groups.filter(id = STATIC_ROLS['Estudiantes']).exists():
          return False
-     return True
+     #elif User.groups.filter(id=STATIC_ROLS['Profesores']).exists():
+     #    return True
+     else:
+        return True
 
 @login_required(login_url="/login-estudiante")
 def inicio_estudiante(request):
@@ -118,7 +120,6 @@ def primer_modulo_notas(request):
     return render_to_response('../templates/primer-modulo-notas.html')
 
 from django.contrib.auth.hashers import make_password
-from .models import Estudiante
 from django.db import transaction
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
@@ -175,31 +176,26 @@ def perfil_profesor(request):
     usuario = User.objects.get(id=request.user.id)
     return render_to_response('../templates/perfil-profe.html', { 'usuario': usuario }, context_instance = RequestContext(request))
 
-@transaction.atomic
 def modificar_perfil(request):
 
     error = False
     if request.method == 'POST':
-        validators = FormRegistroValidator(request.POST)
-        validators.required = ['email', 'documento', 'password1']
+        usu = User.objects.get( id = request.user.id )
+        usu.email = request.POST['email']
+        usu.password = make_password(request.POST['password1'])
+        usu.save()
 
-        if validators.is_valid():
-            usuario = User()
-            usuario.email = request.POST['email']
-            usuario.password = make_password(request.POST['password1'])
-            usuario.save()
+        miusuario = Profesor()
+        miusuario.id = usu
+        miusuario.cedula = request.POST['cedula']
+        miusuario.save()
 
-            myusuario = Estudiante()
-            myusuario.id = usuario
-            myusuario.documento = request.POST['documento']
-            myusuario.save()
-            import pdb; pdb.set_trace()
-
-            return render_to_response('../templates/perfil-profe.html', {'success': True}, context_instance=RequestContext(request))
+        if request.user.groups.filter(id=STATIC_ROLS['Profesores']).exists():
+            usuario_int = Profesor.objects.get(id__id=request.user.id)
         else:
-            return render_to_response('../templates/perfil-profe.html', {'error': validators.getMessage() } , context_instance = RequestContext(request))
-        # Agregar el usuario a la base de datos
-    return render_to_response('../templates/perfil-profe.html', context_instance = RequestContext(request))
+            usuario_int = None
+
+    return render_to_response('../templates/perfil-profe.html',{ "usuario": usu } ,  context_instance = RequestContext(request))
 
 import xhtml2pdf.pisa as pisa
 from StringIO import StringIO

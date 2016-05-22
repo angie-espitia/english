@@ -19,16 +19,11 @@ class Estudiante(models.Model):
         managed  = False
 
 class Profesor(models.Model):
-    nombre = models.CharField(max_length= 120)
-    apellido = models.CharField(max_length = 100)
-    email = models.CharField(max_length = 100)
-    tel = models.CharField(max_length = 100)
-    clave = models.CharField(max_length = 100)
-    direccion = models.CharField(max_length = 100)
-    sexo = models.CharField(max_length = 100)
-    fecha_nacimiento = models.CharField(max_length = 100) #, db_column= 'Fecha Nacimiento')
-    cedula = models.CharField(max_length = 100)
-    foto = models.CharField(max_length = 100)
+    id = models.OneToOneField(User, primary_key=True, db_column='id')
+    cel = models.IntegerField()
+    fecha_nacimiento = models.DateField(db_column='Fecha Nacimiento')
+    cedula = models.IntegerField()
+    foto = models.ImageField(upload_to='/tmp')
     profesion = models.CharField(max_length = 100)
     especialidad = models.CharField(max_length = 100)
 
