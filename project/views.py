@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import auth
+from django.core.mail import EmailMultiAlternatives
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
@@ -132,6 +133,8 @@ def primer_modulo_estudiantes(request):
 def primer_modulo_notas(request):
     return render_to_response('../templates/primer-modulo-notas.html')
 
+from django.template.loader import get_template
+from django.template import Context
 from django.contrib.auth.hashers import make_password
 from django.db import transaction
 @login_required(login_url="/login-profesor")
@@ -162,7 +165,18 @@ def registro_estudiante(request):
             myusuario.documento = request.POST['documento']
             myusuario.sexo = request.POST['sexo']
             myusuario.save()
-            import pdb; pdb.set_trace()
+
+            # TODO: ENviar correo electronico para confirmar cuenta
+            htmly = get_template('email.html')
+            contexto = Context({'user': usuario })
+            html_content = htmly.render(contexto)
+            asunto = "Registro en English Easy"
+            body = render_to_string('email.html', {'user': usuario})
+
+            # send_mail(asunto, body, EMAIL_HOST_USER, [ usuario.email ] )
+            msg = EmailMultiAlternatives(asunto, html_content, EMAIL_HOST_USER, [usuario.email])
+            msg.content_subtype = "html"
+            msg.send()
 
             return render_to_response('../templates/registro-estudiante.html', {'success': True}, context_instance=RequestContext(request))
         else:
@@ -215,11 +229,6 @@ def modificar_perfil(request):
         miusuario.profesion = request.POST['profesion']
         miusuario.especialidad = request.POST['especialidad']
         miusuario.save()
-
-        if request.user.groups.filter(id=STATIC_ROLS['Profesores']).exists():
-            usuario_int = Profesor.objects.get(id__id=request.user.id)
-        else:
-            usuario_int = None
 
     return render_to_response('../templates/perfil-profe.html',{ "usuario": usu } ,  context_instance = RequestContext(request))
 

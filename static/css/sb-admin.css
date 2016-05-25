@@ -14,6 +14,14 @@ body {
 @media(min-width:768px) {
     body {
         margin-top: 50px;
+        background: #ffffff url("images/05c.jpg") repeat;
+    }
+}
+
+@media(min-width:500px) {
+    body {
+        margin-top: 50px;
+        background: #ffffff url("images/05c.jpg") repeat;
     }
 }
 
@@ -126,10 +134,10 @@ ul.alert-dropdown {
 	border: none;
 	border-radius: 0;
 	overflow-y: auto;
-	background-color: #ededed;
 	bottom: 0;
 	overflow-x: hidden;
 	padding-bottom: 40px;
+    background-color: #f9f9f9;
     color: #808080;
     }
 
@@ -141,6 +149,21 @@ ul.alert-dropdown {
     .side-nav li a:focus {
         outline: none;
         background-color: #cfcfcf !important;
+    }
+
+    .side-nav>li>ul {
+    padding: 0;
+    }
+
+    .side-nav>li>ul>li>a {
+        display: block;
+        padding: 10px 15px 10px 38px;
+        text-decoration: none;
+        color: #808080;
+    }
+
+    .side-nav>li>ul>li>a:hover {
+        color: #489dd3;
     }
 }
 
