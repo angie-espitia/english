@@ -25,10 +25,11 @@ urlpatterns = [
     url(r'^primer-modulo-estudiantes$', primer_modulo_estudiantes, name='primer-modulo-estudiantes'),  # /primer-modulo-estudiantes-panel
     url(r'^primer-modulo-notas$', primer_modulo_notas, name='primer-modulo-notas'),  # /primer-modulo-notas-panel
     url(r'^registro-estudiante$', registro_estudiante, name='registro-estudiante' ), #/registro-estudiante
+    url(r'^modificar-contra-profesor$', modificar_contra_profesor, name='modificar-contra-profesor'),  # /modificar-contra
 
     url('^buscar_estudiante$', buscar_estudiante, name='buscar_estudiante'),
     url('^modificar-perfil$', modificar_perfil, name='modificar-perfil'),
-    url('^reporte$', reporte, name='reporte'),
+    url('^reporte-estudiante$', reporte_estudiante, name='reporte-estudiante'),
 
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^admin/', admin.site.urls),

@@ -28,6 +28,7 @@ def login_estudiante(request):
             return HttpResponseRedirect('/inicio-estudiante')
 
         else:
+            print validators.getMessage()
             return render_to_response('../templates/login-estudiante.html', {'error': validators.getMessage()} , context_instance = RequestContext(request))
 
     return render_to_response('../templates/login-estudiante.html', context_instance=RequestContext(request))
@@ -51,8 +52,8 @@ def login_profesor(request):
 def restringir_estudiante(User):
      if User.groups.filter(id = STATIC_ROLS['Estudiantes']).exists():
          return False
-     #elif User.groups.filter(id=STATIC_ROLS['Profesores']).exists():
-     #    return True
+     elif User.groups.filter(id=STATIC_ROLS['Profesores']).exists():
+         return True
      else:
         return True
 
@@ -182,7 +183,6 @@ def modificar_perfil(request):
     if request.method == 'POST':
         usu = User.objects.get( id = request.user.id )
         usu.email = request.POST['email']
-        usu.password = make_password(request.POST['password1'])
         usu.save()
 
         miusuario = Profesor()
@@ -197,11 +197,42 @@ def modificar_perfil(request):
 
     return render_to_response('../templates/perfil-profe.html',{ "usuario": usu } ,  context_instance = RequestContext(request))
 
+@login_required(login_url="/login-profesor")
+@user_passes_test(restringir_estudiante, login_url='/login-profesor')
+def modificar_contra_profesor(request):
+
+    error = False
+    usu1 = None
+    if request.method == 'POST':
+        usu1 = User.objects.get(id=request.user.id)
+        usu1.password = make_password(request.POST['password1'])
+        usu1.save()
+
+    return render_to_response('../templates/modificar_contraseña.html', { 'usuario': usu1 }, context_instance = RequestContext(request))
+
 import xhtml2pdf.pisa as pisa
 from StringIO import StringIO
 from django.template.loader import render_to_string
-def reporte(request):
-    result = StringIO() #creamos una instancia del un objeto StringIO para
-    html = render_to_string("reporte_estudiantes.html", {"user": 'Docente'}) #obtenemos la plantilla
-    pdf = pisa.pisaDocument( html , result) # convertimos en pdf la template
-    return HttpResponse(result.getvalue(), content_type='application/pdf')
+#def reporte(request):
+#    result = StringIO() #creamos una instancia del un objeto StringIO para
+#    html = render_to_string("reporte_estudiantes.html", {"user": 'Docente'}) #obtenemos la plantilla
+#    pdf = pisa.pisaDocument( html , result) # convertimos en pdf la template
+#    return HttpResponse(result.getvalue(), content_type='application/pdf')
+
+def pdf(f):
+    def funcion(*args, **kwargs):
+        html = f(*args, **kwargs)
+        result = StringIO() #creamos una instancia del un objeto StringIO para
+        pdf = pisa.pisaDocument( html , result) # convertimos en pdf la template
+        return HttpResponse(result.getvalue(), content_type='application/pdf')
+    return funcion
+
+import xhtml2pdf.pisa as pisa
+from StringIO import StringIO
+from django.template.loader import render_to_string
+from english.settings import STATICFILES_DIRS
+
+@pdf
+def reporte_estudiante(request):
+    estudiantes = Estudiante.objects.filter()
+    return render_to_string("reporte_estudiantes.html", { 'estudiantes': estudiantes, 'path': STATICFILES_DIRS[0] }) #obtenemos la plantilla

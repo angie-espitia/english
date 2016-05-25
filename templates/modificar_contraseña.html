@@ -1,0 +1,80 @@
+{% extends 'plantilla-prof.html' %}
+{% block title %} Perfil {% endblock %}
+
+{%  block content %}
+
+<div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Perfil <small> Profesor, {{ usuario.first_name }} </small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-fw fa-user"> </i> Perfil
+                            </li>
+
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                <form class="navbar-form" action="{% url 'modificar-contra-profesor' %}" method="post" >   </form>
+
+                <div class="container initial">
+
+        {% if error %}
+        <div class="alert alert-danger"> {{ error }} </div>
+
+        {% endif %}
+        <form method="post" action="{% url 'modificar-contra-profesor' %}">
+          {% csrf_token %}
+          <div class="container-fluid">
+            <div class="row">
+
+              <div class="col-md-12"></div>
+
+              <div class="col-md-12">
+
+                <div class="col-md-12"></div>
+
+                <div class="col-ms-12 form-group">
+                  <div class ="col-md-2">
+                    <label for="exampleInputnomre"><h4>Contraseña:</h4></label>
+                  </div>
+                  <div class ="col-md-4">
+                    <input type="password"  name = "password1" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  </div>
+                  <div class ="col-md-3">
+                    <label for="exampleInputnomre"><h4>Confirmar Contraseña:</h4></label>
+                  </div>
+                  <div class ="col-md-3">
+                    <input type="password" name='password2' class="form-control" id="exampleInputPassword2" placeholder="Password">
+                  </div>
+                </div>
+
+                <div class="col-md-12"></div>
+
+                <div class="col-md-12">
+                    <p><button type="submit" class="btn btn-primary btn-lg pull-right">Actualizar Contraseña</button> </p>
+                </div>
+
+          </div>
+        </div>
+      </div>
+    </form>
+    {{ paso }}
+
+
+  </div>
+
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
