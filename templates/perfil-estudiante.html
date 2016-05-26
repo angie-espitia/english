@@ -1,0 +1,57 @@
+{% extends 'plantilla2.html' %}
+{% block title %} Configuracion {% endblock %}
+
+{%  block content %}
+
+    <div class="container initial">
+    <ol class="breadcrumb">
+  <li class="active"><a href="{% url 'inicio-estudiante' %}">Configuración</a></li>
+        <li> {{ usuario.first_name }} {{ usuario.last_name }} </li>
+</ol>
+      <!-- Main component for a primary marketing message or call to action -->
+      <div id="wh">
+
+          <form class="navbar-form" action="{% url 'perfil-estudiante' %}" method="post" >   </form>
+
+                <div class="container initial">
+
+        {% if error %}
+        <div class="alert alert-danger"> {{ error }} </div>
+
+        {% endif %}
+        <form method="post" action="{% url 'modificar-perfil-est' %}">
+          {% csrf_token %}
+          <div class="container-fluid">
+            <div class="row">
+
+            <div class="col-md-11">
+            <label>Username </label><label class="form-control"> {{ usuario.username }} </label>
+            <label>Nombre </label><label class="form-control"> {{ usuario.first_name }} </label>
+            <label>Apellido </label><label class="form-control"> {{ usuario.last_name }} </label>
+            <label>Correo </label><input  type="email" class="form-control" name="email"  value="{{ usuario.email }}" >
+            <label>Documento Identidad </label><input  type="documento" class="form-control" name="documento"  value="{{ usua.documento }}" >
+                <br />
+
+
+                  <div class="col-md-9" style="text-align:right">
+                     <a href="{% url 'modificar-contra-estudiante' %}"> Cambio de contraseña aquí </a>
+                  </div>
+
+                <div class="col-md-3">
+                    <p><button type="submit" class="btn btn-primary btn-lg pull-right">Actualizar Datos</button> </p>
+                </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </form>
+    {{ paso }}
+
+
+      </div>
+
+    </div> <!-- /container initial-->
+
+    </div>
+{% endblock %}

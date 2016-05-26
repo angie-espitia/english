@@ -6,18 +6,9 @@
     <div class="container initial">
     <ol class="breadcrumb">
   <li class="active"><a href="{% url 'inicio-estudiante' %}">Inicio</a></li>
-        <li>Usuario</li>
+        <li> {{ usuario.first_name }} {{ usuario.last_name }} </li>
         
-        <div class="col-sm-3 col-md-3 pull-right">
-            <form class="navbar-form" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="q">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                    </div>
-                </div>
-            </form>
-        </div>        
+
         
 </ol>
     
@@ -26,10 +17,10 @@
       <div id="wh">
           <div class="col-md-8 col-lg-8">
         <div class="panel panel-info">
-  <div class="panel-heading">Progeso</div>
+  <div class="panel-heading">Modulo 1</div>
   <div class="panel-body">
-    <p>Contenido del panel:</p>
-      <p>Progreso del estudiante.</p>
+    <p>Bienvenido al primer modulo de <strong>English Easy</strong>, aquí encontrará todos los temas y actividades para repasar del libro <strong>English Please!</strong></p>
+      <p></p>
   </div>
 </div>
  
@@ -38,52 +29,59 @@
             <h3 class="panel-title">Actividades</h3>
           </div>
           <div class="panel-body">
-            <p>Contenido:</p>
-              <p>Actividades, talleres realizados y por realizar.</p>
+              <p>In This Page You Find:</p>
+            <ul>
+              <li>Listening Module One</li>
+              <li>Read Activities</li>
+              <li>Glosary</li>
+              <li>And More!</li>
+            </ul>
           </div>
         </div>
     </div>
     <div class="col-md-4 col-lg-4">
+        <form class="navbar-form" action="{% url 'inicio-estudiante' %}" method="post" >
           <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> Notifications Panel
+                            <i class="fa fa-bell fa-fw"></i> Datos Personales
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="list-group">
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-comment fa-fw"></i> New Comment
-                                    <span class="pull-right text-muted small"><em>4 minutes ago</em>
+                                    <i class="fa fa-comment fa-fw"></i> Nombre
+                                    <span class="pull-right text-muted small">{{ usuario.first_name }}
                                     </span>
                                 </a>
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-twitter fa-fw"></i> 3 New notes
-                                    <span class="pull-right text-muted small"><em>12 minutes ago</em>
+                                    <i class="fa fa-twitter fa-fw"></i> Apellido
+                                    <span class="pull-right text-muted small">{{ usuario.last_name }}
                                     </span>
                                 </a>
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                    <span class="pull-right text-muted small"><em>27 minutes ago</em>
+                                    <i class="fa fa-envelope fa-fw"></i> Correo
+                                    <span class="pull-right text-muted small">{{ usuario.email }}
                                     </span>
                                 </a>
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-tasks fa-fw"></i> New Task
-                                    <span class="pull-right text-muted small"><em>43 minutes ago</em>
+                                    <i class="fa fa-tasks fa-fw"></i> Documento
+                                    <span class="pull-right text-muted small">{{ usuario.cedula }}
                                     </span>
                                 </a>
                                
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-money fa-fw"></i> Payment Received
-                                    <span class="pull-right text-muted small"><em>Yesterday</em>
+                                    <i class="fa fa-money fa-fw"></i> Username
+                                    <span class="pull-right text-muted small">{{ usuario.username }}
                                     </span>
                                 </a>
                             </div>
                             <!-- /.list-group -->
-                            <a href="#" class="btn btn-default btn-block">View All Alerts</a>
+                            <a href="{% url 'perfil-estudiante' %}" class="btn btn-default btn-block">Ver más</a>
                         </div>
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
+            </form>
           </div>
           
       </div>

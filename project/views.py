@@ -59,7 +59,13 @@ def restringir_estudiante(User):
 
 @login_required(login_url="/login-estudiante")
 def inicio_estudiante(request):
-    return render_to_response('inicio-estudiante.html')
+    usuario = User.objects.get(id=request.user.id)
+    return render_to_response('inicio-estudiante.html', { 'usuario': usuario }, context_instance = RequestContext(request))
+
+@login_required(login_url="/login-estudiante")
+def perfil_estudiante(request):
+    usuario = User.objects.get(id=request.user.id)
+    return render_to_response('perfil-estudiante.html', { 'usuario': usuario }, context_instance = RequestContext(request))
 
 @login_required(login_url="/login-estudiante")
 def logout(request):
@@ -100,7 +106,8 @@ def unidad1_lesson2_tm1(request):
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def inicio_profesor(request):
-    return render_to_response('../templates/inicio-profe.html')
+    usuario = User.objects.get(id=request.user.id)
+    return render_to_response('../templates/inicio-profe.html', { 'usuario': usuario }, context_instance = RequestContext(request))
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
@@ -197,9 +204,41 @@ def modificar_perfil(request):
 
     return render_to_response('../templates/perfil-profe.html',{ "usuario": usu } ,  context_instance = RequestContext(request))
 
+def modificar_perfil_est(request):
+
+    error = False
+    if request.method == 'POST':
+        usu = User.objects.get( id = request.user.id )
+        usu.email = request.POST['email']
+        usu.save()
+
+        miusuario = Estudiante()
+        miusuario.id = usu
+        miusuario.documento = request.POST['documento']
+        miusuario.save()
+
+        if request.user.groups.filter(id=STATIC_ROLS['Estudiantes']).exists():
+            usuario_int = Estudiante.objects.get(id__id=request.user.id)
+        else:
+            usuario_int = None
+
+    return render_to_response('../templates/perfil-estudiante.html',{ "usuario": usu, "usua": miusuario } ,  context_instance = RequestContext(request))
+
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def modificar_contra_profesor(request):
+
+    error = False
+    usu1 = None
+    if request.method == 'POST':
+        usu1 = User.objects.get(id=request.user.id)
+        usu1.password = make_password(request.POST['password1'])
+        usu1.save()
+
+    return render_to_response('../templates/modificar_contraseña.html', { 'usuario': usu1 }, context_instance = RequestContext(request))
+
+@login_required(login_url="/login-estudiante")
+def modificar_contra_estudiante(request):
 
     error = False
     usu1 = None
