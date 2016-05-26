@@ -28,7 +28,6 @@ def login_estudiante(request):
             return HttpResponseRedirect('/inicio-estudiante')
 
         else:
-            print validators.getMessage()
             return render_to_response('../templates/login-estudiante.html', {'error': validators.getMessage()} , context_instance = RequestContext(request))
 
     return render_to_response('../templates/login-estudiante.html', context_instance=RequestContext(request))
@@ -59,12 +58,12 @@ def restringir_estudiante(User):
 
 @login_required(login_url="/login-estudiante")
 def inicio_estudiante(request):
-    usuario = User.objects.get(id=request.user.id)
+    usuario = Estudiante.objects.get(id=request.user.id)
     return render_to_response('inicio-estudiante.html', { 'usuario': usuario }, context_instance = RequestContext(request))
 
 @login_required(login_url="/login-estudiante")
 def perfil_estudiante(request):
-    usuario = User.objects.get(id=request.user.id)
+    usuario = Estudiante.objects.get(id=request.user.id)
     return render_to_response('perfil-estudiante.html', { 'usuario': usuario }, context_instance = RequestContext(request))
 
 @login_required(login_url="/login-estudiante")
@@ -106,7 +105,7 @@ def unidad1_lesson2_tm1(request):
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def inicio_profesor(request):
-    usuario = User.objects.get(id=request.user.id)
+    usuario = Profesor.objects.get(id=request.user.id)
     return render_to_response('../templates/inicio-profe.html', { 'usuario': usuario }, context_instance = RequestContext(request))
 
 @login_required(login_url="/login-profesor")
@@ -181,7 +180,7 @@ def buscar_estudiante(request):
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def perfil_profesor(request):
-    usuario = User.objects.get(id=request.user.id)
+    usuario = Profesor.objects.get(id=request.user.id)
     return render_to_response('../templates/perfil-profe.html', { 'usuario': usuario }, context_instance = RequestContext(request))
 
 def modificar_perfil(request):
@@ -222,7 +221,7 @@ def modificar_perfil_est(request):
         else:
             usuario_int = None
 
-    return render_to_response('../templates/perfil-estudiante.html',{ "usuario": usu, "usua": miusuario } ,  context_instance = RequestContext(request))
+    return render_to_response('../templates/perfil-estudiante.html',{ "usuario":  miusuario } ,  context_instance = RequestContext(request))
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
@@ -247,7 +246,7 @@ def modificar_contra_estudiante(request):
         usu1.password = make_password(request.POST['password1'])
         usu1.save()
 
-    return render_to_response('../templates/modificar_contraseña.html', { 'usuario': usu1 }, context_instance = RequestContext(request))
+    return render_to_response('../templates/modificar-contra-est.html', { 'usuario': usu1 }, context_instance = RequestContext(request))
 
 import xhtml2pdf.pisa as pisa
 from StringIO import StringIO

@@ -8,7 +8,7 @@
 
 body {
     margin-top: 100px;
-    background-color: #ffffff;
+    background: #ffffff url("images/05c.jpg") repeat;
 }
 
 @media(min-width:768px) {
@@ -24,7 +24,7 @@ body {
 #page-wrapper {
     width: 100%;
     padding: 0;
-    background-color: #ffffff;
+
 }
 
 .huge {

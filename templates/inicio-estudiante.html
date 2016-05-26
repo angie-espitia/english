@@ -6,15 +6,10 @@
     <div class="container initial">
     <ol class="breadcrumb">
   <li class="active"><a href="{% url 'inicio-estudiante' %}">Inicio</a></li>
-        <li> {{ usuario.first_name }} {{ usuario.last_name }} </li>
-        
-
+        <li> {{ usuario.id.first_name }} {{ usuario.id.last_name }} </li>
         
 </ol>
-    
-    
       <!-- Main component for a primary marketing message or call to action -->
-      <div id="wh">
           <div class="col-md-8 col-lg-8">
         <div class="panel panel-info">
   <div class="panel-heading">Modulo 1</div>
@@ -50,28 +45,28 @@
                             <div class="list-group">
                                 <a href="#" class="list-group-item">
                                     <i class="fa fa-comment fa-fw"></i> Nombre
-                                    <span class="pull-right text-muted small">{{ usuario.first_name }}
+                                    <span class="pull-right text-muted small">{{ usuario.id.first_name }}
                                     </span>
                                 </a>
                                 <a href="#" class="list-group-item">
                                     <i class="fa fa-twitter fa-fw"></i> Apellido
-                                    <span class="pull-right text-muted small">{{ usuario.last_name }}
+                                    <span class="pull-right text-muted small">{{ usuario.id.last_name }}
                                     </span>
                                 </a>
                                 <a href="#" class="list-group-item">
                                     <i class="fa fa-envelope fa-fw"></i> Correo
-                                    <span class="pull-right text-muted small">{{ usuario.email }}
+                                    <span class="pull-right text-muted small">{{ usuario.id.email }}
                                     </span>
                                 </a>
                                 <a href="#" class="list-group-item">
                                     <i class="fa fa-tasks fa-fw"></i> Documento
-                                    <span class="pull-right text-muted small">{{ usuario.cedula }}
+                                    <span class="pull-right text-muted small">{{ usuario.documento }}
                                     </span>
                                 </a>
                                
                                 <a href="#" class="list-group-item">
                                     <i class="fa fa-money fa-fw"></i> Username
-                                    <span class="pull-right text-muted small">{{ usuario.username }}
+                                    <span class="pull-right text-muted small">{{ usuario.id.username }}
                                     </span>
                                 </a>
                             </div>
@@ -83,8 +78,6 @@
                     <!-- /.panel -->
             </form>
           </div>
-          
-      </div>
 
     </div> <!-- /container initial-->    
 

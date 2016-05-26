@@ -25,20 +25,12 @@
             <div class="row">
 
             <div class="col-md-11">
-            <label>Username </label><label class="form-control"> {{ usuario.id.username }} </label>
-            <label>Nombre </label><label class="form-control"> {{ usuario.id.first_name }} </label>
-            <label>Apellido </label><label class="form-control"> {{ usuario.id.last_name }} </label>
-            <label>Correo </label><input  type="email" class="form-control" name="email"  value="{{ usuario.id.email }}" >
-            <label>Documento Identidad </label><input  type="documento" class="form-control" name="documento"  value="{{ usuario.documento }}" >
+            <label>Contraseña </label><input  type="password" class="form-control" name="password1"  placeholder="Password" >
+            <label>Confirmar Contraseña </label><input  type="password" class="form-control" name="password2"  placeholder="Password" >
                 <br />
 
-
-                  <div class="col-md-9" style="text-align:right">
-                     <a href="{% url 'modificar-contra-estudiante' %}"> Cambio de contraseña aquí </a>
-                  </div>
-
                 <div class="col-md-3">
-                    <p><button type="submit" class="btn btn-primary btn-lg pull-right">Actualizar Datos</button> </p>
+                    <p><button type="submit" class="btn btn-primary btn-lg pull-right">Actualizar Contraseña</button> </p>
                 </div>
             </div>
 
