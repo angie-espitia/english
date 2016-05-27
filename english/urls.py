@@ -5,6 +5,8 @@ from project.views import *
 urlpatterns = [
     url(r'^$', index, name='index' ), #/
     url(r'^curso$', curso, name='curso' ), #/curso
+    url(r'^contacto$', contacto, name='contacto'),  # /contacto
+    url(r'^contacto-f$', contacto_f, name='contacto-f'),
     url(r'^login-estudiante$', login_estudiante, name='login-estudiante' ), #/login-estudiante
     url('^logout$', logout, name = 'logout' ), #/login
     url(r'^login-profesor$', login_profesor, name='login-profesor' ), #/login-profesor

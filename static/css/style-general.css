@@ -426,6 +426,45 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#564a49', end
 	margin-top: 29px;
 }
 
+label {
+display:block;
+margin-top:20px;
+letter-spacing:1px;
+}
+.formulario {
+display:block;
+margin:0 auto;
+width:510px;
+color: #c8c8c8;
+}
+form {
+margin:0 auto;
+width:400px;
+}
+
+input, textarea {
+width:380px;
+height:27px;
+background: #c8c8c8;
+border:2px solid #f6f6f6;
+padding:10px;
+margin-top:5px;
+font-size:10px;
+color:#ffffff;
+}
+
+textarea {
+height:150px;
+}
+
+#submit {
+width:85px;
+height:35px;
+border:none;
+margin-top:20px;
+cursor:pointer;
+}
+
 @media screen and (max-width: 991px){
 .copy p {
     text-align: center;

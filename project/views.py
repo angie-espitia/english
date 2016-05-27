@@ -16,6 +16,12 @@ def index(request):
 def curso(request):
     return render_to_response('../templates/curso.html')
 
+def contacto(request):
+    return render_to_response('../templates/contacto.html')
+
+def contacto_f(request):
+    return render_to_response('../templates/contacto-f')
+
 def login_estudiante(request):
 
     if request.method == 'POST':
