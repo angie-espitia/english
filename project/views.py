@@ -183,6 +183,18 @@ def buscar_estudiante(request):
     return render_to_response('registro-estudiante.html', {'estudiante': estudiante, 'filtro': buscar},
                               context_instance=RequestContext(request))
 
+def buscar_estudiante1(request):
+
+    estudiante = None
+    buscar = None
+    if 'buscar' in request.GET.keys():
+        buscar = request.GET['identificacion']
+        qset = (Q(documento__icontains=buscar) )
+        estudiante = Estudiante.objects.filter(qset).first()
+
+    return render_to_response('eliminar-estudiante.html', {'estudiante': estudiante, 'filtro': buscar},
+                              context_instance=RequestContext(request))
+
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def perfil_profesor(request):
@@ -200,6 +212,8 @@ def modificar_perfil(request):
         miusuario = Profesor()
         miusuario.id = usu
         miusuario.cedula = request.POST['cedula']
+        miusuario.profesion = request.POST['profesion']
+        miusuario.especialidad = request.POST['especialidad']
         miusuario.save()
 
         if request.user.groups.filter(id=STATIC_ROLS['Profesores']).exists():
@@ -220,6 +234,9 @@ def modificar_perfil_est(request):
         miusuario = Estudiante()
         miusuario.id = usu
         miusuario.documento = request.POST['documento']
+        miusuario.tel = request.POST['tel']
+        miusuario.direccion = request.POST['direccion']
+        miusuario.fecha_nacimiento = request.POST['nacimiento']
         miusuario.save()
 
         if request.user.groups.filter(id=STATIC_ROLS['Estudiantes']).exists():
@@ -253,6 +270,26 @@ def modificar_contra_estudiante(request):
         usu1.save()
 
     return render_to_response('../templates/modificar-contra-est.html', { 'usuario': usu1 }, context_instance = RequestContext(request))
+
+import simplejson
+@login_required(login_url="/login-profesor")
+@user_passes_test(restringir_estudiante, login_url='/login-profesor')
+def eliminar_estudiante(request):
+
+    if request.method == "POST":
+        if "product_id" in request.POST:
+            try:
+                id_producto = request.POST['product_id']
+                p = Estudiante.objects.get(pk=id_producto)
+                mensaje = {"status": "True", "product_id": p.id}
+                p.delete()  # Elinamos objeto de la base de datos
+                return HttpResponse(simplejson.dumps(mensaje), mimetype='application/json')
+            except:
+                mensaje = {"status": "False"}
+                return HttpResponse(simplejson.dumps(mensaje), mimetype='application/json')
+
+    return render_to_response('../templates/eliminar-estudiante.html',
+                                  context_instance=RequestContext(request))
 
 import xhtml2pdf.pisa as pisa
 from StringIO import StringIO

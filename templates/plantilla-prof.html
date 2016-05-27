@@ -13,7 +13,7 @@
     <link href="../static/css/sb-admin.css" rel="stylesheet">
     <link href="../static/css/plugins/morris.css" rel="stylesheet">
     <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    <script src="/static/javascript/js_var.js"></script>
     <script src="../static/javascript/tinyeditor.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -88,6 +88,9 @@
                     <li>
                         <a href="{% url 'registro-estudiante' %}"><i class="fa fa-fw fa-edit"></i> Registro Estudiantes</a>
                     </li>
+                    <li>
+                        <a href="{% url 'eliminar-estudiante' %}"><i class="fa fa-fw fa-cut"></i> Eliminar Estudiantes</a>
+                    </li>
 
                     <li>
                         <a href="#"><i class="fa fa-fw fa-wrench"></i> Configuración</a>
@@ -111,6 +114,11 @@
 
 <!-- jQuery -->
     <script src="../static/javascript/jquery.js"></script>
+    <script src="../static/javascript/jquery.form.min.js"></script>
+
+    <script src="../static/vendors/bootstrap-3.3.6/js/transition.js"></script>
+    <script src="../static/vendors/bootstrap-3.3.6/js/modal.js"></script>
+    <script src="../static/vendors/bootstrap-3.3.6/js/tests/vendor/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../static/javascript/bootstrap.min.js"></script>

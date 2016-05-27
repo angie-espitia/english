@@ -3,6 +3,27 @@
 
 {%  block content %}
 
+    <!--IniciaModal-->
+ <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ <div class="modal-dialog modal-content">
+    <div class="modal-header">
+    <h3 id="myModalLabel">Eliminar Estudiante</h3>
+    </div>
+    <div class="modal-body">
+    <p>¿Realmente desea eliminar el estudiante <span id="modal_name"></span>?</p>
+    </div>
+    <div class="modal-footer">
+        <form method="post" id="frmEliminar">
+            {% csrf_token %}
+            <input type="hidden" id="modal_idProducto" name="product_id">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+    </div>
+ </div>
+</div>
+<!--EndModal-->
+
   <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -23,7 +44,7 @@
 
             <div class="col-sm-12 col-md-12">
              <div class="col-sm-3 col-md-3 pull-left">
-            <form class="navbar-form" action="{% url 'buscar_estudiante' %}" method="get" >
+            <form class="navbar-form" action="{% url 'buscar_estudiante1' %}" method="get" >
                 <label>Buscar Estudiante: </label>
                 <br />
                 <div class="input-group">
@@ -47,7 +68,7 @@
     <div class="alert alert-danger"> {{ error }} </div>
 
     {% endif %}
-    <form method="post" action="{% url 'registro-estudiante' %}">
+    <form method="post" action="{% url 'eliminar-estudiante' %}" id="tabla_estudiante">
       {% csrf_token %}
       <div class="container-fluid">
         <div class="row">
@@ -61,80 +82,39 @@
                 <label for="exampleInputnomre"><h4>Nombres:</h4></label>
               </div>
               <div class ="col-md-5">
-                <input type= "text" name="nombre" class="form-control" value= "{{ estudiante.id.first_name }}" id="exampleInputnombre" placeholder="nombre">
+                <label type= "text" name="nombre" class="form-control">{{ estudiante.id.first_name }}</label>
               </div>
               <div class ="col-md-1">
                 <label for="exampleInputnomre"><h4>Apellidos:</h4></label>
               </div>
               <div class ="col-md-5">
-                 <input type = "text" name="apellidos" class="form-control" value="{{ estudiante.id.last_name }}" placeholder="apellidos">
+                 <label type = "text" name="apellidos" class="form-control">{{ estudiante.id.last_name }}</label>
               </div>
             </div>
 
             <div class="col-md-12"></div>
 
             <div class="col-ms-12 form-group">
-              <div class ="col-md-1">
-                <label for="exampleInputnomre"><h4>Correo:</h4></label>
-              </div>
-              <div class ="col-md-5">
-                <input type = "text" name="email" class="form-control" value="{{ estudiante.id.email }}" placeholder="Correo">
-              </div>
               <div class ="col-md-3">
                 <label for="exampleInputnomre"><h4>Documento Identidad:</h4></label>
               </div>
               <div class ="col-md-3">
-                  <input type = "text" name="documento" class="form-control" value="{{ estudiante.documento }}" placeholder="Documento">
+                  <label type = "text" name="documento" class="form-control">{{ estudiante.documento }}</label>
               </div>
-            </div>
-
-            <div class="col-md-12"></div>
-
-            <div class="col-ms-12 form-group">
               <div class ="col-md-2">
                 <label for="exampleInputnomre"><h4>Username:</h4></label>
               </div>
               <div class ="col-md-4">
-                <input type = "text" name="username" class="form-control" value="{{ estudiante.id.username }}" placeholder="Username">
-              </div>
-              <div class ="col-md-1">
-                <label for="exampleInputnomre"><h4>Sexo:</h4></label>
-              </div>
-              <div class ="col-md-5">
-                  <label class="checkbox-inline">
-                      <input type="checkbox" name='sexo' value="M"> Masculino
-                  </label>
-                  <label class="checkbox-inline">
-                      <input type="checkbox" name='sexo' value="F"> Femenino
-                  </label>
+                <label type = "text" name="username" class="form-control">{{ estudiante.id.username }}</label>
               </div>
             </div>
 
             <div class="col-md-12"></div>
 
-            <div class="col-ms-12 form-group">
-              <div class ="col-md-2">
-                <label for="exampleInputnomre"><h4>Contraseña:</h4></label>
-              </div>
-              <div class ="col-md-4">
-                <input type="password"  name = "password1" class="form-control" id="exampleInputPassword1" placeholder="Password">
-              </div>
-              <div class ="col-md-3">
-                <label for="exampleInputnomre"><h4>Confirmar Contraseña:</h4></label>
-              </div>
-              <div class ="col-md-3">
-                <input type="password" name='password2' class="form-control" id="exampleInputPassword2" placeholder="Password">
-              </div>
-            </div>
-
-            <div class="col-md-12"></div>
-
-             <div class="col-md-9" style="text-align:right">
-                <a href="{% url 'registro-estudiante' %}">Recargar la página</a>
-            </div>
-
-            <div class="col-md-3">
-                <p><button type="submit" class="btn btn-primary btn-lg pull-right">Registrar Estudiante</button> </p>
+            <div class="col-md-4">
+                <tr id="tr{{estudiante.id}}">
+                <td><a href="#myModal" role="button" class="btn btn-danger delete" data-toggle="modal" id="{{estudiante.id}}" data-name="{{estudiante.id.first_name}}"><i class="icon-trash icon-white"></i>Eliminar</a></td>
+                </tr>
             </div>
 
           </div>
@@ -158,4 +138,5 @@
 {% endblock %}
 
 {% block scripts %}
+
 {% endblock %}
