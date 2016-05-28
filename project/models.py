@@ -30,12 +30,6 @@ class Profesor(models.Model):
     class Meta:
         db_table = 'profesores'
         managed  = False
-        verbose_name = 'Profesor'
-        verbose_name_plural = 'Profesores'
-
-
-    def __unicode__(self):
-        return self.nombre
 
 class Curso(models.Model):
     nombre = models.CharField(max_length= 120)
