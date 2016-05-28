@@ -166,15 +166,12 @@ def registro_estudiante(request):
             myusuario.sexo = request.POST['sexo']
             myusuario.save()
 
-            # TODO: ENviar correo electronico para confirmar cuenta
-            htmly = get_template('email.html')
-            contexto = Context({'user': usuario })
-            html_content = htmly.render(contexto)
+            #TODO: ENviar correo electronico para confirmar cuenta
             asunto = "Registro en English Easy"
             body = render_to_string('email.html', {'user': usuario})
 
-            # send_mail(asunto, body, EMAIL_HOST_USER, [ usuario.email ] )
-            msg = EmailMultiAlternatives(asunto, html_content, EMAIL_HOST_USER, [usuario.email])
+            #send_mail(asunto, body, EMAIL_HOST_USER, [ usuario.email ] )
+            msg = EmailMultiAlternatives(asunto, body, EMAIL_HOST_USER, [usuario.email])
             msg.content_subtype = "html"
             msg.send()
 
@@ -286,10 +283,10 @@ import simplejson
 def eliminar_estudiante(request):
 
     if request.method == "POST":
-        if "product_id" in request.POST:
+        if "estudiante_id" in request.POST:
             try:
-                id_producto = request.POST['product_id']
-                p = Estudiante.objects.get(pk=id_producto)
+                id_estudiante = request.POST['estudiante_id']
+                p = Estudiante.objects.get(pk=id_estudiante)
                 mensaje = {"status": "True", "product_id": p.id}
                 p.delete()  # Elinamos objeto de la base de datos
                 return HttpResponse(simplejson.dumps(mensaje), mimetype='application/json')

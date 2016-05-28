@@ -124,5 +124,5 @@ STATIC_ROLS = {'Estudiantes': 1, 'Profesores': 2}
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_POST = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'ingles.easy01@gmail.com'
+EMAIL_HOST_USER = 'ingles.easy1@gmail.com'
 EMAIL_HOST_PASSWORD = 'englisheasyplease'

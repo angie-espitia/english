@@ -70,8 +70,8 @@ class Estado(models.Model):
 class Calificacion(models.Model):
     Estudiante = models.ForeignKey(Estudiante, db_column='estudiante_id')
     nota = models.FloatField()
-    modulo_estudiante = models.ForeignKey(Modulo ,db_column='modulo_id')
+    modulo_estudiante = models.IntegerField()
 
     class Meta:
-        db_table = 'project_calificacion'
+        db_table = 'calificacion'
         managed = False
