@@ -63,24 +63,30 @@ WSGI_APPLICATION = 'english.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-import urlparse
-db_url = urlparse.urlparse(os.environ.get('OPENSHIFT_MYSQL_DB_URL'))
+#import urlparse
+#db_url = urlparse.urlparse(os.environ.get('OPENSHIFT_MYSQL_DB_URL'))
 
 DATABASES = {
     'default': {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ENGINE': 'django.db.backends.mysql',
+        #'ENGINE': 'django.db.backends.mysql',
         #'NAME': 'proyecto',
         #'USER': 'root',
         #'PASSWORD': '',
         #'HOST': '127.0.0.1',
         #'PORT': '3306',
-        'NAME': os.environ['OPENSHIFT_APP_NAME'],
-        'USER': db_url.username,
-        'PASSWORD': db_url.password,
-        'HOST': db_url.hostname,
-        'PORT': db_url.port,
+        ##'NAME': os.environ['OPENSHIFT_APP_NAME'],
+        ##'USER': db_url.username,
+        ##'PASSWORD': db_url.password,
+        ##'HOST': db_url.hostname,
+        ##'PORT': db_url.port,
+        'ENGINE': 'django.db.backends.postgresql',
+         'NAME': 'd8kd7b64bav3j',
+         'USER': 'yfnabdnosvzsuz',
+         'PASSWORD': 'vvD1F1F4W_UrqITlSwyTGIpjuW',
+         'HOST': 'ec2-54-225-246-33.compute-1.amazonaws.com',
+         'PORT': '5432',
     }
 }
 
@@ -133,3 +139,6 @@ EMAIL_POST = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'ingles.easy1@gmail.com'
 EMAIL_HOST_PASSWORD = 'englisheasyplease'
+
+# Cargue para heroku
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
