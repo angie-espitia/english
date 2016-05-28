@@ -10,3 +10,6 @@ six==1.10.0
 xhtml2pdf==0.0.6
 yos-social-sdk==0.0.2
 dj-static==0.0.5
+static==1.0.2
+wsgiref==0.1.2
+gunicorn==18.0
