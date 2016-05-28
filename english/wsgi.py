@@ -2,7 +2,7 @@
 import os
 
 from django.core.wsgi import get_wsgi_application
-
+'''
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "english.settings")
 
 application = get_wsgi_application()
@@ -27,7 +27,7 @@ except IOError:
 #
 # IMPORTANT: Put any additional includes below this line.  If placed above this
 # line, it's possible required libraries won't be in your searchable path
-#
+
 
 from django.core.wsgi import get_wsgi_application
-application = get_wsgi_application()'''
+application = get_wsgi_application()
