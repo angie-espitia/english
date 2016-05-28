@@ -63,6 +63,8 @@ WSGI_APPLICATION = 'english.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
+#import urlparse
+#db_url = urlparse.urlparse(os.environ.get('OPENSHIFT_MYSQL_DB_URL'))
 
 DATABASES = {
     'default': {
@@ -74,6 +76,11 @@ DATABASES = {
         'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '3306',
+        #"'NAME': os.environ['OPENSHIFT_APP_NAME'],
+        #'USER': db_url.username,
+        #'PASSWORD': db_url.password,
+        #'HOST': db_url.hostname,
+        #'PORT': db_url.port,
     }
 }
 
