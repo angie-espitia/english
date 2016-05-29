@@ -10,13 +10,13 @@ class Estudiante(models.Model):
     tel = models.IntegerField()
     direccion = models.CharField(max_length = 100)
     sexo = models.CharField( max_length=1, choices = list_sexo)
-    fecha_nacimiento = models.DateField (db_column= 'Fecha Nacimiento')
+    fecha_nacimiento = models.DateField ()#db_column= 'Fecha Nacimiento')
     documento = models.IntegerField()
     Foto = models.ImageField(upload_to='/tmp')
 
-    class Meta:
-        db_table = 'estudiante'
-        managed  = False
+    #class Meta:
+    #    db_table = 'estudiante'
+    #    managed  = False
 
 class Profesor(models.Model):
     id = models.OneToOneField(User, primary_key=True, db_column='id')
