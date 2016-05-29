@@ -41,12 +41,12 @@ class Curso(models.Model):
     nombre = models.CharField(max_length= 120)
     fecha_inicio = models.FloatField()#db_column= 'Fecha_inicio')
     fecha_fin = models.FloatField()#db_column= 'Fecha_fin')
-    Profesor = models.ForeignKey(Profesor, db_column='profesores_id')
+    Profesor = models.ForeignKey(Profesor)# db_column='profesores_id')
     #image = models.ImageField(upload_to = 'uploads/')
 
-    class Meta:
-        db_table = 'curso'
-        managed  = False
+   # class Meta:
+   #     db_table = 'curso'
+   #     managed  = False
 
     def __unicode__(self):
         return self.nombre
@@ -56,22 +56,22 @@ class Modulo(models.Model):
     fecha = models.FloatField()
     Curso = models.ForeignKey(Curso) #, db_column='curso_id')
 
-    class Meta:
-        db_table = 'modulo'
-        managed  = False
+    #class Meta:
+    #    db_table = 'modulo'
+    #    managed  = False
 
 class Estado(models.Model):
     descripcion = models.CharField(max_length= 120)
 
-    class Meta:
-        db_table = 'estado'
-        managed  = False
+    #class Meta:
+    #    db_table = 'estado'
+    #    managed  = False
 
 class Calificacion(models.Model):
-    Estudiante = models.ForeignKey(Estudiante, db_column='estudiante_id')
+    Estudiante = models.ForeignKey(Estudiante)# db_column='estudiante_id')
     nota = models.FloatField()
     modulo_estudiante = models.IntegerField()
 
-    class Meta:
-        db_table = 'calificacion'
-        managed = False
+    #class Meta:
+    #    db_table = 'calificacion'
+    #    managed = False
