@@ -6,7 +6,7 @@ from tinymce.models import HTMLField
 
 list_sexo = ( ('M', 'Masculino') , ('F', 'Femenino'))
 class Estudiante(models.Model):
-    id = models.OneToOneField(User, primary_key=True, db_column='id')
+    id = models.OneToOneField(User, primary_key=True)# db_column='id')
     tel = models.IntegerField()
     direccion = models.CharField(max_length = 100)
     sexo = models.CharField( max_length=1, choices = list_sexo)
@@ -19,7 +19,7 @@ class Estudiante(models.Model):
     #    managed  = False
 
 class Profesor(models.Model):
-    id = models.OneToOneField(User, primary_key=True, db_column='id')
+    id = models.OneToOneField(User, primary_key=True) #db_column='id')
     cel = models.IntegerField()
     fecha_nacimiento = models.DateField(db_column='Fecha Nacimiento')
     cedula = models.IntegerField()
@@ -28,8 +28,8 @@ class Profesor(models.Model):
     especialidad = models.CharField(max_length = 100)
 
     class Meta:
-        db_table = 'profesores'
-        managed  = False
+        #db_table = 'profesores'
+        #managed  = False
         verbose_name = 'Profe'
         verbose_name_plural = "Profes"
 
