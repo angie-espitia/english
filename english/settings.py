@@ -82,10 +82,10 @@ DATABASES = {
         ##'HOST': db_url.hostname,
         ##'PORT': db_url.port,
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         'NAME': 'dchbo38shm2gae',
-         'USER': 'ncajsxpfuaamvr',
-         'PASSWORD': 'uTSgs6dpV_Omv8MXHuXlJ06r2H',
-         'HOST': 'ec2-54-227-240-164.compute-1.amazonaws.com',
+         'NAME': 'd8kd7b64bav3j',
+         'USER': 'yfnabdnosvzsuz',
+         'PASSWORD': 'vvD1F1F4W_UrqITlSwyTGIpjuW',
+         'HOST': 'ec2-54-225-246-33.compute-1.amazonaws.com',
          'PORT': '5432',
     }
 }
