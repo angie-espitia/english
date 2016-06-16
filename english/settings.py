@@ -70,17 +70,14 @@ DATABASES = {
     'default': {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
         #'ENGINE': 'django.db.backends.mysql',
         #'NAME': 'proyecto',
         #'USER': 'root',
         #'PASSWORD': '',
         #'HOST': '127.0.0.1',
         #'PORT': '3306',
-        ##'NAME': os.environ['OPENSHIFT_APP_NAME'],
-        ##'USER': db_url.username,
-        ##'PASSWORD': db_url.password,
-        ##'HOST': db_url.hostname,
-        ##'PORT': db_url.port,
+
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
          'NAME': 'd8kd7b64bav3j',
          'USER': 'yfnabdnosvzsuz',

@@ -108,6 +108,10 @@ def unidad1_lesson1_tm4(request):
 def unidad1_lesson2_tm1(request):
     return render_to_response('../templates/modulo1-unidad1-lesson2-tm1.html')
 
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson2_tm2(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson2-tm2.html')
+
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')

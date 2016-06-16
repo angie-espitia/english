@@ -21,15 +21,15 @@ class Estudiante(models.Model):
 class Profesor(models.Model):
     id = models.OneToOneField(User, primary_key=True) #db_column='id')
     cel = models.IntegerField()
-    fecha_nacimiento = models.DateField(db_column='Fecha Nacimiento')
+    fecha_nacimiento = models.DateField() #db_column='Fecha Nacimiento')
     cedula = models.IntegerField()
     foto = models.ImageField(upload_to='/tmp')
     profesion = models.CharField(max_length = 100)
     especialidad = models.CharField(max_length = 100)
 
     class Meta:
-        #db_table = 'profesores'
-        #managed  = False
+       # db_table = 'profesores'
+       # managed  = False
         verbose_name = 'Profe'
         verbose_name_plural = "Profes"
 
