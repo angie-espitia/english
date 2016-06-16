@@ -21,7 +21,7 @@ class Estudiante(models.Model):
 class Profesor(models.Model):
     id = models.OneToOneField(User, primary_key=True) #db_column='id')
     cel = models.IntegerField()
-    fecha_nacimiento = models.DateField() #db_column='Fecha Nacimiento')
+    fecha_nacimiento = models.DateField(db_column='Fecha Nacimiento')
     cedula = models.IntegerField()
     foto = models.ImageField(upload_to='/tmp')
     profesion = models.CharField(max_length = 100)
