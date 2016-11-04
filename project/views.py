@@ -286,20 +286,11 @@ import simplejson
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def eliminar_estudiante(request):
 
-    if request.method == "POST":
-        if "estudiante_id" in request.POST:
-            try:
-                id_estudiante = request.POST['estudiante_id']
-                p = Estudiante.objects.get(pk=id_estudiante)
-                mensaje = {"status": "True", "product_id": p.id}
-                p.delete()  # Elinamos objeto de la base de datos
-                return HttpResponse(simplejson.dumps(mensaje), mimetype='application/json')
-            except:
-                mensaje = {"status": "False"}
-                return HttpResponse(simplejson.dumps(mensaje), mimetype='application/json')
-
-    return render_to_response('../templates/eliminar-estudiante.html',
-                                  context_instance=RequestContext(request))
+    pk = request.POST.get('estudiante_id')
+    estudiante = User.objects.get(pk=pk)
+    estudiante.delete()
+    response = {}
+    return JsonResponse(response)
 
 import xhtml2pdf.pisa as pisa
 from StringIO import StringIO

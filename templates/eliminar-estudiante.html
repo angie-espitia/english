@@ -10,15 +10,11 @@
     <h3 id="myModalLabel">Eliminar Estudiante</h3>
     </div>
     <div class="modal-body">
-    <p>¿Realmente desea eliminar al estudiante <span id="modal_name" value="modal_name"> </span>?</p>
+    <p>¿Realmente desea eliminar al estudiante <span>{{ estudiante.id.first_name }}</span>?</p>
     </div>
     <div class="modal-footer">
-        <form method="post" id="frmEliminar">
-            {% csrf_token %}
-            <input type="hidden" id="modal_idEstudiante" name="estudiante_id">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-            <button type="submit" class="btn btn-danger">Eliminar</button>
-        </form>
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+        <button onclick="eliminarIdentificador('{{ estudiante.id.id }}')" class="modal-action modal-close waves-effect waves-green btn-flat">Eliminar</a>
     </div>
  </div>
 </div>
@@ -113,7 +109,7 @@
 
             <div class="col-md-5">
                 <tr id="tr{{estudiante.id.id}}">
-                <td><a href="#myModal" role="button" class="btn btn-danger delete" data-toggle="modal" id="{{estudiante.id.id}}" data-name="{{estudiante.id.first_name}}"><i class="fa fa-fw fa-trash"></i>Eliminar</a></td>
+                <td><a href="#myModal" role="button" class="btn btn-danger delete" data-toggle="modal" id="{{estudiante.id.id}}"><i class="fa fa-fw fa-trash"></i>Eliminar</a></td>
                 </tr>
             </div>
 
@@ -121,9 +117,7 @@
         </div>
       </div>
     </form>
-    {{ paso }}
-
-
+    
   </div>
 
                 </div>
