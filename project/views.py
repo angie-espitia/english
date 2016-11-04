@@ -290,9 +290,9 @@ def eliminar_estudiante(request):
         pk = request.POST.get('estudiante_id')
         estudiante = User.objects.get(pk=pk)
         estudiante.delete()
-        response = {}
-        # return JsonResponse(response)
-        return HttpResponse( response , content_type ='application/json' )
+        # response = {}
+        # # return JsonResponse(response)
+        return HttpResponse( '../templates/eliminar-estudiante.html' )
 
 import xhtml2pdf.pisa as pisa
 from StringIO import StringIO
