@@ -304,12 +304,7 @@ def eliminar_estudiante(request):
 import xhtml2pdf.pisa as pisa
 from StringIO import StringIO
 from django.template.loader import render_to_string
-#def reporte(request):
-#    result = StringIO() #creamos una instancia del un objeto StringIO para
-#    html = render_to_string("reporte_estudiantes.html", {"user": 'Docente'}) #obtenemos la plantilla
-#    pdf = pisa.pisaDocument( html , result) # convertimos en pdf la template
-#    return HttpResponse(result.getvalue(), content_type='application/pdf')
-
+from english.settings import STATICFILES_DIRS
 def pdf(f):
     def funcion(*args, **kwargs):
         html = f(*args, **kwargs)
@@ -318,12 +313,16 @@ def pdf(f):
         return HttpResponse(result.getvalue(), content_type='application/pdf')
     return funcion
 
-import xhtml2pdf.pisa as pisa
-from StringIO import StringIO
-from django.template.loader import render_to_string
-from english.settings import STATICFILES_DIRS
-
 @pdf
 def reporte_estudiante(request):
     estudiantes = Estudiante.objects.filter()
     return render_to_string("reporte_estudiantes.html", { 'estudiantes': estudiantes, 'path': STATICFILES_DIRS[0] }) #obtenemos la plantilla
+
+import xhtml2pdf.pisa as pisa
+from StringIO import StringIO
+from django.template.loader import render_to_string
+#def reporte(request):
+#    result = StringIO() #creamos una instancia del un objeto StringIO para
+#    html = render_to_string("reporte_estudiantes.html", {"user": 'Docente'}) #obtenemos la plantilla
+#    pdf = pisa.pisaDocument( html , result) # convertimos en pdf la template
+#    return HttpResponse(result.getvalue(), content_type='application/pdf')
