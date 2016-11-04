@@ -285,13 +285,14 @@ import simplejson
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def eliminar_estudiante(request):
-    
+
     if request.method == 'POST':
         pk = request.POST.get('estudiante_id')
         estudiante = User.objects.get(pk=pk)
         estudiante.delete()
         response = {}
-        return JsonResponse(response)
+        # return JsonResponse(response)
+        return HttpResponse( response , content_type ='application/json' )
 
 import xhtml2pdf.pisa as pisa
 from StringIO import StringIO
