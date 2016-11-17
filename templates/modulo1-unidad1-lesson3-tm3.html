@@ -1,0 +1,156 @@
+{% extends 'plantilla2.html' %}
+{% block title %} Tema 1 {% endblock %}
+
+{%  block content %}
+    
+   <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Modulo 1</li>
+        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 1</a></li>
+        <li class="active">Lesson 3</li>
+        
+        <div class="col-sm-3 col-md-3 pull-right">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>        
+        
+</ol>
+    
+    
+        {% include 'plantilla3.html' %}
+              
+  <div class="col-sm-9 col-md-9">
+      <h2>FOCUS ON LANGUAGE</h2>
+      <h3></h3>
+        <hr>
+      <p>Complete the sentences with the correct formof be affirmative (+) or negative (-).</p>
+
+     
+      <div class="col-sm-12 col-md-12">
+        <div class="col-sm-6 col-md-6">
+          <ul>
+            <li>a. My best friend (+) _____ Colombian,she (-) _____ Spanish.</li>
+            <li>b. We (-) _____ French, we (+) _____ English.</li>
+            <li>c. My friends (-) _____ at school today.</li>
+            <li>d. I (-) _____ Swiss, but my best friend(+) _____ from Switzerland.</li>
+            <li>e. You (-) _____ in Class 10B.</li>
+          </ul>
+        </div>
+
+      <div class="col-sm-6 col-md-6">
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>be (negative)</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <td>I am not</td>
+                  <td>I’m not</td>
+              </tr>
+               <tr>
+                  <td>You are not</td>
+                  <td>You’re not / You aren’t</td>
+              </tr>
+               <tr>
+                  <td>She is not</td>
+                  <td>She’s not / She isn’t</td>
+              </tr>
+               <tr>
+                  <td>He is not</td>
+                  <td>He’s not / He isn’t</td>
+              </tr>
+               <tr>
+                  <td>It is not</td>
+                  <td>It’s not / It isn’t</td>
+              </tr>
+               <tr>
+                  <td>We are not</td>
+                  <td>We’re not / We aren’t</td>
+              </tr>
+               <tr>
+                  <td>They are not</td>
+                  <td>They’re not / They aren’t</td>
+              </tr>
+            </tbody>
+          </table>
+       
+      </div>
+
+      </div>
+
+      <div class="col-sm-12 col-md-12"></div>
+
+      <div class="col-sm-12 col-md-12">
+        <p>Listen and repeat the sentences.</p>
+
+         <audio controls>
+          <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK17.mp3" type="audio/mpeg">
+            Your browser does not support the audio element. (AUDIO 17)
+          </audio>
+
+          <ul>
+            <li>a. <b>I’m not</b> Manuel. <b>I’m</b> Michael.</li>
+            <li>b. <b>You aren’t</b> a teacher. <b>You are</b> a student.</li>
+            <li>c. <b>It isn’t</b> a house. <b>It’s</b> a school.</li>
+            <li>d. <b>He isn’t</b> from Colombia. <b>He’s</b> from Venezuela.</li>
+            <li>e. <b>She’s not</b> Yvonne. <b>She’s</b> Susan.</li>
+            <li>f. <b>We aren’t</b> classmates. <b>We’re</b> friends.</li>
+            <li>g. <b>They aren’t</b> in the classroom. <b>They’re</b> in the cafeteria.</li>
+          </ul>
+      </div>
+
+      <div class="col-sm-12 col-md-12"></div>
+
+      <div class="col-sm-12 col-md-12">
+      <h2>LISTEN</h2>
+      <h3></h3>
+        <hr>
+      <p>Listen and choose the correct option A, B, or C.</p>
+
+          <div class="col-sm-12 col-md-12">
+            <audio controls>
+              <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK18.mp3" type="audio/mpeg">
+              Your browser does not support the audio element. (AUDIO 18)
+            </audio>
+          </div>
+
+          <div class="col-sm-6 col-md-6">
+              <ul>
+                <li>1.</li>
+                <li>A. Jenny’s best friend is from the United States.</li>
+                <li>B. Jenny’s best friend isn’t American.</li>
+                <li>C. Jenny’s best friend isn’t Brazilian.</li>
+                <li>2.</li>
+                <li>A. Marco isn’t Spanish, he’s American.</li>
+                <li>B. Marco isn’t Colombian, he’s Mexican.</li>
+                <li>C. Marco isn’t Mexican, he’s from Venezuela.</li>
+                <li>3.</li>
+                <li>A. Jenny isn’t in 10th grade, but her brother is in 10th grade.</li>
+                <li>B. Jenny is in 9th grade and her brother is in 8th grade.</li>
+                <li>C. Jenny is in 10th grade and her brother is in 9th grade.</li>
+                <li>4.</li>
+                <li>A. Jenny’s favourite colour is orange.</li>
+                <li>B. Jenny’s favourite colour isn’t green.</li>
+                <li>C. Jenny’s favourite colour isn’t red.</li>
+              </ul>
+              <br/>
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <img src="../static/img/Lesson3Theme3.png" alt="No found">
+          </div>
+      </div>
+
+       </div>
+    </div><!--div-->
+
+
+{% endblock %}

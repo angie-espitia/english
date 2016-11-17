@@ -1,0 +1,163 @@
+{% extends 'plantilla2.html' %}
+{% block title %} Lesson 2 - Listen {% endblock %}
+
+{%  block content %}
+    
+   <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Modulo 1</li>
+        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 1</a></li>
+        <li class="active">Lesson 3</li>
+        
+        <div class="col-sm-3 col-md-3 pull-right">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>        
+        
+</ol>
+    
+    
+{% include 'plantilla3.html' %}
+              
+  <div class="col-sm-9 col-md-9">
+      <h2>FOCUS ON VOCABULARY</h2>
+      <h3></h3>
+        <hr>
+      <p>Look at the vocabulary box and say the colours in each flag. <br> Then write the name of the country for each flag. <br> Example: It is yellow and red.</p>
+
+      <center>
+        <img src="../staticimg/Lesson3Theme1.png" alt="No found">
+      </center>
+  
+      <br />
+
+      <div class="centered">
+          <img src="../staticimg/Lesson3Theme1img3.png" alt="No found">
+          <br>
+          <br>
+      </div>
+
+      <div class="col-sm-12 col-md-12">
+
+      <div class="col-sm-6 col-md-6">
+        <img src="../staticimg/Lesson3Theme1img2.png" alt="No found">
+      </div>
+
+        <div class="col-sm-6 col-md-6">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Useful vocabulary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <td>Colours</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-circle red"></i> red <i class="fa fa-circle yellow"></i> yellow <i class="fa fa-circle blue"></i> blue</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-circle green"></i> green <i class="fa fa-circle white"></i> white <i class="fa fa-circle black"></i> black</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-circle brown"></i> brown <i class="fa fa-circle pink"></i> pink <i class="fa fa-circle orange"></i> orange</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-circle purple"></i> purple
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-12"></div>
+
+      <div class="col-sm-12 col-md-12">
+
+        <audio controls>
+          <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK15.mp3" type="audio/mpeg">
+            Your browser does not support the audio element. (AUDIO 15)
+          </audio>
+
+        <p>Match the adjectives to the countries in exercise 1. Then listen and check your answers.</p>
+          
+          <div class="borde padding-l3t1">
+              Mexican British Swiss Cameroonian Austrian Chinese French Spanish American            
+          </div>
+
+          <br />
+
+        <p>Example: 1. Spain – Spanish</p>
+      </div>
+
+        <br /> 
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <h2>LISTEN</h2>
+      <h3></h3>
+        <hr>
+      <div class="col-sm-12 col-md-12">
+        <p>Listen and match the people to their nationalities.</p>
+          <audio controls>
+          <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK16.mp3" type="audio/mpeg">
+            Your browser does not support the audio element. (AUDIO 16)
+          </audio>
+          <br/>
+
+          <div class="col-sm-6 col-md-6">
+            <ul>
+              <li>a. Connie</li>
+              <li>b. Jan</li>
+              <li>c. Luc</li>
+              <li>d. Thomas</li>
+              <li>e. Bernhard</li>
+            </ul>
+          </div>
+
+           <div class="col-sm-6 col-md-6">
+            <ul>
+              <li>1. Brazilian</li>
+              <li>2. French</li>
+              <li>3. Colombian</li>
+              <li>4. Swiss</li>
+              <li>5. Chinese</li>
+            </ul>
+          </div>
+          
+      </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+    </div><!--div-->
+</div>
+
+{% endblock %}

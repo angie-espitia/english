@@ -1,16 +1,17 @@
-# import os
+import os
 
-# from django.core.wsgi import get_wsgi_application
+from django.core.wsgi import get_wsgi_application
 
-# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "english.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "english.settings")
 
-# application = get_wsgi_application()
+application = get_wsgi_application()
 
 
 
 #!/usr/bin/python
-import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "english.settings")
-from django.core.wsgi import get_wsgi_application
-from dj_static import Cling
-application = Cling(get_wsgi_application())
+
+# import os
+# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "english.settings")
+# from django.core.wsgi import get_wsgi_application
+# from dj_static import Cling
+# application = Cling(get_wsgi_application())

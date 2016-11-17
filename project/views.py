@@ -112,6 +112,38 @@ def unidad1_lesson2_tm1(request):
 def unidad1_lesson2_tm2(request):
     return render_to_response('../templates/modulo1-unidad1-lesson2-tm2.html')
 
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson2_tm3(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson2-tm3.html')
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson2_tm4(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson2-tm4.html')
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson3_tm1(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson3-tm1.html') 
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson3_tm2(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson3-tm2.html') 
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson3_tm3(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson3-tm3.html') 
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson3_tm4(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson3-tm4.html')  
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson4_tm1(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson4-tm1.html')  
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson4_tm2(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson4-tm2.html')  
+
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
@@ -175,9 +207,9 @@ def registro_estudiante(request):
             body = render_to_string('email.html', {'user': usuario})
 
             #send_mail(asunto, body, EMAIL_HOST_USER, [ usuario.email ] )
-            msg = EmailMultiAlternatives(asunto, body, EMAIL_HOST_USER, [usuario.email])
-            msg.content_subtype = "html"
-            msg.send()
+            # msg = EmailMultiAlternatives(asunto, body, EMAIL_HOST_USER, [usuario.email])
+            # msg.content_subtype = "html"
+            # msg.send()
 
             return render_to_response('../templates/registro-estudiante.html', {'success': True}, context_instance=RequestContext(request))
         else:
@@ -281,18 +313,22 @@ def modificar_contra_estudiante(request):
 
     return render_to_response('../templates/modificar-contra-est.html', { 'usuario': usu1 }, context_instance = RequestContext(request))
 
-import simplejson
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def eliminar_estudiante(request):
 
-    if request.method == 'POST':
-        pk = request.POST.get('estudiante_id')
-        estudiante = User.objects.get(pk=pk)
-        estudiante.delete()
-        # response = {}
-        # # return JsonResponse(response)
-        return HttpResponse( '../templates/eliminar-estudiante.html' )
+    return render_to_response('../templates/eliminar-estudiante.html', context_instance=RequestContext(request))
+
+import simplejson
+@login_required(login_url="/login-profesor")
+@user_passes_test(restringir_estudiante, login_url='/login-profesor')
+def elimina_est(request, pk):
+
+    pks = request.POST.get('pk')
+    estudiante = User.objects.get(pk=pks)
+    estudiante.delete()
+    return HttpResponseRedirect('/eliminar-estudiante')
+
 
 import xhtml2pdf.pisa as pisa
 from StringIO import StringIO

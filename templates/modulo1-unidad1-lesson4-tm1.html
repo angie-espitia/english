@@ -1,0 +1,85 @@
+{% extends 'plantilla2.html' %}
+{% block title %} Tema 1 {% endblock %}
+
+{%  block content %}
+    
+   <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Modulo 1</li>
+        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 1</a></li>
+        <li class="active">Lesson 4</li>
+        
+        <div class="col-sm-3 col-md-3 pull-right">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>        
+        
+</ol>
+    
+    
+        {% include 'plantilla3.html' %}
+
+  <div class="col-sm-9 col-md-9">
+      <h2>FOCUS ON VOCABULARY</h2>
+      <h3></h3>
+        <hr>
+      <p>Write the family members in your notebook.</p>
+
+     
+      <div class="col-sm-12 col-md-12">          
+        <center>  
+         <img src="../static/img/Lesson4Theme1.png" alt="">
+        </center>
+      </div>
+
+      <div class="col-sm-12 col-md-12"></div>
+
+      <div class="col-sm-12 col-md-12">
+        <p>Find more family members and complete the chart in your notebook.</p>
+
+        <center>  
+         <img src="../static/img/Lesson4Theme1img2.png" alt="No found">
+        </center>
+      </div>
+
+      <div class="col-sm-12 col-md-12"></div>
+
+      <div class="col-sm-12 col-md-12">
+        <p>Find more family members and complete the chart in your notebook.</p>
+
+         <img src="../static/img/Lesson4Theme1img3.png" alt="No found">
+      </div>
+
+      <div class="col-sm-12 col-md-12"></div>
+
+      <div class="col-sm-12 col-md-12">
+        <p>Match the sentences a-d to the pictures 1-4.</p>
+
+        <div class="col-sm-6 col-md-6">
+          <ul>
+            <li>a. She’s <b>my</b> aunt. <b>Her</b> name’s Anna.</li>
+            <li>b. We’re from Venezuela. <b>our</b> family is very big.</li>
+          </ul>
+        </div>
+          <div class="col-sm-6 col-md-6">
+          <ul>
+            <li>They’re Juanita, Luis and Pedro. <b>Their</b> parents are Lucía and Paul.</li>
+            <li>I’m an only child. <b>My</b> family is very small.</li>
+          </ul>
+        </div>
+
+        <div class="col-sm-12 col-md-12">
+          <img src="../static/img/Lesson4Theme1img4.png" alt="No found">
+        </div>
+      </div>
+
+       </div>
+    </div><!--div-->
+
+{% endblock %}

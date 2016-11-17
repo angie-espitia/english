@@ -1,0 +1,98 @@
+{% extends 'plantilla2.html' %}
+{% block title %} Tema 1 {% endblock %}
+
+{%  block content %}
+    
+   <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Modulo 1</li>
+        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 1</a></li>
+        <li class="active">Lesson 3</li>
+        
+        <div class="col-sm-3 col-md-3 pull-right">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>        
+        
+</ol>
+    
+    
+        {% include 'plantilla3.html' %}
+              
+  <div class="col-sm-9 col-md-9">
+      <h2>WRITE</h2>
+      <h3></h3>
+        <hr>
+      <p>Complete the text with the correct form of be (affirmative or negative).</p>
+
+      <div class="col-sm-12 col-md-12">
+        <img src="../static/img/Lesson3Theme4.png" alt="No found">
+      </div>
+
+      <div class="col-sm-12 col-md-12"></div>
+
+      <div class="col-sm-12 col-md-12">
+        <p>Look at the Useful language box. Then choose and or but for sentences a-e.</p>
+
+        <div class="col-sm-8 col-md-8">
+          <ul>
+            <li>a. My friend is in 8th grade <b>and / but</b> my brother is in 8th grade too.</li>
+            <li>b. I am Colombian <b>and / but</b> my best friend is French.</li>
+            <li>c. Tracey is 15 years old <b>and / but</b> her sister is 15 years old too.</li>
+            <li>d. Sam is from The United States <b>and / but</b> he is American.</li>
+            <li>e. My name is Helen <b>and / but</b> her name is Sally.</li>
+          </ul>
+        </div>
+        <div class="col-sm-4 col-md-4">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Useful language</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <td>and / but <br>
+                      Use and to connect two<br>
+                      complementary ideas.<br>
+                      (addition)<br>
+                      Use but to connect two<br>
+                      contrasting ideas. (contrast)
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-12">
+        <p>In your notebook, complete the text with information about you. Then write some sentences about your best friend. Use and and but to join sentences.</p>
+
+        <div class="col-sm-12 col-md-12">
+          <img src="../static/img/Lesson3Theme4img2.png" alt="No found">
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-12"></div>
+
+      <div class="col-sm-12 col-md-12">
+      <h2>SPEAK</h2>
+      <h3></h3>
+        <hr>
+      <p>Now tell your partner about you and your best friend.</p>
+
+       <div class="col-sm-6 col-md-6 col-sm-offset-6 col-md-offset-6">
+          <img src="../static/img/Lesson3Theme4img3.png" alt="No found">
+        </div>
+
+          </div>
+       </div>
+    </div><!--div-->
+
+{% endblock %}

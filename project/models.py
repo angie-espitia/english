@@ -7,12 +7,12 @@ from tinymce.models import HTMLField
 list_sexo = ( ('M', 'Masculino') , ('F', 'Femenino'))
 class Estudiante(models.Model):
     id = models.OneToOneField(User, primary_key=True)# db_column='id')
-    tel = models.IntegerField()
-    direccion = models.CharField(max_length = 100)
-    sexo = models.CharField( max_length=1, choices = list_sexo)
-    fecha_nacimiento = models.DateField ()#db_column= 'Fecha Nacimiento')
+    tel = models.IntegerField(null=True)
+    direccion = models.CharField(max_length = 100,null=True)
+    sexo = models.CharField( max_length=1, choices = list_sexo,null=True)
+    fecha_nacimiento = models.DateField (null=True)#db_column= 'Fecha Nacimiento')
     documento = models.IntegerField()
-    Foto = models.ImageField(upload_to='/tmp')
+    Foto = models.ImageField(upload_to='/tmp',null=True)
 
     #class Meta:
     #    db_table = 'estudiante'
@@ -23,7 +23,7 @@ class Profesor(models.Model):
     cel = models.IntegerField()
     fecha_nacimiento = models.DateField(db_column='Fecha Nacimiento')
     cedula = models.IntegerField()
-    foto = models.ImageField(upload_to='/tmp')
+    foto = models.ImageField(upload_to='/tmp', null=True, blank=True)
     profesion = models.CharField(max_length = 100)
     especialidad = models.CharField(max_length = 100)
 
@@ -34,8 +34,7 @@ class Profesor(models.Model):
         verbose_name_plural = "Profes"
 
     def __unicode__(self):
-        return self.cedula
-
+        return '%s' % self.cedula
 
 class Curso(models.Model):
     nombre = models.CharField(max_length= 120)
