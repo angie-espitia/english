@@ -144,6 +144,78 @@ def unidad1_lesson4_tm1(request):
 def unidad1_lesson4_tm2(request):
     return render_to_response('../templates/modulo1-unidad1-lesson4-tm2.html')  
 
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson4_tm3(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson4-tm3.html') 
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson4_tm4(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson4-tm4.html')   
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson5_tm1(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson5-tm1.html')    
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson5_tm2(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson5-tm2.html')    
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson5_tm3(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson5-tm3.html')   
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson5_tm4(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson5-tm4.html') 
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson6_tm1(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson6-tm1.html') 
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson6_tm2(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson6-tm2.html') 
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson6_tm3(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson6-tm3.html') 
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson6_tm4(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson6-tm4.html')  
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson7_tm1(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson7-tm1.html') 
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson7_tm2(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson7-tm2.html') 
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson7_tm3(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson7-tm3.html') 
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson7_tm4(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson7-tm4.html')  
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson8_tm1(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson8-tm1.html') 
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson8_tm2(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson8-tm2.html') 
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson8_tm3(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson8-tm3.html') 
+
+@login_required(login_url="/login-estudiante")
+def unidad1_lesson8_tm4(request):
+    return render_to_response('../templates/modulo1-unidad1-lesson8-tm4.html')                  
+
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')

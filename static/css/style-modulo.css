@@ -61,7 +61,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #bgf {
-    background: url(../img/bg-hg-md1.png) transparent repeat;
+    background: url(../img/bg-hg-md.png) transparent repeat;
     padding: 20px;
     border-bottom-color: blue;
 }
@@ -85,8 +85,8 @@ h1, h2, h3, h4, h5, h6 {
 #wh {
 	background: white;
 	padding-top: 35px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
 	padding-bottom: 70px;
 }
 
@@ -314,26 +314,60 @@ hr {
     color: #fff;
 }
 }
-.container {
-    padding-right: 0px;
-    padding-left: 0px;
-    margin-right: auto;
-    margin-left: auto;
+
+.red{
+    color: red;
 }
 
-@media (min-width: 1200px) {
-    .container {
-        width: 100%;
-    }
-}
-@media (min-width: 992px) {
-    .container {
-        width: 100%;
-    }
-}
-@media (min-width: 768px) {
-    .container {
-        width: 100%;
-    }
+.yellow{
+    color: yellow;
 }
 
+.blue{
+    color: blue;
+}
+
+.green{
+    color: green;
+}
+
+.white{
+    color: white;
+    text-shadow:
+   -1px -1px 0 #000000,
+    1px -1px 0 #000000,
+   -1px 1px 0 #000000,
+    1px 1px 0 #000000;
+}
+
+.black{
+    color: black;
+}
+
+.brown{
+    color: brown;
+}
+
+.pink{
+    color: pink;
+}
+
+.orange{
+    color: orange;
+}
+
+.purple{
+    color: purple;
+}
+
+.padding-l3t1{
+    padding: 10px;
+}
+
+.nada{
+    color: white;
+}
+
+.padding-flecha{
+    padding-left: 30%;
+}

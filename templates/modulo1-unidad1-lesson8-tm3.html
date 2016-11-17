@@ -1,0 +1,131 @@
+{% extends 'plantilla2.html' %}
+{% block title %} Tema 1 {% endblock %}
+
+{%  block content %}
+    
+   <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Modulo 1</li>
+        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 1</a></li>
+        <li class="active">Lesson 8</li>
+        
+        <div class="col-sm-3 col-md-3 pull-right">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>        
+        
+</ol>
+    
+    
+        {% include 'plantilla3.html' %}
+              
+  <div class="col-sm-9 col-md-9">
+      <h2>FOCUS ON LANGUAGE</h2>
+      <h3></h3>
+        <hr>
+      <p>Put the words in the correct order to make questions.</p>
+
+      <p>is / who / tall ?<br>
+          Who is tall?</p>
+
+      <div class="col-sm-12 col-md-12">      
+
+      <div class="col-sm-12 col-md-12">
+          <div class="col-sm-6 col-md-6">
+            <ul>
+              <li>a. he / old / how / is ?</li>
+              <li>b. colour / is / hair / what / her ?</li>
+              <li>c. slim / who / is ?</li>
+            </ul>
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <ul>
+              <li>d. your / when / birthday / is ?</li>
+              <li>e. from / is / where / he ?</li>
+            </ul>
+          </div>
+
+      </div>
+
+      <p>Correct these questions in your notebook. Then write the answers.</p>
+
+     <div class="col-sm-12 col-md-12">
+          <div class="col-sm-6 col-md-6">
+            <ul>
+              <li>a. is where your notebook?</li>
+              <li>b. when your English lessons are?</li>
+            </ul>
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <ul>
+              <li>c. short is who ?</li>
+              <li>d. how old you are?</li>
+            </ul>
+          </div>
+      </div> 
+     
+      <div class="col-sm-12 col-md-12"></div>
+
+      <div class="col-sm-12 col-md-12"> 
+
+      <h2>READ</h2>
+      <h3></h3>
+        <hr>
+
+      <p>Read the text and match paragraphs a–c to pictures 1–3.</p>  
+
+      <div class="col-sm-8 col-md-8">
+        <ul>
+          <li>a. Richard Pérez is a student from Mexico. He’s 17 years old <br>
+              and he lives in Cartagena. His address is Street 25 No. 8–57,<br>
+              Cartagena. His lessons are from Monday to Friday from<br>
+              9:00 am to 4:00 pm. He’s tall and slim and his hair is short<br>
+              and black. His eyes are brown. He’s young.
+          </li>
+          <li>b. Julia Reeves is a teacher from Australia. She’s 40 years old and lives in Canberra.<br>
+              Her flat is in the centre of the city. She works from 8:00 am to 3:00 pm every day.<br>
+              She’s short and her hair is blonde and shoulder-length. Her eyes are brown. She’s<br>
+              middle-aged.
+          </li>
+          <li>c. Henry James is from England. He’s a doctor and he lives in London. His house is<br>
+              near Green Park. He’s 64 years old. He works from 9:00 am to 6:00 pm every day.<br>
+              He’s tall and well-built. His hair is short and grey. He has a moustache and a<br>
+              small beard and wears glasses. His eyes are brown. He’s old.
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-4 col-md-4">
+       <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Glossary</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>beard = barba <br>
+                glasses = lentes <br>
+                moustache = bigote
+            </td>
+          </tr>
+        </tbody>
+      </table> 
+      </div> 
+
+      <img src="../static/img/Lesson8Theme3.png" alt="No found">
+
+      </div>
+      </div>  
+       </div>
+    </div><!--div-->
+
+        <br>
+        <br>
+
+{% endblock %}

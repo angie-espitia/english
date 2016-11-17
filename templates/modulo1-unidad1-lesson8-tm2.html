@@ -1,0 +1,155 @@
+{% extends 'plantilla2.html' %}
+{% block title %} Tema 1 {% endblock %}
+
+{%  block content %}
+    
+   <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Modulo 1</li>
+        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 1</a></li>
+        <li class="active">Lesson 8</li>
+        
+        <div class="col-sm-3 col-md-3 pull-right">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>        
+        
+</ol>
+    
+    
+        {% include 'plantilla3.html' %}
+              
+  <div class="col-sm-9 col-md-9">
+      <h2>LISTEN</h2>
+      <h3></h3>
+        <hr>
+      <p>Maria is talking to her mother about her music group. Listen and match the people to their characteristics.</p>
+
+      <audio controls>
+        <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK35.mp3" type="audio/mpeg">
+          Your browser does not support the audio element. (AUDIO 35)
+      </audio>
+
+      <div class="col-sm-12 col-md-12">
+        <div class="col-sm-4 col-md-4">
+        <ul>
+          <li>people _____</li>
+          <li>a. Danny _____</li>
+          <li>b. Ruth _____</li>
+          <li>c. Tom _____</li>
+          <li>d. Sandra _____</li>
+          <li>e. Linda _____</li>
+        </ul>
+      </div>
+      <div class="col-sm-4 col-md-4">
+        <ul>
+          <li>Characteristics</li>
+          <li>1. tall</li>
+          <li>2. short</li>
+          <li>3. green eyes</li>
+          <li>4. blonde hair</li>
+          <li>5. red hair</li>
+        </ul>
+      </div>
+       <div class="col-sm-4 col-md-4">
+        <img src="../static/img/Lesson8Theme2.png" alt="No found">
+      </div>
+
+      </div>
+
+      <center>
+        <img src="../static/img/Lesson8Theme2img2.png" alt="No found">
+      </center>
+
+    
+    <div class="col-sm-12 col-md-12"></div>
+
+    <div class="col-sm-12 col-md-12">
+
+      <audio controls>
+        <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK35.mp3" type="audio/mpeg">
+          Your browser does not support the audio element. (AUDIO 35)
+      </audio>
+
+      <p>Listen again and, in your notebook, complete the questions Maria’s mum asks.</p>
+      
+      <div class="col-sm-6 col-md-6">
+        <ul>
+          <li>a. How _____ _____</li>
+          <li>b. Who _____ _____</li>
+          <li>c. Is _____ _____</li>
+        </ul>
+      </div>
+      <div class="col-sm-6 col-md-6">
+        <ul>
+          <li>d. How many people _____ _____ your band?</li>
+          <li>e. When _____ _____ Music lessons?</li>
+          <li>f. Where _____ _____ practice room?</li>
+        </ul>
+      </div>
+
+       <audio controls>
+        <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK36.mp3" type="audio/mpeg">
+          Your browser does not support the audio element. (AUDIO 36)
+      </audio>
+
+      <p>Listen and repeat the questions in exercise 7.</p>
+
+
+      <p>Listen and tick (✓) the correct option: yes/no question or wh-question.</p>
+      
+      <div class="col-sm-6 col-md-6">
+      <audio controls>
+        <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK38.mp3" type="audio/mpeg">
+          Your browser does not support the audio element. (AUDIO 38)
+      </audio>
+        
+      <img src="../static/img/Lesson8Theme2img3.png" alt="No found">
+
+      </div>
+      <div class="col-sm-6 col-md-6">
+      <audio controls>
+        <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK37.mp3" type="audio/mpeg">
+          Your browser does not support the audio element. (AUDIO 37)
+      </audio
+        
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Say it!</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Listen and repeat the questions with <br>
+              the correct intonation.</b><br>
+              When you ask a question beginning with<br>
+              Is / Are, the intonation goes up at the<br>
+              end of the question.<br>
+              <img src="../static/img/Lesson8Theme2img4.png" alt="No found"><br>
+              Are you Colombian?<br>
+              When you ask a question beginning with<br>
+              a question word (What, Where, When,<br>
+              etc.), the intonation goes down at the<br>
+              end of the question.<br>
+              <img src="../static/img/Lesson8Theme2img5.png" class="padding-flecha" alt="No found"><br>
+              Where are you from?
+            </td>
+          </tr>
+        </tbody>
+      </table>  
+      </div>
+
+    </div>
+
+      </div>
+      </div>
+    </div><!--div-->
+
+{% endblock %}

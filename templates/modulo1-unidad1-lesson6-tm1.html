@@ -1,0 +1,91 @@
+{% extends 'plantilla2.html' %}
+{% block title %} Tema 1 {% endblock %}
+
+{%  block content %}
+    
+   <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Modulo 1</li>
+        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 1</a></li>
+        <li class="active">Lesson 6</li>
+        
+        <div class="col-sm-3 col-md-3 pull-right">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>        
+        
+</ol>
+    
+    
+        {% include 'plantilla3.html' %}
+              
+  <div class="col-sm-9 col-md-9">
+      <h2>FOCUS ON VOCABULARY</h2>
+      <h3></h3>
+        <hr>
+      <p>Match the jobs to the pictures.</p>
+
+      <div class="col-sm-12 col-md-12">
+        <div class="col-sm-8 col-md-8">
+          <img src="../static/img/Lesson6Theme1.png" alt="No found">
+        </div>
+       <div class="col-sm-4 col-md-4">
+          <img src="../static/img/Lesson6Theme1img2.png" alt="No found">
+        </div>
+      </div>  
+
+      <div class="col-sm-12 col-md-12"></div>
+       <h2>LISTEN</h2>
+        <h3></h3>
+          <hr>
+        <p>Listen and complete the form in your notebook.</p>
+
+        <audio controls>
+          <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK27.mp3" type="audio/mpeg">
+            Your browser does not support the audio element. (AUDIO 27)
+        </audio>
+
+          <div class="col-sm-12 col-md-12">
+            <img src="../static/img/Lesson6Theme1img3.png" alt="No found">
+          </div>
+
+         <div class="col-sm-12 col-md-12">
+            <div class="col-sm-6 col-md-6">
+              <ul>
+                <li>a. Is Kiara a student?</li>
+                <li>b. Are Pablo and Elena her parents?</li>
+                <li>c. Is Pablo 25 years old?</li>
+                <li>d. Is Elena a chef?</li>
+                <li>e. Is Pablo a teacher?</li>
+                <li>f. Are they Chilean?</li>
+              </ul>
+            </div>
+            <div class="col-sm-6 col-md-6">
+              <ul>
+                <li>1. Yes, he is.</li>
+                <li>2. Yes, they are.</li>
+                <li>3. Yes, she is.</li>
+                <li>4. No, she isn’t.</li>
+                <li>5. No, they aren’t.</li>
+                <li>6. No, he isn’t.</li>
+              </ul>
+            </div>
+          </div> 
+          <div class="col-sm-12 col-md-12">
+            <p>Ask and answer the questions in exercise 3 with a partner.</p>
+          </div>
+
+      </div>
+    </div><!--div-->
+
+        <br>
+        <br>
+
+
+{% endblock %}

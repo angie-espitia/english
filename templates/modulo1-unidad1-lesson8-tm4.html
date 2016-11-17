@@ -1,0 +1,125 @@
+{% extends 'plantilla2.html' %}
+{% block title %} Tema 1 {% endblock %}
+
+{%  block content %}
+    
+   <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Modulo 1</li>
+        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 1</a></li>
+        <li class="active">Lesson 8</li>
+        
+        <div class="col-sm-3 col-md-3 pull-right">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>        
+        
+</ol>
+    
+    
+        {% include 'plantilla3.html' %}
+              
+  <div class="col-sm-9 col-md-9">
+      <h2>READ</h2>
+      <h3></h3>
+        <hr>
+      <p>Read the text again and answer the questions in your notebook.</p>
+
+      <div class="col-sm-12 col-md-12">      
+
+      <div class="col-sm-12 col-md-12">
+          <div class="col-sm-6 col-md-6">
+            <ul>
+              <li>a. Where is Richard from?</li>
+              <li>b. Is Richard’s hair short?</li>
+              <li>c. What colour is Richard’s hair?</li>
+              <li>d. Where is Julia from?</li>
+              <li>e. Is Julia young?</li>
+            </ul>
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <ul>
+              <li>f. Where is Julia’s flat?</li>
+              <li>g. What is Henry's job?</li>
+              <li>h. Is Henry’s hair brown?</li>
+              <li>i. How old is Henry?</li>
+            </ul>
+          </div>
+
+      </div>
+
+      <p>Look at the paragraph about Richard pérez again. Complete the questions with: how, what, where, when.</p>
+
+     <div class="col-sm-12 col-md-12">
+          <div class="col-sm-6 col-md-6">
+            <ul>
+              <li>a. _______ is your full name?</li>
+              <li>b. _______ are you from, Richard?</li>
+              <li>c. _______ is your occupation?</li>
+              <li>d. _______ is your address?</li>
+              <li>e. _______ is your phone number?</li>
+              <li>f. _______ old are you?</li>
+              <li>g. _______ are your lessons?</li>
+              <li>h. _______ is your school?</li>
+            </ul>
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <ul>
+              <li>Richard Pérez</li>
+              <li>I’m from Mexico.</li>
+              <li>I’m a student.</li>
+              <li>Street 25 No. 8 – 57, Cartagena</li>
+              <li>It’s 3257608277.</li>
+              <li>I’m 17 years old.</li>
+              <li>From Monday to Friday, from 9:00 am to 4:00 pm.</li>
+              <li>It’s near the park.</li>
+            </ul>
+          </div>
+      </div> 
+     
+      <div class="col-sm-12 col-md-12"></div>
+
+      <div class="col-sm-12 col-md-12"> 
+
+      <h2>SPEAK</h2>
+      <h3></h3>
+        <hr>
+
+      <p>Take turns to ask and answer the questions in exercise 15. Your partner is Julia / Henry.</p>  
+      
+      <p>What is your full name? Julia Reeves <br>
+        Where are you from, Julia? … 
+      </p>
+      <p> What is your full name? Henry James <br>
+        Where are you from, Henry? … 
+      </p>
+      
+      </div>
+
+      <div class="col-sm-12 col-md-12"></div>
+
+      <div class="col-sm-12 col-md-12"> 
+
+      <h2>WRITE</h2>
+      <h3></h3>
+        <hr>
+
+      <p>Read the job advert. At the interview, Mr Jessop asks you for some personal details. Write the dialogue. Use exercise 15 to help you.</p>  
+      
+      <img src="../static/img/Lesson8Theme4.png" alt="No found">
+
+      </div>
+      </div>  
+       </div>
+    </div><!--div-->
+
+        <br>
+        <br>
+
+{% endblock %}

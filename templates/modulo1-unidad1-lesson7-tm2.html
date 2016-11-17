@@ -1,0 +1,92 @@
+{% extends 'plantilla2.html' %}
+{% block title %} Tema 1 {% endblock %}
+
+{%  block content %}
+    
+   <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Modulo 1</li>
+        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 1</a></li>
+        <li class="active">Lesson 7</li>
+        
+        <div class="col-sm-3 col-md-3 pull-right">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>        
+        
+</ol>
+    
+    
+        {% include 'plantilla3.html' %}
+              
+  <div class="col-sm-9 col-md-9">
+      <h2>FOCUS ON VOCABULARY</h2>
+      <h3></h3>
+        <hr>
+      <p>Write the names of the classroom objects in your notebook.</p>
+
+    <img src="../static/img/Lesson7Theme2.png" alt="No found">
+    
+    <div class="col-sm-12 col-md-12"></div>
+
+    <div class="col-sm-12 col-md-12">
+
+      <h2>FOCUS ON LANGUAGE</h2>
+      <h3></h3>
+        <hr>
+      <p>Complete the text using a or an before singular nouns or write X for plural nouns.</p>
+
+      <div class="col-sm-8 col-md-8">
+          <img src="../static/img/Lesson7Theme2img2.png" alt="No found">
+      </div>
+      <div class="col-sm-4 col-md-4">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Useful language</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>We usually use the word <br>
+                  a before a noun. <br>
+                  We use the word an <br>
+                  before a noun which <br>
+                  begins with a vowel. <br>
+                  We often use nothing <br>
+                  before plural nouns.
+              </td>
+            </tr>
+            <tr>
+              <td>You are not</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Find the mistakes and write these sentences correctly in your notebook.</p>
+
+      <div class="col-sm-12 col-md-12">
+        <ul>
+          <li>a. In my bag I have a scissors, an pencil and a eraser.</li>
+          <li>b. For my Maths lesson, I need an calculator, an pencil and an ruler.</li>
+          <li>c. In PE, I use ball and an racket.</li>
+          <li>d. I like a colouring pencils.</li>
+          <li>e. I need new schoolbag.</li>
+        </ul>
+      </div>
+
+      <p>Tell your partner what you have in your bag today.</p>
+
+      </div>
+      </div>
+      </div>
+    </div><!--div-->
+
+{% endblock %}

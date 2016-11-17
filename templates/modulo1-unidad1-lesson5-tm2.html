@@ -1,0 +1,212 @@
+{% extends 'plantilla2.html' %}
+{% block title %} Tema 1 {% endblock %}
+
+{%  block content %}
+    
+   <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Modulo 1</li>
+        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 1</a></li>
+        <li class="active">Lesson 5</li>
+        
+        <div class="col-sm-3 col-md-3 pull-right">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>        
+        
+</ol>
+    
+    
+        {% include 'plantilla3.html' %}
+    
+  <div class="col-sm-9 col-md-9">
+      <h2>FOCUS ON LANGUAGE</h2>
+      <h3></h3>
+        <hr>
+      <p>Look at the Williams family tree and choose the correct name.</p>
+
+      <div class="col-sm-12 col-md-12">
+        <div class="col-sm-3 col-md-3">
+          <ul>
+            <li>1. Lucy’s grandmother is</li>
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <ul>
+            <li>A. Rudy</li>
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <ul>
+            <li>B. Lilly</li>
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <ul>
+            <li>C. Gloria</li>
+          </ul>
+        </div>
+      </div> 
+        <div class="col-sm-12 col-md-12">
+        <div class="col-sm-3 col-md-3">
+          <ul>
+            <li>2. Kevin’s uncle is</li>
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <ul>
+            <li>A. Steve</li>
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <ul>
+            <li>B. Peter</li>
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <ul>
+            <li>C. Joe</li>
+          </ul>
+        </div>
+      </div>
+       <div class="col-sm-12 col-md-12">
+        <div class="col-sm-3 col-md-3">
+          <ul>
+            <li>3. Lola’s granddaughter is</li>
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <ul>
+            <li>A. Lucy</li>
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <ul>
+            <li>B. Sarah</li>
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <ul>
+            <li>C. Lauren</li>
+          </ul>
+        </div>
+      </div>
+       <div class="col-sm-12 col-md-12">
+        <div class="col-sm-3 col-md-3">
+          <ul>
+            <li>4. Gloria’s husband is</li>
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <ul>
+            <li>A. Joe</li>
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <ul>
+            <li>B. George</li>
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <ul>
+            <li>C. Steve</li>
+          </ul>
+        </div>
+      </div>
+       <div class="col-sm-12 col-md-12">
+        <div class="col-sm-3 col-md-3">
+          <ul>
+            <li>5. Sarah’s parents are</li>
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <ul>
+            <li>A. Lilly and Peter</li>
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <ul>
+            <li>B. Steve and Gloria</li>
+          </ul>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <ul>
+            <li>C. Donald and Rudy</li>
+          </ul>
+        </div>
+      </div>
+
+        <div class="col-sm-12 col-md-12">
+          <div class="col-sm-8 col-md-8">
+            <img src="../static/img/Lesson5Theme2.png" class="img-responsive" alt="No found">
+          </div>
+          <div class="col-sm-4 col-md-4">
+           <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Useful language</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>a. How do you say <br>
+                    these sentences in<br>
+                    Spanish?<br>
+                    b. Look at the<br>
+                    apostrophe s in all<br>
+                    the sentences, e.g.,<br>
+                    Lucy’s father.
+               </td>
+              </tr>
+              <tr>
+               <td>Important!<br>
+                  ✖ George is the father<br>
+                  of Lucy.<br>
+                  ✔ George is Lucy’s<br>
+                  father.
+                  </td>
+              </tr>
+            </tbody>
+          </table>  
+          </div>
+        </div>
+
+      <div class="col-sm-12 col-md-12"></div>
+
+      <div class="col-sm-12 col-md-12">
+        <p>In your notebook, write sentences to answer the questions.</p>
+        <ul>
+          <li>a. Who are Michael’s parents? George and Lilly are Michael’s parents.</li>
+          <li>b. Who is Joe’s nephew? ______________________</li>
+          <li>c. Who is Steve’s sister? ______________________</li>
+          <li>d. Who are Sarah’s grandparents? ______________________</li>
+          <li>e. Who is Lola’s granddaughter? ______________________</li>
+        </ul>
+      </div>
+
+      <div class="col-sm-12 col-md-12"></div>
+
+      <div class="col-sm-12 col-md-12">
+        <p>Write sentences with the names and people.</p>
+        <ul>
+          <li>a. ‘Lilly is my daughter.’ (Donald) Donald is Lilly’s father.</li>
+          <li>b. ‘Lauren is my sister.’ (Kevin) Kevin is ______________________</li>
+          <li>c. ‘Donald is my grandfather.’ (Michael) ______________________</li>
+          <li>d. ‘George is my husband.’ (Lilly) ______________________</li>
+          <li>e. ‘Rudy is my mother.’ (Peter) ______________________</li>
+        </ul>
+      </div>
+
+       </div>
+    </div><!--div-->
+
+        <br>
+        <br>
+
+{% endblock %}
