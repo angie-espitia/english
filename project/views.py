@@ -7,8 +7,12 @@ from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.contrib.auth.models import User, Group
 from .validator import FormRegistroValidator, FormLoginValidator
-from english.settings import STATIC_ROLS, EMAIL_HOST_USER
+from english.settings import STATIC_ROLS, EMAIL_HOST_USER, STATICFILES_DIRS
 from .models import Estudiante, Profesor
+from django.template.loader import get_template
+from django.template import Context
+from django.contrib.auth.hashers import make_password
+from django.db.models import Q
 
 
 def index(request):
@@ -64,190 +68,216 @@ def restringir_estudiante(User):
         return True
 
 @login_required(login_url="/login-estudiante")
-def inicio_estudiante(request):
-    usuario = Estudiante.objects.get(id=request.user.id)
-    return render_to_response('inicio-estudiante.html', { 'usuario': usuario }, context_instance = RequestContext(request))
-
-@login_required(login_url="/login-estudiante")
-def perfil_estudiante(request):
-    usuario = Estudiante.objects.get(id=request.user.id)
-    return render_to_response('perfil-estudiante.html', { 'usuario': usuario }, context_instance = RequestContext(request))
-
-@login_required(login_url="/login-estudiante")
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect("/")
 
+@login_required(login_url="/login-estudiante")
+def inicio_estudiante(request):
+    usuario = Estudiante.objects.get(id=request.user.id)
+    return render(request, 'paginaEstudiante/inicio-estudiante.html', { 'usuario': usuario })
 
+@login_required(login_url="/login-estudiante")
+def perfil_estudiante(request):
+    usuario = Estudiante.objects.get(id=request.user.id)
+    return render(request, 'paginaEstudiante/perfil-estudiante.html', { 'usuario': usuario })
+
+@login_required(login_url="/login-estudiante")
+def modificar_perfil_est(request):
+    error = False
+    if request.method == 'POST':
+        usu = User.objects.get( id = request.user.id )
+        usu.email = request.POST['email']
+        usu.save()
+
+        miusuario = Estudiante()
+        miusuario.id = usu
+        miusuario.documento = request.POST['documento']
+        miusuario.tel = request.POST['tel']
+        miusuario.direccion = request.POST['direccion']
+        miusuario.fecha_nacimiento = request.POST['nacimiento']
+        miusuario.save()
+
+        if request.user.groups.filter(id=STATIC_ROLS['Estudiantes']).exists():
+            usuario_int = Estudiante.objects.get(id__id=request.user.id)
+        else:
+            usuario_int = None
+
+    return render(request, 'paginaEstudiante/perfil-estudiante.html',{ "usuario":  miusuario } )
+
+@login_required(login_url="/login-estudiante")
+def modificar_contra_estudiante(request):
+    error = False
+    usu1 = None
+    if request.method == 'POST':
+        usu1 = User.objects.get(id=request.user.id)
+        usu1.password = make_password(request.POST['password1'])
+        usu1.save()
+
+    return render(request, 'paginaEstudiante/modificar-contra-est.html', { 'usuario': usu1 } )
 
 @login_required(login_url="/login-estudiante")
 def modulo1(request):
-    return render_to_response('../templates/modulo1.html')
+    return render(request, 'contenidos/unidad1/modulo1.html')
 
 @login_required(login_url="/login-estudiante")
 def modulo1_unidad1(request):
-    return render_to_response('../templates/modulo1-unidad1.html')
+    return render(request, 'contenidos/unidad1/modulo1-unidad1.html')
 
 @login_required(login_url="/login-estudiante")
 def unidad1_tm1(request):
-    return render_to_response('../templates/modulo1-unidad1 -tm1.html')
+    return render(request, 'contenidos/unidad1/modulo1-unidad1 -tm1.html')
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson1_tm2(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson1-tm2.html')
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson1-tm2.html')
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson1_tm3(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson1-tm3.html')
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson1-tm3.html')
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson1_tm4(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson1-tm4.html')
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson1-tm4.html')
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson2_tm1(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson2-tm1.html')
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson2-tm1.html')
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson2_tm2(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson2-tm2.html')
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson2-tm2.html')
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson2_tm3(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson2-tm3.html')
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson2-tm3.html')
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson2_tm4(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson2-tm4.html')
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson2-tm4.html')
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson3_tm1(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson3-tm1.html') 
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson3-tm1.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson3_tm2(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson3-tm2.html') 
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson3-tm2.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson3_tm3(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson3-tm3.html') 
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson3-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson3_tm4(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson3-tm4.html')  
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson3-tm4.html')  
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson4_tm1(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson4-tm1.html')  
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson4-tm1.html')  
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson4_tm2(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson4-tm2.html')  
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson4-tm2.html')  
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson4_tm3(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson4-tm3.html') 
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson4-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson4_tm4(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson4-tm4.html')   
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson4-tm4.html')   
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson5_tm1(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson5-tm1.html')    
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson5-tm1.html')    
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson5_tm2(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson5-tm2.html')    
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson5-tm2.html')    
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson5_tm3(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson5-tm3.html')   
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson5-tm3.html')   
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson5_tm4(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson5-tm4.html') 
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson5-tm4.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson6_tm1(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson6-tm1.html') 
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson6-tm1.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson6_tm2(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson6-tm2.html') 
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson6-tm2.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson6_tm3(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson6-tm3.html') 
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson6-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson6_tm4(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson6-tm4.html')  
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson6-tm4.html')  
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson7_tm1(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson7-tm1.html') 
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson7-tm1.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson7_tm2(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson7-tm2.html') 
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson7-tm2.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson7_tm3(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson7-tm3.html') 
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson7-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson7_tm4(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson7-tm4.html')  
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson7-tm4.html')  
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson8_tm1(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson8-tm1.html') 
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson8-tm1.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson8_tm2(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson8-tm2.html') 
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson8-tm2.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson8_tm3(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson8-tm3.html') 
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson8-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson8_tm4(request):
-    return render_to_response('../templates/modulo1-unidad1-lesson8-tm4.html')                  
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson8-tm4.html')                  
 
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def inicio_profesor(request):
     usuario = Profesor.objects.get(id=request.user.id)
-    return render_to_response('../templates/inicio-profe.html', { 'usuario': usuario }, context_instance = RequestContext(request))
+    return render(request, 'paginaDocente/inicio-profe.html', { 'usuario': usuario } )
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def primer_modulo(request):
     estudiantes = Estudiante.objects.filter()
-    return render_to_response('../templates/primer-modulo.html', {'estudiantes': estudiantes})
+    return render(request, 'paginaDocente/primer-modulo.html', {'estudiantes': estudiantes})
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def primer_modulo_estudiantes(request):
     estudiantes = Estudiante.objects.filter()
-    return render_to_response('../templates/primer-modulo-estudiantes.html', {'estudiantes': estudiantes},
-                                  context_instance=RequestContext(request))
+    return render(request, 'paginaDocente/primer-modulo-estudiantes.html', {'estudiantes': estudiantes} )
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def primer_modulo_notas(request):
-    return render_to_response('../templates/primer-modulo-notas.html')
+    return render(request, 'paginaDocente/primer-modulo-notas.html')
 
-from django.template.loader import get_template
-from django.template import Context
-from django.contrib.auth.hashers import make_password
-from django.db import transaction
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
-@transaction.atomic
 def registro_estudiante(request):
 
     error = False
@@ -283,15 +313,13 @@ def registro_estudiante(request):
             # msg.content_subtype = "html"
             # msg.send()
 
-            return render_to_response('../templates/registro-estudiante.html', {'success': True}, context_instance=RequestContext(request))
+            return render(request, 'paginaDocente/registro-estudiante.html', {'success': True} )
         else:
-            return render_to_response('../templates/registro-estudiante.html', {'error': validators.getMessage() } , context_instance = RequestContext(request))
+            return render(request, 'paginaDocente/registro-estudiante.html', {'error': validators.getMessage() } )
         # Agregar el usuario a la base de datos
-    return render_to_response('../templates/registro-estudiante.html', context_instance = RequestContext(request))
+    return render(request, 'paginaDocente/registro-estudiante.html' )
 
-from django.db.models import Q
 def buscar_estudiante(request):
-
     estudiante = None
     buscar = None
     if 'buscar' in request.GET.keys():
@@ -318,10 +346,9 @@ def buscar_estudiante1(request):
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def perfil_profesor(request):
     usuario = Profesor.objects.get(id=request.user.id)
-    return render_to_response('../templates/perfil-profe.html', { 'usuario': usuario }, context_instance = RequestContext(request))
+    return render(request, 'paginaDocente/perfil-profe.html', { 'usuario': usuario })
 
 def modificar_perfil(request):
-
     error = False
     if request.method == 'POST':
         usu = User.objects.get( id = request.user.id )
@@ -335,35 +362,11 @@ def modificar_perfil(request):
         miusuario.especialidad = request.POST['especialidad']
         miusuario.save()
 
-    return render_to_response('../templates/perfil-profe.html',{ "usuario": usu } ,  context_instance = RequestContext(request))
-
-def modificar_perfil_est(request):
-
-    error = False
-    if request.method == 'POST':
-        usu = User.objects.get( id = request.user.id )
-        usu.email = request.POST['email']
-        usu.save()
-
-        miusuario = Estudiante()
-        miusuario.id = usu
-        miusuario.documento = request.POST['documento']
-        miusuario.tel = request.POST['tel']
-        miusuario.direccion = request.POST['direccion']
-        miusuario.fecha_nacimiento = request.POST['nacimiento']
-        miusuario.save()
-
-        if request.user.groups.filter(id=STATIC_ROLS['Estudiantes']).exists():
-            usuario_int = Estudiante.objects.get(id__id=request.user.id)
-        else:
-            usuario_int = None
-
-    return render_to_response('../templates/perfil-estudiante.html',{ "usuario":  miusuario } ,  context_instance = RequestContext(request))
+    return render(request, 'paginaDocente/perfil-profe.html', { "usuario": usu } )
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def modificar_contra_profesor(request):
-
     error = False
     usu1 = None
     if request.method == 'POST':
@@ -371,25 +374,13 @@ def modificar_contra_profesor(request):
         usu1.password = make_password(request.POST['password1'])
         usu1.save()
 
-    return render_to_response('../templates/modificar_contraseña.html', { 'usuario': usu1 }, context_instance = RequestContext(request))
-
-@login_required(login_url="/login-estudiante")
-def modificar_contra_estudiante(request):
-
-    error = False
-    usu1 = None
-    if request.method == 'POST':
-        usu1 = User.objects.get(id=request.user.id)
-        usu1.password = make_password(request.POST['password1'])
-        usu1.save()
-
-    return render_to_response('../templates/modificar-contra-est.html', { 'usuario': usu1 }, context_instance = RequestContext(request))
+    return render(request, 'paginaDocente/modificar_contraseña.html', { 'usuario': usu1 } )
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def eliminar_estudiante(request):
 
-    return render_to_response('../templates/eliminar-estudiante.html', context_instance=RequestContext(request))
+    return render(request, 'paginaDocente/eliminar-estudiante.html' )
 
 import simplejson
 @login_required(login_url="/login-profesor")
@@ -405,7 +396,6 @@ def elimina_est(request, pk):
 import xhtml2pdf.pisa as pisa
 from StringIO import StringIO
 from django.template.loader import render_to_string
-from english.settings import STATICFILES_DIRS
 def pdf(f):
     def funcion(*args, **kwargs):
         html = f(*args, **kwargs)
@@ -418,12 +408,3 @@ def pdf(f):
 def reporte_estudiante(request):
     estudiantes = Estudiante.objects.filter()
     return render_to_string("reporte_estudiantes.html", { 'estudiantes': estudiantes, 'path': STATICFILES_DIRS[0] }) #obtenemos la plantilla
-
-import xhtml2pdf.pisa as pisa
-from StringIO import StringIO
-from django.template.loader import render_to_string
-#def reporte(request):
-#    result = StringIO() #creamos una instancia del un objeto StringIO para
-#    html = render_to_string("reporte_estudiantes.html", {"user": 'Docente'}) #obtenemos la plantilla
-#    pdf = pisa.pisaDocument( html , result) # convertimos en pdf la template
-#    return HttpResponse(result.getvalue(), content_type='application/pdf')

@@ -84,7 +84,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#564a49', end
 }
 
 .navbar-inverse .navbar-nav > .active > a {
-	background: #ff7878
+	background: #ef9d6c
 }
 
 .navbar-inverse .navbar-brand {
@@ -272,7 +272,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#564a49', end
 
 /* Red Wrap */
 #r {
-	background: #ff7878;
+	background: #ef9d6c;
 	padding-top: 35px;
 }
 
@@ -288,7 +288,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#564a49', end
 /* Blue Wrap */
 
 #blue {
-	background: #3498db;
+	background: #395d8a;
 	padding-top: 35px;
 	padding-bottom: 35px;
 }
@@ -313,7 +313,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#564a49', end
 }
 
 .w i {
-	color: #ff7878;
+	color: #ef9d6c;
 	font-size: 30px;
 }
 
@@ -343,13 +343,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#564a49', end
 
 /*Boton inicio*/
 .btn-primary {
-    color: #fff;
-    background-color: #FF7F50;
+    color: #ffffff;
+    background-color: #ef9d6c;
     border-color: #FD723F;
 }
 
 .btn-primary:hover {
-    background-color: #FD723F;
+	color: #ffffff;
+    background-color: #de8855;
+    border-color: #f39157;
 }
 
 /**/

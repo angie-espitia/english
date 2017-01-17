@@ -1,7 +1,6 @@
 Django==1.9.5
 django-tinymce==2.3.0
 html5lib==0.9999999
-MySQL-python==1.2.4b4
 Pillow==3.2.0
 pisa==3.0.33
 PyPDF2==1.26.0
@@ -14,3 +13,4 @@ static==1.0.2
 wsgiref==0.1.2
 gunicorn==18.0
 psycopg2==2.5.2
+MySQL-python==1.2.4b4

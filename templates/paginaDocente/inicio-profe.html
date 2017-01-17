@@ -1,0 +1,119 @@
+{% extends 'plantilla-prof.html' %}
+{% block title %} Inicio {% endblock %}
+
+{%  block content %}
+<div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Bienvenido
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-dashboard"></i> Inicio
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-8 col-lg-8">
+                    <div class="panel panel-info">
+                      <div class="panel-heading">Panel de Administración</div>
+                      <div class="panel-body">
+                        <p>Bienvenido profesor <strong>{{ usuario.id.first_name }} {{ usuario.id.last_name }}</strong>, Este es el  panel de administración de <strong>Easy English</strong>, aquí podrá registrar nuevos estudiantes, ingresar notas parciales y generar reportes!</p>
+                          <p></p>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-users fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">2</div>
+                                        <div>Grupos</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="{% url 'primer-modulo-estudiantes' %}">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Ver</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-pencil fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">Registro</div>
+                                        <div>Notas Parciales!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="{% url 'primer-modulo-notas' %}">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Ver</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-sign-in fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">Ingresar</div>
+                                        <div>a los Módulos!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="{% url 'modulo1' %}">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Entrar</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    </div>
+
+                    <div class="col-md-4 col-lg-4">
+                        <div class="centered"><img src="../static/img/Escudo.png" class="img-responsive" alt=""/></div></div>
+                    </div>
+
+                </div>
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+{% endblock %}
