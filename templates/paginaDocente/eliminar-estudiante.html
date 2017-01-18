@@ -47,7 +47,7 @@
     <div class="alert alert-danger"> {{ error }} </div>
 
     {% endif %}
-    <form method="post" action="{% url 'eliminar-estudiante' %}" id="tabla_estudiante">
+    <form method="post" onclick="deletes({{estudiante.id.id}})" id="tabla_estudiante">
       {% csrf_token %}
       <div class="container-fluid">
         <div class="row">
@@ -55,7 +55,7 @@
           <div class="col-md-12"></div>
 
           <div class="col-md-12">
-
+{{estudiante.id.id}}
             <div class="col-ms-12 form-group">
               <div class ="col-md-1">
                 <label for="exampleInputnomre"><h4>Nombres:</h4></label>
@@ -93,13 +93,12 @@
           </div>
         </div>
       </div>
+          <div class="col-md-5">
+            <a href="#" role="button" class="btn btn-danger delete" id="pk"><i class="fa fa-fw fa-trash"></i>Eliminar</a>
+          </div>
     </form>
 
-    <div class="col-md-5">
-        <tr id="tr{{estudiante.id.id}}">
-        <td><a href="#" role="button" class="btn btn-danger delete" id="pk"><i class="fa fa-fw fa-trash"></i>Eliminar</a></td>
-        </tr>
-    </div>
+
     
   </div>
 
@@ -114,6 +113,24 @@
 
 {% endblock %}
 
-{% block scripts %}
+{% block javascript %}
+<script type="text/javascript">
+function deletes(alumno){
+  debugger
+  var pk = alumno;
+  console.log(pk);
+  
+    $.ajax({
+            url: 'eliminar-estudiante/'+pk+'/remove',
+            data: $(this).serialize(),
+            type: $(this).attr('method'),
 
+            success: function() {
+              alert("porfin elimino!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! o eso creo")
+
+          }
+
+ })
+};
+</script>
 {% endblock %}

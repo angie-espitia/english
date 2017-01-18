@@ -17,6 +17,9 @@ urlpatterns = [
     url(r'^modulo1$', modulo1, name='modulo1' ), #/modulo1
 
     url(r'^unidad1$', modulo1_unidad1, name='modulo1-unidad1' ), #/unidad1
+    url(r'^unidad2$', modulo1_unidad2, name='modulo1-unidad2' ), #/unidad2
+    url(r'^unidad3$', modulo1_unidad3, name='modulo1-unidad3' ), #/unidad3
+
     url(r'^tema1$', unidad1_tm1, name='modulo1-unidad1-tm1' ), #/tema2
     url(r'^tema2$', unidad1_lesson1_tm2, name='modulo1-unidad1-lesson1-tm2'),  # /lesson1-tema1
     url(r'^tema3$', unidad1_lesson1_tm3, name='modulo1-unidad1-lesson1-tm3'),  # /lesson1-tema3
