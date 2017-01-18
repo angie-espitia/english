@@ -1,0 +1,77 @@
+{% extends 'plantilla2.html' %}
+{% block title %} Unidad 1 {% endblock %}
+
+{%  block content %}
+
+    <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Modulo 1</li>
+        <li class="active">Unidad 3</li>
+              
+</ol>
+
+    {% include 'plantilla3.html' %}
+
+  <div class="col-sm-9">
+      <div id="bgf">
+      <h2>Module Your World: Unit 3 </h2>
+              <h3>Overview</h3>
+          </div>
+      <br />
+      <br />
+    <div class="col-sm-12">
+            <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Lesson</th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td><b><a href="{% url 'modulo1-unidad1-lesson4-tm2' %}">Lesson 7</a></b> <p></p></td>
+
+          <td><p>Favourite music / sport / school subjects</p>
+          <p>Classroom objects</p></td>
+
+        <td><p>a / an</p>
+        <p>this / that / these / those</p></td>
+
+          <td><p><b>Speaking:</b> describing your family</p>
+              <p><b>Writing:</b> asking and answering question</p></td>
+
+      </tr>
+      <tr>
+        <td><b><a href="{% url 'modulo1-unidad1-lesson5-tm2' %}">Lesson 8</a></b> <p></p></td>
+          <td><p> Personal descriptions </p></td>
+
+        <td><p>Wh- question words </p></td>
+
+        <td><p><b>Speaking:</b> answering interview questions </p>
+              <p><b>Writing:</b> a text describing people</p></td>
+      </tr>
+
+        <tr>
+            <td><b><a href="{% url 'modulo1-unidad1-lesson6-tm2' %}">Let’s work together: A family collage – you and your family’s favourite things </a></b> <p></p></td>
+              
+
+          </tr>
+
+        <tr>
+            <td><b><a href="{% url 'modulo1-unidad1-lesson6-tm2' %}">Self-assessment </a></b> <p></p></td>
+              
+
+          </tr>  
+    </tbody>
+  </table>
+        </div>
+      
+</div>
+
+</div>
+          </div>
+</div>   
+
+{% endblock %}

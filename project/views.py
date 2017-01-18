@@ -125,6 +125,14 @@ def modulo1_unidad1(request):
     return render(request, 'contenidos/unidad1/modulo1-unidad1.html')
 
 @login_required(login_url="/login-estudiante")
+def modulo1_unidad2(request):
+    return render(request, 'contenidos/unidad1/modulo1-unidad2.html')
+
+@login_required(login_url="/login-estudiante")
+def modulo1_unidad3(request):
+    return render(request, 'contenidos/unidad1/modulo1-unidad3.html')
+
+@login_required(login_url="/login-estudiante")
 def unidad1_tm1(request):
     return render(request, 'contenidos/unidad1/modulo1-unidad1 -tm1.html')
 
@@ -327,8 +335,7 @@ def buscar_estudiante(request):
         qset = (Q(documento__icontains=buscar) )
         estudiante = Estudiante.objects.filter(qset).first()
 
-    return render_to_response('registro-estudiante.html', {'estudiante': estudiante, 'filtro': buscar},
-                              context_instance=RequestContext(request))
+    return render(request, 'paginaDocente/registro-estudiante.html', {'estudiante': estudiante, 'filtro': buscar} )
 
 def buscar_estudiante1(request):
 
@@ -339,8 +346,7 @@ def buscar_estudiante1(request):
         qset = (Q(documento__icontains=buscar) )
         estudiante = Estudiante.objects.filter(qset).first()
 
-    return render_to_response('eliminar-estudiante.html', {'estudiante': estudiante, 'filtro': buscar},
-                              context_instance=RequestContext(request))
+    return render(request, 'paginaDocente/eliminar-estudiante.html', {'estudiante': estudiante, 'filtro': buscar} )
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
