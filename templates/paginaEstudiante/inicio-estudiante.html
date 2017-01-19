@@ -12,16 +12,16 @@
       <!-- Main component for a primary marketing message or call to action -->
           <div class="col-md-8 col-lg-8">
         <div class="panel panel-info">
-  <div class="panel-heading">Modulo 1</div>
+  <div class="panel-heading"><h3 class="panel-title">Welcome</h3></div>
   <div class="panel-body">
-    <p>Bienvenido al primer modulo de <strong>Easy English </strong>, aquí encontrará todos los temas y actividades para repasar del libro <strong>English Please!</strong></p>
+    <p>Bienvenido a <strong>Easy English </strong>, aquí encontrará todos los temas y actividades para repasar del libro <strong>English Please!</strong></p>
       <p></p>
   </div>
 </div>
  
         <div class="panel panel-info">
           <div class="panel-heading">
-            <h3 class="panel-title">Actividades</h3>
+            <h3 class="panel-title">Activity</h3>
           </div>
           <div class="panel-body">
               <p>In This Page You Find:</p>
@@ -38,34 +38,34 @@
         <form class="navbar-form" action="{% url 'inicio-estudiante' %}" method="post" >
           <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> Datos Personales
+                           <h4> <i class="fa fa-user-circle-o fa-fw" style="font-size: 25px;"></i> Datos Personales</h4>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="list-group">
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-comment fa-fw"></i> Nombre
+                                    <i class="fa fa-chevron-circle-right fa-fw"></i> Nombre
                                     <span class="pull-right text-muted small">{{ usuario.id.first_name }}
                                     </span>
                                 </a>
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-twitter fa-fw"></i> Apellido
+                                    <i class="fa fa-chevron-circle-right fa-fw"></i> Apellido
                                     <span class="pull-right text-muted small">{{ usuario.id.last_name }}
                                     </span>
                                 </a>
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-envelope fa-fw"></i> Correo
+                                    <i class="fa fa-chevron-circle-right fa-fw"></i> Correo
                                     <span class="pull-right text-muted small">{{ usuario.id.email }}
                                     </span>
                                 </a>
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-tasks fa-fw"></i> Documento
+                                    <i class="fa fa-chevron-circle-right fa-fw"></i> Documento
                                     <span class="pull-right text-muted small">{{ usuario.documento }}
                                     </span>
                                 </a>
                                
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-money fa-fw"></i> Username
+                                    <i class="fa fa-chevron-circle-right fa-fw"></i> Username
                                     <span class="pull-right text-muted small">{{ usuario.id.username }}
                                     </span>
                                 </a>

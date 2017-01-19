@@ -14,7 +14,7 @@ body {
 }
 
 /* Titles */
-h1, h2, h3, h4, h5, h6 {
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
     font-family:'Anton', sans-serif;
     font-weight:400;
     line-height:1.1em;
@@ -22,9 +22,6 @@ h1, h2, h3, h4, h5, h6 {
     color: #555;
 }
 
-label {
-    font-family:'Anton', sans-serif;
-}
 
 .hw {
 	background: url(../img/header-mod.jpg) no-repeat center top;
@@ -452,3 +449,4 @@ audio::-webkit-media-controls-enclosure {
 audio::-webkit-media-controls-panel {
     width: calc(100% + 30px); /* Adjust as needed */
 }
+

@@ -1183,7 +1183,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: inherit;
+/*  font-family: inherit;*/
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -1599,7 +1599,7 @@ pre code {
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    width: 80%;
   }
 }
 .container-fluid {

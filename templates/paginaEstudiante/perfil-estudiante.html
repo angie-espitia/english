@@ -1,12 +1,12 @@
 {% extends 'plantilla2.html' %}
-{% block title %} Configuracion {% endblock %}
+{% block title %} Perfil {{ usuario.id.first_name }} {{ usuario.id.last_name }} {% endblock %}
 
 {%  block content %}
 
     <div class="container initial">
     <ol class="breadcrumb">
-  <li class="active"><a href="{% url 'inicio-estudiante' %}">Configuración</a></li>
-        <li> {{ usuario.first_name }} {{ usuario.last_name }} </li>
+  <li class="active"><a href="{% url 'inicio-estudiante' %}">Perfil Estudiante</a></li>
+        <li> {{ usuario.id.first_name }} {{ usuario.id.last_name }} </li>
 </ol>
       <!-- Main component for a primary marketing message or call to action -->
       <div id="wh">
