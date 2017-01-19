@@ -1,0 +1,99 @@
+{% extends 'plantilla2.html' %}
+{% block title %} Modulo 1 {% endblock %}
+
+{%  block content %}
+    
+    <div class="container initial">
+    <ol class="breadcrumb">
+  <li class="active">Multimedia</li>
+             
+</ol>
+    
+    
+      <!-- Main component for a primary marketing message or call to action -->
+        
+    <div class="hw2">
+		<div class="container">
+			<div class="row centered">
+				<div class="col-lg-8 col-lg-offset-2">
+				<h1>MULTIMEDIA</h1>
+				<h2>Your Wold!</h2>
+				</div>
+			</div><!-- row -->
+		</div><!-- container -->
+	</div><!-- headerwrap -->
+        
+       <div id="wh">
+          
+        <div class="row">
+
+      <div class="col-md-12 col-lg-12 text-center"> 
+
+      <h3>Ahorcado</h3>
+
+          <div class="terminos">
+                <div id="dibujoahorcado">
+
+                   <canvas id="ahorcado" width="320" height="250">
+
+                   El Ahorcado sólo funciona en navegadores que soporten Canvas. Actualízate a Firefox o Chrome, por poner dos posibilidades.
+
+                   </canvas>
+
+                </div><br><br>
+
+                <label for="a">Palabra: </label>
+                <input type="text" id="palabra" name="palabra" class="caja" placeholder="Valor a Adivinar" readonly="true"><br><br>
+                <input type="button" value="A" id="A" onclick="principal(this.value)">
+                <input type="button" value="B" onclick="principal(this.value)" id="B"> 
+                <input type="button" value="C" onclick="principal(this.value)" id="C"> 
+                <input type="button" value="D" onclick="principal(this.value)" id="D"> 
+                <input type="button" value="E" onclick="principal(this.value)" id="E"> 
+                <input type="button" value="F" onclick="principal(this.value)" id="F"> 
+                <input type="button" value="G" onclick="principal(this.value)" id="G"> 
+                <input type="button" value="H" onclick="principal(this.value)" id="H"> 
+                <input type="button" value="I" onclick="principal(this.value)" id="I">
+                <input type="button" value="J" onclick="principal(this.value)" id="J"> 
+                <br><br>
+                <input type="button" value="K" onclick="principal(this.value)" id="K"> 
+                <input type="button" value="L" onclick="principal(this.value)" id="L"> 
+                <input type="button" value="M" onclick="principal(this.value)" id="M"> 
+                <input type="button" value="N" onclick="principal(this.value)" id="N"> 
+                <input type="button" value="Ñ" onclick="principal(this.value)" id="Ñ"> 
+                <input type="button" value="O" onclick="principal(this.value)" id="O"> 
+                <input type="button" value="P" onclick="principal(this.value)" id="P"> 
+                <input type="button" value="Q" onclick="principal(this.value)" id="Q"> 
+                <input type="button" value="R" onclick="principal(this.value)" id="R">
+                <br><br>
+                <input type="button" value="S" onclick="principal(this.value)" id="S"> 
+                <input type="button" value="T" onclick="principal(this.value)" id="T"> 
+                <input type="button" value="U" onclick="principal(this.value)" id="U"> 
+                <input type="button" value="V" onclick="principal(this.value)" id="V"> 
+                <input type="button" value="W" onclick="principal(this.value)" id="W"> 
+                <input type="button" value="X" onclick="principal(this.value)" id="X"> 
+                <input type="button" value="Y" onclick="principal(this.value)" id="Y"> 
+                <input type="button" value="Z" onclick="principal(this.value)" id="Z">
+                <br><br>
+                <input type="reset" class="btncaja x" onclick="nuevo();" value="Juego Nuevo">
+                <br><br>
+                <img id="perdistes" hidden="true" src="../../static/img/perdiste.png" alt="">
+                <img id="ganastes" hidden="true" src="../../static/img/ganaste.png" alt="">
+
+              </div> 
+
+              
+            </div>
+          </div>
+
+</div>
+      </div>
+
+    </div> <!-- /container -->    
+    
+    
+	
+		</div><!-- container -->
+	</div><!--rwrap-->
+
+{% endblock %}
+

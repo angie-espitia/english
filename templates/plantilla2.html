@@ -8,7 +8,9 @@
     <title>{% block title %} {% endblock %}</title>
 
     <link href="../static/css/style-modulo.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/css/style-ahorcado.css">
     <link href="../static/vendors/bootstrap-3.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    
 
 
 </head>
@@ -52,7 +54,7 @@
                 </li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Temario</li>
-                <li><a href="#">Multimedia</a></li>
+                <li><a href="{% url 'multimedia' %}">Multimedia</a></li>
                 <li><a href="#">Actividaddes</a></li>
               </ul>
             </li>
@@ -60,7 +62,7 @@
 
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="{% url 'perfil-estudiante' %}#">Configuración</a></li>
+            <li><a href="{% url 'perfil-estudiante' %}#">Perfil</a></li>
             <li class="active"><a href="{% url 'logout' %}">Salir</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -83,6 +85,6 @@
     <script src="../static/vendors/bootstrap-3.3.6/js/modal.js"></script>
     <script src="../static/vendors/bootstrap-3.3.6/js/transition.js"></script>
     <script src="../static/vendors/bootstrap-3.3.6/dist/js/bootstrap.min.js"></script>
-    
+    <script type="text/javascript" src="../static/javascript/script.js"></script>
 </body>
 </html>

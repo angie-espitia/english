@@ -1,0 +1,56 @@
+	.caja{
+		border-bottom-right-radius: 5px 10px;
+		border-bottom-left-radius: 5px 10px;
+		border-top-right-radius: 5px 10px;
+		border-top-left-radius: 5px 10px;
+		text-align: center;
+	}
+
+	.btncaja{
+		border-bottom-right-radius: 5px 10px;
+		border-bottom-left-radius: 5px 10px;
+		border-top-right-radius: 5px 10px;
+		border-top-left-radius: 5px 10px;
+		background-color: #1F6FFA;
+		color: white;
+		font-family:'Anton', sans-serif;
+		font-size: 15px;
+	}
+
+	.x{
+		background-color: #d00101;
+	}
+
+	.bench{
+		background-color: white;
+		width: 100%;
+		border-top-width: 7em;
+		border-top-color: black;
+		display: block;
+		padding-top: 5%;
+		padding-bottom: 5%;
+		border-bottom-right-radius: 70px 70px;
+		border-bottom-left-radius: 70px 70px;
+		border-top-right-radius: 70px 70px;
+		border-top-left-radius: 70px 70px;
+		border-color: black;
+		border-width: 500me;
+		border-top-width: 
+	}
+
+	.primer{
+		float: left;
+	}
+
+	.segundo{
+		float: left;
+
+		padding-left: 10%;
+	}
+
+	.tercero{
+		float: left;
+
+		padding-left: 10%;
+	}
+

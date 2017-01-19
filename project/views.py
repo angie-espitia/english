@@ -117,6 +117,11 @@ def modificar_contra_estudiante(request):
     return render(request, 'paginaEstudiante/modificar-contra-est.html', { 'usuario': usu1 } )
 
 @login_required(login_url="/login-estudiante")
+def multimedia(request):
+    return render(request, 'contenidos/multimedia.html')
+
+
+@login_required(login_url="/login-estudiante")
 def modulo1(request):
     return render(request, 'contenidos/unidad1/modulo1.html')
 

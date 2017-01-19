@@ -1,5 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,300,700,900);
+@import url(https://fonts.googleapis.com/css?family=Anton);
 
 body {
     background: url(../img/bgm.png) repeat;
@@ -14,9 +15,15 @@ body {
 
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Raleway";
-    font-weight: 300;
+    font-family:'Anton', sans-serif;
+    font-weight:400;
+    line-height:1.1em;
+    margin-bottom: 20px;
     color: #555;
+}
+
+label {
+    font-family:'Anton', sans-serif;
 }
 
 .hw {
@@ -39,20 +46,56 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hw h1 {
-	margin-top: 50px;
-	color:#E4E1E1;
-	font-size: 70px;
-	font-weight: 300;
-	letter-spacing: 3px;
+    margin-top: 50px;
+    color:#E4E1E1;
+    font-size: 70px;
+    font-weight: 300;
+    letter-spacing: 3px;
 }
 
 .hw h2 {
-	color: #CECECE;
-	font-size: 40px;
-	font-weight: 700;
-	letter-spacing: 2px;
-	text-transform: uppercase;
+    color: #CECECE;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
+
+.hw2 {
+    background: url(../img/header-mult.jpg) no-repeat center top;
+    margin-top: 10px;
+    padding-top:20px;
+    text-align: center;
+    background-attachment: relative;
+    background-position: center center;
+    min-height: 300px;
+    width: 100%;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.hw2 h1 {
+    margin-top: 50px;
+    color:#E4E1E1;
+    font-size: 70px;
+    font-weight: 300;
+    letter-spacing: 3px;
+}
+
+.hw2 h2 {
+    color: #CECECE;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
 
 .table thead{
     background-color: #9EBAD7;
