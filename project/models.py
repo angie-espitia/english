@@ -74,3 +74,16 @@ class Calificacion(models.Model):
     #class Meta:
     #    db_table = 'calificacion'
     #    managed = False
+
+class Actividades(models.Model):
+    nombre = models.CharField(max_length= 120)
+
+class Preguntas(models.Model):
+    descripcion = models.TextField()
+    actividad = models.ForeignKey(Actividades)
+    indice = models.IntegerField( null=True )
+
+class Respuesta(models.Model):
+    descripcion = models.TextField()
+    pregunta = models.ForeignKey(Preguntas)
+    indice = models.IntegerField( null=True )

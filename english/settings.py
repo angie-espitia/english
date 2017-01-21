@@ -71,26 +71,26 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 
-        #'ENGINE': 'django.db.backends.mysql',
-        #'NAME': 'proyecto',
-        #'USER': 'root',
-        #'PASSWORD': '',
-        #'HOST': '127.0.0.1',
-        #'PORT': '3306',
-
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         'NAME': 'd8kd7b64bav3j',
-         'USER': 'yfnabdnosvzsuz',
-         'PASSWORD': 'vvD1F1F4W_UrqITlSwyTGIpjuW',
-         'HOST': 'ec2-54-225-246-33.compute-1.amazonaws.com',
-         'PORT': '5432',
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'english',
+        # 'USER': 'grupodis',
+        # 'PASSWORD': 'MEMOmayo1957@',
+        # 'HOST': 'localhost',
+        # 'PORT': '3306',
 
         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        #  'NAME': 'english',
-        #  'USER': 'postgres',
-        #  'PASSWORD': '0000',
-        #  'HOST': '127.0.0.1',
+        #  'NAME': 'd8kd7b64bav3j',
+        #  'USER': 'yfnabdnosvzsuz',
+        #  'PASSWORD': 'vvD1F1F4W_UrqITlSwyTGIpjuW',
+        #  'HOST': 'ec2-54-225-246-33.compute-1.amazonaws.com',
         #  'PORT': '5432',
+
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+         'NAME': 'english',
+         'USER': 'postgres',
+         'PASSWORD': '0000',
+         'HOST': '127.0.0.1',
+         'PORT': '5432',
     }
 }
 

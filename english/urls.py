@@ -75,6 +75,8 @@ urlpatterns = [
     url(r'^eliminar-estudiante$', eliminar_estudiante, name='eliminar-estudiante'),  # /eliminar-estudiante
     url(r'^eliminar-estudiante/(?P<pk>\d+)/remove$', elimina_est, name='elimina-est'),  # /eliminar-estudiante
     url(r'^modificar-contra-profesor$', modificar_contra_profesor, name='modificar-contra-profesor'),  # /modificar-contra
+    url(r'^lista-grupos$', lista_grupos, name='lista-grupos'),
+    url(r'^agregar-grupos$', agregar_grupos, name='agregar-grupos'),
 
     url('^buscar_estudiante$', buscar_estudiante, name='buscar_estudiante'),
     url('^buscar_estudiante1$', buscar_estudiante1, name='buscar_estudiante1'),
