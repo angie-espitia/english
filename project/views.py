@@ -8,7 +8,7 @@ from django.template import RequestContext
 from django.contrib.auth.models import User, Group
 from .validator import FormRegistroValidator, FormLoginValidator
 from english.settings import STATIC_ROLS, EMAIL_HOST_USER, STATICFILES_DIRS
-from .models import Estudiante, Profesor
+from .models import Estudiante, Profesor, Preguntas, Respuesta
 from django.template.loader import get_template
 from django.template import Context
 from django.contrib.auth.hashers import make_password
@@ -171,11 +171,18 @@ def unidad1_lesson2_tm4(request):
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson3_tm1(request):
-    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson3-tm1.html') 
+    
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson3-tm1.html' ) 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson3_tm2(request):
-    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson3-tm2.html') 
+    preguntas = Preguntas.objects.filter(actividad_id=1)
+    preguntas2 = Preguntas.objects.filter(actividad_id=2)
+    preguntas3 = Preguntas.objects.filter(actividad_id=3)
+    respuesta = Respuesta.objects.filter(pregunta__in = preguntas)
+    respuesta2 = Respuesta.objects.filter(pregunta__in = preguntas2)
+    respuesta3 = Respuesta.objects.filter(pregunta__in = preguntas3)
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson3-tm2.html', { 'respuesta':respuesta, 'respuesta2':respuesta2, 'respuesta3':respuesta3 }) 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson3_tm3(request):
@@ -403,6 +410,15 @@ def elimina_est(request, pk):
     estudiante.delete()
     return HttpResponseRedirect('/eliminar-estudiante')
 
+@login_required(login_url="/login-profesor")
+@user_passes_test(restringir_estudiante, login_url='/login-profesor')
+def lista_grupos(request):
+    return render(request, 'paginaDocente/grupos.html' )
+
+@login_required(login_url="/login-profesor")
+@user_passes_test(restringir_estudiante, login_url='/login-profesor')
+def agregar_grupos(request):
+    return render(request, 'paginaDocente/agregar-grupos.html' )
 
 import xhtml2pdf.pisa as pisa
 from StringIO import StringIO

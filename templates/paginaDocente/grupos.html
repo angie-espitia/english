@@ -1,0 +1,66 @@
+{% extends 'plantilla-prof.html' %}
+{% block title %} Grupos {% endblock %}
+
+{%  block content %}
+
+<div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Grupos <small> Lista</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-fw fa-table"> </i> Grupos
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <a href="#" class="btn btn-primary">Agregar Nuevo Grupo</a>
+                    </div>
+                    <br><br><br>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="col-lg-12 col-md-12 text-right" style="margin-bottom: 15px;">
+                            <a href="#" style="color: white;"> <i class="fa fa-times-circle" aria-hidden="true"></i> </a>    
+                        </div>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-users fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">Grupo A</div>
+                                        <div>Estudiantes Registrados #</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Ver</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+{% endblock %}

@@ -1,32 +1,57 @@
 {% extends 'plantilla2.html' %}
-{% block title %} Tema 1 {% endblock %}
+{% block title %} Unity 1 - Lesson 3 {% endblock %}
 
 {%  block content %}
 
    <div class="container initial">
     <ol class="breadcrumb">
-  <li>Modulo 1</li>
-        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 1</a></li>
-        <li class="active">Lesson 2</li>
+  <li>Module 1</li>
+        <li><a href="{% url 'modulo1-unidad1' %}">Unity 1</a></li>
+        <li class="active">Lesson 3</li>
      
 </ol>
     
     
         {% include 'plantilla3.html' %}
               
-  <div class="col-sm-9 col-md-9">
+   <div class="col-sm-9 col-md-9">
       <h2>FOCUS ON VOCABULARY</h2>
       <h3></h3>
         <hr>
       <p>Look at the flags. Write sentences about the country and nationality of the person/people.</p>
 
       <div class="col-sm-12 col-md-12">
-        <img src="../static/img/Lesson3Theme2.png" alt="No found">
-      </div>
+        <img src="../static/img/Lesson3Theme2.png" alt="No found" hidden="false">
+        <div class="col-sm-6 col-md-6">
+              <li><strong>Robert</strong>  
+                  <input class="form-control" type="text" name="" disabled="true" value="He is spain "></li>
+        </div>
+        <div id="pregunta-usuario">
+          {% for row in respuesta %}
+          <div class="col-sm-6 col-md-6">
+              <li>{{ row.pregunta.descripcion }}
+              <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="">
+            </li>
+          </div>
+            <br>
+          {% endfor %}
+        </div>
+<br>
+        <div id="respuestas-bd">
+            {% for row in respuesta %}
+                <div id="{{ row.id }}" hidden="false"><li>{{ row.descripcion }}</li></div>            
+            {% endfor %}
+        </div>
+<br><br><br>
 
+        <div id="resultado"><strong>Resultado:</strong></div>
+        <button class="btn btn-primary pull-right" id="boton_actividad1">Calificar</button> 
+
+      </div>
       <div class="col-sm-12 col-md-12">
         <p>In your notebook, write a chart with the nationalities in groups according to their ending.</p>
-        <img src="../static/img/Lesson3Theme2img2.png" alt="No found">
+
+         <img src="../static/img/Lesson3Theme2img2.png" alt="No found">
       </div>
 
       <div class="col-sm-12 col-md-12"></div>
@@ -35,29 +60,97 @@
       <h2>READ</h2>
       <h3></h3>
         <hr>
+        <div class="col-sm-12 col-md-12">
+            <img src="../static/img/Lesson3Theme2img3.png" alt="No found">            
+          </div>
+          <br>
+
       <p>Read the text and the sentences. Are the sentences true (T) or false (F)?</p>
 
           <div class="col-sm-6 col-md-6">
               <ul>
-                <li>a. Riko is Chinese. ______</li>
-                <li>b. Bernard is a student. ______</li>
+                <li>a. Riko is Chinese. </li><input type="text" name="">
+                <li>b. Bernard is a student.</li><input type="text" name="">
               </ul>
               <br/>
           </div>
           <div class="col-sm-6 col-md-6">
               <ul>
-                <li>c. Jude is in the music group. ______</li>
-                <li>Jude is in the music group. ______</li>
+                <li>c. Jude is in the music group. </li><input type="text" name="">
+                <li>Jude is in the music group. </li><input type="text" name="">
               </ul>
               <br/>
           </div>
 
-          <div class="col-sm-12 col-md-12">
-            <img src="../static/img/Lesson3Theme2img3.png" alt="No found">            
-          </div>
+        <div id="pregunta-usuario2">
+            {% for row in respuesta2 %}
+            <div class="col-sm-6 col-md-6">
+                <div id="{{ row.pregunta.id }}"> <li> {{ row.pregunta.descripcion }}</div> 
+                <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="">
+              </li>
+            </div>
+            {% endfor %}
+        </div>
+<br>
+        <div id="respuestas-bd2">
+            {% for row in respuesta2 %}
+                <div id="{{ row.id }}" hidden="false"><li>{{ row.descripcion }}</li></div>            
+            {% endfor %}
+        </div>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+        <div id="resultado2"><strong>Resultado:</strong></div>
+        <button class="btn btn-primary pull-right" id="boton_actividad2">Calificar</button> 
 
-        <p>Read the text again and complete the table in your notebook.</p>
-        <img src="../static/img/Lesson3Theme2img4.png" alt="No found">
+        <div class="col-lg-12 col-md-12 col-sm-12"><hr>
+            <p>Read the text again.</p>
+        </div>
+        <div id="pregunta-usuario3">
+            {% for row in respuesta3 %}
+            <div class="col-sm-4 col-md-4">
+              <li><input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="">
+              </li>
+            </div>
+            <br>
+            {% endfor %}
+        </div>
+<br><br><br>
+        <div id="respuestas-bd3">
+            {% for row in respuesta3 %}
+                <div id="{{ row.id }}" hidden="false"><li>{{ row.descripcion }}</li></div>            
+            {% endfor %}
+        </div>
+<br><br><br>
+        <div id="resultado3"><strong>Resultado:</strong></div>
+        <button class="btn btn-primary pull-right" id="boton_actividad3">Calificar</button> 
+        
+        <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Country</th>
+          <th>Favorite Colour</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td><input type="text" name=""></td>
+            <td><input type="text" name=""></td>
+            <td><input type="text" name=""></td>
+        </tr>
+        <tr>
+          <td><input type="text" name=""></td>
+          <td><input type="text" name=""></td>
+          <td><input type="text" name=""></td>
+        </tr>
+        <tr>
+          <td><input type="text" name=""></td>
+          <td><input type="text" name=""></td>
+          <td><input type="text" name=""></td>
+        </tr>
+         
+      </tbody>
+
+      </table>
 
       </div>
 
@@ -68,4 +161,140 @@
         <br>
 
 </div>
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript">
+  $( document ).ready(function() {
+    var array_res_usuario = [];
+    var array_res_correctas = []; 
+    var respuesta_sistema = "";
+    var respuesta_usuario = "";
+          
+        $( "#boton_actividad1" ).click(function() 
+        {            
+                var cantidad_blanco = 0;
+                array_res_usuario = [];
+                array_res_correctas = []; 
+                var buenas = 0;
+                var malas = 0;
+                respuesta_sistema = "";
+                respuesta_usuario = "";
+
+              $("#respuestas-bd li").each(function()
+              {
+                  var descripcion =$(this).html();
+                  array_res_correctas.push(descripcion);
+                  // alert("descripcion  "+ descripcion);
+              })
+              $("#pregunta-usuario input").each(function()
+              {
+                  var descripcion =$(this).val();
+                   // alert("descripcion usuario  "+ descripcion);
+                   if (descripcion == ""){
+                    cantidad_blanco++;
+                   }
+                   array_res_usuario.push(descripcion);
+              })
+              if(cantidad_blanco > 0){
+                alert("Debe llenar todos los campos");
+                return;
+              }
+              calificar(buenas,malas,"resultado")
+              //alert("cantidad de respuestas sistema " + array_res_correctas.length);
+              //alert("cantidad de respuestas usuario " + array_res_usuario.length);
+          });
+
+        $( "#boton_actividad2" ).click(function() 
+        {            
+                var cantidad_blanco = 0;
+                array_res_usuario = [];
+                array_res_correctas = []; 
+                var buenas = 0;
+                var malas = 0;
+                respuesta_sistema = "";
+                respuesta_usuario = "";
+
+              $("#respuestas-bd2 li").each(function()
+              {
+                  var descripcion =$(this).html();
+                  array_res_correctas.push(descripcion);
+                  // alert("descripcion  "+ descripcion);
+              })
+              $("#pregunta-usuario2 input").each(function()
+              {
+                  var descripcion =$(this).val();
+                   // alert("descripcion usuario  "+ descripcion);
+                   if (descripcion == ""){
+                    cantidad_blanco++;
+                   }
+                   array_res_usuario.push(descripcion);
+              })
+              if(cantidad_blanco > 0){
+                alert("Debe llenar todos los campos");
+                return;
+              }
+              calificar(buenas,malas,"resultado2")
+              //alert("cantidad de respuestas sistema " + array_res_correctas.length);
+              //alert("cantidad de respuestas usuario " + array_res_usuario.length);
+          });
+
+        $( "#boton_actividad3" ).click(function() 
+        {            
+                var cantidad_blanco = 0;
+                array_res_usuario = [];
+                array_res_correctas = []; 
+                var buenas = 0;
+                var malas = 0;
+                respuesta_sistema = "";
+                respuesta_usuario = "";
+
+              $("#respuestas-bd3 li").each(function()
+              {
+                  var descripcion =$(this).html();
+                  array_res_correctas.push(descripcion);
+                  // alert("descripcion  "+ descripcion);
+              })
+              $("#pregunta-usuario3 input").each(function()
+              {
+                  var descripcion =$(this).val();
+                   // alert("descripcion usuario  "+ descripcion);
+                   if (descripcion == ""){
+                    cantidad_blanco++;
+                   }
+                   array_res_usuario.push(descripcion);
+              })
+              if(cantidad_blanco > 0){
+                alert("Debe llenar todos los campos");
+                return;
+              }
+              calificar(buenas,malas,"resultado3")
+              //alert("cantidad de respuestas sistema " + array_res_correctas.length);
+              //alert("cantidad de respuestas usuario " + array_res_usuario.length);
+          });
+
+       function calificar (buenas,malas,name_div){
+             for(var i =0; i < array_res_correctas.length; i++) 
+              {
+                   respuesta_sistema = array_res_correctas[i].toString();
+                   respuesta_usuario = array_res_usuario[i].toString();
+                  //alert("respuesta_sistema-"  + respuesta_sistema + "-respuesta_usuario-" + respuesta_usuario + "-" );
+                  var n = respuesta_sistema.localeCompare(respuesta_usuario);
+                  if(n == 0){
+                    //alert("buena1");
+                    buenas++;
+                  }else{
+                    //alert("mala1");
+                    malas++;
+                  }  
+              }
+              var total = buenas + malas;
+              var porcentaje = (buenas*100)/total;
+              var nota = (porcentaje / 2)/10;
+
+              var n = nota.toFixed(1);
+              $("#" + name_div).html("<strong>Tu resultado es :</strong> " + buenas +"/" + total + " <strong>Tu nota es:</strong> " + n);
+        }
+  });
+        
+</script>
 {% endblock %}
