@@ -1,35 +1,36 @@
 from __future__ import unicode_literals
-
 from django.db import models
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
+from django.utils import timezone
 
 list_sexo = ( ('M', 'Masculino') , ('F', 'Femenino'))
 class Estudiante(models.Model):
-    id = models.OneToOneField(User, primary_key=True)# db_column='id')
+    id = models.OneToOneField(User, primary_key=True)
     tel = models.IntegerField(null=True)
     direccion = models.CharField(max_length = 100,null=True)
-    sexo = models.CharField( max_length=1, choices = list_sexo,null=True)
-    fecha_nacimiento = models.DateField (null=True)#db_column= 'Fecha Nacimiento')
+    sexo = models.CharField( max_length=1, choices = list_sexo, null=True)
+    fecha_nacimiento = models.DateField (null=True)
     documento = models.IntegerField()
-    Foto = models.ImageField(upload_to='/tmp',null=True)
+    Foto = models.ImageField(upload_to='/media',null=True)
 
-    #class Meta:
-    #    db_table = 'estudiante'
-    #    managed  = False
+    class Meta:
+        verbose_name = 'Estudiante'
+        verbose_name_plural = "Estudiantes"
+
+    def __unicode__(self):
+        return '%s' % self.documento
 
 class Profesor(models.Model):
-    id = models.OneToOneField(User, primary_key=True) #db_column='id')
+    id = models.OneToOneField(User, primary_key=True) 
     cel = models.IntegerField()
-    fecha_nacimiento = models.DateField(db_column='Fecha Nacimiento')
+    fecha_nacimiento = models.DateField()
     cedula = models.IntegerField()
-    foto = models.ImageField(upload_to='/tmp', null=True, blank=True)
+    foto = models.ImageField(upload_to='/media', null=True, blank=True)
     profesion = models.CharField(max_length = 100)
     especialidad = models.CharField(max_length = 100)
 
     class Meta:
-       # db_table = 'profesores'
-       # managed  = False
         verbose_name = 'Profe'
         verbose_name_plural = "Profes"
 
@@ -38,42 +39,23 @@ class Profesor(models.Model):
 
 class Curso(models.Model):
     nombre = models.CharField(max_length= 120)
-    fecha_inicio = models.FloatField()#db_column= 'Fecha_inicio')
-    fecha_fin = models.FloatField()#db_column= 'Fecha_fin')
-    Profesor = models.ForeignKey(Profesor)# db_column='profesores_id')
-    #image = models.ImageField(upload_to = 'uploads/')
-
-   # class Meta:
-   #     db_table = 'curso'
-   #     managed  = False
+    Profesor = models.ForeignKey(Profesor)
+    fecha_inicio = models.DateField( blank=True, null=True )
+    fecha_fin = models.DateField( blank=True, null=True )
 
     def __unicode__(self):
         return self.nombre
 
-class Modulo(models.Model):
+class Grupo(models.Model):
     nombre = models.CharField(max_length= 120)
-    fecha = models.FloatField()
-    Curso = models.ForeignKey(Curso) #, db_column='curso_id')
+    jornada = models.CharField(max_length= 120)
+    Curso = models.ForeignKey(Curso) 
 
-    #class Meta:
-    #    db_table = 'modulo'
-    #    managed  = False
+    def __unicode__(self):
+        return self.nombre
 
 class Estado(models.Model):
     descripcion = models.CharField(max_length= 120)
-
-    #class Meta:
-    #    db_table = 'estado'
-    #    managed  = False
-
-class Calificacion(models.Model):
-    Estudiante = models.ForeignKey(Estudiante)# db_column='estudiante_id')
-    nota = models.FloatField()
-    modulo_estudiante = models.IntegerField()
-
-    #class Meta:
-    #    db_table = 'calificacion'
-    #    managed = False
 
 class Actividades(models.Model):
     nombre = models.CharField(max_length= 120)
@@ -87,3 +69,18 @@ class Respuesta(models.Model):
     descripcion = models.TextField()
     pregunta = models.ForeignKey(Preguntas)
     indice = models.IntegerField( null=True )
+
+class Grupo_Estudiante(models.Model):
+    estudiante = models.ForeignKey(Estudiante)
+    grupo = models.ForeignKey(Grupo)
+    curso = models.ForeignKey(Curso)
+    estado = models.ForeignKey(Estado, null=True)
+
+class Calificacion(models.Model):
+    nota = models.FloatField()
+    promedio = models.FloatField()
+    detalle = models.CharField(max_length= 200)
+    modulo_estudiante = models.IntegerField()
+    actividad = models.ForeignKey(Actividades)
+    grupo_estudiante = models.ForeignKey(Grupo_Estudiante)
+

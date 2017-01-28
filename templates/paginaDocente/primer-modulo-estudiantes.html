@@ -11,17 +11,17 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Primer Modulo <small> Estudiantes Registrados</small>
+                            Grupo {{ grupo.Curso.nombre }} - {{ grupo.nombre }} <small> Estudiantes Registrados</small>
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-fw fa-table"> </i> Módulos
+                                <i class="fa fa-fw fa-table"> </i> Grupos
                             </li>
                             <li>
-                                Primer Módulo
+                                Grupo {{ grupo.nombre }}
                             </li>
                             <li class="active">
-                                Estudiantes Registrados
+                                Estudiantes 
                             </li>
                         </ol>
                     </div>
@@ -49,13 +49,13 @@
                         <tbody>
                           <tr>
                               <td>
-                                <h4>{{ estudiante.id.first_name }} {{ estudiante.id.last_name }}</h4>
+                                <h4>{{ estudiante.estudiante.id.first_name }} {{ estudiante.estudiante.id.last_name }}</h4>
                               </td>
                               <td>
-                                <h4>{{ estudiante.documento }}</h4>
+                                <h4>{{ estudiante.estudiante.documento }}</h4>
                               </td>
                               <td>
-                                <h4>{{ estudiante.id.email }}</h4>
+                                <h4>{{ estudiante.estudiante.id.email }}</h4>
                               </td>
                           </tr>
                          </tbody>

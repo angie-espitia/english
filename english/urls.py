@@ -4,7 +4,7 @@ from project.views import *
 
 urlpatterns = [
     url(r'^$', index, name='index' ), #/
-    url(r'^curso$', curso, name='curso' ), #/curso
+    url(r'^institution$', curso, name='curso' ), #/curso
     url(r'^contacto$', contacto, name='contacto'),  # /contacto
     url(r'^contacto-f$', contacto_f, name='contacto-f'),
     url(r'^login-estudiante$', login_estudiante, name='login-estudiante' ), #/login-estudiante
@@ -66,17 +66,26 @@ urlpatterns = [
 
 # <--------------------------- Modulo 2 -------------------------------------------------->
 
-    url(r'^inicio-profesor$', inicio_profesor, name='inicio-profesor' ),#/Inicio-profesor
-    url(r'^perfil-profesor$', perfil_profesor, name='perfil-profesor'),  # /perfil-profesor
+    url(r'^home$', inicio_profesor, name='inicio-profesor' ),#/Inicio-profesor
+    url(r'^profile$', perfil_profesor, name='perfil-profesor'),  # /perfil-profesor
     url(r'^primer-modulo$', primer_modulo, name='primer-modulo'),  # /primer-modulo-panel
-    url(r'^primer-modulo-estudiantes$', primer_modulo_estudiantes, name='primer-modulo-estudiantes'),  # /primer-modulo-estudiantes-panel
     url(r'^primer-modulo-notas$', primer_modulo_notas, name='primer-modulo-notas'),  # /primer-modulo-notas-panel
-    url(r'^registro-estudiante$', registro_estudiante, name='registro-estudiante' ), #/registro-estudiante
-    url(r'^eliminar-estudiante$', eliminar_estudiante, name='eliminar-estudiante'),  # /eliminar-estudiante
+
+    url(r'^student/add$', registro_estudiante, name='registro-estudiante' ), #/registro-estudiante
+    url(r'^student/delete$', eliminar_estudiante, name='eliminar-estudiante'),  # /eliminar-estudiante
     url(r'^eliminar-estudiante/(?P<pk>\d+)/remove$', elimina_est, name='elimina-est'),  # /eliminar-estudiante
     url(r'^modificar-contra-profesor$', modificar_contra_profesor, name='modificar-contra-profesor'),  # /modificar-contra
-    url(r'^lista-grupos$', lista_grupos, name='lista-grupos'),
-    url(r'^agregar-grupos$', agregar_grupos, name='agregar-grupos'),
+
+    url(r'^groups$', lista_grupos, name='lista-grupos'),
+    url(r'^groups/add$', createGrupos.as_view(), name='agregar-grupos'),
+    url(r'^groups/(?P<pk>[0-9]+)/edit$', editGrupos.as_view(), name='editar-grupos'),
+    url(r'^groups/(?P<pk>\d+)/delete/$', deleteGrupos.as_view(), name='eliminar-grupos'),
+    url(r'^groups/students/(?P<pk>[0-9]+)$', grupos_estudiantes, name='grupos-estudiantes'),  
+
+    url(r'^curso$', lista_curso, name='lista-curso'),
+    url(r'^curso/add$', agregar_curso, name='agregar-curso'),
+    url(r'^curso/(?P<pk>[0-9]+)/edit/$', editar_curso, name='editar-curso'),
+    url(r'^curso/(?P<pk>\d+)/remove/$', eliminar_curso, name='eliminar-curso'),
 
     url('^buscar_estudiante$', buscar_estudiante, name='buscar_estudiante'),
     url('^buscar_estudiante1$', buscar_estudiante1, name='buscar_estudiante1'),

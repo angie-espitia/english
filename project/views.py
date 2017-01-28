@@ -3,16 +3,20 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import auth
 from django.core.mail import EmailMultiAlternatives
 from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, redirect, get_object_or_404
+from django.core.urlresolvers import reverse_lazy
 from django.template import RequestContext
 from django.contrib.auth.models import User, Group
 from .validator import FormRegistroValidator, FormLoginValidator
 from english.settings import STATIC_ROLS, EMAIL_HOST_USER, STATICFILES_DIRS
-from .models import Estudiante, Profesor, Preguntas, Respuesta
+from .models import Estudiante, Profesor, Preguntas, Respuesta, Curso, Grupo, Grupo_Estudiante
 from django.template.loader import get_template
 from django.template import Context
 from django.contrib.auth.hashers import make_password
 from django.db.models import Q
+from .forms import GrupoForm, CursoForm
+from django.utils.decorators import method_decorator
+from django.views.generic import UpdateView, DeleteView, CreateView
 
 
 def index(request):
@@ -53,7 +57,7 @@ def login_profesor(request):
             usuario = request.POST['usuario']
             clave = request.POST['clave']
             auth.login(request, validator.acceso)  # Crear una sesion
-            return HttpResponseRedirect('/inicio-profesor')
+            return HttpResponseRedirect('/home')
         else:
             return render_to_response('../templates/login-profe.html', {'error': validator.getMessage()} , context_instance = RequestContext(request))
 
@@ -287,9 +291,10 @@ def primer_modulo(request):
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
-def primer_modulo_estudiantes(request):
-    estudiantes = Estudiante.objects.filter()
-    return render(request, 'paginaDocente/primer-modulo-estudiantes.html', {'estudiantes': estudiantes} )
+def grupos_estudiantes(request, pk):
+    grupo = get_object_or_404(Grupo, pk=pk)
+    estudiantes = Grupo_Estudiante.objects.filter(grupo_id=pk)
+    return render(request, 'paginaDocente/primer-modulo-estudiantes.html', {'estudiantes': estudiantes, 'grupo':grupo} )
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
@@ -299,12 +304,17 @@ def primer_modulo_notas(request):
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def registro_estudiante(request):
+    user = User.objects.get(id=request.user.id)
+    profe = Profesor.objects.get(id=user)
+    curso = Curso.objects.get(Profesor_id=profe)
+    grupos = Grupo.objects.filter(Curso_id=curso)
 
     error = False
     if request.method == 'POST':
         validators = FormRegistroValidator(request.POST)
-        validators.required = ['nombre', 'apellidos', 'email', 'documento', 'sexo', 'username', 'password1']
+        validators.required = ['nombre', 'apellidos', 'email', 'documento', 'sexo', 'username', 'password1', 'curso', 'grupo']
 
+        # import pdb; pdb.set_trace()
         if validators.is_valid():
             usuario = User()
             usuario.first_name = request.POST['nombre']
@@ -324,6 +334,13 @@ def registro_estudiante(request):
             myusuario.sexo = request.POST['sexo']
             myusuario.save()
 
+
+            grupoestudiante = Grupo_Estudiante()
+            grupoestudiante.estudiante = myusuario
+            grupoestudiante.curso_id = request.POST.get('curso')
+            grupoestudiante.grupo_id = request.POST.get('grupo')            
+            grupoestudiante.save()
+
             #TODO: ENviar correo electronico para confirmar cuenta
             asunto = "Registro en English Easy"
             body = render_to_string('email.html', {'user': usuario})
@@ -337,7 +354,7 @@ def registro_estudiante(request):
         else:
             return render(request, 'paginaDocente/registro-estudiante.html', {'error': validators.getMessage() } )
         # Agregar el usuario a la base de datos
-    return render(request, 'paginaDocente/registro-estudiante.html' )
+    return render(request, 'paginaDocente/registro-estudiante.html', {'grupos':grupos} )
 
 def buscar_estudiante(request):
     estudiante = None
@@ -410,15 +427,90 @@ def elimina_est(request, pk):
     estudiante.delete()
     return HttpResponseRedirect('/eliminar-estudiante')
 
-@login_required(login_url="/login-profesor")
-@user_passes_test(restringir_estudiante, login_url='/login-profesor')
-def lista_grupos(request):
-    return render(request, 'paginaDocente/grupos.html' )
+# <------------------------------- Grupos ------------------------------------->
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
-def agregar_grupos(request):
-    return render(request, 'paginaDocente/agregar-grupos.html' )
+def lista_grupos(request):
+    user = User.objects.get(id=request.user.id)
+    profe = Profesor.objects.get(id=user)
+    curso = Curso.objects.get(Profesor_id=profe)
+    grupos = Grupo.objects.filter(Curso_id=curso)
+    return render(request, 'paginaDocente/grupos.html', {'grupos':grupos }  )
+
+# Función Crear Grupos
+@method_decorator(login_required(login_url="/login-profesor"), name='dispatch')
+# @method_decorator(restringir_estudiante, name='dispatch')
+class createGrupos(CreateView):
+    model = Grupo # Importa el modelo
+    form_class = GrupoForm # Importa el form del modelo
+    template_name = 'paginaDocente/agregar-grupos.html' # Importa el template
+    success_url=reverse_lazy('lista-grupos') # como se va a retornar
+
+@method_decorator(login_required(login_url="/login-profesor"), name='dispatch')
+# @method_decorator(restringir_estudiante, name='dispatch')
+class editGrupos(UpdateView):
+    model = Grupo
+    form_class = GrupoForm
+    template_name = 'paginaDocente/edit-grupos.html'
+    success_url=reverse_lazy('lista-grupos')
+
+@method_decorator(login_required(login_url="/login-profesor"), name='dispatch')
+# @method_decorator(restringir_estudiante, name='dispatch')
+class deleteGrupos(DeleteView):
+    model = Grupo
+    form_class = GrupoForm
+    template_name = 'paginaDocente/delete-grupos.html'
+    success_url=reverse_lazy('lista-grupos')
+
+# <------------------------------ Cursos -------------------------------------->
+
+@login_required(login_url="/login-profesor")
+@user_passes_test(restringir_estudiante, login_url='/login-profesor')
+def lista_curso(request):
+    curso = Curso.objects.filter(Profesor_id=request.user.id)
+    return render(request, 'paginaDocente/curso.html', {'curso':curso} )
+
+# Función Crear Cursos
+@login_required(login_url="/login-profesor")
+@user_passes_test(restringir_estudiante, login_url='/login-profesor')
+def agregar_curso(request):
+    usu = request.user
+    if request.method == "POST":
+        form = CursoForm(request.POST)
+        if form.is_valid():
+            curso = form.save(commit=False)
+            curso.Profesor_id = usu.id
+            curso.save()
+            return redirect('lista-curso')
+    else:
+        form = CursoForm()
+    return render(request, 'paginaDocente/agregar-curso.html', {'form': form, 'usu':usu} )
+
+@login_required(login_url="/login-profesor")
+@user_passes_test(restringir_estudiante, login_url='/login-profesor')
+def editar_curso(request, pk):
+    curso = get_object_or_404(Curso, pk=pk)
+    if request.method == "POST":
+        form = CursoForm(request.POST, instance=curso)
+        if form.is_valid():
+            curso = form.save(commit=False)
+            curso.Profesor_id = request.user.id
+            curso.save()
+            return redirect('lista-curso')
+    else:
+        form = CursoForm(instance=curso)
+
+    return render(request, 'paginaDocente/editar-curso.html', {'form': form})
+
+@login_required(login_url="/login-profesor")
+@user_passes_test(restringir_estudiante, login_url='/login-profesor')
+def eliminar_curso(request, pk):
+    curso = get_object_or_404(Curso, pk=pk)
+    curso.delete()
+    return redirect('lista-curso')
+
+# <----------------------------------- Funciones ------------------------------->
 
 import xhtml2pdf.pisa as pisa
 from StringIO import StringIO

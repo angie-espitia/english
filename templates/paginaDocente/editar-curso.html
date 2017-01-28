@@ -1,5 +1,5 @@
 {% extends 'plantilla-prof.html' %}
-{% block title %} Agregar Grupos {% endblock %}
+{% block title %} Editar Curso {% endblock %}
 
 {%  block content %}
 
@@ -11,14 +11,14 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Agregar <small> Grupo</small>
+                            Editar <small> Curso </small>
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                            <a href="#"><i class="fa fa-fw fa-table"></i> Grupos </a> 
+                            <a href="#"><i class="fa fa-fw fa-table"></i> Cursos </a> 
                             </li>
                             <li class="active">
-                                 Agregar Grupos
+                                 Editar Curso
                             </li>
                         </ol>
                     </div>
@@ -27,7 +27,7 @@
 
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
-                        <a href="#" class="btn btn-primary">Agregar Nuevo Grupo</a>
+                        <a href="#" class="btn btn-primary">Nuevo Curso</a>
                     </div>
                     <br><br><br>
 
@@ -42,15 +42,15 @@
                           </div> 
                           <div class="col-lg-12 col-md-12"></div>
                           <div class="col-md-2 col-lg-2">
-                            <strong style="font-size: 17px;"> {{ form.jornada.label }} </strong>
+                            <strong style="font-size: 17px;"> {{ form.fecha_inicio.label }} </strong>
                           </div>
-                            <div class="col-md-5 col-lg-5">{{ form.jornada }}
+                            <div class="col-md-5 col-lg-5">{{ form.fecha_inicio }}
                           </div> 
                           <div class="col-lg-12 col-md-12"></div>
                           <div class="col-md-2 col-lg-2">
-                            <strong style="font-size: 17px;"> {{ form.Curso.label }} </strong>
+                            <strong style="font-size: 17px;"> {{ form.fecha_fin.label }} </strong>
                           </div>
-                            <div class="col-md-5 col-lg-5">{{ form.Curso }}
+                            <div class="col-md-5 col-lg-5">{{ form.fecha_fin }}
                           </div> 
                           <div class="col-lg-12 col-md-12"></div>
                            <br/>

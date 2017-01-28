@@ -1,19 +1,38 @@
 from django import forms
-from .models import Estudiante
-from django.contrib.auth import authenticate
-from django.forms import ModelForm
+from .models import Curso, Grupo, Estado, Actividades, Preguntas, Respuesta, Grupo_Estudiante, Calificacion
 
+class CursoForm(forms.ModelForm):
 
-class RegistrarForm(ModelForm):
-    password2= forms.CharField(label="Confirmar contraseña",widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Confirmar contraseña'}),required=False)
     class Meta:
-        model = Estudiante
-        fields = ['nombre', 'apellido', 'email', 'cedula', 'username', 'password', 'password2' ]
+        model = Curso
+        fields = ['nombre','fecha_inicio', 'fecha_fin']
+        labels = {'nombre': 'Grado',
+                  'fecha_inicio': 'Fecha de Inicio',
+                  'fecha_fin': 'Fecha de Cierre' 
+                 }
+        widgets = {'nombre': forms.TextInput(attrs={'class':'form-control'}),
+                   'fecha_inicio': forms.DateInput(attrs={'class':'form-control', 'type':'date', 'input_formats': '%d/%m/%Y'}),
+                   'fecha_fin': forms.DateInput(attrs={'class':'form-control', 'type':'date', 'input_formats': '%d/%m/%Y'}),
+                    }
 
-    def clean_password2(self):
-        """Comprueba que password y password2 sean iguales."""
-        password = self.cleaned_data['password']
-        password2 = self.cleaned_data['password2']
-        if password != password2:
-            raise forms.ValidationError('Las contraseñas no coinciden.')
-        return password2
+class GrupoForm(forms.ModelForm):
+
+    class Meta:
+        model = Grupo
+        fields = ['nombre','jornada', 'Curso']
+        labels = {'nombre': 'Nombre',
+                  'jornada': 'Jornada',
+                  'Curso': 'Curso', 
+                 }
+        widgets = {'nombre': forms.TextInput(attrs={'class':'form-control'}),
+                   'jornada': forms.TextInput(attrs={'class':'form-control'}),
+                   'Curso': forms.Select(attrs={'class':'form-control'}),
+                    }
+
+class EstadoForm(forms.ModelForm):
+
+    class Meta:
+        model = Estado
+        fields = ['descripcion']
+        labels = {'descripcion': 'Detalle' }
+        widgets = {'descripcion': forms.TextInput(attrs={'class':'form-control'}) }

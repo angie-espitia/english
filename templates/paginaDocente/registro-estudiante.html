@@ -114,6 +114,40 @@
 
             <div class="col-ms-12 form-group">
               <div class ="col-md-2">
+                <label for="exampleInputnomre"><h4>Curso:</h4></label>
+              </div>
+              <div class ="col-md-4">
+                <div class="form-group">
+                
+                  <select class="form-control" id="id_curso" name='curso' >
+                    <option value="0" >Seleccionar</option>
+                    {% for row in user.profesor.curso_set.all %}
+                      <option id='curso' value="{{ row.id }}">{{ row.nombre }}</option>
+                    {% endfor %}
+                  </select>
+                
+                </div>
+              </div>
+              <div class ="col-md-1">
+                <label for="exampleInputnomre"><h4>Grupo:</h4></label>
+              </div>
+              <div class ="col-md-5">
+                  <div class="form-group">
+                      <select class="form-control" id="id_grupo" name='grupo'>
+                        <option value="0" >Seleccionar</option>
+                        {% for row in grupos %}
+                         <option id='grupo' value="{{ row.id }}">{{ row.nombre }}</option>
+                        {% endfor %}
+                      </select>
+                    
+                  </div>
+              </div>
+            </div>
+
+            <div class="col-md-12"></div>
+
+            <div class="col-ms-12 form-group">
+              <div class ="col-md-2">
                 <label for="exampleInputnomre"><h4>Contraseña:</h4></label>
               </div>
               <div class ="col-md-4">
