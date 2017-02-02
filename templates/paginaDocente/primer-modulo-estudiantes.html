@@ -43,6 +43,7 @@
                     <th>Nombre</th>
                     <th>Documento</th>
                       <th>Correo</th>
+                      <th>última conexión</th>
                   </tr>
                 </thead>
                     {% for estudiante in estudiantes %}
@@ -56,6 +57,9 @@
                               </td>
                               <td>
                                 <h4>{{ estudiante.estudiante.id.email }}</h4>
+                              </td>
+                              <td>
+                                <h4>{{ estudiante.estudiante.id.last_login }}</h4>
                               </td>
                           </tr>
                          </tbody>

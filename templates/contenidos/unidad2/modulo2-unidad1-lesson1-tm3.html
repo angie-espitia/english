@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <title>Modulo Ingles Básico</title>
+
+
+    <link href="vendors/bootstrap-3.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style-modulo.css" rel="stylesheet">
+</head>
+    
+<body >
+
+<!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Curso Ingles</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="inicio-estudiante.html">INICIO</a></li>
+            <li class="dropdown active">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MODULO <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="modulo1.html">Ingles Básico</a></li>
+                <li><a href="modulo1-unidad1.html">Unidad 1</a></li>
+                <li><a href="#">Unidad 2</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Temario</li>
+                <li><a href="#">Multimedia</a></li>
+                <li><a href="#">Actividaddes</a></li>
+              </ul>
+            </li>
+            <li><a href="#">RECURSOS</a></li>
+            <li><a href="#">LOREM</a></li>
+            
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Configuración</a></li>
+            <li class="active"><a href="#">Salir</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    
+   <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Modulo 2</li>
+        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 1</a></li>
+        <li class="active">Lesson 3</li> 
+        
+</ol>
+    
+    
+      <!-- Main component for a primary marketing message or call to action -->
+        
+     <div id="wh">
+          <div class="row">
+  <div class="col-sm-3">
+    <div class="sidebar-nav">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+            <span class="sr-only">Desplegar navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="visible-xs navbar-brand">Sidebar menu</span>
+        </div>
+        <div class="navbar-collapse collapse sidebar-navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lesson 1 <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'modulo1-unidad1-lesson1-tm2' %}">Read</a></li>
+                <li><a href="{% url 'modulo1-unidad1-tm1' %}">Vocabulary</a></li>
+                <li><a href="{% url 'modulo1-unidad1-lesson1-tm3' %}">Listen</a></li>
+                <li><a href="{% url 'modulo1-unidad1-lesson1-tm4' %}">Speak</a></li>
+                <li class="divider"></li>
+                  </ul></li>
+
+                  <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lesson 2<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'modulo1-unidad1-lesson2-tm1' %}">Listen</a></li>
+                <li><a href="{% url 'modulo1-unidad1-lesson2-tm2' %}">Vocabulary</a></li>
+                <li><a href="#">...</a></li>
+                <li><a href="#">...</a></li>
+                <li class="divider"></li>
+                  </ul></li>
+
+                  <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lesson 3 <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">... </a></li>
+                <li><a href="#">... </a></li>
+                <li><a href="#">...</a></li>
+                <li><a href="#">...</a></li>
+                <li class="divider"></li>
+                  </ul></li>
+
+                  <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lesson 4 <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Possessive adjectives </a></li>
+                <li><a href="#">Family members Numbers 20-100 </a></li>
+                <li><a href="#">Identifying numbers Stress on numbers</a></li>
+                <li><a href="#">Description of pictures</a></li>
+                <li class="divider"></li>
+                  </ul></li>
+
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lesson 5 <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Possessive ’s </a></li>
+            <li><a href="#">Personality adjectives </a></li>
+            <li><a href="#">People talking about their families Possessive ’s</a></li>
+            <li><a href="#">Describing a family tree</a></li>
+                <li class="divider"></li>
+                  </ul></li>
+
+               <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lesson 6 <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">to be: questions </a></li>
+            <li><a href="#">Jobs </a></li>
+            <li><a href="#">Information to complete a form Intonation in questions</a></li>
+            <li><a href="#">An email describing a family photo</a></li>
+                <li class="divider"></li>
+                  </ul></li>
+
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lesson 7 <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">a and an this/these and that/those</a></li>
+            <li><a href="#">Sports, subjects andclassroom objects Days of the week</a></li>
+            <li><a href="#">Discussing schoolsubjects</a></li>
+            <li><a href="#">A letter</a></li>
+                <li class="divider"></li>
+                  </ul></li>
+
+               <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lesson 8 <b class="caret"></b></a>
+               <ul class="dropdown-menu">
+                <li><a href="#">Wh- questionswith to be </a></li>
+            <li><a href="#">Adjectives describing physical appearance</a></li>
+          <li><a href="#">Discussing physical characteristics Intonation in questions</a></li>
+          <li><a href="#">Descriptions of people</a></li>
+                <li class="divider"></li>
+                  </ul></li>
+
+            <li><a href="#">let’s work together <span class="badge">A family collage</span></a></li>
+            <li><a href="#">Self-assessment</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+              
+  <div class="col-sm-9 col-md-9">
+      <h2>FOCUS ON LANGUAGE</h2>
+      <h3></h3>
+        <hr>
+      <p>8. In your notebook, write the statements which describe routines.</p>
+     
+     <div class="col-sm-12 col-md-12">
+       
+      <div class="col-sm-6 col-md-6">
+        <li>a. I have breakfast at home.</li>
+        <li>b. My phone number is 7310342.</li>
+        <li>c. They get up at 7:00 am.</li>
+        <li>d. I have lunch at school.</li>
+        <li>e. They are young and happy.</li>
+        <li>f. I listen to music in the afternoon.</li>  
+      </div>
+
+      <div class="col-sm-6 col-md-6">
+        <li>g. My friends and I go to bed late at the weekend.</li>
+        <li>h. Some of my friends are from Chile.</li>
+        <li>i. You do homework after lunch.</li>
+        <li>j. My friends play basketball after school.</li>
+        <li>k. My mother’s brother is a doctor.</li>
+      </div>
+
+     </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <p>9. Read the sentences. Are they true (T) or false (F) for you? Write the sentences in your
+notebook. Correct the false sentences.</p>
+
+    <p>Example: F. I go to bed at 9.00 pm.</p>
+
+     <div class="col-sm-12 col-md-12">
+       
+      <div class="col-sm-6 col-md-6">
+        <li>a. I go to bed very late.</li>
+        <li>b. I do homework after dinner.</li>
+        <li>c. I get up at 7:00 am.</li>
+        <li>d. I play the piano.</li>
+        <li>e. I watch TV after lunch.</li>
+        <li>f. I play football after school.</li>
+        <li>g. I have lunch at home.</li>
+        <li>h. I never have breakfast.</li> 
+      </div>
+
+      <div class="col-sm-6 col-md-6">
+        <div class="centered">
+          <img src="img/Modulo2Lesson1Theme3.PNG" class="img-responsive" alt=""/>
+      </div>
+      </div>
+
+     </div>     
+
+<br>
+
+      <p>10. Tell your partner what you do every day. Say three things that are false. Can your partner
+identify the false statements?</p>
+
+      <p>Example: Manu: I get up at 6:00 am, then I have my breakfast … <br>
+      Miguel: No. You get up at 7:00 am.</p>
+
+      <p>11. Read these sentences about habits in other cultures. Are they similar to habits in Colombia?</p>
+
+      <li>a. In the Middle East, people usually eat lunch after 2:00 pm. <br>
+      Example: No, in Colombia, people eat lunch at 12:00 pm.</li>
+      <li>b. In Japan, children finish school at 3:15 pm.</li>
+      <li>c. In Spain, many people eat dinner around 11:00 pm.</li>
+      <li>d. In the United States, many families get up before 7:00 am at the weekend.</li>
+
+      <br>
+
+      <p>12. Listen and choose the correct option A, B, or C.</p>
+
+      <audio controls>
+          <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK07.mp3" type="audio/mpeg">
+            Your browser does not support the audio element. (42)
+          </audio>
+
+      <div class="col-sm-12 col-md-12">
+        <div class="col-md-6">
+        <li>1. I go to the gym on …</li>
+        <li>2. They visit friends on …</li>
+        <li>3. We go to our grandparents’ house on ...</li>
+        <li>4. My brothers get up late on …</li>
+        <li>5. I have a Social Science lesson on …</li>  
+      </div>
+
+      <div class="col-md-3">
+        <li>A. Mondays</li>
+        <li>A. Saturdays</li>
+        <li>A. Thursdays</li>
+        <li>A. Saturdays</li>
+        <li>A. Tuesdays</li>
+      </div>  
+        
+        <div class="col-md-3">
+        <li>B. Tuesdays</li>
+        <li>B. Wednesdays</li>
+        <li>B. Sundays</li>
+        <li>B. Fridays</li>
+        <li>B. Fridays</li>
+      </div> 
+
+      <div class="col-md-3">
+        <li>C. Fridays</li>
+        <li>C. Sundays</li>
+        <li>C. Tuesdays</li>
+        <li>C. Mondays</li>
+        <li>C. Wednesdays</li>
+      </div> 
+
+      </div>  
+
+      
+      </div>
+            
+       </div>
+    </div><!--div-->
+</div>
+
+<!-- FOOTER -->
+	<div id="f">
+		<div class="container">
+			<div class="col-md-6 text-left copy">
+						<p>Copyright &copy; All Rights Reserved.</p>
+					</div>
+					<div class="col-md-6 text-right dm">
+						<ul id="downMenu">
+							<li><a href="inicio-estudiante.html">Inicio</a></li>
+							<li class="active"><a href="modulo1.html">Modulo</a></li>
+							<li><a href="#">Recursos</a></li>
+							<li><a href="#">Lorem</a></li>
+                            <li class="last"><a href="#">Configuración</a></li>
+		</div><!-- container -->
+	</div><!-- Footer -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="javascript/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="vendors/bootstrap-3.3.6/dist/js/bootstrap.min.js">
+</script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

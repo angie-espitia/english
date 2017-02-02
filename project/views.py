@@ -350,9 +350,9 @@ def registro_estudiante(request):
             # msg.content_subtype = "html"
             # msg.send()
 
-            return render(request, 'paginaDocente/registro-estudiante.html', {'success': True} )
+            return render(request, 'paginaDocente/registro-estudiante.html', {'success': True, 'grupos':grupos} )
         else:
-            return render(request, 'paginaDocente/registro-estudiante.html', {'error': validators.getMessage() } )
+            return render(request, 'paginaDocente/registro-estudiante.html', {'error': validators.getMessage(), 'grupos':grupos } )
         # Agregar el usuario a la base de datos
     return render(request, 'paginaDocente/registro-estudiante.html', {'grupos':grupos} )
 
@@ -362,7 +362,7 @@ def buscar_estudiante(request):
     if 'buscar' in request.GET.keys():
         buscar = request.GET['identificacion']
         qset = (Q(documento__icontains=buscar) )
-        estudiante = Estudiante.objects.filter(qset).first()
+        estudiante = Estudiante.objects.filter(qset).distinct()
 
     return render(request, 'paginaDocente/registro-estudiante.html', {'estudiante': estudiante, 'filtro': buscar} )
 
@@ -422,10 +422,10 @@ import simplejson
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def elimina_est(request, pk):
 
-    pks = request.POST.get('pk')
+    pks = request.POST.get('id')
     estudiante = User.objects.get(pk=pks)
     estudiante.delete()
-    return HttpResponseRedirect('/eliminar-estudiante')
+    return redirect('eliminar-estudiante')
 
 # <------------------------------- Grupos ------------------------------------->
 

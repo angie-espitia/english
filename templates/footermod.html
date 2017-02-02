@@ -1,4 +1,6 @@
+{% load user_tags %}
 <!-- FOOTER -->
+{% if request.user|has_group:"Estudiantes" %}
 	<div id="f">
 		<div class="container">
 			<div class="col-md-4 text-left copy">
@@ -14,4 +16,20 @@
 							<li><a class="last" href="#">Recursos</a></li>
 		</div><!-- container -->
 	</div><!-- Footer -->
+{% endif %}
+{% if request.user|has_group:"Profesores" %}
+	<div id="f">
+		<div class="container">
+			<div class="col-md-4 text-left copy">
+						<p style="color: #f2dede;">Copyright &copy; All Rights Reserved.</p>
+					</div>
+					<div class="col-md-8 text-right dm">
+						<ul id="downMenu">
+							<li><a href="{% url 'modulo1' %}">Module 1</a></li>
+							<li><a href="#">Module 2</a></li>
+							<li><a href="#">Module 3</a></li>
+							<li><a href="#">Module 4</a></li>
+		</div><!-- container -->
+	</div><!-- Footer -->
+{% endif %}
 

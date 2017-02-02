@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <title>Modulo Ingles Básico</title>
+
+
+    <link href="vendors/bootstrap-3.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style-modulo.css" rel="stylesheet">
+</head>
+    
+<body >
+
+<!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Curso Ingles</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="inicio-estudiante.html">INICIO</a></li>
+            <li class="dropdown active">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MODULO <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="modulo1.html">Ingles Básico</a></li>
+                <li><a href="modulo1-unidad1.html">Unidad 1</a></li>
+                <li><a href="#">Unidad 2</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Temario</li>
+                <li><a href="#">Multimedia</a></li>
+                <li><a href="#">Actividaddes</a></li>
+              </ul>
+            </li>
+            <li><a href="#">RECURSOS</a></li>
+            <li><a href="#">LOREM</a></li>
+            
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Configuración</a></li>
+            <li class="active"><a href="#">Salir</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    
+   <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Modulo 3</li>
+        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 3</a></li>
+        <li class="active">Lesson 2</li> 
+        
+</ol>
+    
+    
+      <!-- Main component for a primary marketing message or call to action -->
+        
+     <div id="wh">
+          <div class="row">
+  <div class="col-sm-3">
+    <div class="sidebar-nav">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+            <span class="sr-only">Desplegar navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="visible-xs navbar-brand">Sidebar menu</span>
+        </div>
+        <div class="navbar-collapse collapse sidebar-navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lesson 1 <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'modulo1-unidad1-lesson1-tm2' %}">Read</a></li>
+                <li><a href="{% url 'modulo1-unidad1-tm1' %}">Vocabulary</a></li>
+                <li><a href="{% url 'modulo1-unidad1-lesson1-tm3' %}">Listen</a></li>
+                <li><a href="{% url 'modulo1-unidad1-lesson1-tm4' %}">Speak</a></li>
+                <li class="divider"></li>
+                  </ul></li>
+
+                  <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lesson 2<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'modulo1-unidad1-lesson2-tm1' %}">Listen</a></li>
+                <li><a href="{% url 'modulo1-unidad1-lesson2-tm2' %}">Vocabulary</a></li>
+                <li><a href="#">...</a></li>
+                <li><a href="#">...</a></li>
+                <li class="divider"></li>
+                  </ul></li>
+
+                  <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lesson 3 <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">... </a></li>
+                <li><a href="#">... </a></li>
+                <li><a href="#">...</a></li>
+                <li><a href="#">...</a></li>
+                <li class="divider"></li>
+                  </ul></li>
+
+                  <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lesson 4 <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Possessive adjectives </a></li>
+                <li><a href="#">Family members Numbers 20-100 </a></li>
+                <li><a href="#">Identifying numbers Stress on numbers</a></li>
+                <li><a href="#">Description of pictures</a></li>
+                <li class="divider"></li>
+                  </ul></li>
+
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lesson 5 <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Possessive ’s </a></li>
+            <li><a href="#">Personality adjectives </a></li>
+            <li><a href="#">People talking about their families Possessive ’s</a></li>
+            <li><a href="#">Describing a family tree</a></li>
+                <li class="divider"></li>
+                  </ul></li>
+
+               <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lesson 6 <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">to be: questions </a></li>
+            <li><a href="#">Jobs </a></li>
+            <li><a href="#">Information to complete a form Intonation in questions</a></li>
+            <li><a href="#">An email describing a family photo</a></li>
+                <li class="divider"></li>
+                  </ul></li>
+
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lesson 7 <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">a and an this/these and that/those</a></li>
+            <li><a href="#">Sports, subjects andclassroom objects Days of the week</a></li>
+            <li><a href="#">Discussing schoolsubjects</a></li>
+            <li><a href="#">A letter</a></li>
+                <li class="divider"></li>
+                  </ul></li>
+
+               <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lesson 8 <b class="caret"></b></a>
+               <ul class="dropdown-menu">
+                <li><a href="#">Wh- questionswith to be </a></li>
+            <li><a href="#">Adjectives describing physical appearance</a></li>
+          <li><a href="#">Discussing physical characteristics Intonation in questions</a></li>
+          <li><a href="#">Descriptions of people</a></li>
+                <li class="divider"></li>
+                  </ul></li>
+
+            <li><a href="#">let’s work together <span class="badge">A family collage</span></a></li>
+            <li><a href="#">Self-assessment</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+              
+  <div class="col-sm-9 col-md-9">
+      <h2>FOCUS ON VOCABULARY</h2>
+      <h3></h3>
+        <hr>
+
+      <div class="centered">
+        <img src="img/Modulo3Unidad3Lesson2Theme1img1.PNG" class="img-responsive" alt="No found"/>
+      </div>
+
+      <p>1. Look at the pictures and match them to the phrases a-l.</p>
+
+    <div class="col-sm-12 col-md-12">
+      <div class="col-sm-6 col-md-6">
+        <li>How to be polite</li>
+        <li>a. arrive on time / early / late</li>
+        <li>b. kiss / hug</li>
+        <li>c. shake hands</li>
+        <li>d. take off / don’t take off your shoes</li>
+        <li>e. sit on the floor / sit at the table</li>
+        <li>f. eat / don’t eat with your hands</li>
+      </div>
+
+      <div class="col-sm-6 col-md-6">
+      <br>
+        <li>g. put / don’t put your elbows on the table</li>
+        <li>h. leave / don’t leave food</li>
+        <li>i. say please and thank you</li>
+        <li>j. use a napkin</li>
+        <li>k. don’t talk with your mouth full</li>
+        <li>l. don’t use your mobile at the table</li>
+      </div>
+    </div>
+
+      <p>2. Use the five phrases in exercise 1 which don’t have a picture to complete these sentences.</p>
+
+    <div class="col-sm-12 col-md-12">
+      <li>a. Wait until you finish eating to speak. _________ .</li>
+      <li>b. In Britain, it’s polite to _________ . Don’t be late.</li>
+      <li>c. In Japan, it’s traditional to _________ to eat.</li>
+      <li>d. In Britain, people always _________ when someone is kind to them.</li>
+      <li>e. In Japan, you should _________ when you enter a house.</li>
+    </div>
+
+   <p>3. Look again at the phrases in exercise 1. What should people do to be polite in Colombia?</p>
+
+      </div>
+      
+      </div>
+            
+       </div>
+    </div><!--div-->
+</div>
+
+<!-- FOOTER -->
+  <div id="f">
+    <div class="container">
+      <div class="col-md-6 text-left copy">
+            <p>Copyright &copy; All Rights Reserved.</p>
+          </div>
+          <div class="col-md-6 text-right dm">
+            <ul id="downMenu">
+              <li><a href="inicio-estudiante.html">Inicio</a></li>
+              <li class="active"><a href="modulo1.html">Modulo</a></li>
+              <li><a href="#">Recursos</a></li>
+              <li><a href="#">Lorem</a></li>
+                            <li class="last"><a href="#">Configuración</a></li>
+    </div><!-- container -->
+  </div><!-- Footer -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="javascript/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="vendors/bootstrap-3.3.6/dist/js/bootstrap.min.js">
+</script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
