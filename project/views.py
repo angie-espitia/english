@@ -9,7 +9,7 @@ from django.template import RequestContext
 from django.contrib.auth.models import User, Group
 from .validator import FormRegistroValidator, FormLoginValidator
 from english.settings import STATIC_ROLS, EMAIL_HOST_USER, STATICFILES_DIRS
-from .models import Estudiante, Profesor, Preguntas, Respuesta, Curso, Grupo, Grupo_Estudiante
+from .models import Estudiante, Profesor, Preguntas, Respuesta, Curso, Grupo, Grupo_Estudiante, Log
 from django.template.loader import get_template
 from django.template import Context
 from django.contrib.auth.hashers import make_password
@@ -40,6 +40,7 @@ def login_estudiante(request):
         if validators.is_valid():
 
             auth.login(request, validators.acceso)  # Crear una sesion
+            log(request, "INICIO_SESION")
             return HttpResponseRedirect('/inicio-estudiante')
 
         else:
@@ -74,6 +75,7 @@ def restringir_estudiante(User):
 @login_required(login_url="/login-estudiante")
 def logout(request):
     auth.logout(request)
+    log(request, "CERRO_SESION")
     return HttpResponseRedirect("/")
 
 @login_required(login_url="/login-estudiante")
@@ -527,3 +529,14 @@ def pdf(f):
 def reporte_estudiante(request):
     estudiantes = Estudiante.objects.filter()
     return render_to_string("reporte_estudiantes.html", { 'estudiantes': estudiantes, 'path': STATICFILES_DIRS[0] }) #obtenemos la plantilla
+
+
+def log(request, action):
+    log = Log()
+    log.usuario = request.user.id
+    if(Estudiante.objects.get(id=request.user.id)):
+        log.tipo = 'E'
+    else:
+        log.tipo = 'P'
+    log.accion = action
+    log.save() 
