@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 from django.utils import timezone
+import datetime
 
 list_sexo = ( ('M', 'Masculino') , ('F', 'Femenino'))
 class Estudiante(models.Model):
@@ -84,3 +85,8 @@ class Calificacion(models.Model):
     actividad = models.ForeignKey(Actividades)
     grupo_estudiante = models.ForeignKey(Grupo_Estudiante)
 
+class Log(models.Model):
+    usuario = models.IntegerField()
+    tipo= models.CharField(max_length=1)
+    tiempo= models.DateTimeField(default=datetime.datetime.now)
+    accion= models.TextField()
