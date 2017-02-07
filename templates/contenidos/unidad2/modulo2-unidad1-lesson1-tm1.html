@@ -1,14 +1,15 @@
 {% extends 'plantilla2.html' %}
 {% load staticfiles %}
-{% block title %} Module 2 - Unity 1 - Lesson 1 {% endblock %}
+{% block title %} Module 2 - Unit 1 - Lesson 1 {% endblock %}
 
 {%  block content %}
     
    <div class="container initial">
     <ol class="breadcrumb">
-        <li>Module 2</li>
-        <li><a href="#">Unity 1</a></li>
-        <li class="active">Lesson 1</li>    
+        <li><a href="{% url 'modulo2' %}">Module 2</a></li>
+        <li><a href="{% url 'modulo2-unidad1' %}">Unit 1</a></li>
+        <li>Lesson 1</li> 
+        <li class="active">Theme 1</li>    
     </ol>
 
     {% include 'plantilla-lessons-module2.html' %}
@@ -17,7 +18,7 @@
       <h2>READ</h2>
       <h3></h3>
         <hr>
-      <p>Read the sentences a-e and match them to pictures 1–5.</p>
+      <p>1. Read the sentences a-e and match them to pictures 1–5.</p>
           
       <p>Teenagers around the world</p>
 
@@ -38,7 +39,7 @@ I usually go to bed at 10:30 pm.</li>
       </div>
         <br />
 
-      <p>Add the letters a, e, i, o or u and write the five activities from exercise 1 in
+      <p>2. Add the letters a, e, i, o or u and write the five activities from exercise 1 in
 your notebook.</p>
 
       <div class="col-sm-12 col-md-12">
@@ -62,7 +63,7 @@ your notebook.</p>
         <h2>LISTEN</h2>
       <h3></h3>
         <hr>
-        <p>Listen to four teenagers talking about activities they do. In your notebook, write the
+        <p>3. Listen to four teenagers talking about activities they do. In your notebook, write the
 sentences a-j under the correct name.</p>
           <audio controls>
           <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK39.mp3' %}" type="audio/mpeg">

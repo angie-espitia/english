@@ -1,0 +1,75 @@
+{% extends 'plantilla2.html' %}
+{% load staticfiles %}
+{% block title %} Module 2 - Unit 2 {% endblock %}
+
+{%  block content %}
+
+    <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Module 2</li>
+        <li class="active">Unit 2</li>
+              
+</ol>
+
+    {% include 'plantilla-lessons-module2.html' %}
+
+  <div class="col-sm-9">
+      <div id="bgf">
+      <h2>Module Around the World: Unit 2 </h2>
+              <h3>Local colour</h3>
+          </div>
+      <br />
+      <br />
+    <div class="col-sm-12">
+            <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Lesson</th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td><b><a href="{% url 'modulo2-unidad1-lesson1-tm1' %}">Lesson 4</a></b> <p></p></td>
+
+          <td><p>Keeping fit</p></td>
+
+        <td><p>Present simple: negative (he, she, it) </p></td>
+
+          <td><p><b>Writing: </b>a report about how to keep fit </p>
+          <p><b>Speaking:</b> interviewing a classmate </p></td>
+
+      </tr>
+      <tr>
+        <td><b><a href="{% url 'modulo2-unidad1-lesson2-tm1' %}">Lesson 5</a></b> <p></p></td>
+          <td><p>The weather Clothes</p></td>
+
+        <td><p>Frequency adverbs</p></td>
+
+        <td><p><b>Speaking:</b> a presentation about a country</p>
+        <p><b> Writing:</b> an email about the weather</p></td>
+      </tr>
+
+        <tr>
+            <td><b><a href="{% url 'modulo2-unidad1-lesson3-tm1' %}">Lesson 6</a></b> <p></p></td>
+              <td><p>Music -ing adjectives</p></td>
+
+            <td><p>yes/no questions using do and does like/love/can’t stand + -ing forms </p></td>
+
+            <td><p><b>Speaking / Writing:</b> interviewing classmates about their taste in music</p></td>
+
+          </tr>
+    </tbody>
+  </table>
+        </div>
+      
+</div>
+              
+   
+</div>
+          </div>
+</div>   
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'plantilla2.html' %}
+{% load staticfiles %}
+{% block title %} Module 2 - Unit 1 {% endblock %}
+
+{%  block content %}
+
+    <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Module 2</li>
+        <li class="active">Unit 1</li>
+              
+</ol>
+
+    {% include 'plantilla-lessons-module2.html' %}
+
+  <div class="col-sm-9">
+      <div id="bgf">
+      <h2>Module Around the World: Unit 1 </h2>
+              <h3>From day to day</h3>
+          </div>
+      <br />
+      <br />
+    <div class="col-sm-12">
+            <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Lesson</th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td><b><a href="{% url 'modulo2-unidad1-lesson1-tm1' %}">Lesson 1</a></b> <p></p></td>
+
+          <td><p>Daily routines</p></td>
+
+        <td><p>Present simple: affirmative (I, you, we, they) </p></td>
+
+          <td><p><b>Writing / Speaking:</b> describing your daily routine</p></td>
+
+      </tr>
+      <tr>
+        <td><b><a href="{% url 'modulo2-unidad1-lesson2-tm1' %}">Lesson 2</a></b> <p></p></td>
+          <td><p>Free-time activities</p></td>
+
+        <td><p>Present simple: question forms and short answers </p></td>
+
+        <td><p><b>Speaking:</b> interviewing people about their freetime activities</p></td>
+      </tr>
+
+        <tr>
+            <td><b><a href="{% url 'modulo2-unidad1-lesson3-tm1' %}">Lesson 3</a></b> <p></p></td>
+              <td><p>More daily activities</p></td>
+
+            <td><p>Present simple: affirmative (3rd person singular) </p></td>
+
+            <td><p><b>Writing:</b> describing a family member’s daily routine</p></td>
+
+          </tr>
+    </tbody>
+  </table>
+        </div>
+      
+</div>
+              
+   
+</div>
+          </div>
+</div>   
+
+{% endblock %}

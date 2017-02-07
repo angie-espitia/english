@@ -1,8 +1,9 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,300,700,900);
+@import url(https://fonts.googleapis.com/css?family=Anton);
 
 body {
-    background: url(../img/bgmod.jpg) repeat;
+    background: url(../img/bgm.png) repeat;
     font-family: "Lato";
     font-weight: 300;
     font-size: 16px;
@@ -13,21 +14,24 @@ body {
 }
 
 /* Titles */
-h1, h2, h3, h4, h5, h6 {
-    font-family: "Raleway";
-    font-weight: 300;
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family:'Anton', sans-serif;
+    font-weight:400;
+    line-height:1.1em;
+    margin-bottom: 20px;
     color: #555;
 }
 
+
 .hw {
-	background: url(../img/header-mod.jpg) no-repeat center top;
-	margin-top: 10px;
-	padding-top:20px;
-	text-align: center;
-	background-attachment: relative;
-	background-position: center center;
-	min-height: 300px;
-	width: 100%;
+    background: url(../img/header-mod.jpg) no-repeat center top;
+    margin-top: 10px;
+    padding-top:20px;
+    text-align: center;
+    background-attachment: relative;
+    background-position: center center;
+    min-height: 300px;
+    width: 100%;
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
     -o-background-size: 100%;
@@ -39,20 +43,91 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hw h1 {
-	margin-top: 50px;
-	color:#E4E1E1;
-	font-size: 70px;
-	font-weight: 300;
-	letter-spacing: 3px;
+    margin-top: 50px;
+    color:#E4E1E1;
+    font-size: 70px;
+    font-weight: 300;
+    letter-spacing: 3px;
 }
 
 .hw h2 {
-	color: #CECECE;
-	font-size: 40px;
-	font-weight: 700;
-	letter-spacing: 2px;
-	text-transform: uppercase;
+    color: #CECECE;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
+
+.hw2 {
+    background: url(../img/header-mult.jpg) no-repeat center top;
+    margin-top: 10px;
+    padding-top:20px;
+    text-align: center;
+    background-attachment: relative;
+    background-position: center center;
+    min-height: 300px;
+    width: 100%;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.hw2 h1 {
+    margin-top: 50px;
+    color:#E4E1E1;
+    font-size: 70px;
+    font-weight: 300;
+    letter-spacing: 3px;
+}
+
+.hw2 h2 {
+    color: #CECECE;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.hw3 {
+    background: url(../img/header-mod2.jpg) no-repeat center top;
+    margin-top: 10px;
+    padding-top:20px;
+    text-align: center;
+    background-attachment: relative;
+    background-position: center center;
+    min-height: 300px;
+    width: 100%;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.hw3 h1 {
+    margin-top: 50px;
+    color:#E4E1E1;
+    font-size: 70px;
+    font-weight: 300;
+    letter-spacing: 3px;
+}
+
+.hw3 h2 {
+    color: #CECECE;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
 
 .table thead{
     background-color: #9EBAD7;
@@ -67,31 +142,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #bgf h2{
-	color: beige;
-	font-size: 40px;
-	font-weight: 300;
-	letter-spacing: 3px;
+    color: beige;
+    font-size: 40px;
+    font-weight: 300;
+    letter-spacing: 3px;
 }
 
 #bgf h3{
     color: blanchedalmond;
-	font-size: 20px;
-	font-weight: 400;
-	letter-spacing: 2px;
-	text-transform: uppercase;   
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;   
 }
 
 /* White Wrap */
 #wh {
-	background: white;
-	padding-top: 35px;
+    background: white;
+    padding-top: 35px;
     padding-left: 30px;
     padding-right: 30px;
-	padding-bottom: 70px;
+    padding-bottom: 70px;
 }
 
 #wh h4 {
-	font-weight: 700;
+    font-weight: 700;
     font-size: 25px;
     color: darkred;
 }
@@ -163,10 +238,10 @@ hr {
 }
 
 .navbar {
-	font-weight: 800;
-	font-size: 14px;
-	padding-top: 15px;
-	padding-bottom: 15px;
+    font-weight: 800;
+    font-size: 14px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 
@@ -213,94 +288,94 @@ hr {
 /****** SECTIONS *****/
 
 .w {
-	padding-top: 35px;
+    padding-top: 35px;
 }
 
 .w h4 {
-	font-weight: 700;
+    font-weight: 700;
 }
 
 .w i {
-	color: #ff7878;
-	font-size: 30px;
+    color: #ff7878;
+    font-size: 30px;
 }
 
 
 .wb {
-	padding-top: 35px;
-	margin-bottom: 0px;
+    padding-top: 35px;
+    margin-bottom: 0px;
 }
 
 .wb h4 {
-	font-weight: 700;
+    font-weight: 700;
 }
 
 .desc {
-	padding-top: 35px;
+    padding-top: 35px;
 }
 
 .desc h4 {
-	font-weight: 700;
+    font-weight: 700;
 }
 
 .desc i {
-	color: #ff7878;
-	font-size: 12px;
-	padding: 5px;
+    color: #ff7878;
+    font-size: 12px;
+    padding: 5px;
 }
 
 
 /* Footer Wrap */
 #f {
-	background: #2d2d2d;
-	padding-top: 30px;
-	padding-bottom: 30px;
+    background: #2d2d2d;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 #f i {
-	color: #bdbdbd;
-	font-size: 30px;
-	padding: 20px;
+    color: #bdbdbd;
+    font-size: 30px;
+    padding: 20px;
 }
 
 #f i:hover {
-	color: #ff7878;
+    color: #ff7878;
 }
 
 #downMenu{
-	float:right;
+    float:right;
 }
 #downMenu li{
-	height: 16px;
-	border-right:1px solid #343434;
-	float:left;
-	list-style: none;
+    height: 16px;
+    border-right:1px solid #343434;
+    float:left;
+    list-style: none;
 }
 #downMenu li:last-child{
-	border-right:none;
+    border-right:none;
 }
 #downMenu li a{
-	padding: 15px;
-	text-decoration: none;
-	font-size: 13px;
-	font-family: 'lato', 'sans-serif';
-	font-weight: 300;
-	color: #fff;
-	margin-top: 10px;
-	margin-bottom: 10px;
+    padding: 15px;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: 'lato', 'sans-serif';
+    font-weight: 300;
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 #downMenu li:last-child a{
-	padding-right:0;
+    padding-right:0;
 }
 #downMenu li a:hover{
-	color:#6d6d6d;
+    color:#6d6d6d;
 }
 
 .copy{
-	margin-top: 29px;
+    margin-top: 29px;
 }
 .dm{
-	margin-top: 29px;
+    margin-top: 29px;
 }
 
 @media screen and (max-width: 991px){
@@ -370,4 +445,42 @@ hr {
 
 .padding-flecha{
     padding-left: 30%;
+}
+
+/* Dropdown levels */
+
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+}
+.dropdown-submenu:hover > .dropdown-menu {
+  display: block;
+}
+.dropdown-submenu:hover > a:after {
+  border-left-color: #fff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left > .dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+}
+
+
+audio::-internal-media-controls-download-button {
+    display:none;
+}
+
+audio::-webkit-media-controls-enclosure {
+    overflow:hidden;
+}
+
+audio::-webkit-media-controls-panel {
+    width: calc(100% + 30px); /* Adjust as needed */
 }

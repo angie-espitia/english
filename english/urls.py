@@ -16,13 +16,13 @@ urlpatterns = [
     url(r'^modificar-contra-estudiante$', modificar_contra_estudiante, name='modificar-contra-estudiante'), # /modificar-contra-est
 
     url(r'^multimedia$', multimedia, name='multimedia' ), 
+
+# <------------------------- Modulo 1 ----------------------------------------------->
     url(r'^modulo1$', modulo1, name='modulo1' ), #/modulo1
 
     url(r'^unidad1$', modulo1_unidad1, name='modulo1-unidad1' ), #/unidad1
     url(r'^unidad2$', modulo1_unidad2, name='modulo1-unidad2' ), #/unidad2
     url(r'^unidad3$', modulo1_unidad3, name='modulo1-unidad3' ), #/unidad3
-
-# <------------------------- Modulo 1 ----------------------------------------------->
 
     url(r'^lesson1-tema2$', unidad1_tm1, name='modulo1-unidad1-tm1' ), #/tema2
     url(r'^lesson1-tema1$', unidad1_lesson1_tm2, name='modulo1-unidad1-lesson1-tm2'),  # /lesson1-tema1
@@ -65,9 +65,53 @@ urlpatterns = [
     url(r'^lesson8-tema4$', unidad1_lesson8_tm4, name='modulo1-unidad1-lesson8-tm4'),  # /lesson8-tema4
 
 # <--------------------------- Modulo 2 -------------------------------------------------->
+    url(r'^module2$', modulo2, name='modulo2' ), #/modulo1
 
-    url(r'^module2/unity1/lesson1/theme1$', modulo2_unidad1_lesson1_tm1, name='modulo2-unidad1-lesson1-tm1'),  
+    url(r'^module2/unity1$', modulo2_unidad1, name='modulo2-unidad1' ), #/unidad1
+    url(r'^module2/unity2$', modulo2_unidad2, name='modulo2-unidad2' ), #/unidad2
+    url(r'^module2/unity3$', modulo2_unidad3, name='modulo2-unidad3' ), #/unidad3
+
+    url(r'^module2/unity1/lesson1/theme1$', modulo2_unidad1_lesson1_tm1, name='modulo2-unidad1-lesson1-tm1'),
+    url(r'^module2/unity1/lesson1/theme2$', modulo2_unidad1_lesson1_tm2, name='modulo2-unidad1-lesson1-tm2'),  
+    url(r'^module2/unity1/lesson1/theme3$', modulo2_unidad1_lesson1_tm3, name='modulo2-unidad1-lesson1-tm3'),
+    url(r'^module2/unity1/lesson1/theme4$', modulo2_unidad1_lesson1_tm4, name='modulo2-unidad1-lesson1-tm4'), 
+
+    url(r'^module2/unity1/lesson2/theme1$', modulo2_unidad1_lesson2_tm1, name='modulo2-unidad1-lesson2-tm1'),
+    url(r'^module2/unity1/lesson2/theme2$', modulo2_unidad1_lesson2_tm2, name='modulo2-unidad1-lesson2-tm2'),  
+    url(r'^module2/unity1/lesson2/theme3$', modulo2_unidad1_lesson2_tm3, name='modulo2-unidad1-lesson2-tm3'),
+    url(r'^module2/unity1/lesson2/theme4$', modulo2_unidad1_lesson2_tm4, name='modulo2-unidad1-lesson2-tm4'), 
+
+    url(r'^module2/unity1/lesson3/theme1$', modulo2_unidad1_lesson3_tm1, name='modulo2-unidad1-lesson3-tm1'), 
+    url(r'^module2/unity1/lesson3/theme2$', modulo2_unidad1_lesson3_tm2, name='modulo2-unidad1-lesson3-tm2'), 
+    url(r'^module2/unity1/lesson3/theme3$', modulo2_unidad1_lesson3_tm3, name='modulo2-unidad1-lesson3-tm3'),
+    url(r'^module2/unity1/lesson3/theme4$', modulo2_unidad1_lesson3_tm4, name='modulo2-unidad1-lesson3-tm4'), 
+
+    url(r'^module2/unity2/lesson4/theme1$', modulo2_unidad2_lesson1_tm1, name='modulo2-unidad2-lesson1-tm1'),
+    url(r'^module2/unity2/lesson4/theme2$', modulo2_unidad2_lesson1_tm2, name='modulo2-unidad2-lesson1-tm2'),  
+    url(r'^module2/unity2/lesson4/theme3$', modulo2_unidad2_lesson1_tm3, name='modulo2-unidad2-lesson1-tm3'), 
+    url(r'^module2/unity2/lesson4/theme4$', modulo2_unidad2_lesson1_tm4, name='modulo2-unidad2-lesson1-tm4'),
+
+    url(r'^module2/unity2/lesson5/theme1$', modulo2_unidad2_lesson2_tm1, name='modulo2-unidad2-lesson2-tm1'),
+    url(r'^module2/unity2/lesson5/theme2$', modulo2_unidad2_lesson2_tm2, name='modulo2-unidad2-lesson2-tm2'),  
+    url(r'^module2/unity2/lesson5/theme3$', modulo2_unidad2_lesson2_tm3, name='modulo2-unidad2-lesson2-tm3'), 
+    url(r'^module2/unity2/lesson5/theme4$', modulo2_unidad2_lesson2_tm4, name='modulo2-unidad2-lesson2-tm4'),
+
+    url(r'^module2/unity2/lesson6/theme1$', modulo2_unidad2_lesson3_tm1, name='modulo2-unidad2-lesson3-tm1'),
+    url(r'^module2/unity2/lesson6/theme2$', modulo2_unidad2_lesson3_tm2, name='modulo2-unidad2-lesson3-tm2'),  
+    url(r'^module2/unity2/lesson6/theme3$', modulo2_unidad2_lesson3_tm3, name='modulo2-unidad2-lesson3-tm3'), 
+    url(r'^module2/unity2/lesson6/theme4$', modulo2_unidad2_lesson3_tm4, name='modulo2-unidad2-lesson3-tm4'),
+
+    url(r'^module2/unity3/lesson7/theme1$', modulo2_unidad3_lesson1_tm1, name='modulo2-unidad3-lesson1-tm1'),
+    url(r'^module2/unity3/lesson7/theme2$', modulo2_unidad3_lesson1_tm2, name='modulo2-unidad3-lesson1-tm2'),  
+    url(r'^module2/unity3/lesson7/theme3$', modulo2_unidad3_lesson1_tm3, name='modulo2-unidad3-lesson1-tm3'), 
+    url(r'^module2/unity3/lesson7/theme4$', modulo2_unidad3_lesson1_tm4, name='modulo2-unidad3-lesson1-tm4'),
+
+    url(r'^module2/unity3/lesson8/theme1$', modulo2_unidad3_lesson2_tm1, name='modulo2-unidad3-lesson2-tm1'),
+    url(r'^module2/unity3/lesson8/theme2$', modulo2_unidad3_lesson2_tm2, name='modulo2-unidad3-lesson2-tm2'),  
+    url(r'^module2/unity3/lesson8/theme3$', modulo2_unidad3_lesson2_tm3, name='modulo2-unidad3-lesson2-tm3'), 
+    url(r'^module2/unity3/lesson8/theme4$', modulo2_unidad3_lesson2_tm4, name='modulo2-unidad3-lesson2-tm4'),
     
+
 
     url(r'^home$', inicio_profesor, name='inicio-profesor' ),#/Inicio-profesor
     url(r'^profile$', perfil_profesor, name='perfil-profesor'),  # /perfil-profesor
