@@ -124,7 +124,7 @@ def modificar_contra_estudiante(request):
 def multimedia(request):
     return render(request, 'contenidos/multimedia.html')
 
-
+# <---------------------------------- modulo 1 -----------------------------------------------------
 @login_required(login_url="/login-estudiante")
 def modulo1(request):
     return render(request, 'contenidos/unidad1/modulo1.html')
@@ -275,6 +275,11 @@ def unidad1_lesson8_tm3(request):
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson8_tm4(request):
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson8-tm4.html')                  
+
+# <---------------------------- modulo 2 ------------------------------------------
+@login_required(login_url="/login-estudiante")
+def modulo2_unidad1_lesson1_tm1(request):
+    return render(request, 'contenidos/unidad2/modulo2-unidad1-lesson1-tm1.html')      
 
 
 @login_required(login_url="/login-profesor")
