@@ -158,6 +158,53 @@ urlpatterns = [
     url(r'^module3/unity3/lesson8/theme3$', modulo3_unidad3_lesson2_tm3, name='modulo3-unidad3-lesson2-tm3'), 
     url(r'^module3/unity3/lesson8/theme4$', modulo3_unidad3_lesson2_tm4, name='modulo3-unidad3-lesson2-tm4'),   
 
+ # <--------------------------- Modulo 4 -------------------------------------------------->
+    url(r'^module4$', modulo4, name='modulo4' ), #/modulo4
+
+    url(r'^module4/unity1$', modulo4_unidad1, name='modulo4-unidad1' ), #/unidad1
+    url(r'^module4/unity2$', modulo4_unidad2, name='modulo4-unidad2' ), #/unidad2
+    url(r'^module4/unity3$', modulo4_unidad3, name='modulo4-unidad3' ), #/unidad3
+
+    url(r'^module4/unity1/lesson1/theme1$', modulo4_unidad1_lesson1_tm1, name='modulo4-unidad1-lesson1-tm1'),
+    url(r'^module4/unity1/lesson1/theme2$', modulo4_unidad1_lesson1_tm2, name='modulo4-unidad1-lesson1-tm2'),  
+    url(r'^module4/unity1/lesson1/theme3$', modulo4_unidad1_lesson1_tm3, name='modulo4-unidad1-lesson1-tm3'),
+    url(r'^module4/unity1/lesson1/theme4$', modulo4_unidad1_lesson1_tm4, name='modulo4-unidad1-lesson1-tm4'), 
+
+    url(r'^module4/unity1/lesson2/theme1$', modulo4_unidad1_lesson2_tm1, name='modulo4-unidad1-lesson2-tm1'),
+    url(r'^module4/unity1/lesson2/theme2$', modulo4_unidad1_lesson2_tm2, name='modulo4-unidad1-lesson2-tm2'),  
+    url(r'^module4/unity1/lesson2/theme3$', modulo4_unidad1_lesson2_tm3, name='modulo4-unidad1-lesson2-tm3'),
+    url(r'^module4/unity1/lesson2/theme4$', modulo4_unidad1_lesson2_tm4, name='modulo4-unidad1-lesson2-tm4'), 
+
+    url(r'^module4/unity1/lesson3/theme1$', modulo4_unidad1_lesson3_tm1, name='modulo4-unidad1-lesson3-tm1'), 
+    url(r'^module4/unity1/lesson3/theme2$', modulo4_unidad1_lesson3_tm2, name='modulo4-unidad1-lesson3-tm2'), 
+    url(r'^module4/unity1/lesson3/theme3$', modulo4_unidad1_lesson3_tm3, name='modulo4-unidad1-lesson3-tm3'),
+    url(r'^module4/unity1/lesson3/theme4$', modulo4_unidad1_lesson3_tm4, name='modulo4-unidad1-lesson3-tm4'), 
+
+    url(r'^module4/unity2/lesson4/theme1$', modulo4_unidad2_lesson1_tm1, name='modulo4-unidad2-lesson1-tm1'),
+    url(r'^module4/unity2/lesson4/theme2$', modulo4_unidad2_lesson1_tm2, name='modulo4-unidad2-lesson1-tm2'),  
+    url(r'^module4/unity2/lesson4/theme3$', modulo4_unidad2_lesson1_tm3, name='modulo4-unidad2-lesson1-tm3'), 
+    url(r'^module4/unity2/lesson4/theme4$', modulo4_unidad2_lesson1_tm4, name='modulo4-unidad2-lesson1-tm4'),
+
+    url(r'^module4/unity2/lesson5/theme1$', modulo4_unidad2_lesson2_tm1, name='modulo4-unidad2-lesson2-tm1'),
+    url(r'^module4/unity2/lesson5/theme2$', modulo4_unidad2_lesson2_tm2, name='modulo4-unidad2-lesson2-tm2'),  
+    url(r'^module4/unity2/lesson5/theme3$', modulo4_unidad2_lesson2_tm3, name='modulo4-unidad2-lesson2-tm3'), 
+    url(r'^module4/unity2/lesson5/theme4$', modulo4_unidad2_lesson2_tm4, name='modulo4-unidad2-lesson2-tm4'),
+
+    url(r'^module4/unity2/lesson6/theme1$', modulo4_unidad2_lesson3_tm1, name='modulo4-unidad2-lesson3-tm1'),
+    url(r'^module4/unity2/lesson6/theme2$', modulo4_unidad2_lesson3_tm2, name='modulo4-unidad2-lesson3-tm2'),  
+    url(r'^module4/unity2/lesson6/theme3$', modulo4_unidad2_lesson3_tm3, name='modulo4-unidad2-lesson3-tm3'), 
+    url(r'^module4/unity2/lesson6/theme4$', modulo4_unidad2_lesson3_tm4, name='modulo4-unidad2-lesson3-tm4'),
+
+    url(r'^module4/unity3/lesson7/theme1$', modulo4_unidad3_lesson1_tm1, name='modulo4-unidad3-lesson1-tm1'),
+    url(r'^module4/unity3/lesson7/theme2$', modulo4_unidad3_lesson1_tm2, name='modulo4-unidad3-lesson1-tm2'),  
+    url(r'^module4/unity3/lesson7/theme3$', modulo4_unidad3_lesson1_tm3, name='modulo4-unidad3-lesson1-tm3'), 
+    url(r'^module4/unity3/lesson7/theme4$', modulo4_unidad3_lesson1_tm4, name='modulo4-unidad3-lesson1-tm4'),
+
+    url(r'^module4/unity3/lesson8/theme1$', modulo4_unidad3_lesson2_tm1, name='modulo4-unidad3-lesson2-tm1'),
+    url(r'^module4/unity3/lesson8/theme2$', modulo4_unidad3_lesson2_tm2, name='modulo4-unidad3-lesson2-tm2'),  
+    url(r'^module4/unity3/lesson8/theme3$', modulo4_unidad3_lesson2_tm3, name='modulo4-unidad3-lesson2-tm3'), 
+    url(r'^module4/unity3/lesson8/theme4$', modulo4_unidad3_lesson2_tm4, name='modulo4-unidad3-lesson2-tm4'),   
+
 
     url(r'^home$', inicio_profesor, name='inicio-profesor' ),#/Inicio-profesor
     url(r'^profile$', perfil_profesor, name='perfil-profesor'),  # /perfil-profesor

@@ -81,11 +81,13 @@ def logout(request):
 @login_required(login_url="/login-estudiante")
 def inicio_estudiante(request):
     usuario = Estudiante.objects.get(id=request.user.id)
+    log(request, "INICIO_ESTUDIANTE")
     return render(request, 'paginaEstudiante/inicio-estudiante.html', { 'usuario': usuario })
 
 @login_required(login_url="/login-estudiante")
 def perfil_estudiante(request):
     usuario = Estudiante.objects.get(id=request.user.id)
+    log(request, "PERFIL_ESTUDIANTE")
     return render(request, 'paginaEstudiante/perfil-estudiante.html', { 'usuario': usuario })
 
 @login_required(login_url="/login-estudiante")
@@ -104,11 +106,14 @@ def modificar_perfil_est(request):
         miusuario.fecha_nacimiento = request.POST['nacimiento']
         miusuario.save()
 
+        log(request, "PERFIL_EDITADO")
+
         if request.user.groups.filter(id=STATIC_ROLS['Estudiantes']).exists():
             usuario_int = Estudiante.objects.get(id__id=request.user.id)
         else:
             usuario_int = None
 
+    log(request, "PAGINA_PERFIL")
     return render(request, 'paginaEstudiante/perfil-estudiante.html',{ "usuario":  miusuario } )
 
 @login_required(login_url="/login-estudiante")
@@ -119,65 +124,79 @@ def modificar_contra_estudiante(request):
         usu1 = User.objects.get(id=request.user.id)
         usu1.password = make_password(request.POST['password1'])
         usu1.save()
+        log(request, "CONTRASEÑA_MODIFICADA")
 
     return render(request, 'paginaEstudiante/modificar-contra-est.html', { 'usuario': usu1 } )
 
 @login_required(login_url="/login-estudiante")
 def multimedia(request):
+    log(request, "MULTIMEDIA")
     return render(request, 'contenidos/multimedia.html')
 
 # <---------------------------------- modulo 1 -----------------------------------------------------
 @login_required(login_url="/login-estudiante")
 def modulo1(request):
+    log(request, "CONTENIDO_MODULO1")
     return render(request, 'contenidos/unidad1/modulo1.html')
 
 @login_required(login_url="/login-estudiante")
 def modulo1_unidad1(request):
+    log(request, "CONTENIDO_MODULO1_UNIDAD1")
     return render(request, 'contenidos/unidad1/modulo1-unidad1.html')
 
 @login_required(login_url="/login-estudiante")
 def modulo1_unidad2(request):
+    log(request, "CONTENIDO_MODULO1_UNIDAD2")
     return render(request, 'contenidos/unidad1/modulo1-unidad2.html')
 
 @login_required(login_url="/login-estudiante")
 def modulo1_unidad3(request):
+    log(request, "CONTENIDO_MODULO1_UNIDAD3")
     return render(request, 'contenidos/unidad1/modulo1-unidad3.html')
 
 @login_required(login_url="/login-estudiante")
 def unidad1_tm1(request):
+    log(request, "CONTENIDO_MODULO1_LESSON1_TEMA1")
     return render(request, 'contenidos/unidad1/modulo1-unidad1 -tm1.html')
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson1_tm2(request):
+    log(request, "CONTENIDO_MODULO1_LESSON1_TEMA2")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson1-tm2.html')
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson1_tm3(request):
+    log(request, "CONTENIDO_MODULO1_LESSON1_TEMA3")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson1-tm3.html')
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson1_tm4(request):
+    log(request, "CONTENIDO_MODULO1_LESSON1_TEMA4")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson1-tm4.html')
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson2_tm1(request):
+    log(request, "CONTENIDO_MODULO1_LESSON2_TEMA1")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson2-tm1.html')
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson2_tm2(request):
+    log(request, "CONTENIDO_MODULO1_LESSON2_TEMA2")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson2-tm2.html')
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson2_tm3(request):
+    log(request, "CONTENIDO_MODULO1_LESSON2_TEMA3")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson2-tm3.html')
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson2_tm4(request):
+    log(request, "CONTENIDO_MODULO1_LESSON2_TEMA4")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson2-tm4.html')
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson3_tm1(request):
-    
+    log(request, "CONTENIDO_MODULO1_LESSON3_TEMA1")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson3-tm1.html' ) 
 
 @login_required(login_url="/login-estudiante")
@@ -188,387 +207,663 @@ def unidad1_lesson3_tm2(request):
     respuesta = Respuesta.objects.filter(pregunta__in = preguntas)
     respuesta2 = Respuesta.objects.filter(pregunta__in = preguntas2)
     respuesta3 = Respuesta.objects.filter(pregunta__in = preguntas3)
+    log(request, "CONTENIDO_MODULO1_LESSON3_TEMA2")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson3-tm2.html', { 'respuesta':respuesta, 'respuesta2':respuesta2, 'respuesta3':respuesta3 }) 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson3_tm3(request):
+    log(request, "CONTENIDO_MODULO1_LESSON3_TEMA3")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson3-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson3_tm4(request):
+    log(request, "CONTENIDO_MODULO1_LESSON3_TEMA4")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson3-tm4.html')  
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson4_tm1(request):
+    log(request, "CONTENIDO_MODULO1_LESSON4_TEMA1")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson4-tm1.html')  
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson4_tm2(request):
+    log(request, "CONTENIDO_MODULO1_LESSON4_TEMA2")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson4-tm2.html')  
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson4_tm3(request):
+    log(request, "CONTENIDO_MODULO1_LESSON4_TEMA3")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson4-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson4_tm4(request):
+    log(request, "CONTENIDO_MODULO1_LESSON4_TEMA4")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson4-tm4.html')   
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson5_tm1(request):
+    log(request, "CONTENIDO_MODULO1_LESSON5_TEMA1")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson5-tm1.html')    
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson5_tm2(request):
+    log(request, "CONTENIDO_MODULO1_LESSON5_TEMA2")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson5-tm2.html')    
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson5_tm3(request):
+    log(request, "CONTENIDO_MODULO1_LESSON5_TEMA3")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson5-tm3.html')   
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson5_tm4(request):
+    log(request, "CONTENIDO_MODULO1_LESSON5_TEMA4")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson5-tm4.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson6_tm1(request):
+    log(request, "CONTENIDO_MODULO1_LESSON6_TEMA1")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson6-tm1.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson6_tm2(request):
+    log(request, "CONTENIDO_MODULO1_LESSON6_TEMA2")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson6-tm2.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson6_tm3(request):
+    log(request, "CONTENIDO_MODULO1_LESSON6_TEMA3")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson6-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson6_tm4(request):
+    log(request, "CONTENIDO_MODULO1_LESSON6_TEMA4")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson6-tm4.html')  
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson7_tm1(request):
+    log(request, "CONTENIDO_MODULO1_LESSON7_TEMA1")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson7-tm1.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson7_tm2(request):
+    log(request, "CONTENIDO_MODULO1_LESSON7_TEMA2")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson7-tm2.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson7_tm3(request):
+    log(request, "CONTENIDO_MODULO1_LESSON7_TEMA3")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson7-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson7_tm4(request):
+    log(request, "CONTENIDO_MODULO1_LESSON7_TEMA4")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson7-tm4.html')  
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson8_tm1(request):
+    log(request, "CONTENIDO_MODULO1_LESSON8_TEMA1")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson8-tm1.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson8_tm2(request):
+    log(request, "CONTENIDO_MODULO1_LESSON8_TEMA2")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson8-tm2.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson8_tm3(request):
+    log(request, "CONTENIDO_MODULO1_LESSON8_TEMA3")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson8-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson8_tm4(request):
+    log(request, "CONTENIDO_MODULO1_LESSON8_TEMA4")
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson8-tm4.html')                  
 
 # <---------------------------- modulo 2 ------------------------------------------
 @login_required(login_url="/login-estudiante")
 def modulo2(request):
+    log(request, "CONTENIDO_MODULO2")
     return render(request, 'contenidos/unidad2/modulo2.html')
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad1(request):
+    log(request, "CONTENIDO_MODULO2_UNIDAD1")
     return render(request, 'contenidos/unidad2/modulo2-unidad1.html')
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad2(request):
+    log(request, "CONTENIDO_MODULO2_UNIDAD2")
     return render(request, 'contenidos/unidad2/modulo2-unidad2.html')
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad3(request):
+    log(request, "CONTENIDO_MODULO2_UNIDAD3")
     return render(request, 'contenidos/unidad2/modulo2-unidad3.html')
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad1_lesson1_tm1(request):
+    log(request, "CONTENIDO_MODULO2_LESSON1_TEMA1")
     return render(request, 'contenidos/unidad2/modulo2-unidad1-lesson1-tm1.html')    
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad1_lesson1_tm2(request):
+    log(request, "CONTENIDO_MODULO2_LESSON1_TEMA2")
     return render(request, 'contenidos/unidad2/modulo2-unidad1-lesson1-tm2.html')
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad1_lesson1_tm3(request):
+    log(request, "CONTENIDO_MODULO2_LESSON1_TEMA3")
     return render(request, 'contenidos/unidad2/modulo2-unidad1-lesson1-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad1_lesson1_tm4(request):
+    log(request, "CONTENIDO_MODULO2_LESSON1_TEMA4")
     return render(request, 'contenidos/unidad2/modulo2-unidad1-lesson1-tm4.html')      
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad1_lesson2_tm1(request):
+    log(request, "CONTENIDO_MODULO2_LESSON2_TEMA1")
     return render(request, 'contenidos/unidad2/modulo2-unidad1-lesson2-tm1.html')    
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad1_lesson2_tm2(request):
+    log(request, "CONTENIDO_MODULO2_LESSON2_TEMA2")
     return render(request, 'contenidos/unidad2/modulo2-unidad1-lesson2-tm2.html')
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad1_lesson2_tm3(request):
+    log(request, "CONTENIDO_MODULO2_LESSON2_TEMA3")
     return render(request, 'contenidos/unidad2/modulo2-unidad1-lesson2-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad1_lesson2_tm4(request):
+    log(request, "CONTENIDO_MODULO2_LESSON2_TEMA4")
     return render(request, 'contenidos/unidad2/modulo2-unidad1-lesson2-tm4.html')  
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad1_lesson3_tm1(request):
+    log(request, "CONTENIDO_MODULO2_LESSON3_TEMA1")
     return render(request, 'contenidos/unidad2/modulo2-unidad1-lesson3-tm1.html')   
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad1_lesson3_tm2(request):
+    log(request, "CONTENIDO_MODULO2_LESSON3_TEMA2")
     return render(request, 'contenidos/unidad2/modulo2-unidad1-lesson3-tm2.html')
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad1_lesson3_tm3(request):
+    log(request, "CONTENIDO_MODULO2_LESSON3_TEMA3")
     return render(request, 'contenidos/unidad2/modulo2-unidad1-lesson3-tm3.html')   
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad1_lesson3_tm4(request):
+    log(request, "CONTENIDO_MODULO2_LESSON3_TEMA4")
     return render(request, 'contenidos/unidad2/modulo2-unidad1-lesson3-tm4.html')   
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad2_lesson1_tm1(request):
+    log(request, "CONTENIDO_MODULO2_LESSON4_TEMA1")
     return render(request, 'contenidos/unidad2/modulo2-unidad2-lesson1-tm1.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad2_lesson1_tm2(request):
+    log(request, "CONTENIDO_MODULO2_LESSON4_TEMA2")
     return render(request, 'contenidos/unidad2/modulo2-unidad2-lesson1-tm2.html')    
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad2_lesson1_tm3(request):
+    log(request, "CONTENIDO_MODULO2_LESSON4_TEMA3")
     return render(request, 'contenidos/unidad2/modulo2-unidad2-lesson1-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad2_lesson1_tm4(request):
+    log(request, "CONTENIDO_MODULO2_LESSON4_TEMA4")
     return render(request, 'contenidos/unidad2/modulo2-unidad2-lesson1-tm4.html')  
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad2_lesson2_tm1(request):
+    log(request, "CONTENIDO_MODULO2_LESSON5_TEMA1")
     return render(request, 'contenidos/unidad2/modulo2-unidad2-lesson2-tm1.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad2_lesson2_tm2(request):
+    log(request, "CONTENIDO_MODULO2_LESSON5_TEMA2")
     return render(request, 'contenidos/unidad2/modulo2-unidad2-lesson2-tm2.html')    
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad2_lesson2_tm3(request):
+    log(request, "CONTENIDO_MODULO2_LESSON5_TEMA3")
     return render(request, 'contenidos/unidad2/modulo2-unidad2-lesson2-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad2_lesson2_tm4(request):
+    log(request, "CONTENIDO_MODULO2_LESSON5_TEMA4")
     return render(request, 'contenidos/unidad2/modulo2-unidad2-lesson2-tm4.html')
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad2_lesson3_tm1(request):
+    log(request, "CONTENIDO_MODULO2_LESSON6_TEMA1")
     return render(request, 'contenidos/unidad2/modulo2-unidad2-lesson3-tm1.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad2_lesson3_tm2(request):
+    log(request, "CONTENIDO_MODULO2_LESSON6_TEMA2")
     return render(request, 'contenidos/unidad2/modulo2-unidad2-lesson3-tm2.html')    
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad2_lesson3_tm3(request):
+    log(request, "CONTENIDO_MODULO2_LESSON6_TEMA3")
     return render(request, 'contenidos/unidad2/modulo2-unidad2-lesson3-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad2_lesson3_tm4(request):
+    log(request, "CONTENIDO_MODULO2_LESSON6_TEMA4")
     return render(request, 'contenidos/unidad2/modulo2-unidad2-lesson3-tm4.html')   
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad3_lesson1_tm1(request):
+    log(request, "CONTENIDO_MODULO2_LESSON7_TEMA1")
     return render(request, 'contenidos/unidad2/modulo2-unidad3-lesson1-tm1.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad3_lesson1_tm2(request):
+    log(request, "CONTENIDO_MODULO2_LESSON7_TEMA2")
     return render(request, 'contenidos/unidad2/modulo2-unidad3-lesson1-tm2.html')    
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad3_lesson1_tm3(request):
+    log(request, "CONTENIDO_MODULO2_LESSON7_TEMA3")
     return render(request, 'contenidos/unidad2/modulo2-unidad3-lesson1-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad3_lesson1_tm4(request):
+    log(request, "CONTENIDO_MODULO2_LESSON7_TEMA4")
     return render(request, 'contenidos/unidad2/modulo2-unidad3-lesson1-tm4.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad3_lesson2_tm1(request):
+    log(request, "CONTENIDO_MODULO2_LESSON8_TEMA1")
     return render(request, 'contenidos/unidad2/modulo2-unidad3-lesson2-tm1.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad3_lesson2_tm2(request):
+    log(request, "CONTENIDO_MODULO2_LESSON8_TEMA2")
     return render(request, 'contenidos/unidad2/modulo2-unidad3-lesson2-tm2.html')    
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad3_lesson2_tm3(request):
+    log(request, "CONTENIDO_MODULO2_LESSON8_TEMA3")
     return render(request, 'contenidos/unidad2/modulo2-unidad3-lesson2-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo2_unidad3_lesson2_tm4(request):
+    log(request, "CONTENIDO_MODULO2_LESSON8_TEMA4")
     return render(request, 'contenidos/unidad2/modulo2-unidad3-lesson2-tm4.html')
 
 # <---------------------------- modulo 3 ------------------------------------------
 @login_required(login_url="/login-estudiante")
 def modulo3(request):
+    log(request, "CONTENIDO_MODULO3")
     return render(request, 'contenidos/unidad3/modulo3.html')
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad1(request):
+    log(request, "CONTENIDO_MODULO3_UNIDAD1")
     return render(request, 'contenidos/unidad3/modulo3-unidad1.html')
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad2(request):
+    log(request, "CONTENIDO_MODULO3_UNIDAD2")
     return render(request, 'contenidos/unidad3/modulo3-unidad2.html')
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad3(request):
+    log(request, "CONTENIDO_MODULO3_UNIDAD3")
     return render(request, 'contenidos/unidad3/modulo3-unidad3.html')
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad1_lesson1_tm1(request):
+    log(request, "CONTENIDO_MODULO3_LESSON1_TEMA1")
     return render(request, 'contenidos/unidad3/modulo3-unidad1-lesson1-tm1.html')    
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad1_lesson1_tm2(request):
+    log(request, "CONTENIDO_MODULO3_LESSON1_TEMA2")
     return render(request, 'contenidos/unidad3/modulo3-unidad1-lesson1-tm2.html')
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad1_lesson1_tm3(request):
+    log(request, "CONTENIDO_MODULO3_LESSON1_TEMA3")
     return render(request, 'contenidos/unidad3/modulo3-unidad1-lesson1-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad1_lesson1_tm4(request):
+    log(request, "CONTENIDO_MODULO3_LESSON1_TEMA4")
     return render(request, 'contenidos/unidad3/modulo3-unidad1-lesson1-tm4.html')      
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad1_lesson2_tm1(request):
+    log(request, "CONTENIDO_MODULO3_LESSON2_TEMA1")
     return render(request, 'contenidos/unidad3/modulo3-unidad1-lesson2-tm1.html')    
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad1_lesson2_tm2(request):
+    log(request, "CONTENIDO_MODULO3_LESSON2_TEMA2")
     return render(request, 'contenidos/unidad3/modulo3-unidad1-lesson2-tm2.html')
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad1_lesson2_tm3(request):
+    log(request, "CONTENIDO_MODULO3_LESSON2_TEMA3")
     return render(request, 'contenidos/unidad3/modulo3-unidad1-lesson2-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad1_lesson2_tm4(request):
+    log(request, "CONTENIDO_MODULO3_LESSON2_TEMA4")
     return render(request, 'contenidos/unidad3/modulo3-unidad1-lesson2-tm4.html')  
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad1_lesson3_tm1(request):
+    log(request, "CONTENIDO_MODULO3_LESSON3_TEMA1")
     return render(request, 'contenidos/unidad3/modulo3-unidad1-lesson3-tm1.html')   
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad1_lesson3_tm2(request):
+    log(request, "CONTENIDO_MODULO3_LESSON3_TEMA2")
     return render(request, 'contenidos/unidad3/modulo3-unidad1-lesson3-tm2.html')
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad1_lesson3_tm3(request):
+    log(request, "CONTENIDO_MODULO3_LESSON3_TEMA3")
     return render(request, 'contenidos/unidad3/modulo3-unidad1-lesson3-tm3.html')   
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad1_lesson3_tm4(request):
+    log(request, "CONTENIDO_MODULO3_LESSON3_TEMA4")
     return render(request, 'contenidos/unidad3/modulo3-unidad1-lesson3-tm4.html')   
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad2_lesson1_tm1(request):
+    log(request, "CONTENIDO_MODULO3_LESSON4_TEMA1")
     return render(request, 'contenidos/unidad3/modulo3-unidad2-lesson1-tm1.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad2_lesson1_tm2(request):
+    log(request, "CONTENIDO_MODULO3_LESSON4_TEMA2")
     return render(request, 'contenidos/unidad3/modulo3-unidad2-lesson1-tm2.html')    
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad2_lesson1_tm3(request):
+    log(request, "CONTENIDO_MODULO3_LESSON4_TEMA3")
     return render(request, 'contenidos/unidad3/modulo3-unidad2-lesson1-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad2_lesson1_tm4(request):
+    log(request, "CONTENIDO_MODULO3_LESSON4_TEMA4")
     return render(request, 'contenidos/unidad3/modulo3-unidad2-lesson1-tm4.html')  
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad2_lesson2_tm1(request):
+    log(request, "CONTENIDO_MODULO3_LESSON5_TEMA1")
     return render(request, 'contenidos/unidad3/modulo3-unidad2-lesson2-tm1.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad2_lesson2_tm2(request):
+    log(request, "CONTENIDO_MODULO3_LESSON5_TEMA2")
     return render(request, 'contenidos/unidad3/modulo3-unidad2-lesson2-tm2.html')    
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad2_lesson2_tm3(request):
+    log(request, "CONTENIDO_MODULO3_LESSON5_TEMA3")
     return render(request, 'contenidos/unidad3/modulo3-unidad2-lesson2-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad2_lesson2_tm4(request):
+    log(request, "CONTENIDO_MODULO3_LESSON5_TEMA4")
     return render(request, 'contenidos/unidad3/modulo3-unidad2-lesson2-tm4.html')
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad2_lesson3_tm1(request):
+    log(request, "CONTENIDO_MODULO3_LESSON6_TEMA1")
     return render(request, 'contenidos/unidad3/modulo3-unidad2-lesson3-tm1.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad2_lesson3_tm2(request):
+    log(request, "CONTENIDO_MODULO3_LESSON6_TEMA2")
     return render(request, 'contenidos/unidad3/modulo3-unidad2-lesson3-tm2.html')    
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad2_lesson3_tm3(request):
+    log(request, "CONTENIDO_MODULO3_LESSON6_TEMA3")
     return render(request, 'contenidos/unidad3/modulo3-unidad2-lesson3-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad2_lesson3_tm4(request):
+    log(request, "CONTENIDO_MODULO3_LESSON6_TEMA4")
     return render(request, 'contenidos/unidad3/modulo3-unidad2-lesson3-tm4.html')   
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad3_lesson1_tm1(request):
+    log(request, "CONTENIDO_MODULO3_LESSON7_TEMA1")
     return render(request, 'contenidos/unidad3/modulo3-unidad3-lesson1-tm1.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad3_lesson1_tm2(request):
+    log(request, "CONTENIDO_MODULO3_LESSON7_TEMA2")
     return render(request, 'contenidos/unidad3/modulo3-unidad3-lesson1-tm2.html')    
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad3_lesson1_tm3(request):
+    log(request, "CONTENIDO_MODULO3_LESSON7_TEMA3")
     return render(request, 'contenidos/unidad3/modulo3-unidad3-lesson1-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad3_lesson1_tm4(request):
+    log(request, "CONTENIDO_MODULO3_LESSON7_TEMA4")
     return render(request, 'contenidos/unidad3/modulo3-unidad3-lesson1-tm4.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad3_lesson2_tm1(request):
+    log(request, "CONTENIDO_MODULO3_LESSON8_TEMA1")
     return render(request, 'contenidos/unidad3/modulo3-unidad3-lesson2-tm1.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad3_lesson2_tm2(request):
+    log(request, "CONTENIDO_MODULO3_LESSON8_TEMA2")
     return render(request, 'contenidos/unidad3/modulo3-unidad3-lesson2-tm2.html')    
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad3_lesson2_tm3(request):
+    log(request, "CONTENIDO_MODULO3_LESSON8_TEMA3")
     return render(request, 'contenidos/unidad3/modulo3-unidad3-lesson2-tm3.html') 
 
 @login_required(login_url="/login-estudiante")
 def modulo3_unidad3_lesson2_tm4(request):
+    log(request, "CONTENIDO_MODULO3_LESSON8_TEMA4")
     return render(request, 'contenidos/unidad3/modulo3-unidad3-lesson2-tm4.html')  
 
+# <---------------------------- modulo 4 ------------------------------------------
+@login_required(login_url="/login-estudiante")
+def modulo4(request):
+    log(request, "CONTENIDO_MODULO4")
+    return render(request, 'contenidos/unidad4/modulo4.html')
 
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad1(request):
+    log(request, "CONTENIDO_MODULO4_UNIDAD1")
+    return render(request, 'contenidos/unidad4/modulo4-unidad1.html')
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad2(request):
+    log(request, "CONTENIDO_MODULO4_UNIDAD2")
+    return render(request, 'contenidos/unidad4/modulo4-unidad2.html')
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad3(request):
+    log(request, "CONTENIDO_MODULO4_UNIDAD3")
+    return render(request, 'contenidos/unidad4/modulo4-unidad3.html')
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad1_lesson1_tm1(request):
+    log(request, "CONTENIDO_MODULO4_LESSON1_TEMA1")
+    return render(request, 'contenidos/unidad4/modulo4-unidad1-lesson1-tm1.html')    
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad1_lesson1_tm2(request):
+    log(request, "CONTENIDO_MODULO4_LESSON1_TEMA2")
+    return render(request, 'contenidos/unidad4/modulo4-unidad1-lesson1-tm2.html')
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad1_lesson1_tm3(request):
+    log(request, "CONTENIDO_MODULO4_LESSON1_TEMA3")
+    return render(request, 'contenidos/unidad4/modulo4-unidad1-lesson1-tm3.html') 
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad1_lesson1_tm4(request):
+    log(request, "CONTENIDO_MODULO4_LESSON1_TEMA4")
+    return render(request, 'contenidos/unidad4/modulo4-unidad1-lesson1-tm4.html')      
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad1_lesson2_tm1(request):
+    log(request, "CONTENIDO_MODULO4_LESSON2_TEMA1")
+    return render(request, 'contenidos/unidad4/modulo4-unidad1-lesson2-tm1.html')    
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad1_lesson2_tm2(request):
+    log(request, "CONTENIDO_MODULO4_LESSON2_TEMA2")
+    return render(request, 'contenidos/unidad4/modulo4-unidad1-lesson2-tm2.html')
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad1_lesson2_tm3(request):
+    log(request, "CONTENIDO_MODULO4_LESSON2_TEMA3")
+    return render(request, 'contenidos/unidad4/modulo4-unidad1-lesson2-tm3.html') 
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad1_lesson2_tm4(request):
+    log(request, "CONTENIDO_MODULO4_LESSON2_TEMA4")
+    return render(request, 'contenidos/unidad4/modulo4-unidad1-lesson2-tm4.html')  
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad1_lesson3_tm1(request):
+    log(request, "CONTENIDO_MODULO4_LESSON3_TEMA1")
+    return render(request, 'contenidos/unidad4/modulo4-unidad1-lesson3-tm1.html')   
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad1_lesson3_tm2(request):
+    log(request, "CONTENIDO_MODULO4_LESSON3_TEMA2")
+    return render(request, 'contenidos/unidad4/modulo4-unidad1-lesson3-tm2.html')
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad1_lesson3_tm3(request):
+    log(request, "CONTENIDO_MODULO4_LESSON3_TEMA3")
+    return render(request, 'contenidos/unidad4/modulo4-unidad1-lesson3-tm3.html')   
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad1_lesson3_tm4(request):
+    log(request, "CONTENIDO_MODULO4_LESSON3_TEMA4")
+    return render(request, 'contenidos/unidad4/modulo4-unidad1-lesson3-tm4.html')   
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad2_lesson1_tm1(request):
+    log(request, "CONTENIDO_MODULO4_LESSON4_TEMA1")
+    return render(request, 'contenidos/unidad4/modulo4-unidad2-lesson1-tm1.html') 
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad2_lesson1_tm2(request):
+    log(request, "CONTENIDO_MODULO4_LESSON4_TEMA2")
+    return render(request, 'contenidos/unidad4/modulo4-unidad2-lesson1-tm2.html')    
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad2_lesson1_tm3(request):
+    log(request, "CONTENIDO_MODULO4_LESSON4_TEMA3")
+    return render(request, 'contenidos/unidad4/modulo4-unidad2-lesson1-tm3.html') 
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad2_lesson1_tm4(request):
+    log(request, "CONTENIDO_MODULO4_LESSON4_TEMA4")
+    return render(request, 'contenidos/unidad4/modulo4-unidad2-lesson1-tm4.html')  
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad2_lesson2_tm1(request):
+    log(request, "CONTENIDO_MODULO4_LESSON5_TEMA1")
+    return render(request, 'contenidos/unidad4/modulo4-unidad2-lesson2-tm1.html') 
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad2_lesson2_tm2(request):
+    log(request, "CONTENIDO_MODULO4_LESSON5_TEMA2")
+    return render(request, 'contenidos/unidad4/modulo4-unidad2-lesson2-tm2.html')    
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad2_lesson2_tm3(request):
+    log(request, "CONTENIDO_MODULO4_LESSON5_TEMA3")
+    return render(request, 'contenidos/unidad4/modulo4-unidad2-lesson2-tm3.html') 
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad2_lesson2_tm4(request):
+    log(request, "CONTENIDO_MODULO4_LESSON5_TEMA4")
+    return render(request, 'contenidos/unidad4/modulo4-unidad2-lesson2-tm4.html')
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad2_lesson3_tm1(request):
+    log(request, "CONTENIDO_MODULO4_LESSON6_TEMA1")
+    return render(request, 'contenidos/unidad4/modulo4-unidad2-lesson3-tm1.html') 
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad2_lesson3_tm2(request):
+    log(request, "CONTENIDO_MODULO4_LESSON6_TEMA2")
+    return render(request, 'contenidos/unidad4/modulo4-unidad2-lesson3-tm2.html')    
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad2_lesson3_tm3(request):
+    log(request, "CONTENIDO_MODULO4_LESSON6_TEMA3")
+    return render(request, 'contenidos/unidad4/modulo4-unidad2-lesson3-tm3.html') 
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad2_lesson3_tm4(request):
+    log(request, "CONTENIDO_MODULO4_LESSON6_TEMA4")
+    return render(request, 'contenidos/unidad4/modulo4-unidad2-lesson3-tm4.html')   
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad3_lesson1_tm1(request):
+    log(request, "CONTENIDO_MODULO4_LESSON7_TEMA1")
+    return render(request, 'contenidos/unidad4/modulo4-unidad3-lesson1-tm1.html') 
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad3_lesson1_tm2(request):
+    log(request, "CONTENIDO_MODULO4_LESSON7_TEMA2")
+    return render(request, 'contenidos/unidad4/modulo4-unidad3-lesson1-tm2.html')    
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad3_lesson1_tm3(request):
+    log(request, "CONTENIDO_MODULO4_LESSON7_TEMA3")
+    return render(request, 'contenidos/unidad4/modulo4-unidad3-lesson1-tm3.html') 
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad3_lesson1_tm4(request):
+    log(request, "CONTENIDO_MODULO4_LESSON7_TEMA4")
+    return render(request, 'contenidos/unidad4/modulo4-unidad3-lesson1-tm4.html') 
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad3_lesson2_tm1(request):
+    log(request, "CONTENIDO_MODULO4_LESSON8_TEMA1")
+    return render(request, 'contenidos/unidad4/modulo4-unidad3-lesson2-tm1.html') 
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad3_lesson2_tm2(request):
+    log(request, "CONTENIDO_MODULO4_LESSON8_TEMA2")
+    return render(request, 'contenidos/unidad4/modulo4-unidad3-lesson2-tm2.html')    
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad3_lesson2_tm3(request):
+    log(request, "CONTENIDO_MODULO4_LESSON8_TEMA3")
+    return render(request, 'contenidos/unidad4/modulo4-unidad3-lesson2-tm3.html') 
+
+@login_required(login_url="/login-estudiante")
+def modulo4_unidad3_lesson2_tm4(request):
+    log(request, "CONTENIDO_MODULO4_LESSON8_TEMA4")
+    return render(request, 'contenidos/unidad4/modulo4-unidad3-lesson2-tm4.html') 
+
+# <---------------------------- Profes ----------------------------->
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def inicio_profesor(request):
