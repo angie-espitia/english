@@ -41,38 +41,28 @@
                 <thead>
                   <tr>
                     <th>Nombre</th>
-                    <th>Documento</th>
-                      <th>Correo</th>
-                      <th>última conexión</th>
-                      <th>Eventos</th>
+                    <th>Fecha</th>
+                      <th>Accion</th>
                   </tr>
                 </thead>
-                    {% for estudiante in estudiantes %}
+                    {% for log in eventos %}
                         <tbody>
                           <tr>
                               <td>
-                                <h4>{{ estudiante.estudiante.id.first_name }} {{ estudiante.estudiante.id.last_name }}</h4>
+                                <h4>{{ user.first_name }} {{ estudiante.estudiante.id.last_name }}</h4>
                               </td>
                               <td>
-                                <h4>{{ estudiante.estudiante.documento }}</h4>
+                                <h4>{{ log.tiempo }}</h4>
                               </td>
                               <td>
-                                <h4>{{ estudiante.estudiante.id.email }}</h4>
-                              </td>
-                              <td>
-                                <h4>{{ estudiante.estudiante.id.last_login }}</h4>
-                              </td>
-                              <td>
-                                <h4><a class="btn btn-primary" href="{% url 'eventos-estudiantes' pk=estudiante.estudiante.pk %}">Ver</a></h4>
+                                <h4>{{ log.accion }}</h4>
                               </td>
                           </tr>
                          </tbody>
                     {% endfor %}
                  </table>
                 </div>
-                            <div class="text-right">
-                                    <a href="{% url 'reporte-estudiante' %}">Descargar Reporte <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
+                            
                 </div>
                 </div>
                 </div>

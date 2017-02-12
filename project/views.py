@@ -74,9 +74,9 @@ def restringir_estudiante(User):
 
 @login_required(login_url="/login-estudiante")
 def logout(request):
-    auth.logout(request)
     log(request, "CERRO_SESION")
-    return HttpResponseRedirect("/")
+    auth.logout(request)
+    return redirect('index')
 
 @login_required(login_url="/login-estudiante")
 def inicio_estudiante(request):
@@ -1125,3 +1125,8 @@ def log(request, action):
         log.tipo = 'P'
     log.accion = action
     log.save() 
+
+def eventos_estudiantes(request, pk):
+    log = Log.objects.filter(usuario__in=pk)
+    user = User.objects.get(pk=pk)
+    return render(request, 'paginaDocente/eventos-estudiantes.html', {'eventos':log, 'user':user} )

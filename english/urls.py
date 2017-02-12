@@ -220,7 +220,8 @@ urlpatterns = [
     url(r'^groups/add$', createGrupos.as_view(), name='agregar-grupos'),
     url(r'^groups/(?P<pk>[0-9]+)/edit$', editGrupos.as_view(), name='editar-grupos'),
     url(r'^groups/(?P<pk>\d+)/delete/$', deleteGrupos.as_view(), name='eliminar-grupos'),
-    url(r'^groups/students/(?P<pk>[0-9]+)$', grupos_estudiantes, name='grupos-estudiantes'),  
+    url(r'^groups/students/(?P<pk>[0-9]+)$', grupos_estudiantes, name='grupos-estudiantes'), 
+    url(r'^groups/students/event/(?P<pk>[0-9]+)$', eventos_estudiantes, name='eventos-estudiantes'),      
 
     url(r'^curso$', lista_curso, name='lista-curso'),
     url(r'^curso/add$', agregar_curso, name='agregar-curso'),
