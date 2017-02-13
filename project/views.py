@@ -1098,7 +1098,6 @@ def eliminar_curso(request, pk):
     return redirect('lista-curso')
 
 # <----------------------------------- Funciones ------------------------------->
-
 import xhtml2pdf.pisa as pisa
 from StringIO import StringIO
 from django.template.loader import render_to_string
@@ -1127,6 +1126,7 @@ def log(request, action):
     log.save() 
 
 def eventos_estudiantes(request, pk):
-    log = Log.objects.filter(usuario__in=pk)
+    # import pdb; pdb.set_trace() 
+    log = Log.objects.filter(usuario=pk)
     user = User.objects.get(pk=pk)
     return render(request, 'paginaDocente/eventos-estudiantes.html', {'eventos':log, 'user':user} )
