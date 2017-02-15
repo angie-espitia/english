@@ -1,0 +1,124 @@
+{% extends 'plantilla2.html' %}
+{% load staticfiles %}
+{% block title %} Module 2 - Unit 1 - Lesson 1 {% endblock %}
+
+{%  block content %}
+    
+   <div class="container initial">
+    <ol class="breadcrumb">
+        <li><a href="{% url 'modulo2' %}">Module 2</a></li>
+        <li><a href="{% url 'modulo2-unidad1' %}">Unit 2</a></li>
+        <li >Lesson 2</li>
+        <li class="active">Theme 1</li> 
+        
+</ol>
+
+    {% include 'plantilla-lessons-module2.html' %}
+              
+  <div class="col-sm-9 col-md-9">
+      <h2>FOCUS ON VOCABULARY</h2>
+      <h3></h3>
+        <hr>
+      <p>1. Match the free-time activities in the box to the pictures 1–8.</p>
+
+       <div class="col-sm-12 col-md-12">
+            <img src="{% static 'img/modulo2/Modulo2Unidad1Lesson2Them14img1.png' %}" alt="No found">
+          </div> 
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <p>2. Look at the free-time activities and answer the questions in your notebook.</p>     
+
+      <div class="col-sm-12 col-md-12"></div>
+
+      <div class="col-sm-12 col-md-12"> 
+          <div class="col-sm-6 col-md-6">
+            <li>a. Do you <b>listen to music?</b> <br> 
+Yes, I do. / No, I don’t.</li>
+            <li>b. Do you <b>play computer games?</b> <br>
+            Yes, I do. / No, I don’t.</li>
+            <li>c. Do you <b>go shopping</b> with your friends? <br>
+Yes, I do. / No, I don’t.</li>
+            <li>d. Do you <b>go bowling</b>? <br> 
+Yes, I do. / No, I don’t.</li>
+            <li>e. Do you <b>watch TV</b>? <br>
+Yes, I do. / No, I don’t.</li>
+            <li>f. Do you <b>go to the cinema</b> with your family? <br>
+Yes, I do. / No, I don’t.</li>
+            <li>g. Do you <b>read books</b>? <br>
+Yes, I do. / No, I don’t.</li>
+            <li>h. Do you <b>play the guitar</b>? <br>
+Yes, I do. / No, I don’t.</li>
+          </div>
+          <div class="col-sm-6 col-md-6">
+
+           <audio controls>
+          <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK43.mp3' %}" type="audio/mpeg">
+            Your browser does not support the audio element. (AUDIO 43)
+          </audio>
+
+           	<table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>3. Say it!</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <td><b>Listen and repeat.</b> <br>
+				When you ask a question beginning
+				with ‘Do’, the intonation goes up and
+				then down at the end of the question. <br>
+	
+	          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  	<img src="{% static 'img/modulo2/Modulo2Unidad1Lesson2Them14img2.png' %}" alt="No found">
+	          <br>
+				Do you live in Colombia? <br>
+				Yes, I do. <br>
+
+	            	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{% static 'img/modulo2/Modulo2Unidad1Lesson2Them14img3.png' %}" alt="No found">
+		 <br>
+				Do you speak French? <br>
+				No, I don’t.)
+                  </td>
+              </tr>
+            </tbody>
+          </table> 
+          </div>
+      </div>
+
+      <div class="col-sm-12 col-md-12"></div>
+
+      <div class="col-sm-12 col-md-12">
+      <h2>SPEAK</h2>
+      <h3></h3>
+        <hr>
+      <p>4. Ask and answer the questions in exercise 2.</p>
+
+          <p>Do you listen to music? <br>
+Yes, I do.</p>
+	
+	</div>
+       </div>
+    </div><!--div-->
+</div>
+</div>
+
+{% endblock %}

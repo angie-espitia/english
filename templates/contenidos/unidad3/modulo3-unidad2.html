@@ -1,0 +1,81 @@
+{% extends 'plantilla2.html' %}
+{% load staticfiles %}
+{% block title %} Module 3 - Unit 2 {% endblock %}
+
+{%  block content %}
+
+    <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Module 3</li>
+        <li class="active">Unit 2</li>
+              
+</ol>
+
+    {% include 'plantilla-lessons-module3.html' %}
+
+  <div class="col-sm-9">
+      <div id="bgf">
+      <h2>Module How we live: Unit 2 </h2>
+              <h3>Take good care</h3>
+          </div>
+      <br />
+      <br />
+    <div class="col-sm-12">
+            <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Lesson</th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td><b><a href="{% url 'modulo3-unidad2-lesson1-tm1' %}">Lesson 4</a></b> <p></p></td>
+
+          <td><p>Food containers
+Ordering food and drink</p></td>
+
+        <td><p> Do you like …
+Would you like …
+Collective nouns </p></td>
+
+          <td><p><b>Speaking:</b> ordering food and drink in
+a restaurant</td>
+
+      </tr>
+      <tr>
+        <td><b><a href="{% url 'modulo3-unidad2-lesson2-tm1' %}">Lesson 5</a></b> <p></p></td>
+          <td><p>Helping the environment</p></td>
+
+        <td><p> should / shouldn’t </p></td>
+
+        <td><p><b>Speaking:</b> giving advice about the
+environment</p>
+        <p><b>Writing:</b> making a poster</p></td>
+      </tr>
+
+        <tr>
+            <td><b><a href="{% url 'modulo3-unidad2-lesson3-tm1' %}">Lesson 6</a></b> <p></p></td>
+              <td><p>Health advice</p></td>
+
+            <td><p> Extreme adjectives
+Intensifiers </p></td>
+
+            <td><p><b>Speaking / Writing:</b> giving opinions on
+health topics</p></td>
+
+          </tr>
+    </tbody>
+  </table>
+        </div>
+      
+</div>
+              
+   
+</div>
+          </div>
+</div>   
+
+{% endblock %}

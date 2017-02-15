@@ -1,0 +1,89 @@
+{% extends 'plantilla2.html' %}
+{% load staticfiles %}
+{% block title %} Module 2 - Unit 1 - Lesson 1 {% endblock %}
+
+{%  block content %}
+    
+   <div class="container initial">
+    <ol class="breadcrumb">
+        <li><a href="{% url 'modulo2' %}">Module 2</a></li>
+        <li><a href="{% url 'modulo2-unidad1' %}">Unit 2</a></li>
+        <li >Lesson 2</li>
+        <li class="active">Theme 3</li> 
+        
+</ol>
+
+    {% include 'plantilla-lessons-module2.html' %}
+
+  <div class="col-sm-9 col-md-9">
+      <h2>READ</h2>
+      <h3></h3>
+        <hr>
+      <p>11. Read the interview. Then read the questions and answers a–g. Are the answers
+true (T) or false (F) for Jo? Correct the false ones by writing what Jo says.</p>
+
+       <div class="col-sm-12 col-md-12">
+            <img src="{% static 'img/modulo2/Modulo2Unidad1Lesson2Them3img1.png' %}" alt="No found">
+          </div> 
+
+          <div class="col-sm-6 col-md-6">
+            <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Glossary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <td>interested in = interesado en <br>
+of course = por supuesto <br>
+play cards = jugar cartas <br>
+together = juntos <br>
+spend time = pasar tiempo
+                  </td>
+              </tr>
+            </tbody>
+          </table> 
+         
+          </div>
+
+<div class="col-sm-6 col-md-6">
+   <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Useful expressions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <td><b>Time expressions</b> <br>
+every day, every Friday, <br>
+every week, every month <br>
+once a month, twice a <br>
+month, three times a month
+                  </td>
+              </tr>
+            </tbody>
+          </table> 
+</div>   
+
+      <div class="col-sm-12 col-md-12"></div>
+
+      <div class="col-sm-12 col-md-12"> 
+          
+          <li>a. Do you like music? No, I don’t. Example: F. (Yes, I do. I love music!)</li>
+          <li>b. Do you play any instruments? Yes, I do. I play the piano.</li>
+          <li>c. Do you do any sport? No, I don’t.</li>
+          <li>d. Do you play chess? No, I don’t.</li>
+          <li>e. Do you play cards? Yes, I do.</li>
+          <li>f. Do you go to the cinema? No, I don’t.</li>
+          <li>g. Do you spend time with your family? Yes, I do. We go to the cinema.</li>
+          </div>  
+	
+	</div>
+       </div>
+    </div><!--div-->
+</div>
+</div>
+
+{% endblock %}

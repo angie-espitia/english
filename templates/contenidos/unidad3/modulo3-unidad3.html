@@ -1,0 +1,83 @@
+{% extends 'plantilla2.html' %}
+{% load staticfiles %}
+{% block title %} Module 3 - Unit 3 {% endblock %}
+
+{%  block content %}
+
+    <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Module 3</li>
+        <li class="active">Unit 3</li>
+              
+</ol>
+
+    {% include 'plantilla-lessons-module3.html' %}
+
+<div class="col-sm-9">
+      <div id="bgf">
+      <h2>Module Around the world: Unit 3 </h2>
+              <h3>Special days</h3>
+          </div>
+      <br />
+      <br />
+    <div class="col-sm-12">
+            <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Lesson</th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td><b><a href="{% url 'modulo3-unidad3-lesson1-tm1' %}">Lesson 7</a></b> <p></p></td>
+
+          <td><p>Free-time activities</p></td>
+
+        <td><p>go/play/do collocations
+Frequency adverbs: always, usually,
+sometimes, hardly ever, never</p></td>
+
+          <td><p><b>Speaking:</b> talking about your free time</p>
+              <p><b>Writing:</b> a paragraph about how you
+spend your free time</p></td>
+
+      </tr>
+      <tr>
+        <td><b><a href="{% url 'modulo3-unidad3-lesson2-tm1' %}">Lesson 8</a></b> <p></p></td>
+          <td><p> How to be polite in
+different countries </p></td>
+
+        <td><p> can /can’t for possibility and
+permission </p></td>
+
+        <td><p><b>Writing:</b> an email to a friend about eating
+customs in Colombia</p>
+<p><b>Speaking: </b>talking about what is polite in
+different countries</p></td>
+      </tr>
+
+        <tr>
+            <td><b><a href="#">Let’s work together: A leaflet – healthy lifestyles </a></b> <p></p></td>
+              
+
+          </tr>
+
+        <tr>
+            <td><b><a href="{% url 'modulo1-unidad1-lesson6-tm2' %}">Self-assessment </a></b> <p></p></td>
+              
+
+          </tr>  
+    </tbody>
+  </table>
+        </div>
+      
+</div>
+
+</div>
+          </div>
+</div>   
+
+{% endblock %}

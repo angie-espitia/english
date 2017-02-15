@@ -1,0 +1,117 @@
+{% extends 'plantilla2.html' %}
+{% load staticfiles %}
+{% block title %} Module 2 - Unit 1 - Lesson 1 {% endblock %}
+
+{%  block content %}
+    
+   <div class="container initial">
+    <ol class="breadcrumb">
+        <li><a href="{% url 'modulo2' %}">Module 2</a></li>
+        <li><a href="{% url 'modulo2-unidad1' %}">Unit 2</a></li>
+        <li >Lesson 2</li>
+        <li class="active">Theme 2</li> 
+        
+</ol>
+
+    {% include 'plantilla-lessons-module2.html' %}
+
+  <div class="col-sm-9 col-md-9">
+      <h2>LISTEN</h2>
+      <h3></h3>
+        <hr>
+
+        <audio controls>
+          <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK44.mp3' %}" type="audio/mpeg">
+            Your browser does not support the audio element. (AUDIO 44)
+          </audio>
+
+      <p>5. Listen to three short interviews. Write the questions you hear in your notebook.</p>
+
+ 
+      <div class="col-sm-12 col-md-12"> 
+          <div class="col-sm-6 col-md-6">
+            <li>Interview 1:</li>
+            <li>A. Do you play sport?</li>
+            <li>B. Do you get up before 7:00 am?</li>
+            <li>C. Do you go shopping?</li>
+            <li>D. Do you play football at the weekends?</li>
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <li>Interview 3:</li>
+            <li>A. Do you read books?</li>
+            <li>B. Do you have a nap after lunch?</li>
+            <li>C. Do you all go to the cinema?</li>
+            <li>D. Do you live with your parents?</li>
+          </div>
+
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+
+          <div class="col-sm-6 col-md-6">
+            <li>Interview 2:</li>
+            <li>A. Do you chat online?</li>
+            <li>B. Do you play chess?</li>
+            <li>C. Do you go to school on foot?</li>
+            <li>D. Do you finish school at 12:00 pm?</li>          
+          </div>
+      </div>
+
+      <audio controls>
+          <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK44.mp3' %}" type="audio/mpeg">
+            Your browser does not support the audio element. (AUDIO 44)
+          </audio>
+
+      <p>6. Listen again. After each question, write the answers
+Yes, I do. or No, I don't.</p>
+
+      <div class="col-sm-12 col-md-12"></div>
+
+      <div class="col-sm-12 col-md-12">
+      <h2>FOCUS ON LANGUAGE</h2>
+      <h3></h3>
+        <hr>
+      <p>7. In your notebook, write the words in the correct order.</p>
+
+          <div class="col-sm-12 col-md-12">
+            <div class="col-sm-8 col-md-8">
+            <li>a. you / play / do / chess / school / at ?</li>
+            <li>b. you / do / chat / your / online / friends / with ?</li>
+            <li>c. to / breakfast / go / school / have / you / do / before / you ?</li>
+            <li>d. the / you / to / weekend / do / go / cinema / at / the ?</li>
+            <li>e. spend / family / your / time / you / do / with ?</li>
+          </div>
+  
+            <div class="col-sm-4 col-md-4">
+            <img src="{% static 'img/modulo2/Modulo2Unidad1Lesson2Them24img1.png' %}" alt="No found">
+
+          </div>
+
+        <p>8. Answer the questions in exercise 7 in your notebook.</p>
+
+        <p>Example: Do you play chess at school? Yes, I do. / No, I don’t.</p>
+
+        <p>9. Find the mistakes in these questions. Then write the correct question in your notebook.</p>
+
+        <li>a. Are you do your homework in the evening or at the weekend?</li>
+        <li>b. You go to bed early or late?</li>
+        <li>c. Do have you lunch at school?</li>
+        <li>d. Watch TV before you go to school?</li>
+        <li>e. Do you going shopping with your family?</li>
+
+        <br>
+
+        <p>10. Ask and answer the corrected questions from exercise 9 with a partner.</p>
+            
+          </div>
+	
+	</div>
+       </div>
+    </div><!--div-->
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,134 @@
+{% extends 'plantilla2.html' %}
+{% load staticfiles %}
+{% block title %} Module 2 - Unit 1 - Lesson 1 {% endblock %}
+
+{%  block content %}
+    
+   <div class="container initial">
+    <ol class="breadcrumb">
+        <li><a href="{% url 'modulo2' %}">Module 2</a></li>
+        <li><a href="{% url 'modulo2-unidad1' %}">Unit 2</a></li>
+        <li >Lesson 2</li>
+        <li class="active">Theme 4</li> 
+        
+</ol>
+
+    {% include 'plantilla-lessons-module2.html' %}
+
+  <div class="col-sm-9 col-md-9">
+      <h2>FOCUS ON VOCABULARY</h2>
+      <h3></h3>
+        <hr>
+      <p>12. Complete the mind map in your notebook with the words in the Vocabulary box.</p>
+
+       <div class="col-sm-12 col-md-12">
+            <div class="col-sm-8 col-md-8">
+              <img src="{% static 'img/modulo2/Modulo2Unidad1Lesson2Them4img1.png' %}" class="img-responsive" alt="No found">
+            </div>
+            <div class="col-sm-4 col-md-4">
+                <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Vocabulary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <td>baseball <br>
+                    basketball <br>
+                    cards <br>
+                    chess <br>
+                    dominoes <br> 
+                    football <br>
+                    tennis <br>
+                    the drums <br>
+                    the saxophone <br>
+                    the guitar <br>
+                    the piano <br>
+                    video game
+                  </td>
+              </tr>
+            </tbody>
+          </table> 
+            </div>
+          </div> 
+      <br>
+      
+      <div class="col-sm-12 col-md-12"></div>
+
+      <div class="col-sm-12 col-md-12">
+      <h2>SPEAK</h2>
+      <h3></h3>
+        <hr>
+      <div class="col-sm-12 col-d-12">
+        <div class="col-sm-6 col-md-6">
+          <p>13. Write six questions about free-time
+activities in your notebook.</p>
+
+        <div class="col-sm-6 col-md-6">
+          <li>a. Do you …?</li>
+          <li>b. Do you …?</li>
+          <li>c. Do you …?</li>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <li>d. Do you …?</li>
+          <li>e. Do you …?</li>
+          <li>f. Do you …?</li>
+        </div>
+        </div>
+
+        <div class="col-sm-6 col-md-6">
+          <p>14. Ask six students your questions. Use some
+time expressions in your answers. Write
+down the answers in your notebook.</p>
+<p>Example: Do you go to the cinema with your <br>
+friends? <br> 
+Yes, I do. I go to the cinema with my friend, <br>
+Clara at the weekend.</p>
+        </div>
+        
+      </div>
+            <div class="col-sm-12 col-md-12"></div>
+
+      <div class="col-sm-12 col-md-12">
+      <h2>WRITE</h2>
+      <h3></h3>
+        <hr>
+      <div class="col-sm-12 col-d-12">
+        <div class="col-sm-6 col-md-6">
+          <img src="{% static 'img/modulo2/Modulo2Unidad1Lesson2Them4img2.png' %}" alt="No found">
+        </div>
+
+        <div class="col-sm-6 col-md-6">
+          <li>a. How many students like music?</li>
+          <li>b. Do all the students play an instrument?</li>
+          <li>c. How many students play a sport?</li>
+          <li>d. How many students play cards?</li>
+          <li>e. Do all the students go to the cinema every week?</li>
+        </div>
+        
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <p>16. Write the results of your own survey. Use the text in exercise 15 to help you.</p>
+  
+  </div>
+	
+	</div>
+       </div>
+    </div><!--div-->
+</div>
+</div>
+
+{% endblock %}

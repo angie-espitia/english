@@ -1,0 +1,83 @@
+{% extends 'plantilla2.html' %}
+{% load staticfiles %}
+{% block title %} Module 3 - Unit 1 {% endblock %}
+
+{%  block content %}
+
+    <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Module 3</li>
+        <li class="active">Unit 1</li>
+              
+</ol>
+
+    {% include 'plantilla-lessons-module3.html' %}
+
+  <div class="col-sm-9">
+      <div id="bgf">
+      <h2>Module How we live: Unit 1 </h2>
+              <h3>What we eat</h3>
+          </div>
+      <br />
+      <br />
+    <div class="col-sm-12">
+            <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Lesson</th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td><b><a href="{% url 'modulo3-unidad1-lesson1-tm1' %}">Lesson 1</a></b> <p></p></td>
+
+          <td><p>Likes and dislikes
+Food</p></td>
+
+        <td><p> I like … but I don’t like …
+Countable and uncountable nouns
+a / an / some / any </p></td>
+
+          <td><p><b>Speaking:</b> talking about food
+preferences
+<b>Writing:</b> describing a dish</p></td>
+
+      </tr>
+      <tr>
+        <td><b><a href="{% url 'modulo3-unidad1-lesson2-tm1' %}">Lesson 2</a></b> <p></p></td>
+          <td><p>Food groups
+Healthy and unhealthy diet</p></td>
+
+        <td><p> how much / many </p></td>
+
+        <td><p><b>Speaking:</b> a survey about eating habits</p>
+        <p><b>Writing:</b> an email to a penfriend</p></td>
+      </tr>
+
+        <tr>
+            <td><b><a href="{% url 'modulo3-unidad1-lesson3-tm1' %}">Lesson 3</a></b> <p></p></td>
+              <td><p>Eating habits</p></td>
+
+            <td><p> Quantifiers: a little / a few
+Frequency expression: sometimes /
+every day / never </p></td>
+
+            <td><p><b>Writing:</b> a report </p>
+            <p><b>Speaking: </b>conducting a survey </p></td>
+
+          </tr>
+    </tbody>
+  </table>
+        </div>
+      
+</div>
+              
+   
+</div>
+          </div>
+</div>   
+
+{% endblock %}
