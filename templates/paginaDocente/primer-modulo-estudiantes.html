@@ -45,6 +45,7 @@
                       <th>Correo</th>
                       <th>última conexión</th>
                       <th>Eventos</th>
+                      <th>Nota</th>
                   </tr>
                 </thead>
                     {% for estudiante in estudiantes %}
@@ -64,6 +65,9 @@
                               </td>
                               <td>
                                 <h4><a class="btn btn-primary" href="{% url 'eventos-estudiantes' pk=estudiante.estudiante.pk %}">Ver</a></h4>
+                              </td>
+                              <td>
+                                <h4><a class="btn btn-primary" href="{% url 'lista-notas' pk=estudiante.estudiante.pk %}">Ver</a></h4>
                               </td>
                           </tr>
                          </tbody>

@@ -209,7 +209,10 @@ urlpatterns = [
     url(r'^home$', inicio_profesor, name='inicio-profesor' ),#/Inicio-profesor
     url(r'^profile$', perfil_profesor, name='perfil-profesor'),  # /perfil-profesor
     url(r'^primer-modulo$', primer_modulo, name='primer-modulo'),  # /primer-modulo-panel
-    url(r'^primer-modulo-notas$', primer_modulo_notas, name='primer-modulo-notas'),  # /primer-modulo-notas-panel
+
+    url(r'^note$', notas, name='notas'),
+    url(r'^note/(?P<pk>\d+)/$', lista_notas, name='lista-notas'),  
+    url(r'^note/add/(?P<pk>\d+)/$', agregar_notas, name='agregar-notas'),
 
     url(r'^student/add$', registro_estudiante, name='registro-estudiante' ), #/registro-estudiante
     url(r'^student/delete$', eliminar_estudiante, name='eliminar-estudiante'),  # /eliminar-estudiante

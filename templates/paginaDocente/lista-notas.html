@@ -1,0 +1,73 @@
+{% extends 'plantilla-prof.html' %}
+{% block title %} Primer Módulo Notas {% endblock %}
+
+{%  block content %}
+
+<div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Lista de Notas
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-fw fa-table"> </i> Notas
+                            </li>
+                            <li>
+                                ...
+                            </li>
+                            <li class="active">
+                                Lista Notas
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    
+                    <div class="col-lg-12 col-md-12">
+                        <a href="{% url 'agregar-notas' pk=estudiante.pk %}" class="btn btn-primary">Agregar Nueva Nota </a>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-body">
+                        <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                            <tr>
+                              <th>Nota</th>
+                              <th>Detalle</th>
+                              <th>Actividad</th>
+                              <th>Editar Nota</th>
+                            </tr>  
+                            </thead>    
+                              {% for row in notas %}
+                              <tbody>
+                                <tr>
+                                <td>{{ row.nota }}</td>
+                                <td>{{ row.detalle }}</td>
+                                <td>{{ row.actividad }}</td>
+                                <td><a class="btn btn-primary" href="#">Editar</a> <a class="btn btn-danger" href="{% url 'eliminar-curso' pk=row.pk %}">Borrar</a></td> 
+                                </tr>
+                              </tbody>
+                              {% endfor %}
+                        </table>
+                        </div>
+                        </div>        
+                    </div>
+
+                    
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+{% endblock %}

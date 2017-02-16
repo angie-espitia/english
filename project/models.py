@@ -79,10 +79,9 @@ class Grupo_Estudiante(models.Model):
 
 class Calificacion(models.Model):
     nota = models.FloatField()
-    promedio = models.FloatField()
+    promedio = models.FloatField(null=True)
     detalle = models.CharField(max_length= 200)
-    modulo_estudiante = models.IntegerField()
-    actividad = models.ForeignKey(Actividades)
+    actividad = models.ForeignKey(Actividades, null=True)
     grupo_estudiante = models.ForeignKey(Grupo_Estudiante)
 
 class Log(models.Model):

@@ -31,14 +31,14 @@
                 <div class="row">
 
                 <div class="col-sm-7 col-md-7">
-                <div class="panel panel-default">
+                <div class="panel panel-default ">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-list-alt fa-fw"></i> Lista de Estudiantes Inscritos</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
-                <table class="table table-bordered table-hover table-striped">
-                <thead>
+                <table class="table table-bordered table-hover table-striped table-fixedheader" >
+                <thead style="overflow-y: scroll;">
                   <tr>
                     <th>Nombre</th>
                     <th>Fecha</th>
@@ -46,7 +46,7 @@
                   </tr>
                 </thead>
                     {% for log in eventos %}
-                        <tbody>
+                        <tbody style="overflow-y: scroll;">
                           <tr>
                               <td>
                                 <h4>{{ user.first_name }} {{ user.last_name }}</h4>

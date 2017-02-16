@@ -9,12 +9,12 @@ from django.template import RequestContext
 from django.contrib.auth.models import User, Group
 from .validator import FormRegistroValidator, FormLoginValidator
 from english.settings import STATIC_ROLS, EMAIL_HOST_USER, STATICFILES_DIRS
-from .models import Estudiante, Profesor, Preguntas, Respuesta, Curso, Grupo, Grupo_Estudiante, Log
+from .models import Estudiante, Profesor, Preguntas, Respuesta, Curso, Grupo, Grupo_Estudiante, Log, Calificacion
 from django.template.loader import get_template
 from django.template import Context
 from django.contrib.auth.hashers import make_password
 from django.db.models import Q
-from .forms import GrupoForm, CursoForm
+from .forms import GrupoForm, CursoForm, CalificacionForm
 from django.utils.decorators import method_decorator
 from django.views.generic import UpdateView, DeleteView, CreateView
 
@@ -885,8 +885,8 @@ def grupos_estudiantes(request, pk):
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
-def primer_modulo_notas(request):
-    return render(request, 'paginaDocente/primer-modulo-notas.html')
+def notas(request):
+    return render(request, 'paginaDocente/notas.html')
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
@@ -1096,6 +1096,55 @@ def eliminar_curso(request, pk):
     curso = get_object_or_404(Curso, pk=pk)
     curso.delete()
     return redirect('lista-curso')
+
+# <------------------------------ Calificacion -------------------------------------->
+
+@login_required(login_url="/login-profesor")
+@user_passes_test(restringir_estudiante, login_url='/login-profesor')
+def lista_notas(request, pk):
+    estudiante = User.objects.get(id=pk)
+    notas = Calificacion.objects.all()
+    return render(request, 'paginaDocente/lista-notas.html', {'notas':notas, 'estudiante':estudiante} )
+
+# Función Crear Cursos
+@login_required(login_url="/login-profesor")
+@user_passes_test(restringir_estudiante, login_url='/login-profesor')
+def agregar_notas(request, pk):
+    import pdb; pdb.set_trace()
+    estudiante = User.objects.get(id=pk)
+    if request.method == "POST":
+        form = CalificacionForm(request.POST)
+        if form.is_valid():
+            notas = form.save(commit=False)
+            notas.grupo_estudiante_id = pk
+            notas.save()
+            return redirect('agregar-notas')
+    else:
+        form = CalificacionForm()
+    return render(request, 'paginaDocente/agregar-notas.html', {'form': form, 'estudiante':estudiante} )
+
+@login_required(login_url="/login-profesor")
+@user_passes_test(restringir_estudiante, login_url='/login-profesor')
+def editar_notas(request, pk):
+    notas = get_object_or_404(Calificacion, pk=pk)
+    if request.method == "POST":
+        form = CalificacionForm(request.POST, instance=notas)
+        if form.is_valid():
+            notas = form.save(commit=False)
+            notas.grupo_estudiante_id = pk
+            notas.save()
+            return redirect('lista-notas')
+    else:
+        form = CalificacionForm(instance=notas)
+
+    return render(request, 'paginaDocente/editar-notas.html', {'form': form})
+
+@login_required(login_url="/login-profesor")
+@user_passes_test(restringir_estudiante, login_url='/login-profesor')
+def eliminar_notas(request, pk):
+    notas = get_object_or_404(Calificacion, pk=pk)
+    notas.delete()
+    return redirect('lista-notas')
 
 # <----------------------------------- Funciones ------------------------------->
 import xhtml2pdf.pisa as pisa

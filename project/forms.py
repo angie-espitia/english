@@ -36,3 +36,17 @@ class EstadoForm(forms.ModelForm):
         fields = ['descripcion']
         labels = {'descripcion': 'Detalle' }
         widgets = {'descripcion': forms.TextInput(attrs={'class':'form-control'}) }
+
+class CalificacionForm(forms.ModelForm):
+
+    class Meta:
+        model = Calificacion
+        fields = ['nota','detalle', 'actividad']
+        labels = {'nota': 'Nota',
+                  'detalle': 'Detalle',
+                  'actividad': 'Actividad', 
+                 }
+        widgets = {'nota': forms.TextInput(attrs={'class':'form-control'}),
+                   'detalle': forms.TextInput(attrs={'class':'form-control'}),
+                   'actividad': forms.Select(attrs={'class':'form-control'}),
+                    }
