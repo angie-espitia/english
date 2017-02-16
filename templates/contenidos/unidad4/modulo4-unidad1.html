@@ -1,0 +1,77 @@
+{% extends 'plantilla2.html' %}
+{% load staticfiles %}
+{% block title %} Module 4 - Unit 1 {% endblock %}
+
+{%  block content %}
+
+    <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Module 4</li>
+        <li class="active">Unit 1</li>
+              
+</ol>
+
+    {% include 'plantilla-lessons-module4.html' %}
+
+  <div class="col-sm-9">
+      <div id="bgf">
+      <h2>Module Protect the earth: Unit 1 </h2>
+              <h3>The world we live in</h3>
+          </div>
+      <br />
+      <br />
+    <div class="col-sm-12">
+            <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Lesson</th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td><b><a href="{% url 'modulo4-unidad1-lesson1-tm1' %}">Lesson 1</a></b> <p></p></td>
+
+          <td><p>Features of the world</p></td>
+
+        <td><p>Comparative and superlative adjectives </p></td>
+
+          <td><p><b>Speaking:</b> dealing with numbers
+<b>Writing:</b>  a description of an ecopark </p></td>
+
+      </tr>
+      <tr>
+        <td><b><a href="{% url 'modulo4-unidad1-lesson2-tm1' %}">Lesson 2</a></b> <p></p></td>
+          <td><p>Saving water</p></td>
+
+        <td><p> Imperatives for instructions </p></td>
+
+        <td><p><b>Speaking:</b> talking about activities we do regularly </p>
+        <p><b>Writing:</b> a poster to encourage people to save water</p></td>
+      </tr>
+
+        <tr>
+            <td><b><a href="{% url 'modulo4-unidad1-lesson3-tm1' %}">Lesson 3</a></b> <p></p></td>
+              <td><p>Animals</p></td>
+
+            <td><p> have to / has to for obligation </p></td>
+
+            <td><p><b>Writing:</b> a paragraph giving opinions on a situation
+ </p>
+            <p><b>Speaking: </b> describing how pictures make you feel  </p></td>
+
+          </tr>
+    </tbody>
+  </table>
+        </div>
+      
+</div>
+              
+   
+</div>
+          </div>
+</div>   
+
+{% endblock %}

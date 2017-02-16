@@ -1,0 +1,77 @@
+{% extends 'plantilla2.html' %}
+{% load staticfiles %}
+{% block title %} Module 4 - Unit 3 {% endblock %}
+
+{%  block content %}
+
+    <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Module 4</li>
+        <li class="active">Unit 3</li>
+              
+</ol>
+
+    {% include 'plantilla-lessons-module4.html' %}
+
+<div class="col-sm-9">
+      <div id="bgf">
+      <h2>Module Around the world: Unit 3 </h2>
+              <h3>Special days</h3>
+          </div>
+      <br />
+      <br />
+    <div class="col-sm-12">
+            <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Lesson</th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td><b><a href="{% url 'modulo4-unidad3-lesson1-tm1' %}">Lesson 7</a></b> <p></p></td>
+
+          <td><p>The world in 2050</p></td>
+
+        <td><p>Will for predictions </p></td>
+
+          <td><p><b>Speaking:</b> making predictions about the future </p>
+              <p><b>Writing:</b> giving opinions about predictions</p></td>
+
+      </tr>
+      <tr>
+        <td><b><a href="{% url 'modulo4-unidad3-lesson2-tm1' %}">Lesson 8</a></b> <p></p></td>
+          <td><p> Adjectives Urban and rural features
+ </p></td>
+
+        <td><p> Past simple Comparative and superlative adjectives </p></td>
+
+        <td><p><b>Writing:</b> a description of a place you know well</p>
+<p><b>Speaking: </b>comparing places in the past with now</p></td>
+      </tr>
+
+        <tr>
+            <td><b><a href="#">Let’s work together: Create an infographic about the environment </a></b> <p></p></td>
+              
+
+          </tr>
+
+        <tr>
+            <td><b><a href="#">Self-assessment </a></b> <p></p></td>
+              
+
+          </tr>  
+    </tbody>
+  </table>
+        </div>
+      
+</div>
+
+</div>
+          </div>
+</div>   
+
+{% endblock %}

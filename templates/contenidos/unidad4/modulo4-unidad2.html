@@ -1,0 +1,76 @@
+{% extends 'plantilla2.html' %}
+{% load staticfiles %}
+{% block title %} Module 4 - Unit 2 {% endblock %}
+
+{%  block content %}
+
+    <div class="container initial">
+    <ol class="breadcrumb">
+  <li>Module 4</li>
+        <li class="active">Unit 2</li>
+              
+</ol>
+
+    {% include 'plantilla-lessons-module4.html' %}
+
+  <div class="col-sm-9">
+      <div id="bgf">
+      <h2>Module How we live: Unit 2 </h2>
+              <h3>Problems and solutions</h3>
+          </div>
+      <br />
+      <br />
+    <div class="col-sm-12">
+            <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Lesson</th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td><b><a href="{% url 'modulo4-unidad2-lesson1-tm1' %}">Lesson 4</a></b> <p></p></td>
+
+          <td><p>Caring for the environment</p></td>
+
+        <td><p>Present continuous (affirmative) </p></td>
+
+          <td><p><b>Speaking:</b> giving a presentation
+          <p><b>Writing: </b> a poster about environmental issues</p></td>
+
+      </tr>
+      <tr>
+        <td><b><a href="{% url 'modulo4-unidad2-lesson2-tm1' %}">Lesson 5</a></b> <p></p></td>
+          <td><p>Natural disasters</p></td>
+
+        <td><p> Present continuous (negative)</p></td>
+
+        <td><p><b>Speaking:</b> presenting a plan to raise money </p>
+        <p><b>Writing:</b> making notes</p></td>
+      </tr>
+
+        <tr>
+            <td><b><a href="{% url 'modulo4-unidad2-lesson3-tm1' %}">Lesson 6</a></b> <p></p></td>
+              <td><p>Earth day</p></td>
+
+            <td><p> Present continuous (questions) </p></td>
+
+            <td><p><b>Speaking</b> answering questions</p>
+            <p><b>Writing:  a formal letter about an environmental initiative</b></p></td>
+
+          </tr>
+    </tbody>
+  </table>
+        </div>
+      
+</div>
+              
+   
+</div>
+          </div>
+</div>   
+
+{% endblock %}
