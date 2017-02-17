@@ -1106,22 +1106,23 @@ def lista_notas(request, pk):
     notas = Calificacion.objects.all()
     return render(request, 'paginaDocente/lista-notas.html', {'notas':notas, 'estudiante':estudiante} )
 
-# Función Crear Cursos
+# Función Agregar Notas
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def agregar_notas(request, pk):
     import pdb; pdb.set_trace()
     estudiante = User.objects.get(id=pk)
+    grupos_estudiantes = Grupo_Estudiante.objects.filter(estudiante_id=pk)
     if request.method == "POST":
-        form = CalificacionForm(request.POST)
-        if form.is_valid():
-            notas = form.save(commit=False)
-            notas.grupo_estudiante_id = pk
-            notas.save()
-            return redirect('agregar-notas')
-    else:
-        form = CalificacionForm()
-    return render(request, 'paginaDocente/agregar-notas.html', {'form': form, 'estudiante':estudiante} )
+        notas = Calificacion()
+        notas.nota = request.POST['nota']
+        notas.detalle = request.POST['detalle']
+        notas.actividad_id = request.POST.get('actividad', None )
+        notas.grupo_estudiante_id = grupos_estudiantes.id
+        notas.save()
+        return redirect('agregar-notas', pk=pk)
+
+    return render(request, 'paginaDocente/agregar-notas.html', {'estudiante':estudiante} )
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')

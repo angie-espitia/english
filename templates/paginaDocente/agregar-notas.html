@@ -30,26 +30,26 @@
 
                     <p>Estudiante: {{ estudiante.first_name }}</p>
 
-                    <form action="#" method="post">
+                    <form id="add_nota" action="#" method="post">
                     {% csrf_token %}
                       <div class="form-group">
                         <div class="col-md-7 col-lg-7">
                           <div class="col-md-2 col-lg-2">
-                            <strong style="font-size: 18px;"> {{ form.nota.label }} </strong>
+                            <strong style="font-size: 18px;"> <p>Nota</p> </strong>
                           </div>
-                            <div class="col-md-5 col-lg-5">{{ form.nota }}
+                            <div class="col-md-5 col-lg-5"><input type="text" id="nota" name="nota" >
                           </div> 
                           <div class="col-lg-12 col-md-12"></div>
                           <div class="col-md-2 col-lg-2">
-                            <strong style="font-size: 17px;"> {{ form.detalle.label }} </strong>
+                            <strong style="font-size: 17px;"> <p>Detalle</p> </strong>
                           </div>
-                            <div class="col-md-5 col-lg-5">{{ form.detalle }}
+                            <div class="col-md-5 col-lg-5"><input type="text" id="detalle" name="detalle" >
                           </div> 
                           <div class="col-lg-12 col-md-12"></div>
                           <div class="col-md-2 col-lg-2">
-                            <strong style="font-size: 17px;"> {{ form.actividad.label }} </strong>
+                            <strong style="font-size: 17px;"> <p>Actividad</p> </strong>
                           </div>
-                            <div class="col-md-5 col-lg-5">{{ form.actividad }}
+                            <div class="col-md-5 col-lg-5"><input type="text" id="actividad" name="actividad" >
                           </div> 
                           <div class="col-lg-12 col-md-12"></div>
                            <br/>
@@ -57,7 +57,7 @@
                            <br/><br/>
                            <br/><br/>
                            <div class="col-lg-7 col-md-7 text-right">
-                             <input class="btn btn-primary" type="submit" value="Guardar" />
+                             <input onclick="add_n({{estudiante.id}})" class="btn btn-primary" type="submit" value="Guardar" />
                              <a class="btn btn-default" href="{% url 'agregar-curso' %}">Cancelar</a>                              
                            </div>
                           
@@ -75,4 +75,29 @@
         </div>
         <!-- /#page-wrapper -->
 
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript">
+function add_n(student){
+  // debugger
+  var pk = student;
+  var nota = ::nota::;
+  var detalle = ::detalle::;
+  var actividad = ::actividad::;
+  console.log(pk);
+  $('#add_nota').submit(function() {
+    $.ajax({
+            url: '/note/add/'+pk+'/student',
+            data: { "csrfmiddlewaretoken": "{{ csrf_token }}", "nota": nota, "detalle":detalle, "actividad":actividad, "estudiante" : pk },
+            type: $(this).attr('method'),
+            success: function() {
+              alert("guardo nota")
+
+          }
+    })
+    return false;
+ })
+};
+</script>
 {% endblock %}
