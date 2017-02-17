@@ -1,5 +1,5 @@
 {% extends 'plantilla-prof.html' %}
-{% block title %} Primer Módulo Estudiantes {% endblock %}
+{% block title %} Eventos Estudiantes {% endblock %}
 
 {%  block content %}
 
@@ -20,8 +20,11 @@
                             <li>
                                 Grupo {{ grupo.nombre }}
                             </li>
+                            <li>
+                              Estudiantes
+                            </li>
                             <li class="active">
-                                Estudiantes 
+                                Eventos por Estudiante 
                             </li>
                         </ol>
                     </div>
@@ -30,15 +33,18 @@
 
                 <div class="row">
 
-                <div class="col-sm-7 col-md-7">
+                <div class="col-sm-12 col-md-12">
                 <div class="panel panel-default ">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-list-alt fa-fw"></i> Lista de Estudiantes Inscritos</h3>
+                                <h3 class="panel-title"><i class="fa fa-list-alt fa-fw"></i> Lista de Eventos por Estudiante</h3>
                             </div>
-                            <div class="panel-body">
+                            <div class="panel-body" style="
+    overflow-y: scroll;
+    height: 400px;
+">
                                 <div class="table-responsive">
-                <table class="table table-bordered table-hover table-striped table-fixedheader" >
-                <thead style="overflow-y: scroll;">
+                <table class="table table-bordered table-hover table-striped" data-spy="scroll">
+                <thead>
                   <tr>
                     <th>Nombre</th>
                     <th>Fecha</th>
@@ -46,7 +52,7 @@
                   </tr>
                 </thead>
                     {% for log in eventos %}
-                        <tbody style="overflow-y: scroll;">
+                        <tbody>
                           <tr>
                               <td>
                                 <h4>{{ user.first_name }} {{ user.last_name }}</h4>
