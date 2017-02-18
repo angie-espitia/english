@@ -2439,9 +2439,9 @@ table th[class*="col-"] {
 .table-hover > tbody > tr.danger:hover > th {
   background-color: #ebcccc;
 }
-.table-responsive {
+.table-responsive {/*
   min-height: .01%;
-  overflow-x: auto;
+  overflow-x: auto;*/
 }
 @media screen and (max-width: 767px) {
   .table-responsive {

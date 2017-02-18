@@ -9,7 +9,7 @@ from django.template import RequestContext
 from django.contrib.auth.models import User, Group
 from .validator import FormRegistroValidator, FormLoginValidator
 from english.settings import STATIC_ROLS, EMAIL_HOST_USER, STATICFILES_DIRS
-from .models import Estudiante, Profesor, Preguntas, Respuesta, Curso, Grupo, Grupo_Estudiante, Log, Calificacion
+from .models import Estudiante, Profesor, Preguntas, Respuesta, Curso, Grupo, Grupo_Estudiante, Log, Calificacion, Actividades
 from django.template.loader import get_template
 from django.template import Context
 from django.contrib.auth.hashers import make_password
@@ -31,6 +31,7 @@ def contacto(request):
 def contacto_f(request):
     return render_to_response('../templates/contacto-f')
 
+# Función login de acceso
 def login_estudiante(request):
 
     if request.method == 'POST':
@@ -1062,13 +1063,23 @@ def lista_curso(request):
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def agregar_curso(request):
+    # almacena el usuario logeado
     usu = request.user
     if request.method == "POST":
+        # se importa la funcion de forms.py correspondiente a la tabla
+        # la variable form toma los datos ingresados por el usuario
         form = CursoForm(request.POST)
+        # se validan si los datos ingresados son correctos
         if form.is_valid():
+            # si son correctos, entonces la variable curso toma
+            # los valores que tenia form, con el 'commit=False'
+            # se hace una pausa antes de guardar los datos
             curso = form.save(commit=False)
+            # el campo 'Profesor_id' toma el valor del usuario logeado
             curso.Profesor_id = usu.id
+            # se guardan los cambios
             curso.save()
+            # se redirige a la vista indicada
             return redirect('lista-curso')
     else:
         form = CursoForm()
@@ -1102,17 +1113,20 @@ def eliminar_curso(request, pk):
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def lista_notas(request, pk):
+    # import pdb; pdb.set_trace()
     estudiante = User.objects.get(id=pk)
-    notas = Calificacion.objects.all()
+    grupos_estudiantes = Grupo_Estudiante.objects.get(estudiante_id=pk)
+    notas = Calificacion.objects.filter(grupo_estudiante=grupos_estudiantes)
     return render(request, 'paginaDocente/lista-notas.html', {'notas':notas, 'estudiante':estudiante} )
 
 # Función Agregar Notas
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def agregar_notas(request, pk):
-    import pdb; pdb.set_trace()
+    # import pdb; pdb.set_trace()
     estudiante = User.objects.get(id=pk)
-    grupos_estudiantes = Grupo_Estudiante.objects.filter(estudiante_id=pk)
+    actividad = Actividades.objects.all()
+    grupos_estudiantes = Grupo_Estudiante.objects.get(estudiante_id=pk)
     if request.method == "POST":
         notas = Calificacion()
         notas.nota = request.POST['nota']
@@ -1120,32 +1134,34 @@ def agregar_notas(request, pk):
         notas.actividad_id = request.POST.get('actividad', None )
         notas.grupo_estudiante_id = grupos_estudiantes.id
         notas.save()
-        return redirect('agregar-notas', pk=pk)
+        return redirect('lista-notas', pk=pk)
 
-    return render(request, 'paginaDocente/agregar-notas.html', {'estudiante':estudiante} )
+    return render(request, 'paginaDocente/agregar-notas.html', {'estudiante':estudiante, 'actividad':actividad} )
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def editar_notas(request, pk):
-    notas = get_object_or_404(Calificacion, pk=pk)
+    import pdb; pdb.set_trace()
+    notas = Calificacion.objects.filter(pk=pk)
+    n2 = notas.values('grupo_estudiante')
+    actividad = Actividades.objects.all()
     if request.method == "POST":
-        form = CalificacionForm(request.POST, instance=notas)
-        if form.is_valid():
-            notas = form.save(commit=False)
-            notas.grupo_estudiante_id = pk
-            notas.save()
-            return redirect('lista-notas')
-    else:
-        form = CalificacionForm(instance=notas)
+        notas = Calificacion()
+        notas.nota = request.POST['nota']
+        notas.detalle = request.POST['detalle']
+        notas.actividad_id = request.POST.get('actividad', None )
+        notas.grupo_estudiante_id = n2
+        notas.save()
+        return redirect('lista-grupos')
 
-    return render(request, 'paginaDocente/editar-notas.html', {'form': form})
+    return render(request, 'paginaDocente/edit-notas.html', {'notas':notas, 'actividad':actividad})
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def eliminar_notas(request, pk):
     notas = get_object_or_404(Calificacion, pk=pk)
     notas.delete()
-    return redirect('lista-notas')
+    return redirect('lista-grupos')
 
 # <----------------------------------- Funciones ------------------------------->
 import xhtml2pdf.pisa as pisa

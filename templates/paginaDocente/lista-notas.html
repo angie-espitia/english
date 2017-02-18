@@ -1,5 +1,5 @@
 {% extends 'plantilla-prof.html' %}
-{% block title %} Primer Módulo Notas {% endblock %}
+{% block title %} Notas {% endblock %}
 
 {%  block content %}
 
@@ -11,17 +11,17 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Lista de Notas
+                            Notas Estudiante <small> {{ estudiante.first_name }} {{ estudiante.last_name }}</small>
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-fw fa-table"> </i> Notas
+                                <i class="fa fa-fw fa-table"> </i> Grupos
                             </li>
                             <li>
-                                ...
+                                Grupo ...
                             </li>
                             <li class="active">
-                                Lista Notas
+                                Notas 
                             </li>
                         </ol>
                     </div>
@@ -33,17 +33,17 @@
                     <div class="col-lg-12 col-md-12">
                         <a href="{% url 'agregar-notas' pk=estudiante.pk %}" class="btn btn-primary">Agregar Nueva Nota </a>
                     </div>
-
+                    <br><br>
                     <div class="panel">
                         <div class="panel-body">
-                        <div class="table-responsive">
+                        <div class="">
                         <table class="table table-bordered table-hover table-striped">
                             <thead>
                             <tr>
                               <th>Nota</th>
                               <th>Detalle</th>
                               <th>Actividad</th>
-                              <th>Editar Nota</th>
+                              <th>Funciones</th>
                             </tr>  
                             </thead>    
                               {% for row in notas %}
@@ -52,7 +52,10 @@
                                 <td>{{ row.nota }}</td>
                                 <td>{{ row.detalle }}</td>
                                 <td>{{ row.actividad }}</td>
-                                <td><a class="btn btn-primary" href="#">Editar</a> <a class="btn btn-danger" href="{% url 'eliminar-curso' pk=row.pk %}">Borrar</a></td> 
+                                <td>
+                                    <a class="btn btn-primary" href="{% url 'editar-notas' pk=row.pk %}">Editar</a> 
+                                    <a class="btn btn-danger" href="{% url 'eliminar-notas' pk=row.pk %}">Borrar</a>
+                                </td> 
                                 </tr>
                               </tbody>
                               {% endfor %}
@@ -71,3 +74,4 @@
         <!-- /#page-wrapper -->
 
 {% endblock %}
+

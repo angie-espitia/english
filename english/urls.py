@@ -213,6 +213,8 @@ urlpatterns = [
     url(r'^note$', notas, name='notas'),
     url(r'^note/(?P<pk>\d+)/$', lista_notas, name='lista-notas'),  
     url(r'^note/add/(?P<pk>\d+)/student$', agregar_notas, name='agregar-notas'),
+    url(r'^note/(?P<pk>\d+)/edit$', editar_notas, name='editar-notas'),
+    url(r'^note/(?P<pk>\d+)/remove$', eliminar_notas, name='eliminar-notas'),
 
     url(r'^student/add$', registro_estudiante, name='registro-estudiante' ), #/registro-estudiante
     url(r'^student/delete$', eliminar_estudiante, name='eliminar-estudiante'),  # /eliminar-estudiante
