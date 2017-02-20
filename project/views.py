@@ -202,6 +202,7 @@ def unidad1_lesson3_tm1(request):
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson3_tm2(request):
+    estudiante = Estudiante.objects.get(id=request.user.id)
     preguntas = Preguntas.objects.filter(actividad_id=1)
     preguntas2 = Preguntas.objects.filter(actividad_id=2)
     preguntas3 = Preguntas.objects.filter(actividad_id=3)
@@ -209,7 +210,7 @@ def unidad1_lesson3_tm2(request):
     respuesta2 = Respuesta.objects.filter(pregunta__in = preguntas2)
     respuesta3 = Respuesta.objects.filter(pregunta__in = preguntas3)
     log(request, "CONTENIDO_MODULO1_LESSON3_TEMA2")
-    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson3-tm2.html', { 'respuesta':respuesta, 'respuesta2':respuesta2, 'respuesta3':respuesta3 }) 
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson3-tm2.html', { 'respuesta':respuesta, 'respuesta2':respuesta2, 'respuesta3':respuesta3, 'estudiante':estudiante }) 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson3_tm3(request):
@@ -1163,6 +1164,14 @@ def eliminar_notas(request, pk):
     notas.delete()
     return redirect('lista-grupos')
 
+# <----------------------------------- Eventos --------------------------------->
+@login_required(login_url="/login-profesor")
+@user_passes_test(restringir_estudiante, login_url='/login-profesor')
+def eventos_estudiantes(request, pk):
+    log = Log.objects.filter(usuario=pk)
+    user = User.objects.get(pk=pk)
+    return render(request, 'paginaDocente/eventos-estudiantes.html', {'eventos':log, 'user':user} )
+
 # <----------------------------------- Funciones ------------------------------->
 import xhtml2pdf.pisa as pisa
 from StringIO import StringIO
@@ -1184,15 +1193,22 @@ def reporte_estudiante(request):
 def log(request, action):
     log = Log()
     log.usuario = request.user.id
-    if(Estudiante.objects.get(id=request.user.id)):
+    if (Estudiante.objects.filter(id=request.user.id).exists()):
         log.tipo = 'E'
-    else:
+    elif (Profesor.objects.filter(id=request.user.id).exists()):
         log.tipo = 'P'
+    else:
+        log.tipo = 'A'
     log.accion = action
     log.save() 
 
-def eventos_estudiantes(request, pk):
-    # import pdb; pdb.set_trace() 
-    log = Log.objects.filter(usuario=pk)
-    user = User.objects.get(pk=pk)
-    return render(request, 'paginaDocente/eventos-estudiantes.html', {'eventos':log, 'user':user} )
+def guarda_actividad(request, pk):
+    estudiante = User.objects.get(id=pk)
+    grupos_estudiantes = Grupo_Estudiante.objects.get(estudiante_id=pk)
+    if request.method == "POST":
+        notas = Calificacion()
+        notas.nota = request.POST.get('nota')
+        notas.detalle = request.POST.get('detalle')
+        notas.actividad_id = request.POST.get('actividad')
+        notas.grupo_estudiante_id = grupos_estudiantes.id
+        notas.save()

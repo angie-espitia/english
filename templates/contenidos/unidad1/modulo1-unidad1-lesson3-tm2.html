@@ -24,10 +24,11 @@
         <img src="../static/img/modulo1/unity1/Lesson3Theme2.png" alt="No found" hidden="false">
         <div class="col-sm-6 col-md-6">
               <li><strong>Robert</strong>  
-                  <input class="form-control" type="text" name="" disabled="true" value="He is spain "></li>
+                  <input class="form-control" type="text" name="" disabled="true" value="he is Spain. He's from Spain"></li>
         </div>
         <div id="pregunta-usuario">
           {% for row in respuesta %}
+
           <div class="col-sm-6 col-md-6">
               <li>{{ row.pregunta.descripcion }}
               <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="">
@@ -38,7 +39,9 @@
         </div>
 <br>
         <div id="respuestas-bd">
+            <div id="estudiante_id" hidden="false">{{estudiante.id.id}}</div>
             {% for row in respuesta %}
+                <div id="actividad_id" hidden="false"><label>{{ row.pregunta.actividad.id }}</label></div>
                 <div id="{{ row.id }}" hidden="false"><li>{{ row.descripcion }}</li></div>            
             {% endfor %}
         </div>
@@ -179,6 +182,8 @@
                 var malas = 0;
                 respuesta_sistema = "";
                 respuesta_usuario = "";
+                var act_id;
+                var estudiante = $("#estudiante_id").html();
 
               $("#respuestas-bd li").each(function()
               {
@@ -199,7 +204,13 @@
                 alert("Debe llenar todos los campos");
                 return;
               }
-              calificar(buenas,malas,"resultado")
+              $("#actividad_id label").each(function()
+              {
+                var descripcion =$(this).html();
+                act_id.push(descripcion);
+              });
+
+              calificar(buenas,malas,"resultado",actividad,estudiante)
               //alert("cantidad de respuestas sistema " + array_res_correctas.length);
               //alert("cantidad de respuestas usuario " + array_res_usuario.length);
           });
@@ -213,6 +224,7 @@
                 var malas = 0;
                 respuesta_sistema = "";
                 respuesta_usuario = "";
+
 
               $("#respuestas-bd2 li").each(function()
               {
@@ -272,7 +284,7 @@
               //alert("cantidad de respuestas usuario " + array_res_usuario.length);
           });
 
-       function calificar (buenas,malas,name_div){
+       function calificar (buenas,malas,name_div,actividad, estudiante){
              for(var i =0; i < array_res_correctas.length; i++) 
               {
                    respuesta_sistema = array_res_correctas[i].toString();
@@ -290,11 +302,31 @@
               var total = buenas + malas;
               var porcentaje = (buenas*100)/total;
               var nota = (porcentaje / 2)/10;
+              var activi = actividad
+              var estu = estudiante
 
               var n = nota.toFixed(1);
               $("#" + name_div).html("<strong>Tu resultado es :</strong> " + buenas +"/" + total + " <strong>Tu nota es:</strong> " + n);
+              guardar_actividad(activi,n,buenas)
         }
-  });
-        
+
+      function guardar_actividad(activi, n, buenas, estu){
+              // debugger
+              var pk = estu;
+              var actividad = activi;
+              var nota = n;
+              var buenas = buenas;
+                $.ajax({
+                        url: 'note/'+pk+'/activity',
+                        data: { "csrfmiddlewaretoken": "{{ csrf_token }}", "nota": nota, "actividad":actividad, "pk": pk , "detalle":buenas},
+                        type: $(this).attr('method'),
+                        success: function() {
+                          alert("guardo respuesta")
+
+                      }
+                })
+                return false;
+      };
+});
 </script>
 {% endblock %}

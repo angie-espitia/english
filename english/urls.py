@@ -215,6 +215,7 @@ urlpatterns = [
     url(r'^note/add/(?P<pk>\d+)/student$', agregar_notas, name='agregar-notas'),
     url(r'^note/(?P<pk>\d+)/edit$', editar_notas, name='editar-notas'),
     url(r'^note/(?P<pk>\d+)/remove$', eliminar_notas, name='eliminar-notas'),
+    url(r'^note/(?P<pk>\d+)/activity$', guarda_actividad, name='guarda-actividad'),
 
     url(r'^student/add$', registro_estudiante, name='registro-estudiante' ), #/registro-estudiante
     url(r'^student/delete$', eliminar_estudiante, name='eliminar-estudiante'),  # /eliminar-estudiante
