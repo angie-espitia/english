@@ -1212,3 +1212,4 @@ def guarda_actividad(request, pk):
         notas.actividad_id = request.POST.get('actividad')
         notas.grupo_estudiante_id = grupos_estudiantes.id
         notas.save()
+        return HttpResponse('Bien')

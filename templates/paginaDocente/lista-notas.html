@@ -51,7 +51,7 @@
                                 <tr>
                                 <td>{{ row.nota }}</td>
                                 <td>{{ row.detalle }}</td>
-                                <td>{{ row.actividad }}</td>
+                                <td>{{ row.actividad.nombre }}</td>
                                 <td>
                                     <a class="btn btn-primary" href="{% url 'editar-notas' pk=row.pk %}">Editar</a> 
                                     <a class="btn btn-danger" href="{% url 'eliminar-notas' pk=row.pk %}">Borrar</a>
