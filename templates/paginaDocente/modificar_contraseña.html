@@ -1,5 +1,5 @@
 {% extends 'plantilla-prof.html' %}
-{% block title %} Perfil {% endblock %}
+{% block title %} Modificar Contraseña {% endblock %}
 
 {%  block content %}
 
@@ -11,7 +11,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Perfil <small> Profesor, {{ usuario.first_name }} </small>
+                            Modificar Contraseña <small> Profesor, {{ usuario.first_name }} </small>
+                            <a id="regresar" href="javascript:history.back()" class="btn btn-primary pull-right"><i class="fa fa-arrow-left" aria-hidden="true"></i> <b>Back</b></a>
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">

@@ -1142,7 +1142,7 @@ def agregar_notas(request, pk):
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def editar_notas(request, pk):
-    import pdb; pdb.set_trace()
+    # import pdb; pdb.set_trace()
     notas = Calificacion.objects.filter(pk=pk)
     n2 = notas.values('grupo_estudiante')
     actividad = Actividades.objects.all()

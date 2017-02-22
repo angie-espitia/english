@@ -12,6 +12,7 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             Perfil <small> Profesor, {{ usuario.id.first_name }} </small>
+                            <a id="regresar" href="javascript:history.back()" class="btn btn-primary pull-right"><i class="fa fa-arrow-left" aria-hidden="true"></i> <b>Back</b></a>
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
@@ -23,103 +24,117 @@
                 </div>
 
                 <div class="row">
+                  <div class="col-md-12 col-sm-12 col-lg-12">
+                    {% if error %}
+                    <div class="alert alert-danger"> {{ error }} </div>
 
-                <form class="navbar-form" action="{% url 'perfil-profesor' %}" method="post" >   </form>
+                    {% endif %}
+                    <form method="post" action="{% url 'modificar-perfil' %}">
+                      {% csrf_token %}
+                      <div class="container-fluid">
+                        <div class="row">
+                          <div class="col-md-12"></div>
+                          <div class="col-md-12">
+                            <div class="col-ms-12 form-group">
+                              <div class="col-md-5">
+                                  <div class="form-group">
+                                      <label>Colegio</label>
+                                      <input type="text" class="form-control" disabled placeholder="Company" value="ENSMAG">
+                                  </div>
+                              </div>
+                              <div class="col-md-3">
+                                  <div class="form-group">
+                                      <label>Usuario</label>
+                                      <input type="text" class="form-control" placeholder="Usuario" value="{{ user.username }}" name="username" >
+                                  </div>
+                              </div>
+                              <div class="col-md-4">
+                                  <div class="form-group">
+                                      <label for="exampleInputEmail1">Email</label>
+                                      <input type="email" class="form-control" placeholder="email" value="{{ user.email }}" name="email">
+                                  </div>
+                              </div>
+                            </div>
 
-                <div class="container initial">
+                            <div class="col-md-12"></div>
 
-        {% if error %}
-        <div class="alert alert-danger"> {{ error }} </div>
+                            <div class="col-ms-12 form-group">
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <label>Nombre</label>
+                                      <input type="text" class="form-control" placeholder="Nombre" value="{{ user.first_name }}" name="first_name">
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <label>Apellido</label>
+                                      <input type="text" class="form-control" placeholder="Apellido" value="{{ user.last_name }}" name="last_name">
+                                  </div>
+                              </div>
+                            </div>
 
-        {% endif %}
-        <form method="post" action="{% url 'modificar-perfil' %}">
-          {% csrf_token %}
-          <div class="container-fluid">
-            <div class="row">
+                            <div class="col-md-12"></div>
 
-              <div class="col-md-12"></div>
+                            <div class="col-md-12 form-group">
+                              <div class="col-md-4">
+                                  <div class="form-group">
+                                      <label>Documento</label>
+                                      <input type = "text" name="cedula" class="form-control" value="{{ usuario.cedula }}" placeholder="Documento">
+                                  </div>
+                              </div>
+                              <div class="col-md-4">
+                                  <div class="form-group">
+                                      <label>Profesión</label>
+                                      <input type = "text" name="profesion" class="form-control" value="{{ usuario.profesion }}" placeholder="Profesion">
+                                  </div>
+                              </div>
+                              <div class="col-md-4">
+                                  <div class="form-group">
+                                      <label>Especialidad</label>
+                                      <input type = "text" name="especialidad" class="form-control" value="{{ usuario.especialidad }}" placeholder="Especialidad">
+                                  </div>
+                              </div>  
+                            </div>
 
-              <div class="col-md-12">
-
-                <div class="col-ms-12 form-group">
-                  <div class ="col-md-1">
-                    <label for="exampleInputnomre"><h4>Nombres:</h4></label>
+                            <div class="col-md-12"></div>
+                            <div class="col-md-12">
+                                <p><button type="submit" class="btn btn-info btn-fill pull-right">Actualizar Datos</button> </p>
+                            </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class ="col-md-5">
-                    <h4>{{ usuario.id.first_name }} </h4>
-                  </div>
-                  <div class ="col-md-1">
-                    <label for="exampleInputnomre"><h4>Apellidos:</h4></label>
-                  </div>
-                  <div class ="col-md-5">
-                     <h4>{{ usuario.id.last_name }}</h4>
-                  </div>
-                </div>
+                </form>
+                {{ paso }}
 
-                <div class="col-md-12"></div>
+                <div class="header">
+                                <h4 class="title">Cambiar Contraseña</h4>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <form method="post" action="{% url 'modificar-contra-profesor' %}" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Contraseña</label>
+                                                <input type="password" class="form-control" name="password1"  placeholder="Contraseña" value="" >
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Confirmar Contraseña</label>
+                                                <input type="password" name='password2' class="form-control"  placeholder="Confirmar Contraseña">
+                                            </div>
+                                        </div>
+                                    </div>
 
-                <div class="col-ms-12 form-group">
-                  <div class ="col-md-1">
-                    <label for="exampleInputnomre"><h4>Correo:</h4></label>
-                  </div>
-                  <div class ="col-md-5">
-                    <input type = "text" name="email" class="form-control" value="{{ usuario.id.email }}" placeholder="Correo">
-                  </div>
-                  <div class ="col-md-3">
-                    <label for="exampleInputnomre"><h4>Documento Identidad:</h4></label>
-                  </div>
-                  <div class ="col-md-3">
-                      <input type = "text" name="cedula" class="form-control" value="{{ usuario.cedula }}" placeholder="Documento">
-                  </div>
-                </div>
-
-                <div class="col-md-12"></div>
-
-                <div class="col-ms-12 form-group">
-                  <div class ="col-md-2">
-                    <label for="exampleInputnomre"><h4>Username:</h4></label>
-                  </div>
-                  <div class ="col-md-4">
-                    <h4>{{ usuario.id.username }}</h4>
-                  </div>
-                </div>
-
-                  <div class="col-md-12"></div>
-
-                <div class="col-ms-12 form-group">
-                  <div class ="col-md-1">
-                    <label for="exampleInputnomre"><h4>Profesión:</h4></label>
-                  </div>
-                  <div class ="col-md-5">
-                    <input type = "text" name="profesion" class="form-control" value="{{ usuario.profesion }}" placeholder="Profesion">
-                  </div>
-                  <div class ="col-md-3">
-                    <label for="exampleInputnomre"><h4>Especialidad:</h4></label>
-                  </div>
-                  <div class ="col-md-3">
-                      <input type = "text" name="especialidad" class="form-control" value="{{ usuario.especialidad }}" placeholder="Especialidad">
-                  </div>
-                </div>
-
-                <div class="col-md-12"></div>
-
-                  <div class="col-md-9" style="text-align:right">
-                     <a href="{% url 'modificar-contra-profesor' %}"> Cambio de contraseña aquí </a>
-                  </div>
-
-                <div class="col-md-3">
-                    <p><button type="submit" class="btn btn-primary btn-lg pull-right">Actualizar Datos</button> </p>
-                </div>
-
-          </div>
-        </div>
-      </div>
-    </form>
-    {{ paso }}
+                                    <button type="submit" id="miboton" class="btn btn-info btn-fill pull-right">Actualizar Contraseña</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                                
+                            </div>
 
 
-  </div>
-
+              </div>
                 </div>
 
 
