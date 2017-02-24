@@ -36,6 +36,8 @@
                             <thead>
                             <tr>
                               <th>Curso</th>
+                              <th>Fecha Inicio</th>
+                              <th>Fecha Fin</th>
                               <th>Funciones</th>
                             </tr>  
                             </thead>    
@@ -43,6 +45,8 @@
                               <tbody>
                                 <tr>
                                 <td>{{ row.nombre }}</td>
+                                <td>{{ row.fecha_inicio }}</td>
+                                <td>{{ row.fecha_fin }}</td>
                                 <td><a class="btn btn-primary" href="{% url 'editar-curso' pk=row.pk %}">Editar</a> <a class="btn btn-danger" href="{% url 'eliminar-curso' pk=row.pk %}">Borrar</a></td> 
                                 </tr>
                               </tbody>

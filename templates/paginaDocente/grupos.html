@@ -41,7 +41,7 @@
                                         <i class="fa fa-users fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">Grupo {{ row.nombre }}</div>
+                                        <div class="huge">Grupo {{ row.Curso.nombre }} - {{ row.nombre }}</div>
                                         <div><a href="{% url 'editar-grupos' pk=row.pk %} " style="color: #fff;">Editar</a></div>
                                     </div>
                                 </div>

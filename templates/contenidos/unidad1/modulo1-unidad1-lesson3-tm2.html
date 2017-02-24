@@ -21,16 +21,23 @@
       <p>Look at the flags. Write sentences about the country and nationality of the person/people.</p>
 
       <div class="col-sm-12 col-md-12">
-        <img src="../static/img/modulo1/unity1/Lesson3Theme2.png" alt="No found" hidden="false">
+        <div class="col-sm-12 col-md-12">
+        <strong>Robert</strong> <img src="../static/img/modulo1/unity1/flag1.png" alt="No found">
+        <strong>Philippe</strong> <img src="../static/img/modulo1/unity1/flag2.png" alt="No found">
+        <strong>Anna and Bruno</strong> <img src="../static/img/modulo1/unity1/flag3.png" alt="No found">
+        <strong>Matt</strong> <img src="../static/img/modulo1/unity1/flag4.png" alt="No found">
+        <strong>Gabriela and Juana</strong> <img src="../static/img/modulo1/unity1/flag5.png" alt="No found">
+        <strong>Linda</strong> <img src="../static/img/modulo1/unity1/flag6.png" alt="No found"> 
+        </div>
         <div class="col-sm-6 col-md-6">
-              <li><strong>Robert</strong>  
+              <li><strong>Robert</strong>
                   <input class="form-control" type="text" name="" disabled="true" value="he is Spain. He's from Spain"></li>
         </div>
         <div id="pregunta-usuario">
           {% for row in respuesta %}
 
           <div class="col-sm-6 col-md-6">
-              <li>{{ row.pregunta.descripcion }}
+              <li><strong>{{ row.pregunta.descripcion }}</strong>
               <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="">
             </li>
           </div>
@@ -46,6 +53,8 @@
             {% endfor %}
         </div>
 <br><br><br>
+<hr>
+<br>
 
         <div id="resultado"><strong>Resultado:</strong></div>
         <button class="btn btn-primary pull-right" id="boton_actividad1">Calificar</button> 
@@ -70,21 +79,6 @@
 
       <p>Read the text and the sentences. Are the sentences true (T) or false (F)?</p>
 
-          <div class="col-sm-6 col-md-6">
-              <ul>
-                <li>a. Riko is Chinese. </li><input type="text" name="">
-                <li>b. Bernard is a student.</li><input type="text" name="">
-              </ul>
-              <br/>
-          </div>
-          <div class="col-sm-6 col-md-6">
-              <ul>
-                <li>c. Jude is in the music group. </li><input type="text" name="">
-                <li>Jude is in the music group. </li><input type="text" name="">
-              </ul>
-              <br/>
-          </div>
-
         <div id="pregunta-usuario2">
             {% for row in respuesta2 %}
             <div class="col-sm-6 col-md-6">
@@ -100,21 +94,68 @@
                 <div id="{{ row.id }}" hidden="false"><li>{{ row.descripcion }}</li></div>            
             {% endfor %}
         </div>
-<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><hr><br>
         <div id="resultado2"><strong>Resultado:</strong></div>
         <button class="btn btn-primary pull-right" id="boton_actividad2">Calificar</button> 
 
         <div class="col-lg-12 col-md-12 col-sm-12"><hr>
-            <p>Read the text again.</p>
+            <p>Read the text again and complete the table.</p>
         </div>
         <div id="pregunta-usuario3">
-            {% for row in respuesta3 %}
-            <div class="col-sm-4 col-md-4">
-              <li><input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="">
-              </li>
-            </div>
-            <br>
-            {% endfor %}
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for row in respuesta3 %}
+                    {% if row.id >= 30 and row.id <= 33 %} 
+                      <tr><td><div id="{{ row.pregunta.id }}"> </div> 
+                        <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""></td>
+                      </tr>
+                    {% endif %}
+                  {% endfor %}
+              </tbody>
+              </table>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Country</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for row in respuesta3 %}
+                    {% if row.id >= 34 and row.id <= 37 %} 
+                      <tr><td><div id="{{ row.pregunta.id }}"> </div> 
+                        <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""></td>
+                      </tr>
+                    {% endif %}
+                  {% endfor %}
+              </tbody>
+              </table>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Favorite Colour</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for row in respuesta3 %}
+                    {% if row.id >= 38 and row.id <= 41 %} 
+                      <tr><td><div id="{{ row.pregunta.id }}"> </div> 
+                        <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""></td>
+                      </tr>
+                    {% endif %}
+                  {% endfor %}
+              </tbody>
+              </table>
+          </div>
         </div>
 <br><br><br>
         <div id="respuestas-bd3">
@@ -126,34 +167,6 @@
         <div id="resultado3"><strong>Resultado:</strong></div>
         <button class="btn btn-primary pull-right" id="boton_actividad3">Calificar</button> 
         
-        <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Country</th>
-          <th>Favorite Colour</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-            <td><input type="text" name=""></td>
-            <td><input type="text" name=""></td>
-            <td><input type="text" name=""></td>
-        </tr>
-        <tr>
-          <td><input type="text" name=""></td>
-          <td><input type="text" name=""></td>
-          <td><input type="text" name=""></td>
-        </tr>
-        <tr>
-          <td><input type="text" name=""></td>
-          <td><input type="text" name=""></td>
-          <td><input type="text" name=""></td>
-        </tr>
-         
-      </tbody>
-
-      </table>
 
       </div>
 
@@ -305,22 +318,22 @@
               guardar_actividad(activi,n,buenas,estu)
         }
 
-      function guardar_actividad(activi, n, buenas, estu){
-              debugger
-              var pk = estu;
-              var actividad = activi;
-              var nota = n;
-              var buenas = buenas;
-                $.ajax({
-                        url: 'note/'+pk+'/activity',
-                        data: { "csrfmiddlewaretoken": "{{ csrf_token }}", "nota": nota, "actividad":actividad, "pk": pk , "detalle":buenas},
-                        type: 'POST',
-                        success: function() {
-                                            console.log(pk, actividad, nota)
-                      }
-                })
-                return false;
-      };
+      // function guardar_actividad(activi, n, buenas, estu){
+      //         debugger
+      //         var pk = estu;
+      //         var actividad = activi;
+      //         var nota = n;
+      //         var buenas = buenas;
+      //           $.ajax({
+      //                   url: 'note/'+pk+'/activity',
+      //                   data: { "csrfmiddlewaretoken": "{{ csrf_token }}", "nota": nota, "actividad":actividad, "pk": pk , "detalle":buenas},
+      //                   type: 'POST',
+      //                   success: function() {
+      //                                       console.log(pk, actividad, nota)
+      //                 }
+      //           })
+      //           return false;
+      // };
 });
 </script>
 {% endblock %}
