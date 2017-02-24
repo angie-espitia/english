@@ -247,8 +247,11 @@ def unidad1_lesson4_tm4(request):
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson5_tm1(request):
+    estudiante = Estudiante.objects.get(id=request.user.id)
+    preguntas = Preguntas.objects.filter(actividad_id=5)
+    respuesta = Respuesta.objects.filter(pregunta__in = preguntas)
     log(request, "CONTENIDO_MODULO1_LESSON5_TEMA1")
-    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson5-tm1.html')    
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson5-tm1.html', { 'respuesta':respuesta } )    
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson5_tm2(request):
