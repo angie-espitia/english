@@ -1,14 +1,16 @@
 {% extends 'plantilla2.html' %}
-{% block title %} Tema 1 {% endblock %}
+{% load staticfiles %}
+{% block title %} Module 1 - Lesson 8 {% endblock %}
 
 {%  block content %}
     
-   <div class="container initial">
+<div class="container initial">
     <ol class="breadcrumb">
-  <li>Modulo 1</li>
-        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 1</a></li>
-        <li class="active">Lesson 8</li>
-        
+  <li>Module 1</li>
+        <li><a href="{% url 'modulo1-unidad3' %}">Unity 3</a></li>
+        <li>Lesson 8</li>
+        <li class="active">Theme 4</li>
+               
 </ol>
     
     
@@ -101,7 +103,7 @@
 
       <p>Read the job advert. At the interview, Mr Jessop asks you for some personal details. Write the dialogue. Use exercise 15 to help you.</p>  
       
-      <img src="../static/img/modulo1/unity1/Lesson8Theme4.png" alt="No found">
+      <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson8Theme4.png' %}" alt="No found">
 
       </div>
       </div>  

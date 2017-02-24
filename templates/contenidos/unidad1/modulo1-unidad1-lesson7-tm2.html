@@ -1,14 +1,16 @@
 {% extends 'plantilla2.html' %}
-{% block title %} Tema 1 {% endblock %}
+{% load staticfiles %}
+{% block title %} Module 1 - Lesson 7 {% endblock %}
 
 {%  block content %}
     
-   <div class="container initial">
+<div class="container initial">
     <ol class="breadcrumb">
-  <li>Modulo 1</li>
-        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 1</a></li>
-        <li class="active">Lesson 7</li>
-             
+  <li>Module 1</li>
+        <li><a href="{% url 'modulo1-unidad3' %}">Unity 3</a></li>
+        <li>Lesson 7</li>
+        <li class="active">Theme 2</li>
+               
 </ol>
     
     
@@ -20,7 +22,7 @@
         <hr>
       <p>Write the names of the classroom objects in your notebook.</p>
 
-    <img src="../static/img/modulo1/unity1/Lesson7Theme2.png" alt="No found">
+    <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson7Theme2.png' %}" alt="No found">
     
     <div class="col-sm-12 col-md-12"></div>
 
@@ -32,7 +34,7 @@
       <p>Complete the text using a or an before singular nouns or write X for plural nouns.</p>
 
       <div class="col-sm-8 col-md-8">
-          <img src="../static/img/modulo1/unity1/Lesson7Theme2img2.png" alt="No found">
+          <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson7Theme2img2.png' %}" alt="No found">
       </div>
       <div class="col-sm-4 col-md-4">
         <table class="table table-bordered">

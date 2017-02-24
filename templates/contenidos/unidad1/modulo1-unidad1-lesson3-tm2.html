@@ -1,4 +1,5 @@
 {% extends 'plantilla2.html' %}
+{% load staticfiles %}
 {% block title %} Unity 1 - Lesson 3 {% endblock %}
 
 {%  block content %}
@@ -7,7 +8,8 @@
     <ol class="breadcrumb">
   <li>Module 1</li>
         <li><a href="{% url 'modulo1-unidad1' %}">Unity 1</a></li>
-        <li class="active">Lesson 3</li>
+        <li>Lesson 3</li>
+        <li class="active">Theme 2</li>  
      
 </ol>
     
@@ -22,12 +24,12 @@
 
       <div class="col-sm-12 col-md-12">
         <div class="col-sm-12 col-md-12">
-        <strong>Robert</strong> <img src="../static/img/modulo1/unity1/flag1.png" alt="No found">
-        <strong>Philippe</strong> <img src="../static/img/modulo1/unity1/flag2.png" alt="No found">
-        <strong>Anna and Bruno</strong> <img src="../static/img/modulo1/unity1/flag3.png" alt="No found">
-        <strong>Matt</strong> <img src="../static/img/modulo1/unity1/flag4.png" alt="No found">
-        <strong>Gabriela and Juana</strong> <img src="../static/img/modulo1/unity1/flag5.png" alt="No found">
-        <strong>Linda</strong> <img src="../static/img/modulo1/unity1/flag6.png" alt="No found"> 
+        <strong>Robert</strong> <img class="img-responsive" src="{% static 'img/modulo1/unity1/flag1.png' %}" alt="No found">
+        <strong>Philippe</strong> <img class="img-responsive" src="{% static 'img/modulo1/unity1/flag2.png' %}" alt="No found">
+        <strong>Anna and Bruno</strong> <img class="img-responsive" src="{% static 'img/modulo1/unity1/flag3.png' %}" alt="No found">
+        <strong>Matt</strong> <img class="img-responsive" src="{% static 'img/modulo1/unity1/flag4.png' %}" alt="No found">
+        <strong>Gabriela and Juana</strong> <img class="img-responsive" src="{% static 'img/modulo1/unity1/flag5.png' %}" alt="No found">
+        <strong>Linda</strong> <img class="img-responsive" src="{% static 'img/modulo1/unity1/flag6.png' %}" alt="No found"> 
         </div>
         <div class="col-sm-6 col-md-6">
               <li><strong>Robert</strong>
@@ -63,7 +65,7 @@
       <div class="col-sm-12 col-md-12">
         <p>In your notebook, write a chart with the nationalities in groups according to their ending.</p>
 
-         <img src="../static/img/modulo1/unity1/Lesson3Theme2img2.png" alt="No found">
+         <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson3Theme2img2.png' %}" alt="No found">
       </div>
 
       <div class="col-sm-12 col-md-12"></div>
@@ -73,7 +75,7 @@
       <h3></h3>
         <hr>
         <div class="col-sm-12 col-md-12">
-            <img src="../static/img/modulo1/unity1/Lesson3Theme2img3.png" alt="No found">            
+            <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson3Theme2img3.png' %}" alt="No found">            
           </div>
           <br>
 

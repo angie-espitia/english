@@ -1,13 +1,15 @@
 {% extends 'plantilla2.html' %}
-{% block title %} Tema 1 {% endblock %}
+{% load staticfiles %}
+{% block title %} Module 1 - Lesson 8 {% endblock %}
 
 {%  block content %}
     
-   <div class="container initial">
+<div class="container initial">
     <ol class="breadcrumb">
-  <li>Modulo 1</li>
-        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 1</a></li>
-        <li class="active">Lesson 8</li>
+  <li>Module 1</li>
+        <li><a href="{% url 'modulo1-unidad3' %}">Unity 3</a></li>
+        <li>Lesson 8</li>
+        <li class="active">Theme 2</li>
                
 </ol>
     
@@ -21,7 +23,7 @@
       <p>Maria is talking to her mother about her music group. Listen and match the people to their characteristics.</p>
 
       <audio controls>
-        <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK35.mp3" type="audio/mpeg">
+        <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK35.mp3' %}" type="audio/mpeg">
           Your browser does not support the audio element. (AUDIO 35)
       </audio>
 
@@ -47,13 +49,13 @@
         </ul>
       </div>
        <div class="col-sm-4 col-md-4">
-        <img src="../static/img/modulo1/unity1/Lesson8Theme2.png" alt="No found">
+        <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson8Theme2.png' %}" alt="No found">
       </div>
 
       </div>
 
       <center>
-        <img src="../static/img/modulo1/unity1/Lesson8Theme2img2.png" alt="No found">
+        <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson8Theme2img2.png' %}" alt="No found">
       </center>
 
     
@@ -62,7 +64,7 @@
     <div class="col-sm-12 col-md-12">
 
       <audio controls>
-        <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK35.mp3" type="audio/mpeg">
+        <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK35.mp3' %}" type="audio/mpeg">
           Your browser does not support the audio element. (AUDIO 35)
       </audio>
 
@@ -84,7 +86,7 @@
       </div>
 
        <audio controls>
-        <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK36.mp3" type="audio/mpeg">
+        <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK36.mp3' %}" type="audio/mpeg">
           Your browser does not support the audio element. (AUDIO 36)
       </audio>
 
@@ -95,16 +97,16 @@
       
       <div class="col-sm-6 col-md-6">
       <audio controls>
-        <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK38.mp3" type="audio/mpeg">
+        <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK38.mp3' %}" type="audio/mpeg">
           Your browser does not support the audio element. (AUDIO 38)
       </audio>
         
-      <img src="../static/img/Lesson8Theme2img3.png" alt="No found">
+      <img class="img-responsive" src="{% static 'img/Lesson8Theme2img3.png" alt="No found' %}">
 
       </div>
       <div class="col-sm-6 col-md-6">
       <audio controls>
-        <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK37.mp3" type="audio/mpeg">
+        <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK37.mp3' %}" type="audio/mpeg">
           Your browser does not support the audio element. (AUDIO 37)
       </audio
         
@@ -121,13 +123,13 @@
               When you ask a question beginning with<br>
               Is / Are, the intonation goes up at the<br>
               end of the question.<br>
-              <img src="../static/img/modulo1/unity1/Lesson8Theme2img4.png" alt="No found"><br>
+              <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson8Theme2img4.png' %}" alt="No found"><br>
               Are you Colombian?<br>
               When you ask a question beginning with<br>
               a question word (What, Where, When,<br>
               etc.), the intonation goes down at the<br>
               end of the question.<br>
-              <img src="../static/img/modulo1/unity1/Lesson8Theme2img5.png" class="padding-flecha" alt="No found"><br>
+              <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson8Theme2img5.png' %}" class="padding-flecha" alt="No found"><br>
               Where are you from?
             </td>
           </tr>

@@ -1,4 +1,5 @@
 {% extends 'plantilla2.html' %}
+{% load staticfiles %}
 {% block title %} Unity 1 - Lesson 1 {% endblock %}
 
 {%  block content %}
@@ -7,7 +8,8 @@
     <ol class="breadcrumb">
   <li>Module 1</li>
         <li><a href="{% url 'modulo1-unidad1' %}">Unity 1</a></li>
-        <li class="active">Lesson 1</li>
+        <li>Lesson 1</li>
+        <li class="active">Theme 4</li>  
         
 </ol>
 
@@ -22,7 +24,7 @@
 
       <br />
 
-      <div class="centered"><img src="../static/img/modulo1/unity1/speak-1.PNG" class="img-responsive" alt=""/></div>
+      <div class="centered"><img src="{% static 'img/modulo1/unity1/speak-1.PNG' %}" class="img-responsive" alt=""/></div>
 
          <br />
 

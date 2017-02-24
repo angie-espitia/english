@@ -1,14 +1,16 @@
 {% extends 'plantilla2.html' %}
-{% block title %} Tema 1 {% endblock %}
+{% load staticfiles %}
+{% block title %} Module 1 - Lesson 5 {% endblock %}
 
 {%  block content %}
     
-   <div class="container initial">
+<div class="container initial">
     <ol class="breadcrumb">
-  <li>Modulo 1</li>
-        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 1</a></li>
-        <li class="active">Lesson 5</li>
-              
+  <li>Module 1</li>
+        <li><a href="{% url 'modulo1-unidad2' %}">Unity 2</a></li>
+        <li>Lesson 5</li>
+        <li class="active">Theme 3</li>
+               
 </ol>
     
     
@@ -24,7 +26,7 @@
 
       <div class="col-sm-12 col-md-12">
           <div class="col-sm-8 col-md-8">
-            <img src="../static/img/modulo1/unity1/Lesson5Theme3.png" alt="No found">
+            <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson5Theme3.png' %}" alt="No found">
          </div>
          <div class="col-sm-4 col-md-4">
           <table class="table table-bordered">
@@ -45,7 +47,7 @@
           </table>
 
           <audio controls>
-            <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK25.mp3" type="audio/mpeg">
+            <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK25.mp3' %}" type="audio/mpeg">
               Your browser does not support the audio element. (AUDIO 25)
           </audio>
 
@@ -70,7 +72,7 @@
         </div>
        </div>
 
-      <img src="../static/img/modulo1/unity1/Lesson5Theme3img2.png" alt="No found">
+      <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson5Theme3img2.png' %}" alt="No found">
 
       <div class="col-sm-12 col-md-12"></div>
 
@@ -78,7 +80,7 @@
         <p>Listen and repeat these sentences.</p>
 
         <audio controls>
-          <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK26.mp3" type="audio/mpeg">
+          <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK26.mp3' %}" type="audio/mpeg">
             Your browser does not support the audio element. (AUDIO 26)
         </audio>
 

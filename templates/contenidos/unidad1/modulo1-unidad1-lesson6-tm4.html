@@ -1,14 +1,16 @@
 {% extends 'plantilla2.html' %}
-{% block title %} Tema 1 {% endblock %}
+{% load staticfiles %}
+{% block title %} Module 1 - Lesson 6 {% endblock %}
 
 {%  block content %}
     
-   <div class="container initial">
+<div class="container initial">
     <ol class="breadcrumb">
-  <li>Modulo 1</li>
-        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 1</a></li>
-        <li class="active">Lesson 6</li>
-              
+  <li>Module 1</li>
+        <li><a href="{% url 'modulo1-unidad2' %}">Unity 2</a></li>
+        <li>Lesson 6</li>
+        <li class="active">Theme 4</li>
+               
 </ol>
     
     
@@ -32,7 +34,7 @@
       <div class="col-sm-12 col-md-12"></div>
 
       <div class="col-sm-12 col-md-12">
-          <img src="../static/img/modulo1/unity1/Lesson6Theme4.png" alt="No found">
+          <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson6Theme4.png' %}" alt="No found">
       </div>
 
       <div class="col-sm-12 col-md-12"></div>
@@ -44,7 +46,7 @@
       <p>Interview a friend. Complete the questionnaire in your notebook.</p>
 
           <div class="col-sm-12 col-md-12">
-            <img src="../static/img/modulo1/unity1/Lesson6Theme4img2.png" alt="No found">
+            <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson6Theme4img2.png' %}" alt="No found">
           </div>
 
           <br>
@@ -53,10 +55,10 @@
           <br>
      
            <div class="col-sm-6 col-md-6">
-             <img src="../static/img/modulo1/unity1/Lesson6Theme4img4.png" alt="No found">
+             <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson6Theme4img4.png' %}" alt="No found">
             </div>
             <div class="col-sm-6 col-md-6">
-              <img src="../static/img/modulo1/unity1/Lesson6Theme4img3.png" alt="No found">
+              <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson6Theme4img3.png' %}" alt="No found">
             </div>
 
       
@@ -64,7 +66,7 @@
   
             <p>Now write a short text about someone you know or a famous person. Use the text in exercise 13 as a model. Remember to use capital letters. Write about:</p>
             
-            <img src="../static/img/modulo1/unity1/Lesson6Theme4img5.png" alt="No found">
+            <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson6Theme4img5.png' %}" alt="No found">
       </div>
 
 

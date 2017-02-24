@@ -1,4 +1,5 @@
 {% extends 'plantilla2.html' %}
+{% load staticfiles %}
 {% block title %} Unity 1 - Lesson 1 {% endblock %}
 
 {%  block content %}
@@ -6,8 +7,9 @@
     <div class="container initial">
     <ol class="breadcrumb">
   <li>Module 1</li>
-        <li><a href="modulo1-unidad1.html">Unity 1</a></li>
-        <li class="active">Lesson 1</li>        
+        <li><a href="{% url 'modulo1-unidad1' %}">Unity 1</a></li>
+        <li>Lesson 1</li>
+        <li class="active">Theme 2</li>        
         
 </ol>
 
@@ -18,7 +20,7 @@
       <h3></h3>
         <hr>
       <p>Copy the clocks in your notebook and write the correct greeting from the Useful vocabulary box.</p>
-      <div class="centered"><img src="static/img/modulo1/unity1/lesson 1 - grammar.PNG" class="img-responsive" alt=""/></div>
+      <div class="centered"><img src="{% static 'img/modulo1/unity1/lesson 1 - grammar.PNG' %}" class="img-responsive" alt=""/></div>
 
       <br />
       <div class="col-sm-8 col-md-8">

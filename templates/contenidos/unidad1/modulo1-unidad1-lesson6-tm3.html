@@ -1,14 +1,16 @@
 {% extends 'plantilla2.html' %}
-{% block title %} Tema 1 {% endblock %}
+{% load staticfiles %}
+{% block title %} Module 1 - Lesson 6 {% endblock %}
 
 {%  block content %}
     
-   <div class="container initial">
+<div class="container initial">
     <ol class="breadcrumb">
-  <li>Modulo 1</li>
-        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 1</a></li>
-        <li class="active">Lesson 6</li>
-              
+  <li>Module 1</li>
+        <li><a href="{% url 'modulo1-unidad2' %}">Unity 2</a></li>
+        <li>Lesson 6</li>
+        <li class="active">Theme 3</li>
+               
 </ol>
     
     
@@ -57,7 +59,7 @@
         <p>Look at Tina’s profile and complete the questions and answers in your notebook.</p>
 
         <div class="col-sm-8 col-md-8">
-          <img src="../static/img/modulo1/unity1/Lesson6Theme3.png" class="img-responsive" alt="No found">
+          <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson6Theme3.png' %}" alt="No found">
         </div> 
         <div class="col-sm-4 col-md-4">
           <ul>
@@ -77,7 +79,7 @@
         <div class="col-sm-6 col-md-6">
 
         <audio controls>
-          <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK29.mp3" type="audio/mpeg">
+          <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK29.mp3' %}" type="audio/mpeg">
             Your browser does not support the audio element. (AUDIO 29)
         </audio>
 
@@ -92,7 +94,7 @@
         <div class="col-sm-6 col-md-6">
 
         <audio controls>
-          <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK28.mp3" type="audio/mpeg">
+          <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK28.mp3' %}" type="audio/mpeg">
             Your browser does not support the audio element. (AUDIO 28)
         </audio>
 
@@ -109,7 +111,7 @@
                   beginning with Is / Are the <br>
                   intonation goes up at the <br>
                   end of the question. <br>
-                  <img src="../static/img/modulo1/unity1/Lesson6Theme3img2.png" alt="No found"> <br>
+                  <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson6Theme3img2.png' %}" alt="No found"> <br>
                   Are you Colombian?
               </td>
             </tr>

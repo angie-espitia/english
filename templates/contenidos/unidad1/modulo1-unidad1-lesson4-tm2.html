@@ -1,4 +1,5 @@
 {% extends 'plantilla2.html' %}
+{% load staticfiles %}
 {% block title %} Unity 1 - Lesson 4 {% endblock %}
 
 {%  block content %}
@@ -6,8 +7,9 @@
    <div class="container initial">
     <ol class="breadcrumb">
   <li>Module 1</li>
-        <li><a href="{% url 'modulo1-unidad1' %}">Unity 1</a></li>
-        <li class="active">Lesson 4</li>
+        <li><a href="{% url 'modulo1-unidad2' %}">Unity 2</a></li>
+        <li>Lesson 4</li>
+        <li class="active">Theme 2</li>
     
 </ol>
     
@@ -21,7 +23,7 @@
       <p>Listen and repeat the sentences.</p>
 
       <audio controls>
-          <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK19.mp3" type="audio/mpeg">
+          <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK19.mp3' %}" type="audio/mpeg">
             Your browser does not support the audio element. (AUDIO 19)
       </audio>
 
@@ -47,8 +49,8 @@
 
       <div class="col-sm-12 col-md-12">
         <p>Complete the text with the correct possessive adjective.</p>
-        <img src="../static/img/modulo1/unity1/Lesson4Theme2.png" alt="No found">
-        <img src="../static/img/modulo1/unity1/Lesson4Theme2img2.png" alt="No found">
+        <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson4Theme2.png' %}" alt="No found">
+        <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson4Theme2img2.png' %}" alt="No found">
       </div>
 
       <div class="col-sm-12 col-md-12"></div>
@@ -60,15 +62,15 @@
       <p>Listen and match the numbers to the words in your notebook.</p>
 
       <audio controls>
-          <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK20.mp3" type="audio/mpeg">
+          <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK20.mp3' %}" type="audio/mpeg">
             Your browser does not support the audio element. (AUDIO 20)
       </audio>
 
           <div class="col-sm-12 col-md-12">
-             <img src="../static/img/modulo1/unity1/Lesson4Theme2img3.png" alt="No found">
+             <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson4Theme2img3.png' %}" alt="No found">
           </div>
          <div class="col-sm-9 col-md-9">
-             <img src="../static/img/modulo1/unity1/Lesson4Theme2img4.png" alt="No found">
+             <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson4Theme2img4.png' %}" alt="No found">
           </div>
           <div class="col-sm-3 col-md-3">
           <br>
@@ -87,13 +89,13 @@
           <div class="col-sm-12 col-md-12">
              <div class="col-sm-6 col-md-6">
                 <audio controls>
-                  <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK22.mp3" type="audio/mpeg">
+                  <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK22.mp3' %}" type="audio/mpeg">
                   Your browser does not support the audio element. (AUDIO 22)
                 </audio>
              </div>
              <div class="col-sm-6 col-md-6">
                 <audio controls>
-                  <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK21.mp3" type="audio/mpeg">
+                  <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK21.mp3' %}" type="audio/mpeg">
                   Your browser does not support the audio element. (AUDIO 21)
                 </audio>
              </div>

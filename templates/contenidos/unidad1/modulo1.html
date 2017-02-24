@@ -1,4 +1,5 @@
 {% extends 'plantilla2.html' %}
+{% load staticfiles %}
 {% block title %} Module 1 {% endblock %}
 
 {%  block content %}
@@ -24,11 +25,11 @@
 	</div><!-- headerwrap -->
         
        <div id="wh">
-          <div class="centered"><img src="../static/img/corchete.png" class="image-reposive"/></div>
+          <div class="centered"><img class="img-responsive" src="{% static 'img/corchete.png' %}" /></div>
         <div class="row">
         <div class="col-md-8 col-lg-8">
       <br />
-      <img src="../static/img/modulo1/module1.PNG" class="img-responsive" alt=""/>
+      <img class="img-responsive" src="{% static 'img/modulo1/module1.PNG' %}" alt=""/>
             </div>
       <div class="col-md-4 col-lg-4">
           <br />

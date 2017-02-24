@@ -1,14 +1,16 @@
 {% extends 'plantilla2.html' %}
-{% block title %} Tema 1 {% endblock %}
+{% load staticfiles %}
+{% block title %} Module 1 - Lesson 7 {% endblock %}
 
 {%  block content %}
     
-   <div class="container initial">
+<div class="container initial">
     <ol class="breadcrumb">
-  <li>Modulo 1</li>
-        <li><a href="{% url 'modulo1-unidad1' %}">Unidad 1</a></li>
-        <li class="active">Lesson 7</li>
-      
+  <li>Module 1</li>
+        <li><a href="{% url 'modulo1-unidad3' %}">Unity 3</a></li>
+        <li>Lesson 7</li>
+        <li class="active">Theme 3</li>
+               
 </ol>
     
     
@@ -37,7 +39,7 @@
           </div>
 
           <div class="col-sm-8 col-md-8">
-            <img src="../static/img/modulo1/unity1/Lesson7Theme3.png" class="img-responsive" alt="No found">
+            <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson7Theme3.png' %}" alt="No found">
           </div>
           <div class="col-sm-4 col-md-4">
           <table class="table table-bordered">
@@ -78,7 +80,7 @@
 
         <div class="col-sm-6 col-md-6">
         <audio controls>
-          <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK33.mp3" type="audio/mpeg">
+          <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK33.mp3' %}" type="audio/mpeg">
             Your browser does not support the audio element. (AUDIO 33)
         </audio>
           <div class="col-sm-6 col-md-6">
@@ -96,7 +98,7 @@
         </div> 
         <div class="col-sm-6 col-md-6">
         <audio controls>
-          <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK13.mp3" type="audio/mpeg">
+          <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK13.mp3' %}" type="audio/mpeg">
             Your browser does not support the audio element. (AUDIO 32)
         </audio>
           <table class="table table-bordered">
@@ -136,16 +138,16 @@
         <hr>
 
       <audio controls>
-        <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK34.mp3" type="audio/mpeg">
+        <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK34.mp3' %}" type="audio/mpeg">
           Your browser does not support the audio element. (AUDIO 34)
       </audio>
 
       <p>Listen to the conversation and match the people to their favourite subjects. There are two extra subjects you don’t need.</p>  
 
-      <img src="../static/img/modulo1/unity1/Lesson7Theme3img2.png" alt="No found">
+      <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson7Theme3img2.png' %}" alt="No found">
 
       <audio controls>
-        <source src="../static/audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK34.mp3" type="audio/mpeg">
+        <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK34.mp3' %}" type="audio/mpeg">
           Your browser does not support the audio element. (AUDIO 34)
       </audio>
 
