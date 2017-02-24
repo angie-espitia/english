@@ -26,7 +26,7 @@
                   
 			</div>
 			<div class="col-lg-4 col-sm-3">
-				<img class="img-responsive" src="/static/img/logo/logo-e.png" alt="">
+				<img class="img-responsive" src="{% static 'img/logo/logo-e.png' %}" alt="">
 			</div>
 		</div><!-- row -->
 	</div><!-- container -->
@@ -39,12 +39,12 @@
                 <hr />
                 <br />
 				<div class="col-lg-6 col-sm-5">
-					<a href="{% url 'login-estudiante' %}"><img src="/static/img/icon-estudiante.png" alt=""></a>
+					<a href="{% url 'login-estudiante' %}"><img src="{% static 'img/icon-estudiante.png' %}" alt=""></a>
                     <br /><br />
                     <p>Student</p>
 				</div>
 				<div class="col-lg-6 col-sm-5">
-					<a href="{% url 'login-profesor' %}"><img src="/static/img/icon-docente.png" alt=""></a>
+					<a href="{% url 'login-profesor' %}"><img src="{% static 'img/icon-docente.png' %}" alt=""></a>
                     <br /><br />
                     <p>Teacher</p>
 				</div>
