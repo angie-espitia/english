@@ -126,6 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 #URL para acceder a los archivos estaticos
 STATIC_URL = '/static/'
+STATIC_ROOT = 'staticfiles'
 
 #Directorio donde se almacenaran archivos css
 STATICFILES_DIRS = [ BASE_DIR + '/static' ]
