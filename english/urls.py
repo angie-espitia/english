@@ -211,6 +211,7 @@ urlpatterns = [
     url(r'^primer-modulo$', primer_modulo, name='primer-modulo'),  # /primer-modulo-panel
 
     url(r'^note$', notas, name='notas'),
+    url(r'^note/est/(?P<pk>\d+)/$', notas_est, name='notas-est'),
     url(r'^note/(?P<pk>\d+)/$', lista_notas, name='lista-notas'),  
     url(r'^note/add/(?P<pk>\d+)/student$', agregar_notas, name='agregar-notas'),
     url(r'^note/(?P<pk>\d+)/edit$', editar_notas, name='editar-notas'),
