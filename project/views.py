@@ -17,7 +17,7 @@ from django.db.models import Q
 from .forms import GrupoForm, CursoForm, CalificacionForm
 from django.utils.decorators import method_decorator
 from django.views.generic import UpdateView, DeleteView, CreateView
-
+import json
 
 def index(request):
     return render_to_response('index.html')
@@ -182,7 +182,7 @@ def unidad1_lesson2_tm1(request):
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson2_tm2(request):
-    estudiante = Estudiante.objects.get(id=request.user.id)
+    estudiante = User.objects.get(id=request.user.id)
     preguntas = Preguntas.objects.filter(actividad_id=1)
     respuesta = Respuesta.objects.filter(pregunta__in = preguntas)
     log(request, "CONTENIDO_MODULO1_LESSON2_TEMA2")
@@ -205,7 +205,7 @@ def unidad1_lesson3_tm1(request):
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson3_tm2(request):
-    estudiante = Estudiante.objects.get(id=request.user.id)
+    estudiante = User.objects.get(id=request.user.id)
     preguntas = Preguntas.objects.filter(actividad_id=2)
     preguntas2 = Preguntas.objects.filter(actividad_id=3)
     preguntas3 = Preguntas.objects.filter(actividad_id=4)
@@ -247,7 +247,7 @@ def unidad1_lesson4_tm4(request):
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson5_tm1(request):
-    estudiante = Estudiante.objects.get(id=request.user.id)
+    estudiante = User.objects.get(id=request.user.id)
     preguntas = Preguntas.objects.filter(actividad_id=5)
     respuesta = Respuesta.objects.filter(pregunta__in = preguntas)
     log(request, "CONTENIDO_MODULO1_LESSON5_TEMA1")
@@ -894,7 +894,30 @@ def grupos_estudiantes(request, pk):
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
 def notas(request):
-    return render(request, 'paginaDocente/notas.html')
+    user = User.objects.get(id=request.user.id)
+    profe = Profesor.objects.get(id=user)
+    curso = Curso.objects.get(Profesor_id=profe)
+    grupos = Grupo.objects.filter(Curso_id=curso)
+    return render(request, 'paginaDocente/notas.html', { 'grupos':grupos })
+
+@login_required(login_url="/login-profesor")
+@user_passes_test(restringir_estudiante, login_url='/login-profesor')
+def notas_est(request, pk):
+    grupo = Grupo.objects.filter(pk=pk)
+    estudiantes = Grupo_Estudiante.objects.filter(grupo_id=pk)
+    
+    data = []
+    for e in estudiantes:
+        uni = {}
+        uni['id'] = e.estudiante.id.id
+        uni['nombre'] = e.estudiante.id.first_name
+        uni['documento'] = e.estudiante.documento
+
+        data.append(uni)
+
+    res = json.dumps(data)
+
+    return HttpResponse(res)
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
