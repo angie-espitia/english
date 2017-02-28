@@ -17,6 +17,12 @@ class CursoForm(forms.ModelForm):
 
 class GrupoForm(forms.ModelForm):
 
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
+        super(PlatilloForm, self).__init__(*args, **kwargs)
+        # import pdb; pdb.set_trace()
+        self.fields['Curso'].queryset = Curso.objects.filter( Profesor_id = user.id )
+
     class Meta:
         model = Grupo
         fields = ['nombre','jornada', 'Curso']
