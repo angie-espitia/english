@@ -231,9 +231,12 @@ def unidad1_lesson4_tm1(request):
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson4-tm1.html')  
 
 @login_required(login_url="/login-estudiante")
-def unidad1_lesson4_tm2(request):
+def unidad1_lesson4_tm2(request):    
+    estudiante = User.objects.get(id=request.user.id)
+    preguntas = Preguntas.objects.filter(actividad_id=11)
+    respuesta = Respuesta.objects.filter(pregunta__in = preguntas)
     log(request, "CONTENIDO_MODULO1_LESSON4_TEMA2")
-    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson4-tm2.html')  
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson4-tm2.html',{ 'respuesta':respuesta })  
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson4_tm3(request):
@@ -255,8 +258,13 @@ def unidad1_lesson5_tm1(request):
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson5_tm2(request):
+    estudiante = User.objects.get(id=request.user.id)
+    preguntas = Preguntas.objects.filter(actividad_id=6)
+    preguntas2 = Preguntas.objects.filter(actividad_id=7)
+    respuesta = Respuesta.objects.filter(pregunta__in = preguntas)
+    respuesta2 = Respuesta.objects.filter(pregunta__in = preguntas2)
     log(request, "CONTENIDO_MODULO1_LESSON5_TEMA2")
-    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson5-tm2.html')    
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson5-tm2.html', { 'respuesta':respuesta, 'respuesta2':respuesta2 })    
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson5_tm3(request):
@@ -269,14 +277,22 @@ def unidad1_lesson5_tm4(request):
     return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson5-tm4.html') 
 
 @login_required(login_url="/login-estudiante")
-def unidad1_lesson6_tm1(request):
+def unidad1_lesson6_tm1(request):    
+    estudiante = User.objects.get(id=request.user.id)
+    preguntas = Preguntas.objects.filter(actividad_id=8)
+    respuesta = Respuesta.objects.filter(pregunta__in = preguntas)
     log(request, "CONTENIDO_MODULO1_LESSON6_TEMA1")
-    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson6-tm1.html') 
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson6-tm1.html', { 'respuesta':respuesta }) 
 
 @login_required(login_url="/login-estudiante")
-def unidad1_lesson6_tm2(request):
+def unidad1_lesson6_tm2(request):    
+    estudiante = User.objects.get(id=request.user.id)
+    preguntas = Preguntas.objects.filter(actividad_id=9)
+    preguntas2 = Preguntas.objects.filter(actividad_id=10)
+    respuesta = Respuesta.objects.filter(pregunta__in = preguntas)
+    respuesta2 = Respuesta.objects.filter(pregunta__in = preguntas2)
     log(request, "CONTENIDO_MODULO1_LESSON6_TEMA2")
-    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson6-tm2.html') 
+    return render(request, 'contenidos/unidad1/modulo1-unidad1-lesson6-tm2.html', { 'respuesta':respuesta, 'respuesta2':respuesta2, 'preguntas':preguntas  }) 
 
 @login_required(login_url="/login-estudiante")
 def unidad1_lesson6_tm3(request):

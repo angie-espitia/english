@@ -20,7 +20,7 @@
       <h2>FOCUS ON VOCABULARY</h2>
       <h3></h3>
         <hr>
-      <p>Match the jobs to the pictures.</p>
+      <p>1. Match the jobs to the pictures.</p>
 
       <div class="col-sm-12 col-md-12">
         <div class="col-sm-8 col-md-8">
@@ -35,7 +35,7 @@
        <h2>LISTEN</h2>
         <h3></h3>
           <hr>
-        <p>Listen and complete the form in your notebook.</p>
+        <p>2. Listen and complete the form in your notebook.</p>
 
         <audio controls>
           <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK27.mp3' %}" type="audio/mpeg">
@@ -43,10 +43,37 @@
         </audio>
 
           <div class="col-sm-12 col-md-12">
-            <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson6Theme1img3.png' %}" alt="No found">
-          </div>
+            <h2 class="text-center">Green Day School</h2>
+            <h4 class="text-center">Registration Form</h4>
+            <br>
+            <div id="pregunta-usuario">
+            {% for row in respuesta %}
 
+            <div class="col-sm-6 col-md-6">
+                <p><li><strong>{{ row.pregunta.descripcion }}</strong>
+                <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""></li></p>
+            </div>
+            {% endfor %}
+          </div>
+        <br>
+        <div id="respuestas-bd">
+            <div id="estudiante_id" hidden="false">{{estudiante.id.id}}</div>
+            {% for row in respuesta %}
+                <div id="actividad_id" hidden="false">{{ row.pregunta.actividad.id }}</div>
+                <div id="{{ row.id }}" hidden="false"><li>{{ row.descripcion }}</li></div>            
+            {% endfor %}
+        </div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <hr>
+        <br>
+
+        <div id="resultado"><strong>Resultado:</strong></div>
+        <button class="btn btn-primary pull-right" id="boton_actividad1">Calificar</button> 
+          </div>
+          
          <div class="col-sm-12 col-md-12">
+         <hr>
+         <p>3. Match the questions and answers. Look at exercise 2 to help you.</p>
             <div class="col-sm-6 col-md-6">
               <ul>
                 <li>a. Is Kiara a student?</li>
@@ -69,7 +96,7 @@
             </div>
           </div> 
           <div class="col-sm-12 col-md-12">
-            <p>Ask and answer the questions in exercise 3 with a partner.</p>
+            <p>4. Ask and answer the questions in exercise 3 with a partner.</p>
           </div>
 
       </div>
@@ -79,4 +106,94 @@
         <br>
 </div>
 
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript">
+  $( document ).ready(function() {
+    var array_res_usuario = [];
+    var array_res_correctas = []; 
+    var respuesta_sistema = "";
+    var respuesta_usuario = "";
+          
+        $( "#boton_actividad1" ).click(function() 
+        {            
+                var cantidad_blanco = 0;
+                array_res_usuario = [];
+                array_res_correctas = []; 
+                var buenas = 0;
+                var malas = 0;
+                respuesta_sistema = "";
+                respuesta_usuario = "";
+                var actividad = $("#actividad_id").html();
+                var estudiante = $("#estudiante_id").html();
+
+              $("#respuestas-bd li").each(function()
+              {
+                  var descripcion =$(this).html();
+                  array_res_correctas.push(descripcion);
+                  // alert("descripcion  "+ descripcion);
+              })
+              $("#pregunta-usuario input").each(function()
+              {
+                  var descripcion =$(this).val();
+                   // alert("descripcion usuario  "+ descripcion);
+                   if (descripcion == ""){
+                    cantidad_blanco++;
+                   }
+                   array_res_usuario.push(descripcion);
+              })
+              if(cantidad_blanco > 0){
+                alert("Debe llenar todos los campos");
+                return;
+              }
+
+              calificar(buenas,malas,"resultado",actividad,estudiante)
+              //alert("cantidad de respuestas sistema " + array_res_correctas.length);
+              //alert("cantidad de respuestas usuario " + array_res_usuario.length);
+          });
+
+       function calificar (buenas,malas,name_div,actividad, estudiante){
+             for(var i =0; i < array_res_correctas.length; i++) 
+              {
+                   respuesta_sistema = array_res_correctas[i].toString();
+                   respuesta_usuario = array_res_usuario[i].toString();
+                  //alert("respuesta_sistema-"  + respuesta_sistema + "-respuesta_usuario-" + respuesta_usuario + "-" );
+                  var n = respuesta_sistema.localeCompare(respuesta_usuario);
+                  if(n == 0){
+                    //alert("buena1");
+                    buenas++;
+                  }else{
+                    //alert("mala1");
+                    malas++;
+                  }  
+              }
+              var total = buenas + malas;
+              var porcentaje = (buenas*100)/total;
+              var nota = (porcentaje / 2)/10;
+              var activi = actividad
+              var estu = estudiante
+
+              var n = nota.toFixed(1);
+              $("#" + name_div).html("<strong>Tu resultado es :</strong> " + buenas +"/" + total + " <strong>Tu nota es:</strong> " + n);
+              guardar_actividad(activi,n,buenas,estu)
+        }
+
+      // function guardar_actividad(activi, n, buenas, estu){
+      //         debugger
+      //         var pk = estu;
+      //         var actividad = activi;
+      //         var nota = n;
+      //         var buenas = buenas;
+      //           $.ajax({
+      //                   url: 'note/'+pk+'/activity',
+      //                   data: { "csrfmiddlewaretoken": "{{ csrf_token }}", "nota": nota, "actividad":actividad, "pk": pk , "detalle":buenas},
+      //                   type: 'POST',
+      //                   success: function() {
+      //                                       console.log(pk, actividad, nota)
+      //                 }
+      //           })
+      //           return false;
+      // };
+});
+</script>
 {% endblock %}

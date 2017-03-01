@@ -51,8 +51,116 @@
       <div class="col-sm-12 col-md-12"></div>
 
       <div class="col-sm-12 col-md-12">
-         <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson6Theme2img2.png' %}" alt="No found">
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Person</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for row in preguntas %}
+                    {% if row.id >= 60 and row.id <= 65  %} 
+                      <tr><td><div id="{{ row.pregunta.id }}"> </div> 
+                        <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="{{ row.descripcion }}" disabled="true"></td>
+                      </tr>
+                    {% endif %}
+                  {% endfor %}
+              </tbody>
+              </table>
+          </div>
+        <div id="pregunta-usuario">
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for row in respuesta %}
+                    {% if row.id >= 71 and row.id <= 76 %} 
+                      <tr><td><div id="{{ row.pregunta.id }}"> </div> 
+                        <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""></td>
+                      </tr>
+                    {% endif %}
+                  {% endfor %}
+              </tbody>
+              </table>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Age</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for row in respuesta %}
+                    {% if row.id >= 77 and row.id <= 82 %} 
+                      <tr><td><div id="{{ row.pregunta.id }}"> </div> 
+                        <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""></td>
+                      </tr>
+                    {% endif %}
+                  {% endfor %}
+              </tbody>
+              </table>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Job</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for row in respuesta %}
+                    {% if row.id >= 83 and row.id <= 88 %} 
+                      <tr><td><div id="{{ row.pregunta.id }}"> </div> 
+                        <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""></td>
+                      </tr>
+                    {% endif %}
+                  {% endfor %}
+              </tbody>
+              </table>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Nationality</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for row in respuesta %}
+                    {% if row.id >= 89 and row.id <= 94 %} 
+                      <tr><td><div id="{{ row.pregunta.id }}"> </div> 
+                        <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""></td>
+                      </tr>
+                    {% endif %}
+                  {% endfor %}
+              </tbody>
+              </table>
+          </div>
+        </div>
+      <br><br><br>
+      <div>
+        <div>
+          <div>
+            <div>
+              <div id="respuestas-bd">
+                  {% for row in respuesta %}
+                      <div id="{{ row.id }}" hidden="false"><li>{{ row.descripcion }}</li></div>            
+                  {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> 
+        <div id="resultado"><strong>Resultado:</strong></div>
+        <button class="btn btn-primary pull-right" id="boton_actividad1">Calificar</button> 
+    </div>
 
       <div class="col-sm-12 col-md-12"></div>
 
@@ -60,12 +168,32 @@
         <p>Read the text again. Are the sentences true (T) or false (F)?</p>
 
         <div class="col-sm-8 col-md-8">
-          <ul>
-            <li>Fer is a student. ___________</li>
-            <li>Mary is married. ___________</li>
-            <li>Javier is Chilean. ___________</li>
-            <li>Claudia is a doctor. ___________</li>
-          </ul>
+          <div id="pregunta-usuario2">
+              {% for row in respuesta2 %}
+              <div class="col-sm-6 col-md-6">
+                  <div id="{{ row.pregunta.id }}"> <li> {{ row.pregunta.descripcion }}</li></div> 
+                  <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="">                
+              </div>
+              {% endfor %}
+          </div>
+          <br>
+          <div>
+            <div>
+              <div>
+                <div>
+                  <div id="respuestas-bd2">
+                      {% for row in respuesta2 %}
+                          <div id="{{ row.id }}" hidden="false"><li>{{ row.descripcion }}</li></div>            
+                      {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br><br><hr><br>
+          <div id="resultado2"><strong>Resultado:</strong></div>
+          <button class="btn btn-primary pull-right" id="boton_actividad2">Calificar</button> 
+
         </div>
         <div class="col-sm-4 col-md-4">
           <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson6Theme2img3.png' %}" alt="No found">
@@ -76,4 +204,130 @@
        </div>
     </div><!--div-->
 </div>
+</div>
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript">
+  $( document ).ready(function() {
+    var array_res_usuario = [];
+    var array_res_correctas = []; 
+    var respuesta_sistema = "";
+    var respuesta_usuario = "";
+          
+        $( "#boton_actividad1" ).click(function() 
+        {            
+                var cantidad_blanco = 0;
+                array_res_usuario = [];
+                array_res_correctas = []; 
+                var buenas = 0;
+                var malas = 0;
+                respuesta_sistema = "";
+                respuesta_usuario = "";
+                var actividad = $("#actividad_id").html();
+                var estudiante = $("#estudiante_id").html();
+
+              $("#respuestas-bd li").each(function()
+              {
+                  var descripcion =$(this).html();
+                  array_res_correctas.push(descripcion);
+                  // alert("descripcion  "+ descripcion);
+              })
+              $("#pregunta-usuario input").each(function()
+              {
+                  var descripcion =$(this).val();
+                   // alert("descripcion usuario  "+ descripcion);
+                   if (descripcion == ""){
+                    cantidad_blanco++;
+                   }
+                   array_res_usuario.push(descripcion);
+              })
+              if(cantidad_blanco > 0){
+                alert("Debe llenar todos los campos");
+                return;
+              }
+
+              calificar(buenas,malas,"resultado",actividad,estudiante)
+              //alert("cantidad de respuestas sistema " + array_res_correctas.length);
+              //alert("cantidad de respuestas usuario " + array_res_usuario.length);
+          });
+
+        $( "#boton_actividad2" ).click(function() 
+        {            
+                var cantidad_blanco = 0;
+                array_res_usuario = [];
+                array_res_correctas = []; 
+                var buenas = 0;
+                var malas = 0;
+                respuesta_sistema = "";
+                respuesta_usuario = "";
+
+
+              $("#respuestas-bd2 li").each(function()
+              {
+                  var descripcion =$(this).html();
+                  array_res_correctas.push(descripcion);
+                  // alert("descripcion  "+ descripcion);
+              })
+              $("#pregunta-usuario2 input").each(function()
+              {
+                  var descripcion =$(this).val();
+                   // alert("descripcion usuario  "+ descripcion);
+                   if (descripcion == ""){
+                    cantidad_blanco++;
+                   }
+                   array_res_usuario.push(descripcion);
+              })
+              if(cantidad_blanco > 0){
+                alert("Debe llenar todos los campos");
+                return;
+              }
+              calificar(buenas,malas,"resultado2")
+              //alert("cantidad de respuestas sistema " + array_res_correctas.length);
+              //alert("cantidad de respuestas usuario " + array_res_usuario.length);
+          });
+
+       function calificar (buenas,malas,name_div,actividad, estudiante){
+             for(var i =0; i < array_res_correctas.length; i++) 
+              {
+                   respuesta_sistema = array_res_correctas[i].toString();
+                   respuesta_usuario = array_res_usuario[i].toString();
+                  //alert("respuesta_sistema-"  + respuesta_sistema + "-respuesta_usuario-" + respuesta_usuario + "-" );
+                  var n = respuesta_sistema.localeCompare(respuesta_usuario);
+                  if(n == 0){
+                    //alert("buena1");
+                    buenas++;
+                  }else{
+                    //alert("mala1");
+                    malas++;
+                  }  
+              }
+              var total = buenas + malas;
+              var porcentaje = (buenas*100)/total;
+              var nota = (porcentaje / 2)/10;
+              var activi = actividad
+              var estu = estudiante
+
+              var n = nota.toFixed(1);
+              $("#" + name_div).html("<strong>Tu resultado es :</strong> " + buenas +"/" + total + " <strong>Tu nota es:</strong> " + n);
+              guardar_actividad(activi,n,buenas,estu)
+        }
+
+      // function guardar_actividad(activi, n, buenas, estu){
+      //         debugger
+      //         var pk = estu;
+      //         var actividad = activi;
+      //         var nota = n;
+      //         var buenas = buenas;
+      //           $.ajax({
+      //                   url: 'note/'+pk+'/activity',
+      //                   data: { "csrfmiddlewaretoken": "{{ csrf_token }}", "nota": nota, "actividad":actividad, "pk": pk , "detalle":buenas},
+      //                   type: 'POST',
+      //                   success: function() {
+      //                                       console.log(pk, actividad, nota)
+      //                 }
+      //           })
+      //           return false;
+      // };
+});
+</script>
 {% endblock %}
