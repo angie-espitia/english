@@ -49,7 +49,7 @@
     <div class="alert alert-danger"> {{ error }} </div>
 
     {% endif %}
-    <form method="post" action="{% url 'registro-estudiante' %}">
+    <form method="post" action="{% url 'registro-estudiante' %}" name="formularioregistro">
       {% csrf_token %}
       <div class="container-fluid">
         <div class="row">
@@ -100,7 +100,7 @@
                 <input type = "text" name="username" class="form-control" value="{{ estudiante.id.username }}" placeholder="Username">
               </div>
               <div class ="col-md-1">
-                <label for="exampleInputnomre"><h4>Sexo:</h4></label>
+                <label for="exampleInputnomre"><h4>Género:</h4></label>
               </div>
               <div class ="col-md-5">
                   <label class="checkbox-inline">
@@ -170,7 +170,7 @@
             </div>
 
             <div class="col-md-3">
-                <p><button type="submit" class="btn btn-primary btn-lg pull-right">Registrar Estudiante</button> </p>
+                <p><button type="submit" class="btn btn-primary btn-lg pull-right" onclick="validar()">Registrar Estudiante</button> </p>
             </div>
 
           </div>

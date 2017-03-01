@@ -1,14 +1,26 @@
-function eliminarestudiante(estudianteId) {
-        var request = $.ajax({
-            type: "POST",
-            url: "{% url 'eliminar_estudiante' %}",
-            data: {
-                "csrfmiddlewaretoken": "{{ csrf_token }}",
-                "estudiante_id": estudianteId                    
-            },
-        });
-        request.done(function(response) {
-            alert("Estudiante eliminado");
-            // Cierra el modal, oculta el identificador eliminado, etc.
-        });
-    }
+function blanco() {
+            validaformulario = document.formularioregistro;
+
+            for (var i=0; i< validaformulario.length; i++) {
+
+                if(validaformulario[i].type == "text" || validaformulario[i].type == "number" || validaformulario[i].type == "date") {
+
+                    if (validaformulario[i].value.length == 0 || /^\s*$/.test(validaformulario[i].value)){
+                        
+                        return false;
+                    }       
+                }
+            }
+            return true;
+
+
+        };
+
+
+function validar() {
+
+
+            if (blanco() == false) {
+                alert("Error: Por favor no deje espacios en blanco");
+            }
+        };
