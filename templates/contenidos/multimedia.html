@@ -37,13 +37,13 @@
 
                    <canvas id="ahorcado" width="320" height="250">
 
-                   El Ahorcado sólo funciona en navegadores que soporten Canvas. Actualízate a Firefox o Chrome, por poner dos posibilidades.
+                   El Ahorcado sólo funciona en navegadores que soporten Canvas. Actualízate a Firefox o Chrome.
 
                    </canvas>
 
                 </div><br><br>
 
-                <label for="a">Palabra: </label>
+                <label for="a">Word: </label>
                 <input type="text" id="palabra" name="palabra" class="caja" placeholder="Valor a Adivinar" readonly="true"><br><br>
                 <input type="button" value="A" id="A" onclick="principal(this.value)">
                 <input type="button" value="B" onclick="principal(this.value)" id="B"> 
@@ -75,7 +75,7 @@
                 <input type="button" value="Y" onclick="principal(this.value)" id="Y"> 
                 <input type="button" value="Z" onclick="principal(this.value)" id="Z">
                 <br><br>
-                <input type="reset" class="btncaja x" onclick="nuevo();" value="Juego Nuevo">
+                <input type="reset" class="btncaja x" onclick="nuevo();" value="New Game">
                 <br><br>
                 <img id="perdistes" hidden="true" src="../../static/img/perdiste.png" alt="">
                 <img id="ganastes" hidden="true" src="../../static/img/ganaste.png" alt="">
