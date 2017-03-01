@@ -1081,6 +1081,11 @@ class createGrupos(CreateView):
     template_name = 'paginaDocente/agregar-grupos.html' # Importa el template
     success_url=reverse_lazy('lista-grupos') # como se va a retornar
 
+    def get_form_kwargs(self, **kwargs): # Función para agregar variables Externas al form
+        form_kwargs = super(createGrupos, self).get_form_kwargs(**kwargs) # Llama a la clase principal, siempre debe ir
+        form_kwargs["user"] = self.request.user
+        return form_kwargs
+
 @method_decorator(login_required(login_url="/login-profesor"), name='dispatch')
 # @method_decorator(restringir_estudiante, name='dispatch')
 class editGrupos(UpdateView):
