@@ -171,27 +171,71 @@
       <div class="col-sm-12 col-md-12"></div>
 
       <div class="col-sm-12 col-md-12">
-        <p>In your notebook, write sentences to answer the questions.</p>
-        <ul>
-          <li>a. Who are Michael’s parents? George and Lilly are Michael’s parents.</li>
-          <li>b. Who is Joe’s nephew? ______________________</li>
-          <li>c. Who is Steve’s sister? ______________________</li>
-          <li>d. Who are Sarah’s grandparents? ______________________</li>
-          <li>e. Who is Lola’s granddaughter? ______________________</li>
-        </ul>
-      </div>
 
-      <div class="col-sm-12 col-md-12"></div>
+        <div class="col-sm-7 col-md-7">
+        <p>Write sentences to answer the questions.</p>
+            <p>Who are Michael’s parents? <input class="form-control" type="text" name="" disabled="true" value="George and Lilly are Michael’s parents."></p>
+        </div>
+        <div id="pregunta-usuario">
+            {% for row in respuesta %}
+
+            <div class="col-sm-7 col-md-7">
+                <strong>{{ row.pregunta.descripcion }}</strong>
+                <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="">
+            </div>
+              <br>
+            {% endfor %}
+          </div>
+        <br>
+        <div id="respuestas-bd">
+            <div id="estudiante_id" hidden="false">{{estudiante.id.id}}</div>
+            {% for row in respuesta %}
+                <div id="actividad_id" hidden="false">{{ row.pregunta.actividad.id }}</div>
+                <div id="{{ row.id }}" hidden="false"><li>{{ row.descripcion }}</li></div>            
+            {% endfor %}
+        </div>
+        <br><br><br><br><br><br><br><br><br><br><br><br>
+        <hr>
+        <br>
+
+        <div id="resultado"><strong>Resultado:</strong></div>
+        <button class="btn btn-primary pull-right" id="boton_actividad1">Calificar</button> 
+
+      </div>      
+
+      <div class="col-sm-12 col-md-12"><hr></div>
 
       <div class="col-sm-12 col-md-12">
+
+        <div class="col-sm-7 col-md-7">
         <p>Write sentences with the names and people.</p>
-        <ul>
-          <li>a. ‘Lilly is my daughter.’ (Donald) Donald is Lilly’s father.</li>
-          <li>b. ‘Lauren is my sister.’ (Kevin) Kevin is ______________________</li>
-          <li>c. ‘Donald is my grandfather.’ (Michael) ______________________</li>
-          <li>d. ‘George is my husband.’ (Lilly) ______________________</li>
-          <li>e. ‘Rudy is my mother.’ (Peter) ______________________</li>
-        </ul>
+            <p>‘Lilly is my daughter.’ (Donald) <input class="form-control" type="text" name="" disabled="true" value="Donald is Lilly’s father"></p>
+        </div>
+        <div id="pregunta-usuario2">
+            {% for row in respuesta2 %}
+
+            <div class="col-sm-7 col-md-7">
+                <strong>{{ row.pregunta.descripcion }}</strong>
+                <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="">
+            </div>
+              <br>
+            {% endfor %}
+          </div>
+        <br>
+        <div id="respuestas-bd2">
+            <div id="estudiante_id" hidden="false">{{estudiante.id.id}}</div>
+            {% for row in respuesta2 %}
+                <div id="actividad_id" hidden="false">{{ row.pregunta.actividad.id }}</div>
+                <div id="{{ row.id }}" hidden="false"><li>{{ row.descripcion }}</li></div>            
+            {% endfor %}
+        </div>
+        <br><br><br><br><br><br><br><br><br><br><br><br>
+        <hr>
+        <br>
+
+        <div id="resultado2"><strong>Resultado:</strong></div>
+        <button class="btn btn-primary pull-right" id="boton_actividad2">Calificar</button> 
+
       </div>
 
        </div>
@@ -200,4 +244,129 @@
         <br>
         <br>
 </div>
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript">
+  $( document ).ready(function() {
+    var array_res_usuario = [];
+    var array_res_correctas = []; 
+    var respuesta_sistema = "";
+    var respuesta_usuario = "";
+          
+        $( "#boton_actividad1" ).click(function() 
+        {            
+                var cantidad_blanco = 0;
+                array_res_usuario = [];
+                array_res_correctas = []; 
+                var buenas = 0;
+                var malas = 0;
+                respuesta_sistema = "";
+                respuesta_usuario = "";
+                var actividad = $("#actividad_id").html();
+                var estudiante = $("#estudiante_id").html();
+
+              $("#respuestas-bd li").each(function()
+              {
+                  var descripcion =$(this).html();
+                  array_res_correctas.push(descripcion);
+                  // alert("descripcion  "+ descripcion);
+              })
+              $("#pregunta-usuario input").each(function()
+              {
+                  var descripcion =$(this).val();
+                   // alert("descripcion usuario  "+ descripcion);
+                   if (descripcion == ""){
+                    cantidad_blanco++;
+                   }
+                   array_res_usuario.push(descripcion);
+              })
+              if(cantidad_blanco > 0){
+                alert("Debe llenar todos los campos");
+                return;
+              }
+
+              calificar(buenas,malas,"resultado",actividad,estudiante)
+              //alert("cantidad de respuestas sistema " + array_res_correctas.length);
+              //alert("cantidad de respuestas usuario " + array_res_usuario.length);
+          });
+
+        $( "#boton_actividad2" ).click(function() 
+        {            
+                var cantidad_blanco = 0;
+                array_res_usuario = [];
+                array_res_correctas = []; 
+                var buenas = 0;
+                var malas = 0;
+                respuesta_sistema = "";
+                respuesta_usuario = "";
+
+
+              $("#respuestas-bd2 li").each(function()
+              {
+                  var descripcion =$(this).html();
+                  array_res_correctas.push(descripcion);
+                  // alert("descripcion  "+ descripcion);
+              })
+              $("#pregunta-usuario2 input").each(function()
+              {
+                  var descripcion =$(this).val();
+                   // alert("descripcion usuario  "+ descripcion);
+                   if (descripcion == ""){
+                    cantidad_blanco++;
+                   }
+                   array_res_usuario.push(descripcion);
+              })
+              if(cantidad_blanco > 0){
+                alert("Debe llenar todos los campos");
+                return;
+              }
+              calificar(buenas,malas,"resultado2")
+              //alert("cantidad de respuestas sistema " + array_res_correctas.length);
+              //alert("cantidad de respuestas usuario " + array_res_usuario.length);
+          });
+
+       function calificar (buenas,malas,name_div,actividad, estudiante){
+             for(var i =0; i < array_res_correctas.length; i++) 
+              {
+                   respuesta_sistema = array_res_correctas[i].toString();
+                   respuesta_usuario = array_res_usuario[i].toString();
+                  //alert("respuesta_sistema-"  + respuesta_sistema + "-respuesta_usuario-" + respuesta_usuario + "-" );
+                  var n = respuesta_sistema.localeCompare(respuesta_usuario);
+                  if(n == 0){
+                    //alert("buena1");
+                    buenas++;
+                  }else{
+                    //alert("mala1");
+                    malas++;
+                  }  
+              }
+              var total = buenas + malas;
+              var porcentaje = (buenas*100)/total;
+              var nota = (porcentaje / 2)/10;
+              var activi = actividad
+              var estu = estudiante
+
+              var n = nota.toFixed(1);
+              $("#" + name_div).html("<strong>Tu resultado es :</strong> " + buenas +"/" + total + " <strong>Tu nota es:</strong> " + n);
+              guardar_actividad(activi,n,buenas,estu)
+        }
+
+      // function guardar_actividad(activi, n, buenas, estu){
+      //         debugger
+      //         var pk = estu;
+      //         var actividad = activi;
+      //         var nota = n;
+      //         var buenas = buenas;
+      //           $.ajax({
+      //                   url: 'note/'+pk+'/activity',
+      //                   data: { "csrfmiddlewaretoken": "{{ csrf_token }}", "nota": nota, "actividad":actividad, "pk": pk , "detalle":buenas},
+      //                   type: 'POST',
+      //                   success: function() {
+      //                                       console.log(pk, actividad, nota)
+      //                 }
+      //           })
+      //           return false;
+      // };
+});
+</script>
 {% endblock %}

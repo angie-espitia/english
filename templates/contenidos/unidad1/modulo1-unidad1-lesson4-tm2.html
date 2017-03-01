@@ -49,8 +49,34 @@
 
       <div class="col-sm-12 col-md-12">
         <p>Complete the text with the correct possessive adjective.</p>
+
+        <div id="pregunta-usuario">
+
         <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson4Theme2.png' %}" alt="No found">
         <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson4Theme2img2.png' %}" alt="No found">
+          
+          <div class="col-sm-6 col-md-6">
+              <p>This is a photo of my family. This is my sister.  {% for row in respuesta %}{% if row.id == 99  %} <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="" > {% endif %}{% endfor %} name is Rose. She’s two years old. I have two brothers. They are twins! {% for row in respuesta %}{% if row.id == 100  %} <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""> {% endif %}{% endfor %} names are Pablo and Fabián. They’re six years old. {% for row in respuesta %}{% if row.id == 101  %} <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""> {% endif %}{% endfor %} favourite colour is blue.  {% for row in respuesta %}{% if row.id == 102  %} <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""> {% endif %}{% endfor %} parents are George and Lisa.  {% for row in respuesta %}{% if row.id == 103  %} <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""> {% endif %}{% endfor %}  father is 35 years old. {% for row in respuesta %}{% if row.id == 104  %} <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""> {% endif %}{% endfor %} favourite colour is green. {% for row in respuesta %}{% if row.id == 105  %} <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""> {% endif %}{% endfor %} mother is 30 years old. {% for row in respuesta %}{% if row.id == 106  %} <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""> {% endif %}{% endfor %} favourite colour is white. {% for row in respuesta %}{% if row.id == 107  %} <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""> {% endif %}{% endfor %} dog isn’t in the picture. {% for row in respuesta %}{% if row.id == 108  %} <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""> {% endif %}{% endfor %} name is Piky. What about your family?</p>
+              
+            </li>
+          </div>
+            <br>
+        </div>
+        <br>
+        <div id="respuestas-bd">
+            <div id="estudiante_id" hidden="false">{{estudiante.id.id}}</div>
+            {% for row in respuesta %}
+                <div id="actividad_id" hidden="false">{{ row.pregunta.actividad.id }}</div>
+                <div id="{{ row.id }}" hidden="false"><li>{{ row.descripcion }}</li></div>            
+            {% endfor %}
+        </div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <hr>
+        <br>
+
+        <div id="resultado"><strong>Resultado:</strong></div>
+        <button class="btn btn-primary pull-right" id="boton_actividad1">Calificar</button> 
+
       </div>
 
       <div class="col-sm-12 col-md-12"></div>
@@ -165,4 +191,94 @@
         <br>
         <br>
 </div>
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript">
+  $( document ).ready(function() {
+    var array_res_usuario = [];
+    var array_res_correctas = []; 
+    var respuesta_sistema = "";
+    var respuesta_usuario = "";
+          
+        $( "#boton_actividad1" ).click(function() 
+        {            
+                var cantidad_blanco = 0;
+                array_res_usuario = [];
+                array_res_correctas = []; 
+                var buenas = 0;
+                var malas = 0;
+                respuesta_sistema = "";
+                respuesta_usuario = "";
+                var actividad = $("#actividad_id").html();
+                var estudiante = $("#estudiante_id").html();
+
+              $("#respuestas-bd li").each(function()
+              {
+                  var descripcion =$(this).html();
+                  array_res_correctas.push(descripcion);
+                  // alert("descripcion  "+ descripcion);
+              })
+              $("#pregunta-usuario input").each(function()
+              {
+                  var descripcion =$(this).val();
+                   // alert("descripcion usuario  "+ descripcion);
+                   if (descripcion == ""){
+                    cantidad_blanco++;
+                   }
+                   array_res_usuario.push(descripcion);
+              })
+              if(cantidad_blanco > 0){
+                alert("Debe llenar todos los campos");
+                return;
+              }
+
+              calificar(buenas,malas,"resultado",actividad,estudiante)
+              //alert("cantidad de respuestas sistema " + array_res_correctas.length);
+              //alert("cantidad de respuestas usuario " + array_res_usuario.length);
+          });
+
+       function calificar (buenas,malas,name_div,actividad, estudiante){
+             for(var i =0; i < array_res_correctas.length; i++) 
+              {
+                   respuesta_sistema = array_res_correctas[i].toString();
+                   respuesta_usuario = array_res_usuario[i].toString();
+                  //alert("respuesta_sistema-"  + respuesta_sistema + "-respuesta_usuario-" + respuesta_usuario + "-" );
+                  var n = respuesta_sistema.localeCompare(respuesta_usuario);
+                  if(n == 0){
+                    //alert("buena1");
+                    buenas++;
+                  }else{
+                    //alert("mala1");
+                    malas++;
+                  }  
+              }
+              var total = buenas + malas;
+              var porcentaje = (buenas*100)/total;
+              var nota = (porcentaje / 2)/10;
+              var activi = actividad
+              var estu = estudiante
+
+              var n = nota.toFixed(1);
+              $("#" + name_div).html("<strong>Tu resultado es :</strong> " + buenas +"/" + total + " <strong>Tu nota es:</strong> " + n);
+              guardar_actividad(activi,n,buenas,estu)
+        }
+
+      // function guardar_actividad(activi, n, buenas, estu){
+      //         debugger
+      //         var pk = estu;
+      //         var actividad = activi;
+      //         var nota = n;
+      //         var buenas = buenas;
+      //           $.ajax({
+      //                   url: 'note/'+pk+'/activity',
+      //                   data: { "csrfmiddlewaretoken": "{{ csrf_token }}", "nota": nota, "actividad":actividad, "pk": pk , "detalle":buenas},
+      //                   type: 'POST',
+      //                   success: function() {
+      //                                       console.log(pk, actividad, nota)
+      //                 }
+      //           })
+      //           return false;
+      // };
+});
+</script>
 {% endblock %}
