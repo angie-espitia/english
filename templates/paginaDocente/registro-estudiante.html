@@ -40,16 +40,16 @@
         </div>
 
        </div>
+  <br><br><br><br><br>
+  <div class="row">
+    <div class="container initial">
+      <div id="errors" class="alert alert-danger" style="display: none"></div>
 
-                <div class="row">
+      {% if error %}
+        <div class="alert alert-danger"> {{ error }} </div>
+      {% endif %}
 
-                <div class="container initial">
-
-    {% if error %}
-    <div class="alert alert-danger"> {{ error }} </div>
-
-    {% endif %}
-    <form method="post" action="{% url 'registro-estudiante' %}" name="formularioregistro">
+    <form method="post" action="{% url 'registro-estudiante' %}" name="formularioregistro" onsubmit="return validar()">
       {% csrf_token %}
       <div class="container-fluid">
         <div class="row">
@@ -63,7 +63,7 @@
                 <label for="exampleInputnomre"><h4>Nombres:</h4></label>
               </div>
               <div class ="col-md-5">
-                <input type= "text" name="nombre" class="form-control" value= "{{ estudiante.id.first_name }}" id="exampleInputnombre" placeholder="nombre">
+                <input type= "text" id="nombre" name="nombre" class="form-control" value= "{{ estudiante.id.first_name }}" id="exampleInputnombre" placeholder="nombre">
               </div>
               <div class ="col-md-1">
                 <label for="exampleInputnomre"><h4>Apellidos:</h4></label>
@@ -80,13 +80,13 @@
                 <label for="exampleInputnomre"><h4>Correo:</h4></label>
               </div>
               <div class ="col-md-5">
-                <input type = "text" name="email" class="form-control" value="{{ estudiante.id.email }}" placeholder="Correo">
+                <input type = "text" id="email" name="email" class="form-control" value="{{ estudiante.id.email }}" placeholder="Correo">
               </div>
               <div class ="col-md-3">
                 <label for="exampleInputnomre"><h4>Documento Identidad:</h4></label>
               </div>
               <div class ="col-md-3">
-                  <input type = "text" name="documento" class="form-control" value="{{ estudiante.documento }}" placeholder="Documento">
+                  <input type = "text" id="documento" name="documento" class="form-control" value="{{ estudiante.documento }}" placeholder="Documento">
               </div>
             </div>
 
@@ -100,14 +100,14 @@
                 <input type = "text" name="username" class="form-control" value="{{ estudiante.id.username }}" placeholder="Username">
               </div>
               <div class ="col-md-1">
-                <label for="exampleInputnomre"><h4>Género:</h4></label>
+                <label  for="exampleInputnomre"><h4>Género:</h4></label>
               </div>
               <div class ="col-md-5">
                   <label class="checkbox-inline">
-                      <input type="checkbox" name='sexo' value="M"> Masculino
+                      <input type="radio" id="genero" name='sexo' value="M"> Masculino
                   </label>
                   <label class="checkbox-inline">
-                      <input type="checkbox" name='sexo' value="F"> Femenino
+                      <input type="radio" id="genero" name='sexo' value="F"> Femenino
                   </label>
               </div>
             </div>
@@ -124,7 +124,7 @@
                   <select class="form-control" id="id_curso" name='curso' >
                     <option value="0" >Seleccionar</option>
                     {% for row in user.profesor.curso_set.all %}
-                      <option id='curso' value="{{ row.id }}">{{ row.nombre }}</option>
+                      <option value="{{ row.id }}">{{ row.nombre }}</option>
                     {% endfor %}
                   </select>
                 
@@ -138,7 +138,7 @@
                       <select class="form-control" id="id_grupo" name='grupo'>
                         <option value="0" >Seleccionar</option>
                         {% for row in grupos %}
-                         <option id='grupo' value="{{ row.id }}">{{ row.nombre }}</option>
+                         <option value="{{ row.id }}">{{ row.nombre }}</option>
                         {% endfor %}
                       </select>
                     
@@ -170,7 +170,7 @@
             </div>
 
             <div class="col-md-3">
-                <p><button type="submit" class="btn btn-primary btn-lg pull-right" onclick="validar()">Registrar Estudiante</button> </p>
+                <p><button type="submit" class="btn btn-primary btn-lg pull-right">Registrar Estudiante</button> </p>
             </div>
 
           </div>
