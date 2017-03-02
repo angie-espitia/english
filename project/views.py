@@ -73,6 +73,14 @@ def restringir_estudiante(User):
      else:
         return True
 
+def restringir_profe_inicioest(User):
+     if User.groups.filter(id = STATIC_ROLS['Estudiantes']).exists():
+         return True
+     elif User.groups.filter(id=STATIC_ROLS['Profesores']).exists():
+         return False
+     else:
+        return True
+
 @login_required(login_url="/login-estudiante")
 def logout(request):
     log(request, "CERRO_SESION")
@@ -80,6 +88,7 @@ def logout(request):
     return redirect('index')
 
 @login_required(login_url="/login-estudiante")
+@user_passes_test(restringir_profe_inicioest, login_url='/login-profesor')
 def inicio_estudiante(request):
     usuario = Estudiante.objects.get(id=request.user.id)
     log(request, "INICIO_ESTUDIANTE")
