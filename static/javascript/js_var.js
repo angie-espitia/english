@@ -14,22 +14,35 @@ function blanco() {
         return true;
 };
 
+function radio() {
+
+    opciones = document.getElementsByName("sexo");
+    var seleccionado = false;
+    for(var i=0; i<opciones.length; i++) {    
+        if(opciones[i].checked) {
+        seleccionado = true;
+        break;
+        }
+    }
+
+        if(!seleccionado) {
+        return false;
+        }
+};
+
+function select(){
+    indice = document.getElementById("id_grupo").selectedIndex;
+        if( indice == null || indice == 0 ) {
+          return false;
+        }
+};
+
 function validar() {
 
         var txtCorreo = document.getElementById('email').value;
         var txtDocumento = document.getElementById('documento').value;
         var cmbSelector = document.getElementById('id_curso').value;
-        var cmbSelectorGrupo = document.getElementById('id_grupo').value;
-        var rdbGenero = document.getElementById('genero').value;
 
-        var banderaRBTN = false;
-        for(var i = 0; i < rdbGenero.length; i++){
-            if(rdbGenero[i].checked){
-                banderaRBTN = true;
-                break;
-            }
-        }
-debugger;
         if (blanco() == false) {
             var src = "<strong>ERROR: No deben haber campos vacios.</strong> <br>";
             $("#errors").html(src);
@@ -45,7 +58,7 @@ debugger;
             $("#errors").html(src);
             document.getElementById("errors").style.display="block";
             return false;
-        }else if(!banderaRBTN){ //Test checkBox
+        }else if(radio() == false){ //Test checkBox
             var src = "<strong>ERROR: Debe seleccionar un Género</strong> <br>";
             $("#errors").html(src);
             document.getElementById("errors").style.display="block";
@@ -55,12 +68,13 @@ debugger;
             $("#errors").html(src);
             document.getElementById("errors").style.display="block";
             return false;
-        }else if(cmbSelectorGrupo == null || cmbSelectorGrupo == 0){
+        }else if(select() == false){
             var src = "<strong>ERROR: Debe seleccionar un grupo</strong> <br>";
             $("#errors").html(src);
             document.getElementById("errors").style.display="block";
             return false;
         }else {
             return true;
+            location.reload();
         }
 };
