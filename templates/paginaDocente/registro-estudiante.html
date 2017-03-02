@@ -63,13 +63,13 @@
                 <label for="exampleInputnomre"><h4>Nombres:</h4></label>
               </div>
               <div class ="col-md-5">
-                <input type= "text" id="nombre" name="nombre" class="form-control" value= "{{ estudiante.id.first_name }}" id="exampleInputnombre" placeholder="nombre">
+                <input type= "text" id="nombre" name="nombre" class="form-control" value= "{{ estudiante.id.first_name }}" id="exampleInputnombre" placeholder="nombre" maxlength="30">
               </div>
               <div class ="col-md-1">
                 <label for="exampleInputnomre"><h4>Apellidos:</h4></label>
               </div>
               <div class ="col-md-5">
-                 <input type = "text" name="apellidos" class="form-control" value="{{ estudiante.id.last_name }}" placeholder="apellidos">
+                 <input type = "text" name="apellidos" class="form-control" value="{{ estudiante.id.last_name }}" placeholder="apellidos" maxlength="30">
               </div>
             </div>
 
@@ -80,7 +80,7 @@
                 <label for="exampleInputnomre"><h4>Correo:</h4></label>
               </div>
               <div class ="col-md-5">
-                <input type = "text" id="email" name="email" class="form-control" value="{{ estudiante.id.email }}" placeholder="Correo">
+                <input type = "text" id="email" name="email" class="form-control" value="{{ estudiante.id.email }}" placeholder="Correo" maxlength="254">
               </div>
               <div class ="col-md-3">
                 <label for="exampleInputnomre"><h4>Documento Identidad:</h4></label>
@@ -97,7 +97,7 @@
                 <label for="exampleInputnomre"><h4>Username:</h4></label>
               </div>
               <div class ="col-md-4">
-                <input type = "text" name="username" class="form-control" value="{{ estudiante.id.username }}" placeholder="Username">
+                <input type = "text" id="usuario" name="username" class="form-control" value="{{ estudiante.id.username }}" placeholder="Username" maxlength="30">
               </div>
               <div class ="col-md-1">
                 <label  for="exampleInputnomre"><h4>Género:</h4></label>

@@ -37,6 +37,16 @@ function select(){
         }
 };
 
+function vacio() {
+    txtUsuario = document.getElementById('usuario').value;
+    for ( i = 0; i < txtUsuario.length; i++ ) {
+        if ( txtUsuario.charAt(i) != " " ) {
+        return true
+        }
+    }
+    return false
+};
+
 function validar() {
 
         var txtCorreo = document.getElementById('email').value;
@@ -50,6 +60,11 @@ function validar() {
             return false;            
         }else if(!(/\S+@\S+\.\S+/.test(txtCorreo))){ //Test correo
             var src = "<strong>ERROR: Debe escribir un correo válido</strong> <br>";
+            $("#errors").html(src);
+            document.getElementById("errors").style.display="block";
+            return false;
+        }else if (vacio() == false){ //Test campo obligatorio
+            var src = "<strong>ERROR: El campo Username no debe contener espacios en blanco.</strong> <br>";
             $("#errors").html(src);
             document.getElementById("errors").style.display="block";
             return false;
