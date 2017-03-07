@@ -40,7 +40,7 @@
 
           <div class="col-sm-6 col-md-6">
               <li><strong>{{ row.pregunta.descripcion }}</strong>
-              <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="">
+              <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="" onkeyup="this.value=this.value.toLowerCase()">
             </li>
           </div>
             <br>
@@ -85,7 +85,7 @@
             {% for row in respuesta2 %}
             <div class="col-sm-6 col-md-6">
                 <div id="{{ row.pregunta.id }}"> <li> {{ row.pregunta.descripcion }}</div> 
-                <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="">
+                <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="" onkeyup="this.value=this.value.toUpperCase()">
               </li>
             </div>
             {% endfor %}
@@ -115,7 +115,7 @@
                   {% for row in respuesta3 %}
                     {% if row.id >= 30 and row.id <= 33 %} 
                       <tr><td><div id="{{ row.pregunta.id }}"> </div> 
-                        <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""></td>
+                        <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="" onkeyup="this.value=MaysPrimera(this.value.toLowerCase())"></td>
                       </tr>
                     {% endif %}
                   {% endfor %}
@@ -133,7 +133,7 @@
                   {% for row in respuesta3 %}
                     {% if row.id >= 34 and row.id <= 37 %} 
                       <tr><td><div id="{{ row.pregunta.id }}"> </div> 
-                        <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""></td>
+                        <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="" onkeyup="this.value=MaysPrimera(this.value.toLowerCase())"></td>
                       </tr>
                     {% endif %}
                   {% endfor %}
@@ -151,7 +151,7 @@
                   {% for row in respuesta3 %}
                     {% if row.id >= 38 and row.id <= 41 %} 
                       <tr><td><div id="{{ row.pregunta.id }}"> </div> 
-                        <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""></td>
+                        <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="" onkeyup="this.value=this.value.toLowerCase()"></td>
                       </tr>
                     {% endif %}
                   {% endfor %}

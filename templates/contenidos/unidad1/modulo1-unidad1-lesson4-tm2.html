@@ -55,11 +55,88 @@
         <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson4Theme2.png' %}" alt="No found">
         <img class="img-responsive" src="{% static 'img/modulo1/unity1/Lesson4Theme2img2.png' %}" alt="No found">
           
-          <div class="col-sm-6 col-md-6">
-              <p>This is a photo of my family. This is my sister.  {% for row in respuesta %}{% if row.id == 99  %} <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="" > {% endif %}{% endfor %} name is Rose. She’s two years old. I have two brothers. They are twins! {% for row in respuesta %}{% if row.id == 100  %} <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""> {% endif %}{% endfor %} names are Pablo and Fabián. They’re six years old. {% for row in respuesta %}{% if row.id == 101  %} <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""> {% endif %}{% endfor %} favourite colour is blue.  {% for row in respuesta %}{% if row.id == 102  %} <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""> {% endif %}{% endfor %} parents are George and Lisa.  {% for row in respuesta %}{% if row.id == 103  %} <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""> {% endif %}{% endfor %}  father is 35 years old. {% for row in respuesta %}{% if row.id == 104  %} <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""> {% endif %}{% endfor %} favourite colour is green. {% for row in respuesta %}{% if row.id == 105  %} <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""> {% endif %}{% endfor %} mother is 30 years old. {% for row in respuesta %}{% if row.id == 106  %} <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""> {% endif %}{% endfor %} favourite colour is white. {% for row in respuesta %}{% if row.id == 107  %} <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""> {% endif %}{% endfor %} dog isn’t in the picture. {% for row in respuesta %}{% if row.id == 108  %} <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value=""> {% endif %}{% endfor %} name is Piky. What about your family?</p>
+          <div class="col-sm-3 col-md-3">
               
-            </li>
-          </div>
+              {% for row in respuesta %}
+                {% if row.id == 99  %} 
+                  <p>( 1 )</p><input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="" onkeyup="this.value=this.value.toLowerCase()"> 
+                {% endif %}
+              {% endfor %} 
+          </div> 
+          <div class="col-sm-3 col-md-3">
+              <p>( 2 )</p>
+              {% for row in respuesta %}
+                {% if row.id == 100  %} 
+                  <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="" onkeyup="this.value=this.value.toLowerCase()"> 
+                {% endif %}
+              {% endfor %} 
+          </div> 
+          <div class="col-sm-3 col-md-3">
+              <p>( 3 )</p>
+              {% for row in respuesta %}
+                {% if row.id == 101  %} 
+                  <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="" onkeyup="this.value=this.value.toLowerCase()"> 
+                {% endif %}
+              {% endfor %} 
+          </div> 
+          <div class="col-sm-3 col-md-3">
+              <p>( 4 )</p>
+              {% for row in respuesta %}
+                {% if row.id == 102  %} 
+                  <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="" onkeyup="this.value=this.value.toLowerCase()"> 
+                {% endif %}
+              {% endfor %} 
+          </div> 
+          <div class="col-sm-3 col-md-3">
+              <p>( 5 )</p>
+              {% for row in respuesta %}
+                {% if row.id == 103  %} 
+                  <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="" onkeyup="this.value=this.value.toLowerCase()"> 
+                {% endif %}
+              {% endfor %}  
+          </div> 
+          <div class="col-sm-3 col-md-3">
+              <p>( 6 )</p>
+              {% for row in respuesta %}
+                {% if row.id == 104 %} 
+                  <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="" onkeyup="this.value=this.value.toLowerCase()"> 
+                {% endif %}
+              {% endfor %} 
+          </div> 
+          <div class="col-sm-3 col-md-3">
+              <p>( 7 )</p>
+              {% for row in respuesta %}
+                {% if row.id == 105  %} 
+                  <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="" onkeyup="this.value=this.value.toLowerCase()"> 
+                {% endif %}
+              {% endfor %} 
+          </div> 
+          <div class="col-sm-3 col-md-3">
+              <p>( 8 )</p>
+              {% for row in respuesta %}
+                {% if row.id == 106  %} 
+                  <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="" onkeyup="this.value=this.value.toLowerCase()"> 
+                {% endif %}
+              {% endfor %} 
+          </div> 
+          <div class="col-sm-3 col-md-3">
+              <p>( 9 )</p>
+              {% for row in respuesta %}
+                {% if row.id == 107  %} 
+                  <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="" onkeyup="this.value=this.value.toLowerCase()"> 
+                {% endif %}
+              {% endfor %} 
+          </div> 
+          <div class="col-sm-3 col-md-3">
+              <p>( 10 )</p>
+              {% for row in respuesta %}
+                {% if row.id == 108  %} 
+                  <input class="form-control" type="text" id="{{ row.id }}" name="{{ row.descripcion }}" value="" onkeyup="this.value=this.value.toLowerCase()"> 
+                {% endif %}
+              {% endfor %}
+          </div> 
+              
+            
             <br>
         </div>
         <br>
@@ -70,7 +147,7 @@
                 <div id="{{ row.id }}" hidden="false"><li>{{ row.descripcion }}</li></div>            
             {% endfor %}
         </div>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br>
         <hr>
         <br>
 
@@ -113,45 +190,43 @@
       <p>Listen and write the number you hear in your notebook.</p>
 
           <div class="col-sm-12 col-md-12">
-             <div class="col-sm-6 col-md-6">
+             <div class="col-sm-7 col-md-7">
                 <audio controls>
                   <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK22.mp3' %}" type="audio/mpeg">
                   Your browser does not support the audio element. (AUDIO 22)
-                </audio>
-             </div>
-             <div class="col-sm-6 col-md-6">
-                <audio controls>
-                  <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK21.mp3' %}" type="audio/mpeg">
-                  Your browser does not support the audio element. (AUDIO 21)
                 </audio>
              </div>
           </div>
          <div class="col-sm-12 col-md-12">
               <div class="col-sm-2 col-md-2">
                   <ul>
-                    <li>15 50</li>
-                    <li>12 20</li>
+                    <li>a. 15 50</li>
+                    <li>b. 12 20</li>
                   </ul>
                 </div>
                  <div class="col-sm-2 col-md-2">
                   <ul>
-                    <li>17 70</li>
-                    <li>13 30</li>
+                    <li>c. 17 70</li>
+                    <li>d. 13 30</li>
                   </ul>
                 </div>
                  <div class="col-sm-2 col-md-2">
                   <ul>
-                    <li>19 90</li>
-                    <li>16 60</li>
+                    <li>e. 19 90</li>
+                    <li>f. 16 60</li>
                   </ul>
                 </div>
                  <div class="col-sm-2 col-md-2">
                   <ul>
-                    <li>14 40</li>
-                    <li>18 80</li>
+                    <li>g. 14 40</li>
+                    <li>h. 18 80</li>
                   </ul>
                 </div>
                 <div class="col-sm-4 col-md-4">
+                    <audio controls>
+                      <source src="{% static 'audios/module1/ENGLISH%20PLEASE%20LEVEL%201%20TRACK21.mp3' %}" type="audio/mpeg">
+                      Your browser does not support the audio element. (AUDIO 21)
+                    </audio>
                   <table class="table table-bordered">
                     <thead>
                       <tr>
