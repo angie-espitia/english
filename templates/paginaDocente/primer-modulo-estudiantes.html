@@ -44,6 +44,7 @@
                   <tr>
                     <th>Nombre</th>
                     <th>Documento</th>
+                    <th>Usuario</th>
                       <th>Correo</th>
                       <th>última conexión</th>
                       <th>Eventos</th>
@@ -58,6 +59,9 @@
                               </td>
                               <td>
                                 <h4>{{ estudiante.estudiante.documento }}</h4>
+                              </td>
+                              <td>
+                                <h4>{{ estudiante.estudiante.id.username }}</h4>
                               </td>
                               <td>
                                 <h4>{{ estudiante.estudiante.id.email }}</h4>
@@ -76,9 +80,9 @@
                     {% endfor %}
                  </table>
                 </div>
-                            <!-- <div class="text-right">
-                                    <a href="{% url 'reporte-estudiante' %}">Descargar Reporte <i class="fa fa-arrow-circle-right"></i></a>
-                                </div> -->
+                            <div class="text-right">
+                                    <a href="{% url 'reporte-estudiante' pk=grupo.pk %}">Descargar Reporte <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
                 </div>
                 </div>
                 </div>

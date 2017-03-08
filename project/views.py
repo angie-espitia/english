@@ -1244,9 +1244,10 @@ def pdf(f):
     return funcion
 
 @pdf
-def reporte_estudiante(request):
-    estudiantes = Estudiante.objects.filter()
-    return render_to_string("reporte_estudiantes.html", { 'estudiantes': estudiantes, 'path': STATICFILES_DIRS[0] }) #obtenemos la plantilla
+def reporte_estudiante(request, pk):
+    grupo = get_object_or_404(Grupo, pk=pk)
+    estudiantes = Grupo_Estudiante.objects.filter(grupo_id=pk)
+    return render_to_string("paginaDocente/reporte_estudiantes.html", { 'estudiantes': estudiantes, }) #obtenemos la plantilla
 
 
 def log(request, action):

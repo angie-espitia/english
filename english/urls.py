@@ -239,7 +239,7 @@ urlpatterns = [
     url('^buscar_estudiante1$', buscar_estudiante1, name='buscar_estudiante1'),
     url('^modificar-perfil$', modificar_perfil, name='modificar-perfil'),
     url('^modificar-perfil-est$', modificar_perfil_est, name='modificar-perfil-est'),
-    url('^reporte-estudiante$', reporte_estudiante, name='reporte-estudiante'),
+    url(r'^reporte-estudiante/(?P<pk>[0-9]+)$', reporte_estudiante, name='reporte-estudiante'),
 
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^admin/', admin.site.urls),
