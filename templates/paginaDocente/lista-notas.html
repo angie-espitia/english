@@ -2,6 +2,38 @@
 {% load staticfiles %}
 {% block title %} Notas {% endblock %}
 
+{% block head %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var valor = document.getElementById('hidden')
+      var dos = parseInt(valor.value)
+      console.log(valor);
+      var valor1 = document.getElementById('hidden1')
+      var dos1 = parseInt(valor1.value)
+      var valor2 = document.getElementById('hidden2')
+      var dos2 =  parseInt(valor2.value)
+      console.log(dos, dos1, dos2);
+      var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Day'],
+        ['0 - 2.9',     dos],
+        ['3.0 - 3.9',  dos1],
+        ['4.0 - 5.0', dos2]
+
+      ]);
+      var options = {
+        title: 'Reporte de Notas'
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+      chart.draw(data, options);
+    }
+</script>
+{% endblock %}
+
 {%  block content %}
 
 <div id="page-wrapper">
@@ -20,7 +52,7 @@
                                 <i class="fa fa-fw fa-table"> </i> Grupos
                             </li>
                             <li>
-                                Grupo ...
+                                Grupo 
                             </li>
                             <li class="active">
                                 Notas 
@@ -36,6 +68,7 @@
                         <a href="{% url 'agregar-notas' pk=estudiante.pk %}" class="btn btn-primary">Agregar Nueva Nota </a>
                     </div>
                     <br><br>
+                <div class="col-md-7 col-lg-7">
                     <div class="panel">
                         <div class="panel-body">
                         <div class="">
@@ -44,7 +77,6 @@
                             <tr>
                               <th>Nota</th>
                               <th>Detalle</th>
-                              <th>Actividad</th>
                               <th>Funciones</th>
                             </tr>  
                             </thead>    
@@ -53,7 +85,6 @@
                                 <tr>
                                 <td>{{ row.nota }}</td>
                                 <td>{{ row.detalle }}</td>
-                                <td>{{ row.actividad.nombre }}</td>
                                 <td>
                                     <a class="btn btn-primary" href="{% url 'editar-notas' pk=row.pk %}">Editar</a> 
                                     <a class="btn btn-danger" href="{% url 'eliminar-notas' pk=row.pk %}">Borrar</a>
@@ -65,8 +96,23 @@
                         </div>
                         </div>        
                     </div>
+                </div>
+                <br>
+                <div class="col-md-5 col-lg-5">
+                      <div class="card ">
+                          <div class="header">
+                              <h4 class="title">Reportes</h4>
+                              <input type="hidden" name="invi" value="{{ p }}" id="hidden" >
+                                <input type="hidden" name="invi" value="{{ e }}" id="hidden1" >
+                                  <input type="hidden" name="invi" value="{{ t }}" id="hidden2">
+                          </div>
+                          <div class="content">
+                            
 
-                    
+                            <div id="piechart" style="width: 100%; height: 100%;"></div>
+
+                      </div>
+                  </div>                   
                 </div>
 
             </div>

@@ -1177,7 +1177,18 @@ def lista_notas(request, pk):
     estudiante = User.objects.get(id=pk)
     grupos_estudiantes = Grupo_Estudiante.objects.get(estudiante_id=pk)
     notas = Calificacion.objects.filter(grupo_estudiante=grupos_estudiantes)
-    return render(request, 'paginaDocente/lista-notas.html', {'notas':notas, 'estudiante':estudiante} )
+    p = 0
+    e = 0
+    t = 0
+    for i in notas:
+        if (i.nota >= 0 and i.nota <= 2.9):
+            p=p+1
+        if (i.nota >= 3.0 and i.nota <= 3.9):
+            e=e+1
+        if (i.nota >= 4.0 and i.nota <= 5):
+            t=t+1
+
+    return render(request, 'paginaDocente/lista-notas.html', {'notas':notas, 'estudiante':estudiante, "p":p, "e":e, "t":t} )
 
 # Función Agregar Notas
 @login_required(login_url="/login-profesor")
@@ -1203,18 +1214,17 @@ def agregar_notas(request, pk):
 def editar_notas(request, pk):
     # import pdb; pdb.set_trace()
     notas = Calificacion.objects.filter(pk=pk)
-    n2 = notas.values('grupo_estudiante')
-    actividad = Actividades.objects.all()
     if request.method == "POST":
         notas = Calificacion()
-        notas.nota = request.POST['nota']
+        nota = request.POST['nota']
+        notas.nota = float(nota)
         notas.detalle = request.POST['detalle']
-        notas.actividad_id = request.POST.get('actividad', None )
-        notas.grupo_estudiante_id = n2
+        # notas.actividad_id = request.POST.get('actividad', None )
+        notas.grupo_estudiante_id = request.POST['grupo']
         notas.save()
         return redirect('lista-grupos')
 
-    return render(request, 'paginaDocente/edit-notas.html', {'notas':notas, 'actividad':actividad})
+    return render(request, 'paginaDocente/edit-notas.html', {'notas':notas })
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')
@@ -1222,6 +1232,10 @@ def eliminar_notas(request, pk):
     notas = get_object_or_404(Calificacion, pk=pk)
     notas.delete()
     return redirect('lista-grupos')
+
+# def reporte_notas(request, pk):
+
+#     return render(request,'../templates/index.html', { "user": user, "p":p, "e":e, "t":t} )
 
 # <----------------------------------- Eventos --------------------------------->
 @login_required(login_url="/login-profesor")

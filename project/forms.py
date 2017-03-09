@@ -47,12 +47,10 @@ class CalificacionForm(forms.ModelForm):
 
     class Meta:
         model = Calificacion
-        fields = ['nota','detalle', 'actividad']
+        fields = ['nota','detalle' ]
         labels = {'nota': 'Nota',
                   'detalle': 'Detalle',
-                  'actividad': 'Actividad', 
                  }
         widgets = {'nota': forms.TextInput(attrs={'class':'form-control'}),
                    'detalle': forms.TextInput(attrs={'class':'form-control'}),
-                   'actividad': forms.Select(attrs={'class':'form-control'}),
                     }
