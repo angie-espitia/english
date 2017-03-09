@@ -1051,7 +1051,7 @@ def modificar_contra_profesor(request):
         usu1.password = make_password(request.POST['password1'])
         usu1.save()
 
-    return render(request, 'paginaDocente/modificar_contraseña.html', { 'usuario': usu1 } )
+    return render(request, 'paginaDocente/perfil-profe.html', { 'usuario': usu1 } )
 
 @login_required(login_url="/login-profesor")
 @user_passes_test(restringir_estudiante, login_url='/login-profesor')

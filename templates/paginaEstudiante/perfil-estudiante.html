@@ -72,13 +72,13 @@
                               <div class="col-md-4">
                                   <div class="form-group">
                                       <label>Documento</label>
-                                      <input type = "text" name="documento" class="form-control" value="{{ usuario.documento }}" placeholder="Documento">
+                                      <input type = "text" id="documento" name="documento" class="form-control" value="{{ usuario.documento }}" placeholder="Documento">
                                   </div>
                               </div>
                               <div class="col-md-4">
                                   <div class="form-group">
                                       <label>Teléfono</label>
-                                      <input type = "text" name="tel" class="form-control" value="{{ usuario.tel }}" >
+                                      <input type = "text" id="tel" name="tel" class="form-control" value="{{ usuario.tel }}" >
                                   </div>
                               </div>
                               <div class="col-md-4">
@@ -175,11 +175,23 @@
 <script type="text/javascript">
 function principal(){
   var dato = new Date(document.getElementById("nacimiento").value);
+  var txtDocumento = document.getElementById('documento').value;
+  var txtTel = document.getElementById('tel').value;
   if(dato == "Invalid Date"){
     var src = "<strong>ERROR: Debe escribir una fecha de nacimiento</strong> <br>";
     $("#errors").html(src);
     document.getElementById("errors").style.display="block";
     return false;
+  }else if (!/^([0-9])*$/.test(txtTel)){ //Test campo obligatorio
+            var src = "<strong>ERROR: El campo telefono debe ser solo números y no debe contener espacios.</strong> <br>";
+            $("#errors").html(src);
+            document.getElementById("errors").style.display="block";
+            return false;
+  }else if (!/^([0-9])*$/.test(txtDocumento)){ //Test campo obligatorio
+            var src = "<strong>ERROR: El campo documento debe ser solo números y no debe contener espacios.</strong> <br>";
+            $("#errors").html(src);
+            document.getElementById("errors").style.display="block";
+            return false;
   }else {
     return true;
     location.reload();
