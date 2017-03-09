@@ -110,10 +110,10 @@ def modificar_perfil_est(request):
 
         miusuario = Estudiante()
         miusuario.id = usu
-        miusuario.documento = request.POST['documento']
-        miusuario.tel = request.POST['tel']
-        miusuario.direccion = request.POST['direccion']
-        miusuario.fecha_nacimiento = request.POST['nacimiento']
+        miusuario.documento = request.POST.get('documento')
+        miusuario.tel = request.POST.get('tel')
+        miusuario.direccion = request.POST.get('direccion')
+        miusuario.fecha_nacimiento = request.POST.get('nacimiento')
         miusuario.save()
 
         log(request, "PERFIL_EDITADO")
@@ -135,8 +135,7 @@ def modificar_contra_estudiante(request):
         usu1.password = make_password(request.POST['password1'])
         usu1.save()
         log(request, "CONTRASEÑA_MODIFICADA")
-
-    return render(request, 'paginaEstudiante/modificar-contra-est.html', { 'usuario': usu1 } )
+    return render(request, 'paginaEstudiante/perfil-estudiante.html', { 'usuario': usu1 } )
 
 @login_required(login_url="/login-estudiante")
 def multimedia(request):
