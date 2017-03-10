@@ -48,7 +48,8 @@
       <div class="col-sm-12 col-md-12"></div>
 
       <div class="col-sm-12 col-md-12">
-        <p>Complete the text with the correct possessive adjective.</p>
+        <p>Complete the text with the correct possessive adjective. In the text <b>4, 5, 7</b> and <b>9</b>, 
+please complete with the two possible answers separated by a <b>/</b></p>
 
         <div id="pregunta-usuario">
 
@@ -139,18 +140,17 @@
             
             <br>
         </div>
+        <br><br><br><br><br><br><br><br><br><br>
+        <hr>
         <br>
-        <div id="respuestas-bd">
+        <div id="respuestas-bd" hidden="false">
             <div id="estudiante_id" hidden="false">{{estudiante.id.id}}</div>
             {% for row in respuesta %}
                 <div id="actividad_id" hidden="false">{{ row.pregunta.actividad.id }}</div>
                 <div id="{{ row.id }}" hidden="false"><li>{{ row.descripcion }}</li></div>            
             {% endfor %}
         </div>
-        <br><br><br><br><br><br><br><br><br>
-        <hr>
         <br>
-
         <div id="resultado"><strong>Resultado:</strong></div>
         <button class="btn btn-primary pull-right" id="boton_actividad1">Calificar</button> 
 
@@ -335,7 +335,7 @@
 
               var n = nota.toFixed(1);
               $("#" + name_div).html("<strong>Tu resultado es :</strong> " + buenas +"/" + total + " <strong>Tu nota es:</strong> " + n);
-              guardar_actividad(activi,n,buenas,estu)
+              // guardar_actividad(activi,n,buenas,estu)
         }
 
       // function guardar_actividad(activi, n, buenas, estu){

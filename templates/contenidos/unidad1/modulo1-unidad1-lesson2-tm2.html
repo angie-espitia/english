@@ -164,9 +164,29 @@
           <div id="respuestas-bd">
               <div id="estudiante_id" hidden="false">{{estudiante.id.id}}</div>
               {% for row in respuesta %}
-                  <div id="actividad_id" hidden="false">{{ row.pregunta.actividad.id }}</div>
-                  <div id="{{ row.id }}" hidden="false"><li>{{ row.descripcion }}</li></div>            
-              {% endfor %}
+              {% if row.pregunta.id <= 5 %}      
+                    <div id="actividad_id" hidden="false">{{ row.pregunta.actividad.id }}</div>
+                    <div id="{{ row.id }}" hidden="false"><li>{{ row.descripcion }}</li></div> 
+              {% endif %}
+            {% endfor %}         
+            {% for row in respuesta %}
+              {% if row.pregunta.id >= 6 and row.pregunta.id <= 10 %} 
+                    <div id="actividad_id" hidden="false">{{ row.pregunta.actividad.id }}</div>
+                    <div id="{{ row.id }}" hidden="false"><li>{{ row.descripcion }}</li></div>
+              {% endif %}
+            {% endfor %}          
+            {% for row in respuesta %}
+              {% if row.pregunta.id >= 11 and row.pregunta.id <= 15 %} 
+                    <div id="actividad_id" hidden="false">{{ row.pregunta.actividad.id }}</div>
+                    <div id="{{ row.id }}" hidden="false"><li>{{ row.descripcion }}</li></div>
+              {% endif %}
+            {% endfor %}          
+            {% for row in respuesta %}
+              {% if row.pregunta.id >= 16 and row.pregunta.id <= 20 %} 
+                    <div id="actividad_id" hidden="false">{{ row.pregunta.actividad.id }}</div>
+                    <div id="{{ row.id }}" hidden="false"><li>{{ row.descripcion }}</li></div>
+              {% endif %}
+            {% endfor %}
           </div>
           <br><br><br>
           <div id="resultado"><strong>Resultado:</strong></div>
