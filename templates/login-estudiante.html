@@ -61,7 +61,7 @@ $(document).ready(function() {
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href="{% url 'index' %}">HOME</a></li>
-            <li><a href="{% url 'curso' %}">INSTITUTION</a></li>
+            <!-- <li><a href="{% url 'curso' %}">INSTITUTION</a></li> -->
             <li><a href="{% url 'contacto' %}"><i class="fa fa-envelope-o"></i> CONTACT</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -103,7 +103,7 @@ $(document).ready(function() {
     <!--FOOTER-->
     <div class="footer">
     <!--LOGIN BUTTON--><input type="submit" name="submit" value="Login" class="button" /><!--END LOGIN BUTTON-->
-    <span class="centered">¿ Forgot your password ? <br /> <a href="#">Click here</a></span>
+    <!-- <span class="centered">¿ Forgot your password ? <br /> <a href="#">Click here</a></span> -->
     </div>
     <!--END FOOTER-->
 
@@ -119,8 +119,8 @@ $(document).ready(function() {
 		<div class="container">
 			<div class="row centered">
                 <div class="col-md-3">
-                    <p>Escuela Normal Superior Girardot Carrera 9 No. 45A - 44 <br />
-Para mayor información comuniquese al: (1) 000 29 00
+                    <p>Escuela Normal Superior María Auxiliadora de Girardot. <br />
+Para mayor información comuníquese al: (1) 000 29 00
                 </p></div>
                 <div class="col-sm-3 col-md-3 pull-right">
                  <div class="centered"> <img src="{% static 'img/Escudo.png' %}" class="img-responsive" alt=""/></div> </div>
@@ -133,14 +133,14 @@ Para mayor información comuniquese al: (1) 000 29 00
 			<div class="container">
 				<div class="row downLine">
 					<div class="col-md-6 text-left copy">
-						<p>Copyright &copy; Escuela Normal Superior María Auxiliadora of Girardot.</p>
+						<p>Copyright &copy; Escuela Normal Superior María Auxiliadora de Girardot.</p>
 					</div>
 					<div class="col-md-6 text-right dm">
                         
 						<ul id="downMenu">
                             
 							<li class="active"><a href="{% url 'index' %}">Home</a></li>
-                            <li><a href="{% url 'curso' %}">Institution</a></li>
+                            <!-- <li><a href="{% url 'curso' %}">Institution</a></li> -->
                             <li><a href="{% url 'contacto' %}">Contact</a></li>
 						</ul>
 					</div>

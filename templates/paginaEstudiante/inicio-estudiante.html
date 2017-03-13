@@ -1,12 +1,12 @@
 {% extends 'plantilla2.html' %}
 {% load staticfiles %}
-{% block title %} Inicio {% endblock %}
+{% block title %} Home Student {% endblock %}
 
 {%  block content %}
 
     <div class="container initial" style="margin-bottom: 315px;">
     <ol class="breadcrumb">
-  <li class="active"><a href="{% url 'inicio-estudiante' %}">Inicio</a></li>
+  <li class="active"><a href="{% url 'inicio-estudiante' %}">Home</a></li>
         <li> {{ usuario.id.first_name }} {{ usuario.id.last_name }} </li>
         
 </ol>
@@ -15,7 +15,7 @@
         <div class="panel panel-info">
   <div class="panel-heading"><h3 class="panel-title">Welcome</h3></div>
   <div class="panel-body">
-    <p>Bienvenido a <strong>Easy English </strong>, aquí encontrará todos los temas y actividades para repasar del libro <strong>English Please!</strong></p>
+    <p>Welcome to <strong>Easy English </strong>, in this page you will find contents and activities of the book <strong>English Please!</strong></p>
       <p></p>
   </div>
 </div>
@@ -39,28 +39,28 @@
         <form class="navbar-form" action="{% url 'inicio-estudiante' %}" method="post" >
           <div class="panel panel-default">
                         <div class="panel-heading">
-                           <h4> <i class="fa fa-user-circle-o fa-fw" style="font-size: 25px;"></i> Datos Personales</h4>
+                           <h4> <i class="fa fa-user-circle-o fa-fw" style="font-size: 25px;"></i> Personal Information</h4>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="list-group">
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-chevron-circle-right fa-fw"></i> Nombre
+                                    <i class="fa fa-chevron-circle-right fa-fw"></i> Name
                                     <span class="pull-right text-muted small">{{ usuario.id.first_name }}
                                     </span>
                                 </a>
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-chevron-circle-right fa-fw"></i> Apellido
+                                    <i class="fa fa-chevron-circle-right fa-fw"></i> Last Name
                                     <span class="pull-right text-muted small">{{ usuario.id.last_name }}
                                     </span>
                                 </a>
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-chevron-circle-right fa-fw"></i> Correo
+                                    <i class="fa fa-chevron-circle-right fa-fw"></i> Email
                                     <span class="pull-right text-muted small">{{ usuario.id.email }}
                                     </span>
                                 </a>
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-chevron-circle-right fa-fw"></i> Documento
+                                    <i class="fa fa-chevron-circle-right fa-fw"></i> Document
                                     <span class="pull-right text-muted small">{{ usuario.documento }}
                                     </span>
                                 </a>
@@ -72,7 +72,7 @@
                                 </a>
                             </div>
                             <!-- /.list-group -->
-                            <a href="{% url 'perfil-estudiante' %}" class="btn btn-default btn-block">Ver más</a>
+                            <a href="{% url 'perfil-estudiante' %}" class="btn btn-default btn-block">See More</a>
                         </div>
                         <!-- /.panel-body -->
                     </div>

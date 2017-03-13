@@ -1,12 +1,12 @@
 {% extends 'plantilla2.html' %}
 {% load staticfiles %}
-{% block title %} Perfil {{ usuario.id.first_name }} {{ usuario.id.last_name }} {% endblock %}
+{% block title %} Profile {{ usuario.id.first_name }} {{ usuario.id.last_name }} {% endblock %}
 
 {%  block content %}
 
     <div class="container initial">
     <ol class="breadcrumb">
-  <li class="active"><a href="{% url 'inicio-estudiante' %}">Perfil Estudiante</a></li>
+  <li class="active"><a href="{% url 'inicio-estudiante' %}">Profile Student</a></li>
         <li> {{ usuario.id.first_name }} {{ usuario.id.last_name }} </li>
 </ol>
       <!-- Main component for a primary marketing message or call to action -->
@@ -31,13 +31,13 @@
                             <div class="col-ms-12 form-group">
                               <div class="col-md-5">
                                   <div class="form-group">
-                                      <label>Colegio</label>
+                                      <label>School</label>
                                       <input type="text" class="form-control" disabled placeholder="Company" value="ENSMAG">
                                   </div>
                               </div>
                               <div class="col-md-3">
                                   <div class="form-group">
-                                      <label>Usuario</label>
+                                      <label>Username</label>
                                       <input type="text" class="form-control" disabled placeholder="Usuario" value="{{ usuario.id.username }}" name="username" >
                                   </div>
                               </div>
@@ -54,13 +54,13 @@
                             <div class="col-ms-12 form-group">
                               <div class="col-md-6">
                                   <div class="form-group">
-                                      <label>Nombre</label>
+                                      <label>Name</label>
                                       <input type="text" class="form-control" disabled placeholder="Nombre" value="{{ usuario.id.first_name }}" name="first_name">
                                   </div>
                               </div>
                               <div class="col-md-6">
                                   <div class="form-group">
-                                      <label>Apellido</label>
+                                      <label>Last Name</label>
                                       <input type="text" class="form-control" disabled placeholder="Apellido" value="{{ usuario.id.last_name }}" name="last_name">
                                   </div>
                               </div>
@@ -71,33 +71,33 @@
                             <div class="col-md-12 form-group">
                               <div class="col-md-4">
                                   <div class="form-group">
-                                      <label>Documento</label>
+                                      <label>Document</label>
                                       <input type = "text" id="documento" name="documento" class="form-control" value="{{ usuario.documento }}" placeholder="Documento">
                                   </div>
                               </div>
                               <div class="col-md-4">
                                   <div class="form-group">
-                                      <label>Teléfono</label>
+                                      <label>Telephone</label>
                                       <input type = "text" id="tel" name="tel" class="form-control" value="{{ usuario.tel }}" >
                                   </div>
                               </div>
                               <div class="col-md-4">
                                   <div class="form-group">
-                                      <label>Dirección de Residencia</label>
+                                      <label>Address</label>
                                       <input type = "text" name="direccion" class="form-control" value="{{ usuario.direccion }}" >
                                   </div>
                               </div>  
                             </div>
                             <div class="col-md-4">
                                   <div class="form-group">
-                                      <label>Nacimiento</label>
+                                      <label>Birthdate</label>
                                       <input type = "date" id="nacimiento" name="nacimiento" class="form-control" value="{{ usuario.nacimiento }}" >
                                   </div>
                               </div>
 
                             <div class="col-md-12"></div>
                             <div class="col-md-12">
-                                <p><button type="submit" class="btn btn-info btn-fill pull-right">Actualizar Datos</button> </p>
+                                <p><button type="submit" class="btn btn-info btn-fill pull-right">Update</button> </p>
                             </div>
                       </div>
                     </div>
@@ -106,7 +106,7 @@
                 {{ paso }}
 
                 <div class="header">
-                                <h4 class="title">Cambiar Contraseña</h4>
+                                <h4 class="title">Change Password</h4>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <form method="post" action="{% url 'modificar-contra-estudiante' %}" enctype="multipart/form-data">
@@ -114,19 +114,19 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Contraseña</label>
+                                                <label>Password</label>
                                                 <input type="password" class="form-control" name="password1"  placeholder="Contraseña" value="" >
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Confirmar Contraseña</label>
+                                                <label>Confirm Password</label>
                                                 <input type="password" name='password2' class="form-control"  placeholder="Confirmar Contraseña">
                                             </div>
                                         </div>
                                     </div>
 
-                                    <button type="submit" id="miboton" class="btn btn-info btn-fill pull-right">Actualizar Contraseña</button>
+                                    <button type="submit" id="miboton" class="btn btn-info btn-fill pull-right">Update Password</button>
                                     <div class="clearfix"></div>
                                 </form>
                                 

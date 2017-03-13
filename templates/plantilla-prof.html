@@ -66,23 +66,6 @@
                     <li class="active">
                         <a href="{% url 'inicio-profesor' %}" ><i class="fa fa-fw fa-dashboard"></i> Inicio</a>
                     </li>
-<!--                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-table"></i> Módulos <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="{% url 'primer-modulo' %}">Primer Módulo</a>
-                            </li>
-                            <li>
-                                <a href="#">Segundo Módulo</a>
-                            </li>
-                            <li>
-                                <a href="#">Tercer Módulo</a>
-                            </li>
-                            <li>
-                                <a href="#">Cuarto Módulo</a>
-                            </li>
-                        </ul>
-                    </li> -->
                     <li>
                         <a href="{% url 'lista-curso' %}"><i class="fa fa-fw fa-file-text-o"></i> Cursos</a>
                     </li>
@@ -99,7 +82,21 @@
                         <a href="{% url 'eliminar-estudiante' %}"><i class="fa fa-fw fa-trash"></i> Eliminar Estudiantes</a>
                     </li>
                     <li>
-                        <a href="{% url 'modulo1' %}"><i class="fa fa-fw fa-book"></i> Modulos</a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-book"></i> Módulos <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="{% url 'modulo1-unidad1' %}">Primer Módulo</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'modulo2-unidad1' %}">Segundo Módulo</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'modulo3-unidad1' %}">Tercer Módulo</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'modulo4-unidad1' %}">Cuarto Módulo</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
