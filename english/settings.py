@@ -73,12 +73,12 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        #  'NAME': 'dchhsib5k4lfjj',
-        #  'USER': 'iltfvrrxeeruhq',
-        #  'PASSWORD': '21a33502fa52a32396a2e3580cd9dcab8a90243da53a5b4aa385effcee72b5e3',
-        #  'HOST': 'ec2-54-175-77-250.compute-1.amazonaws.com',
-        #  'PORT': '5432',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+         'NAME': 'dchhsib5k4lfjj',
+         'USER': 'iltfvrrxeeruhq',
+         'PASSWORD': '21a33502fa52a32396a2e3580cd9dcab8a90243da53a5b4aa385effcee72b5e3',
+         'HOST': 'ec2-54-175-77-250.compute-1.amazonaws.com',
+         'PORT': '5432',
 
         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
         #  'NAME': 'english',
@@ -87,13 +87,13 @@ DATABASES = {
         #  'HOST': '127.0.0.1',
         #  'PORT': '5432',
 
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bd_english',
-        'USER': 'root',
-        'PASSWORD': '1234567',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'STORAGE_ENGINE': 'INNODB'
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'bd_english',
+        # 'USER': 'root',
+        # 'PASSWORD': '1234567',
+        # 'HOST': 'localhost',
+        # 'PORT': '3306',
+        # 'STORAGE_ENGINE': 'INNODB'
     }
 }
 
