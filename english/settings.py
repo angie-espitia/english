@@ -13,7 +13,7 @@ SECRET_KEY = '@)pys&^6vh&-pitc#u_!2r4h!g6wr5p#q9%pj#4w%na*r6--i3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -29,15 +29,16 @@ INSTALLED_APPS = [
     'project.templatetags',
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    # 'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'english.urls'
@@ -72,19 +73,27 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         'NAME': 'dchhsib5k4lfjj',
-         'USER': 'iltfvrrxeeruhq',
-         'PASSWORD': '21a33502fa52a32396a2e3580cd9dcab8a90243da53a5b4aa385effcee72b5e3',
-         'HOST': 'ec2-54-175-77-250.compute-1.amazonaws.com',
-         'PORT': '5432',
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        #  'NAME': 'dchhsib5k4lfjj',
+        #  'USER': 'iltfvrrxeeruhq',
+        #  'PASSWORD': '21a33502fa52a32396a2e3580cd9dcab8a90243da53a5b4aa385effcee72b5e3',
+        #  'HOST': 'ec2-54-175-77-250.compute-1.amazonaws.com',
+        #  'PORT': '5432',
 
         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
         #  'NAME': 'english',
         #  'USER': 'postgres',
-        #  'PASSWORD': '123456',
+        #  'PASSWORD': '1234567',
         #  'HOST': '127.0.0.1',
         #  'PORT': '5432',
+
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'bd_english',
+        'USER': 'root',
+        'PASSWORD': '1234567',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'STORAGE_ENGINE': 'INNODB'
     }
 }
 
@@ -111,9 +120,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'es'
+TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True
 
